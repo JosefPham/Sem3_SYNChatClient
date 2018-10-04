@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Peter
+ * @author Group 9
  */
 public class SYNchat extends Application {
     
