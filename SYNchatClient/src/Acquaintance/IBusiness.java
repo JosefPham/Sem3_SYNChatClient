@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+package Acquaintance;
 
 /**
  *
  * @author Sigurd E. Espersen
  */
-public class DeleteThis {
-    
+public interface IBusiness {
+    public void injectConnection(IConnection con);
 }
