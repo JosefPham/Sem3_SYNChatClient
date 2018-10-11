@@ -6,6 +6,7 @@
 package Connection;
 
 import Acquaintance.IConnection;
+import Acquaintance.ILogin;
 
 /**
  *
@@ -23,5 +24,9 @@ public class ConnectionFacade implements IConnection {
             instance = new ConnectionFacade();
         }
         return instance;
+    }
+    
+    public int login(ILogin ilogin) {
+        //server connection
     }
 }

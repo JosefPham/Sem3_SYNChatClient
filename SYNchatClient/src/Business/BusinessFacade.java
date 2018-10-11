@@ -7,6 +7,8 @@ package Business;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
+import Acquaintance.ILogin;
+import Connection.ConnectionFacade;
 
 /**
  *
@@ -31,5 +33,9 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectConnection(IConnection con) {
         this.Icon = con;
+    }
+    
+    protected int login(ILogin ilogin) {
+        return ConnectionFacade.getInstance().login(ilogin);
     }
 }

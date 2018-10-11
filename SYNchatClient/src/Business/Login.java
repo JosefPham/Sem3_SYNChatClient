@@ -5,11 +5,13 @@
  */
 package Business;
 
+import Acquaintance.ILogin;
+
 /**
  *
  * @author Group 9
  */
-public class Login {
+public class Login implements ILogin {
     
     private final String hMail;
     private final String hPW;
@@ -18,8 +20,19 @@ public class Login {
         hMail = mail;
         hPW = pw;
     }
+
+    @Override
+    public String gethMail() {
+        return hMail;
+    }
+
+    @Override
+    public String gethPW() {
+        return hPW;
+    }
     
-    protected int login(int result) {
-        return 1;
+    @Override
+    public int login(int loginValue) {
+        return loginValue;
     }
 }
