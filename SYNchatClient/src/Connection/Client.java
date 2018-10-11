@@ -24,7 +24,7 @@ import javax.net.ssl.SSLSocketFactory;
  */
 public class Client {
 
-    SSLSocket serverSocket;
+    Socket serverSocket;
     InetAddress ip;
     int port = 8080;
 
@@ -41,10 +41,9 @@ public class Client {
     public void connectToServer() {
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
-            SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            this.serverSocket = (SSLSocket) factory.createSocket("10.126.37.220", port);
-            serverSocket.startHandshake();
-            System.out.println("Handshake completed");
+
+            this.serverSocket = new Socket(ip,port);
+            
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,47 +76,11 @@ public class Client {
 
     }
 
-//    public static void main(String[] args) {
-//        Client client = new Client();
-//
-//        client.connectToServer();
-//        client.chat();
- public static void main(String args[])
-    {
-        try
-        {
-        //Mo 1 client socket den server voi so cong va dia chi xac dinh
-        SSLSocketFactory factory=(SSLSocketFactory) SSLSocketFactory.getDefault();
-        SSLSocket sslsocket=(SSLSocket) factory.createSocket("10.126.37.220",8080);
+    public static void main(String[] args) {
+        Client client = new Client();
 
-        //Tao luong nhan va gui du lieu len server
-        DataOutputStream os=new DataOutputStream(sslsocket.getOutputStream());
-        DataInputStream is=new DataInputStream(sslsocket.getInputStream());
-
-        //Gui du lieu len server
-        String str="helloworld";
-        os.writeBytes(str);
-
-        //Nhan du lieu da qua xu li tu server ve
-        String responseStr;
-        if((responseStr=is.readUTF())!=null)
-        {
-            System.out.println(responseStr);
-        }
-
-        os.close();
-        is.close();
-        sslsocket.close();
-        }
-        catch(UnknownHostException e)
-        {
-             e.printStackTrace();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        client.connectToServer();
+        client.chat();
+ 
     }
-    }
-
-
+}
