@@ -25,7 +25,7 @@ public class ClientSystem {
         return instance;
     }
     
-    protected void hashLogin(String mail, String pw) {
+    protected int hashLogin(String mail, String pw) {
         try {
             MessageDigest hash = MessageDigest.getInstance("MD5");
             hash.update(mail.getBytes(), 0, mail.length());
@@ -33,9 +33,10 @@ public class ClientSystem {
             hash.update(pw.getBytes(), 0, pw.length());
             String hashedPW = new BigInteger(1, hash.digest()).toString(16);
             ILogin ilogin = new Login(hashedMail, hashedPW);
-            ilogin.login(BusinessFacade.getInstance().login(ilogin));
+            return ilogin.login(BusinessFacade.getInstance().login(ilogin));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ClientSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return 1337;
     }
 }
