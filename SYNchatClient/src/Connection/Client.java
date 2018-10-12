@@ -59,8 +59,8 @@ public class Client {
             inputStream = new Scanner(serverSocket.getInputStream());
             outputStream = new PrintWriter(serverSocket.getOutputStream(), true);
 
-            
-            if (inputStream.hasNextLine()) {
+        while(!keyboard.nextLine().equalsIgnoreCase("Exit")) {
+           if (inputStream.hasNextLine()) {
                 System.out.println(inputStream.nextLine());
             }
 
@@ -68,7 +68,9 @@ public class Client {
             outputStream.println(keyboard.nextLine());
 
             str = inputStream.nextLine();
-            System.out.println(str);
+            System.out.println(str); 
+        }    
+            
 
         } catch (IOException ioe) {
             ioe.printStackTrace();
