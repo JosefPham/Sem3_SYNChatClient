@@ -98,11 +98,11 @@ public class Client implements Runnable{
 
     @Override
     public void run() {
-        new SendMessage(output, console);
+        new SendMessage(output, console).run();
         try {
             while(true){
                 System.out.println("HEllo");
-                String text = input.readUTF(); // has to wait for output.writeUTF
+                String text = input.readUTF(); 
                 System.out.println(text);
             }
         } catch (Exception e) {
