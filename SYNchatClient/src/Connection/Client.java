@@ -98,12 +98,9 @@ public class Client implements Runnable{
 
     @Override
     public void run() {
+        new SendMessage(output, console);
         try {
             while(true){
-                Thread t = new Thread(SendMessage());
-                t.start();
-              
-                
                 System.out.println("HEllo");
                 String text = input.readUTF(); // has to wait for output.writeUTF
                 System.out.println(text);
@@ -119,17 +116,9 @@ public class Client implements Runnable{
         }
     }
 
-    private Runnable SendMessage() {
-        try {
-            while(true){
-            output.writeUTF(console.readLine());
-            output.flush();
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+   
+           
+ 
     
     
   
