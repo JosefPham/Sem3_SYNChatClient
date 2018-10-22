@@ -71,20 +71,26 @@ public class Client{
          
         Scanner scan = new Scanner(System.in);
         
+     
         
         Thread sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true){
-                    String msg = scan.nextLine();
-            try {
-                 
-                output.writeUTF(msg);
-                
-           //     System.out.println("Sending");
-                output.flush();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                while(true){ 
+            try { 
+                InetAddress local = InetAddress.getLocalHost();
+                String msg = scan.nextLine();
+                try {
+                    
+                    output.writeUTF(local + msg);
+                    
+                    //     System.out.println("Sending");
+                    output.flush();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } // Sæt vores tråd til null ved finally
+            } catch (UnknownHostException ex) {
+                        Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             } // Sæt vores tråd til null ved finally
         }
             }
