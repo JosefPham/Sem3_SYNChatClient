@@ -82,7 +82,7 @@ public class Client{
                 String msg = scan.nextLine();
                 try {
                     
-                    output.writeUTF(local + msg);
+                    output.writeUTF(local + "   " + msg);
                     
                     //     System.out.println("Sending");
                     output.flush();
