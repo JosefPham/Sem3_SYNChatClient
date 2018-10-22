@@ -100,6 +100,7 @@ public class Client implements Runnable{
     public void run() {
         try {
             while(true){
+                output.writeUTF (System.in + "");
                 String text = input.readUTF();
                 System.out.println(text);
             }
