@@ -11,4 +11,5 @@ package Acquaintance;
  */
 public interface IPresentation {
     public void injectBusiness(IBusiness bus);
+    public void startApplication(String[] args);
 }

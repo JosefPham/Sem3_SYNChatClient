@@ -15,6 +15,7 @@ import Acquaintance.IPresentation;
 public class PresentationFacade implements IPresentation {
     
     private IBusiness Ibus;
+    private SYNchat synchat;
 
     private static PresentationFacade instance = null;
 
@@ -31,5 +32,13 @@ public class PresentationFacade implements IPresentation {
     @Override
     public void injectBusiness(IBusiness bus) {
        this.Ibus = bus;
+    }
+    
+    @Override
+    public void startApplication(String[] args) {
+        if (synchat == null) {
+            synchat = new SYNchat();
+        }
+        synchat.startApplication(args);
     }
 }

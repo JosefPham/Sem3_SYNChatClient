@@ -19,7 +19,7 @@ public class SYNchat extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -30,7 +30,7 @@ public class SYNchat extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public void startApplication (String[] args) {
         launch(args);
     }
     

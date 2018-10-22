@@ -29,6 +29,8 @@ public class SYNchatClient {
         
         presentation.injectBusiness(business);
         business.injectConnection(connection);
+        
+        presentation.startApplication(args);
     }
     
 }
