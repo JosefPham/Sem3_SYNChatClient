@@ -34,6 +34,7 @@ public class PresentationFacade implements IPresentation {
        this.Ibus = bus;
     }
     
+    //Call from Starter to SYNchat with System Startup command
     @Override
     public void startApplication(String[] args) {
         if (synchat == null) {
