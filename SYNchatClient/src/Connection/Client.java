@@ -27,6 +27,7 @@ public class Client implements Runnable{
     Socket serverSocket;
     InetAddress ip;
     int port = 8080;
+    private DataInputStream console;
     private DataInputStream input;
     private DataOutputStream output;
     private Thread listener;
@@ -51,6 +52,7 @@ public class Client implements Runnable{
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip,port);
+            console = new DataInputStream(System.in);
             input = new DataInputStream(new BufferedInputStream(serverSocket.getInputStream()));
             output = new DataOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
         } catch (IOException ex) {
@@ -102,7 +104,8 @@ public class Client implements Runnable{
             while(true){
                 String s = in.readLine();
                 System.out.println("Du skrev: " + s);
-                output.writeUTF (s);
+                output.writeUTF(console.readLine());
+                output.flush();
                 String text = input.readUTF();
                 System.out.println(text);
             }
