@@ -42,7 +42,9 @@ public class Client{
         
         connectToServer();
         
-        startThreads();
+        startPublicThreads();
+        
+        startPrivateThreads();
         
         
         
@@ -67,7 +69,66 @@ public class Client{
     }
     
     
-    public void startThreads(){
+    
+    
+    public void startPrivateThreads(){
+            
+        Scanner scan = new Scanner(System.in);
+        
+        Thread sendMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){ 
+            try { 
+                InetAddress local = InetAddress.getLocalHost();
+                String msg = scan.nextLine();
+                try {
+                    
+                    output.writeUTF(":" + local + "   " + msg);
+                    
+                    //     System.out.println("Sending");
+                    output.flush();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } // Sæt vores tråd til null ved finally
+            } catch (UnknownHostException ex) {
+                        Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } // Sæt vores tråd til null ved finally
+        }
+            }
+        });
+        
+        
+        
+        
+        Thread readMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+        try {
+            while(true){
+            //    System.out.println("HEllo");
+                String text = input.readUTF(); 
+                System.out.println(text);
+            }
+        } catch (Exception e) {
+        } finally{
+            listener = null;  // Sæt vores tråd til null
+            try{
+                output.close();
+            } catch (IOException ex) {
+                ex.printStackTrace ();
+            }
+        }
+            }
+        });
+        
+        
+        sendMessage.start();
+        readMessage.start();
+    }
+    
+    
+    public void startPublicThreads(){
          
         Scanner scan = new Scanner(System.in);
         
