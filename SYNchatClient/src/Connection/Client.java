@@ -5,6 +5,8 @@
  */
 package Connection;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,28 +24,37 @@ import javax.net.ssl.SSLSocketFactory;
  *
  * @author Pottemuld
  */
-public class Client {
+public class Client implements Runnable{
 
     Socket serverSocket;
     InetAddress ip;
     int port = 8080;
+    private DataInputStream input;
+    private DataOutputStream output;
+    private Thread listener;
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("10.126.37.220");
+            this.ip = (InetAddress) InetAddress.getByName("10.126.33.99");
+            
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.port = port;
+        
+        connectToServer();
+        listener = new Thread(this);
+        listener.start();
+        
 
     }
 
     public void connectToServer() {
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
-
             this.serverSocket = new Socket(ip,port);
-            
+            input = new DataInputStream(new BufferedInputStream(serverSocket.getInputStream()));
+            output = new DataOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,5 +95,23 @@ public class Client {
         client.connectToServer();
         client.chat();
  
+    }
+
+    @Override
+    public void run() {
+        try {
+            while(true){
+                String text = input.readUTF();
+                System.out.println(text);
+            }
+        } catch (Exception e) {
+        } finally{
+            listener = null;
+            try{
+                output.close();
+            } catch (IOException ex) {
+                ex.printStackTrace ();
+            }
+        }
     }
 }
