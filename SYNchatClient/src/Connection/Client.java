@@ -103,6 +103,8 @@ public class Client implements Runnable{
                 Thread t = new Thread(SendMessage());
                 t.start();
               
+                
+                System.out.println("HEllo");
                 String text = input.readUTF(); // has to wait for output.writeUTF
                 System.out.println(text);
             }
