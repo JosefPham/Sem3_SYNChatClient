@@ -40,8 +40,10 @@ public class LoginController implements Initializable {
 
     @FXML
     private void btn_login_action(ActionEvent event) {
-        validateInfo();
-        
+        if (validateInfo()) {
+            loginHandler();
+        }
+
     }
 
     private boolean validateInfo() {
@@ -56,5 +58,24 @@ public class LoginController implements Initializable {
             label_wrongInfo.setText("Invalid email");
             return false;
         }
+    }
+    
+    private void loginHandler() {
+        int validationInt = PresentationFacade.getInstance().hashLogin(txt_email.getText(), txt_pw.getText());
+            switch (validationInt) {
+                case 0:
+                    label_wrongInfo.setText("Email doesn't exist");
+                    //display register option?
+                    break;
+                case 1:
+                    label_wrongInfo.setText("Email or password is incorrect");
+                    //display forgot password?
+                    break;
+                case 2:
+                    //*login*
+                    break;
+                default:
+                    label_wrongInfo.setText("Something went wrong");
+            }
     }
 }

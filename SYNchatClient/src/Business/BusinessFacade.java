@@ -38,4 +38,11 @@ public class BusinessFacade implements IBusiness {
     protected int login(ILogin ilogin) {
         return ConnectionFacade.getInstance().login(ilogin);
     }
+
+    @Override
+    public int hashLogin(String mail, String pw) {
+        return ClientSystem.getInstance().hashLogin(mail, pw);  
+    }
+    
+    
 }

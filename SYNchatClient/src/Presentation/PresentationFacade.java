@@ -34,6 +34,10 @@ public class PresentationFacade implements IPresentation {
        this.Ibus = bus;
     }
     
+    public int hashLogin(String mail, String pw) {
+        return Ibus.hashLogin(mail, pw);
+    }
+    
     //Call from Starter to SYNchat with System Startup command
     @Override
     public void startApplication(String[] args) {
