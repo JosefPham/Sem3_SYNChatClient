@@ -5,11 +5,14 @@
  */
 package Presentation;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +23,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 /**
@@ -38,13 +44,26 @@ public class LoginController implements Initializable {
     @FXML
     private Label label_wrongInfo;
     private Stage stage;
+    @FXML
+    private MediaView mv_background;
+    private MediaPlayer mp;
+    private Media me;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        me = new Media(new File(path).toURI().toString());
+        mp = new MediaPlayer(me);
+        mv_background.setMediaPlayer(mp);
+        mp.setCycleCount(mp.INDEFINITE);
+        mp.setAutoPlay(true);
+//        DoubleProperty width = mv_background.fitWidthProperty();
+//        DoubleProperty height = mv_background.fitHeightProperty();
+//        width.bind(Bindings.selectDouble(mv_background.sceneProperty(), "width"));
+//        height.bind(Bindings.selectDouble(mv_background.sceneProperty(), "height"));
     }
 
     @FXML
