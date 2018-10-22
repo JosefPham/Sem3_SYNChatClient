@@ -100,8 +100,9 @@ public class Client implements Runnable{
             InputStreamReader reader = new InputStreamReader(System.in);
             BufferedReader in = new BufferedReader(reader);
             while(true){
-                System.out.println("Du skrev: " + in.readLine());
-                output.writeUTF (in.readLine());
+                String s = in.readLine();
+                System.out.println("Du skrev: " + s);
+                output.writeUTF (s);
                 String text = input.readUTF();
                 System.out.println(text);
             }
