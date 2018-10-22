@@ -81,7 +81,7 @@ public class Client{
                  
                 output.writeUTF(msg);
                 
-                System.out.println("Sending");
+           //     System.out.println("Sending");
                 output.flush();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -98,7 +98,7 @@ public class Client{
             public void run() {
         try {
             while(true){
-                System.out.println("HEllo");
+            //    System.out.println("HEllo");
                 String text = input.readUTF(); 
                 System.out.println(text);
             }
