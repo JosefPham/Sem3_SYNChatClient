@@ -26,10 +26,8 @@ public class SYNchat extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    
+    //Starts FXML with start()
     public void startApplication (String[] args) {
         launch(args);
     }

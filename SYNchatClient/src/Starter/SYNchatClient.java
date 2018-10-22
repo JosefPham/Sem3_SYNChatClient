@@ -30,6 +30,7 @@ public class SYNchatClient {
         presentation.injectBusiness(business);
         business.injectConnection(connection);
         
+        //Calls PresentationFacade with FXML startup command
         presentation.startApplication(args);
     }
     
