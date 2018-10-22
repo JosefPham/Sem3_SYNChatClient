@@ -31,6 +31,7 @@ public class SendMessage implements Runnable{
         while(true){
             try {
                 output.writeUTF(console.readLine());
+                System.out.println("Sending");
                 output.flush();
             } catch (IOException ex) {
                 Logger.getLogger(SendMessage.class.getName()).log(Level.SEVERE, null, ex);
