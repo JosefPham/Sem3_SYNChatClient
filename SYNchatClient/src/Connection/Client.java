@@ -61,6 +61,7 @@ public class Client implements Runnable{
 
     }
 
+    /*
     public void chat() {
         String str;
         Scanner inputStream = null;
@@ -88,12 +89,10 @@ public class Client implements Runnable{
         }
 
     }
-
+*/
     public static void main(String[] args) {
         Client client = new Client();
-
-        client.connectToServer();
-        client.chat();
+     //   client.chat();
  
     }
 
