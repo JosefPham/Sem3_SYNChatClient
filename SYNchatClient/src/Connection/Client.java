@@ -7,18 +7,16 @@ package Connection;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
 
 /**
  *
@@ -99,8 +97,10 @@ public class Client implements Runnable{
     @Override
     public void run() {
         try {
+            InputStreamReader reader = new InputStreamReader(System.in);
+              BufferedReader in = new BufferedReader(reader);
             while(true){
-                output.writeUTF (System.in + "");
+                output.writeUTF (in.readLine());
                 String text = input.readUTF();
                 System.out.println(text);
             }
