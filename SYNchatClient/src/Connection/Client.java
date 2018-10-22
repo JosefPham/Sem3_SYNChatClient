@@ -7,14 +7,13 @@ package Connection;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Pottemuld
  */
-public class Client implements Runnable{
+public class Client{
 
     Socket serverSocket;
     InetAddress ip;
@@ -42,8 +41,14 @@ public class Client implements Runnable{
         this.port = port;
         
         connectToServer();
-        listener = new Thread(this);
-        listener.start();
+        
+        startThreads();
+        
+        
+        
+        
+       // listener = new Thread(this);
+       // listener.start();
         
 
     }
@@ -59,6 +64,60 @@ public class Client implements Runnable{
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    
+    public void startThreads(){
+         
+        Scanner scan = new Scanner(System.in);
+        
+        
+        Thread sendMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    String msg = scan.nextLine();
+            try {
+                 
+                output.writeUTF(msg);
+                
+                System.out.println("Sending");
+                output.flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } // Sæt vores tråd til null ved finally
+        }
+            }
+        });
+        
+        
+        
+        
+        Thread readMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+        try {
+            while(true){
+                System.out.println("HEllo");
+                String text = input.readUTF(); 
+                System.out.println(text);
+            }
+        } catch (Exception e) {
+        } finally{
+            listener = null;  // Sæt vores tråd til null
+            try{
+                output.close();
+            } catch (IOException ex) {
+                ex.printStackTrace ();
+            }
+        }
+            }
+        });
+        
+        
+        sendMessage.start();
+        readMessage.start();
+        
     }
 
     /*
@@ -90,34 +149,22 @@ public class Client implements Runnable{
 
     }
 */
-    public static void main(String[] args) {
-        Client client = new Client();
-     //   client.chat();
- 
-    }
+  
 
-    @Override
-    public void run() {
-        new SendMessage(output, console).run();
-        try {
-            while(true){
-                System.out.println("HEllo");
-                String text = input.readUTF(); 
-                System.out.println(text);
-            }
-        } catch (Exception e) {
-        } finally{
-            listener = null;
-            try{
-                output.close();
-            } catch (IOException ex) {
-                ex.printStackTrace ();
-            }
-        }
-    }
 
    
-           
+          public static void main(String[] args) {
+        
+              
+              
+              Client client = new Client();
+       
+        
+        
+        
+     //   client.chat();
+ 
+    }   
  
     
     
