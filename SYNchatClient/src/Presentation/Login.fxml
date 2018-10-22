@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
    <children>
       <MediaView fx:id="mv_background" fitHeight="400.0" fitWidth="350.0" layoutX="1.0" />
       <ImageView fitHeight="400.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
@@ -18,7 +18,8 @@
       </ImageView>
       <TextField fx:id="txt_email" layoutX="101.0" layoutY="188.0" promptText="Email" />
       <TextField fx:id="txt_pw" layoutX="101.0" layoutY="232.0" promptText="Password" />
-      <Button fx:id="btn_login" layoutX="153.0" layoutY="272.0" mnemonicParsing="false" onAction="#btn_login_action" text="Login" />
+      <Button fx:id="btn_login" layoutX="102.0" layoutY="272.0" mnemonicParsing="false" onAction="#btn_login_action" text="Login" />
       <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="306.0" prefHeight="40.0" prefWidth="149.0" wrapText="true" />
+      <Button fx:id="btn_register" layoutX="214.0" layoutY="272.0" mnemonicParsing="false" onAction="#btn_register_action" text="Register" />
    </children>
 </AnchorPane>

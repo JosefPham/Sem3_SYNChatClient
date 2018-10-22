@@ -12,4 +12,5 @@ package Acquaintance;
 public interface IBusiness {
     public void injectConnection(IConnection con);
     public int hashLogin(String mail, String pw);
+    public boolean registerNewUser(String firstName, String lastName, String email, String password);
 }

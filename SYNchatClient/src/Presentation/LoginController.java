@@ -11,8 +11,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +46,8 @@ public class LoginController implements Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
+    @FXML
+    private Button btn_register;
 
     /**
      * Initializes the controller class.
@@ -72,6 +72,19 @@ public class LoginController implements Initializable {
             loginHandler(event);
         }
 
+    }
+
+    @FXML
+    private void btn_register_action(ActionEvent event) {
+        try {
+            Parent register = FXMLLoader.load(getClass().getResource("RegisterNewUser.fxml"));
+            Scene newScene = new Scene(register);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(newScene);
+            appStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private boolean validateInfo() {
@@ -109,9 +122,8 @@ public class LoginController implements Initializable {
     }
 
     private void changeScene(ActionEvent event) {
-            Parent SYNchat;
         try {
-            SYNchat = FXMLLoader.load(getClass().getResource("SYNchat.fxml"));
+            Parent SYNchat = FXMLLoader.load(getClass().getResource("SYNchat.fxml"));
             Scene newScene = new Scene(SYNchat);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.setScene(newScene);
