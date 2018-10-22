@@ -5,14 +5,22 @@
  */
 package Presentation;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,6 +37,7 @@ public class LoginController implements Initializable {
     private Button btn_login;
     @FXML
     private Label label_wrongInfo;
+    private Stage stage;
 
     /**
      * Initializes the controller class.
@@ -41,7 +50,7 @@ public class LoginController implements Initializable {
     @FXML
     private void btn_login_action(ActionEvent event) {
         if (validateInfo()) {
-            loginHandler();
+            loginHandler(event);
         }
 
     }
@@ -59,23 +68,37 @@ public class LoginController implements Initializable {
             return false;
         }
     }
-    
-    private void loginHandler() {
+
+    private void loginHandler(ActionEvent event) {
         int validationInt = PresentationFacade.getInstance().hashLogin(txt_email.getText(), txt_pw.getText());
-            switch (validationInt) {
-                case 0:
-                    label_wrongInfo.setText("Email doesn't exist");
-                    //display register option?
-                    break;
-                case 1:
-                    label_wrongInfo.setText("Email or password is incorrect");
-                    //display forgot password?
-                    break;
-                case 2:
-                    //*login*
-                    break;
-                default:
-                    label_wrongInfo.setText("Something went wrong");
-            }
+        switch (validationInt) {
+            case 0:
+                label_wrongInfo.setText("Email doesn't exist");
+                //display register option?
+                break;
+            case 1:
+                label_wrongInfo.setText("Email or password is incorrect");
+                //display forgot password?
+                break;
+            case 2:
+                //*login*
+                changeScene(event);
+                break;
+            default:
+                label_wrongInfo.setText("Something went wrong");
+        }
+    }
+
+    private void changeScene(ActionEvent event) {
+            Parent SYNchat;
+        try {
+            SYNchat = FXMLLoader.load(getClass().getResource("SYNchat.fxml"));
+            Scene newScene = new Scene(SYNchat);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(newScene);
+            appStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

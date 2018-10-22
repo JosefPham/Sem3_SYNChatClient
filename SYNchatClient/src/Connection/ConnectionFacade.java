@@ -28,6 +28,6 @@ public class ConnectionFacade implements IConnection {
     
     public int login(ILogin ilogin) {
         //server connection
-        return 1;
+        return 1234;
     }
 }
