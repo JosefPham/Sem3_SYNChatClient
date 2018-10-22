@@ -104,7 +104,7 @@ public class Client implements Runnable{
             while(true){
                 String s = in.readLine();
                 System.out.println("Du skrev: " + s);
-                output.writeUTF(console.readUTF());
+                output.writeUTF(console.readLine());
                 output.flush();
                 String text = input.readUTF(); // has to wait for output.writeUTF
                 System.out.println(text);
