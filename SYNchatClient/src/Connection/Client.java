@@ -99,11 +99,7 @@ public class Client implements Runnable{
     @Override
     public void run() {
         try {
-            InputStreamReader reader = new InputStreamReader(System.in);
-            BufferedReader in = new BufferedReader(reader);
             while(true){
-                String s = in.readLine();
-                System.out.println("Du skrev: " + s);
                 output.writeUTF(console.readLine());
                 output.flush();
                 String text = input.readUTF(); // has to wait for output.writeUTF
