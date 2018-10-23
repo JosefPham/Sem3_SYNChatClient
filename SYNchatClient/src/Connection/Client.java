@@ -29,7 +29,7 @@ public class Client{
     Socket serverSocket;
     InetAddress ip;
     int port = 8080;
-    private DataInputStream console; // takes input from keyboard (system in)
+    private ObjectInputStream console; // takes input from keyboard (system in)
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
     Thread sendMessage, readMessage;
@@ -56,7 +56,7 @@ public class Client{
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip,port);
-            console = new DataInputStream(System.in);
+            console = new ObjectInputStream(System.in);
             input = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
             output = new ObjectOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
         } catch (IOException ex) {
