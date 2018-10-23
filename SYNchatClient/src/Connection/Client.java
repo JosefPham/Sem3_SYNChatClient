@@ -45,7 +45,7 @@ public class Client{
         
         connectToServer();
         
-      //  startPublicThreads();
+        startPublicThreads();
         
      //   startPrivateThreads();
         
@@ -167,12 +167,6 @@ public class Client{
         }
             }
         });
-        
-        
-        
-        
-        
-        
         
         
         
