@@ -6,6 +6,7 @@
 package Connection;
 
 import Acquaintance.ILogin;
+import Business.Login;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,9 +41,13 @@ public class Client{
         }
         this.port = port;
         
-        connectToServer();
+        ILogin login = new Login("Hej@Peter.dk", "12345678");
         
-        startPublicThreads();
+        
+        connectToServer();
+        sendLogin(login);
+        
+     //   startPublicThreads();
         
      //   startPrivateThreads();
         
