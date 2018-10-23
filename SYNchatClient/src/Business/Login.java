@@ -35,15 +35,15 @@ public class Login implements ILogin {
         return hPW;
     }
 
+    @Override
     public int getLoginvalue() {
         return loginvalue;
     }
 
+    @Override
     public IUser getUser() {
         return user;
     }
-    
-    
     
     @Override
     public int login(int loginValue) {

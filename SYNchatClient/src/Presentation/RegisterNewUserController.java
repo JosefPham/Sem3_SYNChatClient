@@ -74,16 +74,16 @@ public class RegisterNewUserController implements Initializable {
         if (txt_Password1 == txt_password2) {
             if (txt_Password1.getText().length() >= 8) {
 
-                if (PresentationFacade.getInstance().registerNewUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
+                if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
                     //success change scene to login with confirmation message
                 } else {
-                    label_warninginfo.setText("Unknown error");
+                    label_warninginfo.setText("Mail already registred");
                 }
             } else {
                 label_warninginfo.setText("Password must be atleast 8 characters");
             }
         } else {
-            label_warninginfo.setText("Passwords does ont match");
+            label_warninginfo.setText("Passwords does not match");
         }
     }
 

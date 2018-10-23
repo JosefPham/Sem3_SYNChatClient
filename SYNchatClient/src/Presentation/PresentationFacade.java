@@ -38,6 +38,10 @@ public class PresentationFacade implements IPresentation {
         return Ibus.Login(mail, pw);
     }
     
+    public Boolean regUser(String tmpName, String mail, String pw) {
+        return Ibus.regUser(tmpName, mail, pw);
+    }
+    
     //Call from Starter to SYNchat with System Startup command
     @Override
     public void startApplication(String[] args) {

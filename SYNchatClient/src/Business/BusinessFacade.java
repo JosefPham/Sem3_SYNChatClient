@@ -9,6 +9,7 @@ import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Connection.ConnectionFacade;
+import java.util.List;
 
 /**
  *
@@ -43,6 +44,13 @@ public class BusinessFacade implements IBusiness {
     public int Login(String mail, String pw) {
         return ClientSystem.getInstance().Login(mail, pw);  
     }
+
+    @Override
+    public Boolean regUser(String tmpName, String mail, String pw) {
+        return ClientSystem.getInstance().regUser(tmpName, mail, pw);
+    }
     
-    
+    protected Boolean regBool(List regList) {
+        return ConnectionFacade.getInstance().regBool(regList);
+    }
 }

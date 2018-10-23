@@ -14,8 +14,6 @@ public class User implements IUser{
     public User(String tmpName) {
         this.tmpName = tmpName;
     }
-    
-    
 
     @Override
     public int getUserID() {

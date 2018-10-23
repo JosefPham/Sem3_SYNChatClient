@@ -13,4 +13,6 @@ public interface IBusiness {
     public void injectConnection(IConnection con);
 
     public int Login(String mail, String pw);
+    
+    public Boolean regUser(String tmpName, String mail, String pw);
 }

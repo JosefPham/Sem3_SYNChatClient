@@ -7,6 +7,7 @@ package Connection;
 
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
+import java.util.List;
 
 /**
  *
@@ -29,5 +30,10 @@ public class ConnectionFacade implements IConnection {
     public ILogin login(ILogin ilogin) {
         //server connection
         return null;
+    }
+    
+    public Boolean regBool(List regList) {
+        //server connection
+        return true;
     }
 }
