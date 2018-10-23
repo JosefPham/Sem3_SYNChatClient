@@ -26,8 +26,8 @@ public class ConnectionFacade implements IConnection {
         return instance;
     }
     
-    public int login(ILogin ilogin) {
+    public ILogin login(ILogin ilogin) {
         //server connection
-        return 1234;
+        return null;
     }
 }
