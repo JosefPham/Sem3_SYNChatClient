@@ -5,6 +5,7 @@
  */
 package Connection;
 
+import com.sun.xml.internal.ws.resources.SenderMessages;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -26,9 +27,10 @@ public class Client{
     Socket serverSocket;
     InetAddress ip;
     int port = 8080;
-    private DataInputStream console;
-    private DataInputStream input;
-    private DataOutputStream output;
+    private DataInputStream console; // takes input from keyboard (system in)
+    private DataInputStream input;  // takes the stream from the server socket - incoming messages
+    private DataOutputStream output; // outgoing messages - taken from console
+    Thread sendMessage, readMessage;
 
     public Client() {
         try {
@@ -44,12 +46,6 @@ public class Client{
         startPublicThreads();
         
      //   startPrivateThreads();
-        
-        
-        
-        
-       // listener = new Thread(this);
-       // listener.start();
         
 
     }
@@ -133,7 +129,7 @@ public class Client{
         
      
         
-        Thread sendMessage = new Thread(new Runnable() {
+        sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){ 
@@ -151,7 +147,10 @@ public class Client{
                 } // Sæt vores tråd til null ved finally
             } catch (UnknownHostException ex) {
                         Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            } // Sæt vores tråd til null ved finally
+            }
+            finally{
+                sendMessage.interrupt();
+            }
         }
             }
         });
@@ -159,7 +158,15 @@ public class Client{
         
         
         
-        Thread readMessage = new Thread(new Runnable() {
+        
+        
+        
+        
+        
+        
+        
+        
+        readMessage = new Thread(new Runnable() {
             @Override
             public void run() {
         try {
@@ -172,6 +179,7 @@ public class Client{
         } finally{
          // Sæt vores tråd til null
             try{
+                readMessage.interrupt();
                 output.close();
             } catch (IOException ex) {
                 ex.printStackTrace ();
