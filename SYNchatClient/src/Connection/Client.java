@@ -116,7 +116,7 @@ public class Client{
         try {
             while(true){
             //    System.out.println("HEllo");
-                String text = input.readUTF(); 
+                String text = (String) input.readObject(); // writeObject
                 System.out.println(text);
             }
         } catch (Exception e) {
@@ -152,7 +152,7 @@ public class Client{
                 String msg = scan.nextLine();
                 try {
                     
-                    output.writeUTF(local + "   " + msg);
+                    output.writeObject(local + "   " + msg);
                     
                     //     System.out.println("Sending");
                     output.flush();
@@ -180,7 +180,7 @@ public class Client{
         try {
             while(true){
             //    System.out.println("HEllo");
-                String text = input.readUTF(); 
+                String text =  (String) input.readObject(); 
                 System.out.println(text);
             }
         } catch (Exception e) {
