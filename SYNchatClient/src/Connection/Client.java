@@ -10,6 +10,8 @@ import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -27,8 +29,8 @@ public class Client{
     InetAddress ip;
     int port = 8080;
     private DataInputStream console; // takes input from keyboard (system in)
-    private DataInputStream input;  // takes the stream from the server socket - incoming messages
-    private DataOutputStream output; // outgoing messages - taken from console
+    private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
+    private ObjectOutputStream output; // outgoing messages - taken from console
     Thread sendMessage, readMessage;
 
     public Client() {
@@ -54,8 +56,8 @@ public class Client{
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip,port);
             console = new DataInputStream(System.in);
-            input = new DataInputStream(new BufferedInputStream(serverSocket.getInputStream()));
-            output = new DataOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
+            input = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
+            output = new ObjectOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
