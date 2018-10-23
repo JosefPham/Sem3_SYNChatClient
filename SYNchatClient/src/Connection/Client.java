@@ -70,7 +70,8 @@ public class Client{
     
     public void sendLogin(ILogin login){
         try {
-            output.writeUnshared(login);
+            output.writeObject(login);
+           
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,7 +152,7 @@ public class Client{
                 String msg = scan.nextLine();
                 try {
                     
-                    output.writeUTF(local + "   " + msg);
+                    output.writeObject(local + "   " + msg);
                     
                     //     System.out.println("Sending");
                     output.flush();
