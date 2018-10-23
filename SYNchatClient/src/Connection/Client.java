@@ -47,7 +47,7 @@ public class Client{
         connectToServer();
         sendLogin(login);
         
-     //   startPublicThreads();
+        startPublicThreads();
         
      //   startPrivateThreads();
         
