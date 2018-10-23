@@ -7,6 +7,7 @@
 package Business;
 
 import Acquaintance.IUser;
+import java.util.List;
 
 /**
  *
@@ -20,7 +21,7 @@ public class User extends IUser {
     int userID;
     boolean isBanned;
     int reports;
-//    someDatatype chats;
+    List<Chat> chats;
 
     public User(String firstName, String lastName, String email, String passwordString) {
         this.firstName = firstName;
@@ -29,29 +30,30 @@ public class User extends IUser {
         this.password = passwordString;
     }
 
-//    public User(int userID, String firstName, String lastName, String email, String password, boolean isBanned, int reports, someDataType chats) {
-//        this.userID = userID;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.password = password;
-//        this.isBanned = isBanned;
-//        this.reports = reports;
-//        this.chats = chats;
+    public User(int userID, String firstName, String lastName, String email, String password, boolean isBanned, int reports, List<Chat> chats) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isBanned = isBanned;
+        this.reports = reports;
+        this.chats = chats;
     }
     
 //    public boolean registerNewUser(String firstName, String lastName, String email, String password) {
-//        if(*Call to server for registration*){
+//        if(*mail is not already registered*){
+//            if true, register user
 //            User currentUser = new User(firstName, lastName, email, password);
 //        }
-//        //*Call server in order to create userID and such*
+//        *Call server in order to create userID and such*
 //        
-//        //When server has registered the user with all info return true
+//        When server has registered the user with all info return true
 //        return true;
 //        }
 //        else {
 //            return false;
 //        }
-//    }
+    }
 
 
