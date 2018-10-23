@@ -54,7 +54,11 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        txt_email.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+        txt_pw.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+
         String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
@@ -69,6 +73,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void btn_login_action(ActionEvent event) {
+        label_wrongInfo.setText("");
         if (validateInfo()) {
             loginHandler(event);
         }
@@ -103,7 +108,7 @@ public class LoginController implements Initializable {
     }
 
     private void loginHandler(ActionEvent event) {
-        int validationInt = PresentationFacade.getInstance().hashLogin(txt_email.getText(), txt_pw.getText());
+        int validationInt = PresentationFacade.getInstance().login(txt_email.getText(), txt_pw.getText());
         switch (validationInt) {
             case 0:
                 label_wrongInfo.setText("Email doesn't exist");

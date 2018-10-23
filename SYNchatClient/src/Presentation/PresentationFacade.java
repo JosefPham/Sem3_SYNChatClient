@@ -7,6 +7,7 @@ package Presentation;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IPresentation;
+import Business.BusinessFacade;
 
 /**
  *
@@ -34,8 +35,9 @@ public class PresentationFacade implements IPresentation {
        this.Ibus = bus;
     }
     
-    public int hashLogin(String mail, String pw) {
-        return Ibus.login(mail, pw);
+    public int login(String mail, String pw) {
+        return BusinessFacade.getInstance().login(mail, pw);
+        //return Ibus.login(mail, pw);
     }
     
     public Boolean regUser(String tmpName, String mail, String pw) {
