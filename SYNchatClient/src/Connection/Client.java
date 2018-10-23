@@ -57,8 +57,8 @@ public class Client{
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip,port);
            // console = new DataInputStream(System.in);
-            input = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
-            output = new ObjectOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
+            input = new ObjectInputStream(serverSocket.getInputStream());
+            output = new ObjectOutputStream(serverSocket.getOutputStream());
             System.out.println("Connected to the server");
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
