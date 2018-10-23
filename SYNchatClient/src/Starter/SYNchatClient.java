@@ -26,7 +26,7 @@ public class SYNchatClient {
         IBusiness business = BusinessFacade.getInstance();
         IConnection connection = ConnectionFacade.getInstance();
         IPresentation presentation = PresentationFacade.getInstance();
-        
+
         presentation.injectBusiness(business);
         business.injectConnection(connection);
         

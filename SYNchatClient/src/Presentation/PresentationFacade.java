@@ -36,8 +36,7 @@ public class PresentationFacade implements IPresentation {
     }
     
     public int login(String mail, String pw) {
-        return BusinessFacade.getInstance().login(mail, pw);
-        //return Ibus.login(mail, pw);
+        return Ibus.login(mail, pw);
     }
     
     public Boolean regUser(String tmpName, String mail, String pw) {
