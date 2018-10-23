@@ -6,6 +6,7 @@
 package Business;
 
 import Acquaintance.ILogin;
+import Acquaintance.IUser;
 
 /**
  *
@@ -13,8 +14,11 @@ import Acquaintance.ILogin;
  */
 public class Login implements ILogin {
     
+    
     private final String hMail;
     private final String hPW;
+    private int loginvalue;
+    private IUser user;
     
     public Login(String mail, String pw) {
         hMail = mail;
@@ -30,9 +34,24 @@ public class Login implements ILogin {
     public String gethPW() {
         return hPW;
     }
+
+    public int getLoginvalue() {
+        return loginvalue;
+    }
+
+    public IUser getUser() {
+        return user;
+    }
+    
+    
     
     @Override
     public int login(int loginValue) {
+               
+        if (loginValue == 2) {
+            
+            //fetch and inplement user object through socket
+        }
         return loginValue;
     }
 }

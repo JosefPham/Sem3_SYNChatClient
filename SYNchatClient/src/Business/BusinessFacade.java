@@ -35,13 +35,13 @@ public class BusinessFacade implements IBusiness {
         this.Icon = con;
     }
     
-    protected int login(ILogin ilogin) {
+    protected ILogin login(ILogin ilogin) {
         return ConnectionFacade.getInstance().login(ilogin);
     }
 
     @Override
-    public int hashLogin(String mail, String pw) {
-        return ClientSystem.getInstance().hashLogin(mail, pw);  
+    public int Login(String mail, String pw) {
+        return ClientSystem.getInstance().Login(mail, pw);  
     }
     
     @Override
