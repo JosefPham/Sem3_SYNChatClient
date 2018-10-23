@@ -11,5 +11,6 @@ package Acquaintance;
  */
 public interface IBusiness {
     public void injectConnection(IConnection con);
-    public int hashLogin(String mail, String pw);
+
+    public int Login(String mail, String pw);
 }

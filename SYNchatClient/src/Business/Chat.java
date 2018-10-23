@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acquaintance;
+
+package Business;
 
 /**
  *
- * @author Sigurd E. Espersen
  */
-public interface IPresentation {
-    public void injectBusiness(IBusiness bus);
-    public void startApplication(String[] args);
-    
+public class Chat {
+
 }
