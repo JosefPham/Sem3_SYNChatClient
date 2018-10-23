@@ -57,7 +57,7 @@ public class Client{
             this.serverSocket = new Socket(ip,port);
             console = new DataInputStream(System.in);
             System.out.println("Made console");
-            output = new ObjectOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
+            output = new ObjectOutputStream(serverSocket.getOutputStream());
             System.out.println("Got output");
             input = new ObjectInputStream(serverSocket.getInputStream());
             System.out.println("Got Inout");
