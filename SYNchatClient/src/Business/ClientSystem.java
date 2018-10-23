@@ -41,10 +41,6 @@ public class ClientSystem {
 
     protected int Login(String mail, String pw) {
         ILogin ilogin = new Login(hash(mail), hash(pw));
-        System.out.println("login " + ilogin);
-        System.out.println("bfacade " + BusinessFacade.getInstance());
-        System.out.println("loginvalue " + ilogin.login(BusinessFacade.getInstance().login(ilogin).getLoginvalue()));
-        
         return ilogin.login(BusinessFacade.getInstance().login(ilogin).getLoginvalue());
     }
     

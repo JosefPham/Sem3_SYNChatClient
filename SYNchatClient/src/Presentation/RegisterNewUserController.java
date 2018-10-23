@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 /**
@@ -48,6 +52,10 @@ public class RegisterNewUserController implements Initializable {
     private Label label_warninginfo;
     @FXML
     private Button btn_cancel;
+    @FXML
+    private MediaView mv_background;
+    private MediaPlayer mp;
+    private Media me;
 
     /**
      * Initializes the controller class.
@@ -66,8 +74,27 @@ public class RegisterNewUserController implements Initializable {
                 "Sri Lanka", "Sudan", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tanzania", "Thailand", "Tunisia", "Turkey", "Uganda", "Ukraine", "United Arab Emirates",
                 "United Kingdom", "United states", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
         choice_Country.setValue("Select Country");
+        
+        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        me = new Media(new File(path).toURI().toString());
+        mp = new MediaPlayer(me);
+        mv_background.setMediaPlayer(mp);
+        mp.setCycleCount(mp.INDEFINITE);
+        mp.setAutoPlay(true);
+        
+        txt_firstName.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+        txt_lastName.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+        txt_email.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+        txt_Password1.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
+        txt_password2.setStyle("-fx-prompt-text-fill: WHITE;"
+                           + "-fx-text-inner-color: WHITE;");
     }
 
+    @FXML
     public void registerNewUser(ActionEvent Event) {
         if (txt_Password1 == txt_password2) {
             if (txt_Password1.getText().length() >= 8) {
