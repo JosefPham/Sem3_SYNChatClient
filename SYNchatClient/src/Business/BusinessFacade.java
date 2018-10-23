@@ -41,7 +41,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public int Login(String mail, String pw) {
+    public int login(String mail, String pw) {
         return ClientSystem.getInstance().Login(mail, pw);  
     }
 

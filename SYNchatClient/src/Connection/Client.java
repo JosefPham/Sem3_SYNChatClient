@@ -5,11 +5,11 @@
  */
 package Connection;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+import Acquaintance.ILogin;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -26,10 +26,10 @@ public class Client{
     Socket serverSocket;
     InetAddress ip;
     int port = 8080;
-    private DataInputStream console;
-    private DataInputStream input;
-    private DataOutputStream output;
-    private Thread listener;
+    private DataInputStream console; // takes input from keyboard (system in)
+    private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
+    private ObjectOutputStream output; // outgoing messages - taken from console
+    Thread sendMessage, readMessage;
 
     public Client() {
         try {
@@ -46,12 +46,6 @@ public class Client{
         
      //   startPrivateThreads();
         
-        
-        
-        
-       // listener = new Thread(this);
-       // listener.start();
-        
 
     }
 
@@ -60,8 +54,9 @@ public class Client{
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip,port);
             console = new DataInputStream(System.in);
-            input = new DataInputStream(new BufferedInputStream(serverSocket.getInputStream()));
-            output = new DataOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
+            output = new ObjectOutputStream(serverSocket.getOutputStream());
+            input = new ObjectInputStream(serverSocket.getInputStream());
+            
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,7 +64,17 @@ public class Client{
     }
     
     
+
+    public void sendLogin(ILogin login) {
+        try {
+            output.writeUnshared(login);
+        } catch (IOException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    
+
     
     public void startPrivateThreads(){
             
@@ -112,7 +117,7 @@ public class Client{
             }
         } catch (Exception e) {
         } finally{
-            listener = null;  // Sæt vores tråd til null
+             // Sæt vores tråd til null
             try{
                 output.close();
             } catch (IOException ex) {
@@ -134,7 +139,7 @@ public class Client{
         
      
         
-        Thread sendMessage = new Thread(new Runnable() {
+        sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){ 
@@ -152,7 +157,10 @@ public class Client{
                 } // Sæt vores tråd til null ved finally
             } catch (UnknownHostException ex) {
                         Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            } // Sæt vores tråd til null ved finally
+            }
+            finally{
+                sendMessage.interrupt();
+            }
         }
             }
         });
@@ -160,7 +168,15 @@ public class Client{
         
         
         
-        Thread readMessage = new Thread(new Runnable() {
+        
+        
+        
+        
+        
+        
+        
+        
+        readMessage = new Thread(new Runnable() {
             @Override
             public void run() {
         try {
@@ -171,8 +187,9 @@ public class Client{
             }
         } catch (Exception e) {
         } finally{
-            listener = null;  // Sæt vores tråd til null
+         // Sæt vores tråd til null
             try{
+                readMessage.interrupt();
                 output.close();
             } catch (IOException ex) {
                 ex.printStackTrace ();
@@ -187,17 +204,9 @@ public class Client{
         
     }
  
+    // skal outcomments
           public static void main(String[] args) {
-        
-              
-              
               Client client = new Client();
-       
-        
-        
-        
-     //   client.chat();
- 
     }   
  
     

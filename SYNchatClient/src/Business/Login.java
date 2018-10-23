@@ -7,12 +7,13 @@ package Business;
 
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
+import java.io.Serializable;
 
 /**
  *
  * @author Group 9
  */
-public class Login implements ILogin {
+public class Login implements ILogin, Serializable {
     
     
     private final String hMail;

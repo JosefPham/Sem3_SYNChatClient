@@ -16,8 +16,10 @@ import java.util.List;
 public class ConnectionFacade implements IConnection {
 
     private static ConnectionFacade instance = null;
+    private Client client;
 
     private ConnectionFacade() {
+        client = new Client();
     }
 
     public static ConnectionFacade getInstance() {
@@ -26,14 +28,19 @@ public class ConnectionFacade implements IConnection {
         }
         return instance;
     }
-    
+
     public ILogin login(ILogin ilogin) {
-        //server connection
-        return null;
+        client.sendLogin(ilogin);
+        return ilogin;
     }
-    
+
     public Boolean regBool(List regList) {
         //server connection
         return true;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
 }
