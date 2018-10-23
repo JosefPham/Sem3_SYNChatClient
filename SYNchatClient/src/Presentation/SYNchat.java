@@ -25,6 +25,7 @@ public class SYNchat extends Application {
         
         stage.setScene(scene);
         stage.show();
+        //stage.setResizable(false);
     }
     
     //Starts FXML with start()
