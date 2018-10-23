@@ -46,9 +46,5 @@ public class PresentationFacade implements IPresentation {
         }
         synchat.startApplication(args);
     }
-    
-    @Override
-    public boolean registerNewUser(String firstName, String lastName, String email, String password) {
-        return Ibus.registerNewUser(firstName, lastName, email, password);
-    }
+
 }

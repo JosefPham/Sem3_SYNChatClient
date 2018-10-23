@@ -13,5 +13,4 @@ public interface IPresentation {
     public void injectBusiness(IBusiness bus);
     public void startApplication(String[] args);
     
-    public boolean registerNewUser(String firstName, String lastName, String email, String password);
 }

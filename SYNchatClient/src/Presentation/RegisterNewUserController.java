@@ -72,7 +72,7 @@ public class RegisterNewUserController implements Initializable {
 
     public void registerNewUser(ActionEvent Event) {
         if (txt_Password1 == txt_password2) {
-            if (!(txt_Password1.getText().length() >= 8)) {
+            if (txt_Password1.getText().length() >= 8) {
 
                 if (PresentationFacade.getInstance().registerNewUser(txt_firstName.getText(), txt_lastName.getText(), txt_email.getText(), txt_Password1.getText())) {
                     //success change scene to login with confirmation message

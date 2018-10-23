@@ -44,10 +44,5 @@ public class BusinessFacade implements IBusiness {
         return ClientSystem.getInstance().Login(mail, pw);  
     }
     
-    @Override
-    public boolean registerNewUser(String firstName, String lastName, String email, String password) {
-        return instance.registerNewUser(firstName, lastName, email, password);
-    }
-    
     
 }
