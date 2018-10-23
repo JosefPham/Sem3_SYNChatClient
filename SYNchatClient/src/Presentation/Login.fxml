@@ -16,10 +16,10 @@
             <Image url="@../Assets/SYNlogo.png" />
          </image>
       </ImageView>
-      <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="306.0" prefHeight="40.0" prefWidth="149.0" wrapText="true" />
-      <JFXButton fx:id="btn_login" layoutX="102.0" layoutY="281.0" onAction="#btn_login_action" text="Login" />
-      <JFXButton fx:id="btn_register" layoutX="184.0" layoutY="281.0" onAction="#btn_register_action" text="Register" />
-      <JFXTextField fx:id="txt_email" layoutX="109.0" layoutY="151.0" />
-      <JFXTextField fx:id="txt_pw" layoutX="109.0" layoutY="216.0" />
+      <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="306.0" prefHeight="40.0" prefWidth="149.0" textFill="WHITE" wrapText="true" />
+      <JFXTextField fx:id="txt_email" focusColor="WHITE" layoutX="109.0" layoutY="151.0" unFocusColor="#722365" />
+      <JFXTextField fx:id="txt_pw" focusColor="WHITE" layoutX="109.0" layoutY="216.0" unFocusColor="#722365" />
+      <JFXButton fx:id="btn_login" layoutX="102.0" layoutY="281.0" onAction="#btn_login_action" text="Login" textFill="WHITE" />
+      <JFXButton fx:id="btn_register" layoutX="184.0" layoutY="281.0" onAction="#btn_register_action" text="Register" textFill="WHITE" />
    </children>
 </AnchorPane>
