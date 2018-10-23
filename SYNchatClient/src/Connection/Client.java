@@ -44,7 +44,7 @@ public class Client{
         
         startPublicThreads();
         
-        startPrivateThreads();
+     //   startPrivateThreads();
         
         
         
@@ -186,40 +186,7 @@ public class Client{
         readMessage.start();
         
     }
-
-    /*
-    public void chat() {
-        String str;
-        Scanner inputStream = null;
-        PrintWriter outputStream = null;
-
-        try (Scanner keyboard = new Scanner(System.in)) {
-            inputStream = new Scanner(serverSocket.getInputStream());
-            outputStream = new PrintWriter(serverSocket.getOutputStream(), true);
-
-        while(!keyboard.nextLine().equalsIgnoreCase("Exit")) {
-           if (inputStream.hasNextLine()) {
-                System.out.println(inputStream.nextLine());
-            }
-
-            // System.out.println(keyboard.nextLine());
-            outputStream.println(keyboard.nextLine());
-
-            str = inputStream.nextLine();
-            System.out.println(str); 
-        }    
-            
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-    }
-*/
-  
-
-
-   
+ 
           public static void main(String[] args) {
         
               
