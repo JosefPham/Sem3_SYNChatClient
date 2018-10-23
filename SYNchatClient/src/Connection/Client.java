@@ -59,6 +59,7 @@ public class Client{
            // console = new DataInputStream(System.in);
             input = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
             output = new ObjectOutputStream(new BufferedOutputStream(serverSocket.getOutputStream()));
+            System.out.println("Connected to the server");
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -137,6 +138,8 @@ public class Client{
     
     public void startPublicThreads(){
          
+        System.out.println("You can now chat");
+        
         Scanner scan = new Scanner(System.in);
         
      
