@@ -9,7 +9,13 @@ public class User implements IUser{
     private String tmpName; //must be removed when profile is implemented
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have recived
-    private List<Integer> chats;  //
+    private List<Integer> chats;
+
+    public User(String tmpName) {
+        this.tmpName = tmpName;
+    }
+    
+    
 
     @Override
     public int getUserID() {
