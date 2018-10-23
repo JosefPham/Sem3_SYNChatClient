@@ -5,10 +5,8 @@
  */
 package Connection;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+import Acquaintance.ILogin;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -66,13 +64,17 @@ public class Client{
     }
     
     
-    /*
-    public void sendLogin(ILogin login){
-        
+
+    public void sendLogin(ILogin login) {
+        try {
+            output.writeUnshared(login);
+        } catch (IOException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
-    */
+
     
     public void startPrivateThreads(){
             

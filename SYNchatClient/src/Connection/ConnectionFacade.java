@@ -28,26 +28,19 @@ public class ConnectionFacade implements IConnection {
         }
         return instance;
     }
-    
+
     public ILogin login(ILogin ilogin) {
-        //server connection
+        client.sendLogin(ilogin);
         return null;
     }
-<<<<<<< HEAD
-    
+
     public Boolean regBool(List regList) {
         //server connection
         return true;
     }
-=======
 
-    
-    
     public Client getClient() {
         return client;
     }
-    
-    
-    
->>>>>>> master
+
 }

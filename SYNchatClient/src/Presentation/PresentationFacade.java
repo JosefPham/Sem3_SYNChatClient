@@ -35,7 +35,7 @@ public class PresentationFacade implements IPresentation {
     }
     
     public int hashLogin(String mail, String pw) {
-        return Ibus.Login(mail, pw);
+        return Ibus.login(mail, pw);
     }
     
     public Boolean regUser(String tmpName, String mail, String pw) {
