@@ -73,6 +73,7 @@ public class Client{
     public void sendLogin(ILogin login){
         try {
             output.writeObject(login);
+            System.out.println("Sent login");
            
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
