@@ -42,6 +42,8 @@ public class SYNchatController implements Initializable {
     private JFXButton btn_privatChat;
     @FXML
     private AnchorPane Popup_pane;
+    @FXML
+    private JFXButton btn_popup;
 
     /**
      * Initializes the controller class.
@@ -49,6 +51,7 @@ public class SYNchatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Popup_pane.setDisable(true);
     }
 
     @FXML
@@ -66,13 +69,15 @@ public class SYNchatController implements Initializable {
     }
 
     @FXML
-    private void popOutHandler(MouseEvent event) {
-        Popup_pane.toBack();
-    }
-
-    @FXML
-    private void popInHandler(MouseEvent event) {
-        Popup_pane.toFront();
+    private void popOpHandler(ActionEvent event) {
+        if(!Popup_pane.isDisabled()) {
+            Popup_pane.setDisable(true);
+            Popup_pane.toBack();
+        } else if(Popup_pane.isDisabled()) {
+            Popup_pane.setDisable(false);
+            Popup_pane.toFront();
+        }
+//        Popup_pane.toBack();
     }
 
 }
