@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
    <children>
       <SplitPane dividerPositions="0.75" layoutX="94.0" layoutY="122.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -56,7 +56,7 @@
                            <children>
                               <ImageView fx:id="pic_profile" fitHeight="75.0" fitWidth="75.0" layoutX="105.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/SYNlogo_mini.png" />
+                                    <Image url="@../Assets/NoPhoto.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="label_userInfo" layoutX="14.0" layoutY="40.0" text="Default User Info" />
