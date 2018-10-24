@@ -84,8 +84,7 @@ public class Client{
     }
     
     public ILogin recieveLogin(){
-        ILogin login = null;
-        
+        System.out.println("Entered recievedLogin");
       while(true){
             try {
                 System.out.println("Trying to recieve login info");
