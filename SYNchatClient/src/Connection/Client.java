@@ -49,7 +49,7 @@ public class Client {
 //        recieveLogin();
 //        startPublicThreads();
 
-        //   startPrivateThreads();
+//           startPrivateThreads();
     }
 
     public void connectToServer() {
@@ -164,8 +164,9 @@ public class Client {
 
                             output.writeObject(local + "   " + msg);
 
-                            //     System.out.println("Sending");
+                                 System.out.println("Sending");
                             output.flush();
+                            System.out.println("Sent");
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         } // Sæt vores tråd til null ved finally
