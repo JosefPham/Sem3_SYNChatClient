@@ -15,7 +15,7 @@ import Business.BusinessFacade;
  */
 public class PresentationFacade implements IPresentation {
     
-    private IBusiness Ibus;
+    protected static IBusiness Ibus;
     private SYNchat synchat;
 
     private static PresentationFacade instance = null;

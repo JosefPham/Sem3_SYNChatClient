@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -25,13 +27,11 @@ import javafx.scene.image.ImageView;
 public class SYNchatController implements Initializable {
 
     ConnectionFacade facade = ConnectionFacade.getInstance();
-    
+
     @FXML
     private JFXButton btn_publicChat;
     @FXML
     private JFXTextArea txtArea_totalChat;
-    @FXML
-    private JFXTextArea txtArea_yourChat;
     @FXML
     private JFXButton btn_send;
     @FXML
@@ -40,6 +40,8 @@ public class SYNchatController implements Initializable {
     private Label label_userInfo;
     @FXML
     private JFXButton btn_privatChat;
+    @FXML
+    private AnchorPane Popup_pane;
 
     /**
      * Initializes the controller class.
@@ -47,13 +49,11 @@ public class SYNchatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     public void startPublicChat(ActionEvent event) {
-        System.out.println("Chat starting...");
-        facade.getClient().startPublicThreads();
-        System.out.println("Ready to chat");
+        PresentationFacade.Ibus.publicThreads();
     }
 
     @FXML
@@ -62,6 +62,17 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void startPrivatChat(ActionEvent event) {
+        PresentationFacade.Ibus.privateThreads();
     }
-    
+
+    @FXML
+    private void popOutHandler(MouseEvent event) {
+        Popup_pane.toBack();
+    }
+
+    @FXML
+    private void popInHandler(MouseEvent event) {
+        Popup_pane.toFront();
+    }
+
 }

@@ -53,4 +53,14 @@ public class BusinessFacade implements IBusiness {
     protected Boolean regBool(List regList) {
         return ConnectionFacade.getInstance().regBool(regList);
     }
+    
+    @Override
+    public void publicThreads() {
+        ConnectionFacade.getInstance().startPublicThreads();
+    }
+    
+    @Override
+    public void privateThreads() {
+        ConnectionFacade.getInstance().startPrivateThreads();
+    }
 }

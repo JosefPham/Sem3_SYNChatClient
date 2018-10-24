@@ -44,4 +44,11 @@ public class ConnectionFacade implements IConnection {
         return client;
     } 
 
+    public void startPublicThreads() {
+        client.startPublicThreads();
+    }
+    
+    public void startPrivateThreads() {
+        client.startPrivateThreads();
+    }
 }
