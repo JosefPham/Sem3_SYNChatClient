@@ -42,7 +42,7 @@ public class Client {
         this.port = port;
 
         //outcomment
-        ILogin login = new Login("Hej@Peter.dk", "12345678");
+//        ILogin login = new Login("Hej@Peter.dk", "12345678");
 
         connectToServer();
 //        sendLogin(login);
