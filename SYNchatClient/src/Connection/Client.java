@@ -49,7 +49,7 @@ public class Client{
         connectToServer();
         sendLogin(login);
         recieveLogin();
-        
+        System.out.println("Så kom vi ud");
         startPublicThreads();
         
      //   startPrivateThreads();
