@@ -30,7 +30,7 @@ public class ConnectionFacade implements IConnection {
     }
 
     public ILogin login(ILogin ilogin) {
-        client.sendLogin(ilogin);
+        client.send(ilogin);
         return ilogin;
     }
 
