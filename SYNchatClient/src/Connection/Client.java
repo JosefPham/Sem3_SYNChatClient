@@ -6,7 +6,9 @@
 package Connection;
 
 import Acquaintance.ILogin;
+import Acquaintance.IUser;
 import Business.Login; // outcomment
+import Business.User;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -43,9 +45,12 @@ public class Client {
 
         //outcomment
         ILogin login = new Login("Hej@Peter.dk", "12345678");
+        
+        IUser user = new User();
 
         connectToServer();
-        sendLogin(login);
+        send(login);
+        send(user);
         recieveLogin();
         startPublicThreads();
 
@@ -65,16 +70,24 @@ public class Client {
         }
 
     }
+    
+    
+    
+    
 
-    public void sendLogin(ILogin login) {
+    public void send(Object o) {
         try {
-            output.writeObject(login);
-            System.out.println("Sent login info");
+            output.writeObject(o);
+            System.out.println("Sent info");
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    
+    
 
     public ILogin recieveLogin() {
         while (true) {
