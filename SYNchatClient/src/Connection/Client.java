@@ -84,12 +84,13 @@ public class Client{
     }
     
     public ILogin recieveLogin(){
-        System.out.println("Entered recievedLogin");
       while(true){
             try {
                 System.out.println("Trying to recieve login info");
                 ILogin recievedLogin =  (ILogin) input.readObject();
+                System.out.println("Vi læste noget o.o");
                 if(recievedLogin!=null){
+                    System.out.println("Fik login som ikke var null!");
                     return recievedLogin;
                 }
             } catch (IOException ex) {
