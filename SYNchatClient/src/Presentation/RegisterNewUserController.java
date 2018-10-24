@@ -63,52 +63,47 @@ public class RegisterNewUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        choice_Country.getItems().addAll("Select Country", "Afghanistan", "Albania", "Angola", "Argentina", "Armenia", "Australia", "Azerbaijan", "Bahamas", "Bangladesh", "Barbados", "Belgium",
-                "Belize", "Bolivia", "Bosnia", "Botswana", "Brazil", "Bulgaria", "Cambodia", "Cameroon", "Canada", "Chile", "China", "Colombia", "Comoros", "Costa Rica", "Croatia", "Cuba",
-                "Cypres", "Czech Republic", "Denmark", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Georgia", "Ghana",
-                "Greece", "Grenada", "Guetemala", "Guyana", "Haiti", "Hounduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan",
-                "Jordan", "Kazakhstan", "Kenya", "North Korea", "South Korea", "Kosovo", "Kuwait", "Kyrgyztan", "Latva", "Lebanon", "Liberia", "Libya", "Lithuania", "Luxembourg", "Macedonia",
-                "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mexico", "Monaco", "Mongolia", "Montenegro", "Mozambique", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
-                "Nigeria", "Norway", "Oman", "pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saint Lucia",
-                "Samoa", "San Marino", "Saudi Arabia", "Senegal", "Serbia", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain",
-                "Sri Lanka", "Sudan", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tanzania", "Thailand", "Tunisia", "Turkey", "Uganda", "Ukraine", "United Arab Emirates",
-                "United Kingdom", "United states", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
+        choice_Country.getItems().addAll("Select Country", "Denmark", "Japan", "USA");
         choice_Country.setValue("Select Country");
-        
+
         String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
-        
+
         txt_firstName.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+                + "-fx-text-inner-color: WHITE;");
         txt_lastName.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+                + "-fx-text-inner-color: WHITE;");
         txt_email.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+                + "-fx-text-inner-color: WHITE;");
         txt_Password1.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+                + "-fx-text-inner-color: WHITE;");
         txt_password2.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+                + "-fx-text-inner-color: WHITE;");
     }
 
     @FXML
     public void registerNewUser(ActionEvent Event) {
-        if (txt_Password1 == txt_password2) {
-            if (txt_Password1.getText().length() >= 8) {
-
-                if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
+        if (!txt_firstName.getText().isEmpty() && !txt_lastName.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_Password1.getText().isEmpty() && !txt_password2.getText().isEmpty()) {
+            if (txt_Password1.getText().equalsIgnoreCase(txt_password2.getText())) {
+                if (txt_Password1.getText().length() >= 8) {
+                    label_warninginfo.setText("");
+                    if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
                     //success change scene to login with confirmation message
+                    } else {
+                        label_warninginfo.setText("Mail already registred");
+                    }
                 } else {
-                    label_warninginfo.setText("Mail already registred");
+                    label_warninginfo.setText("Password must be atleast 8 characters");
                 }
             } else {
-                label_warninginfo.setText("Password must be atleast 8 characters");
+                label_warninginfo.setText("Passwords does not match");
             }
         } else {
-            label_warninginfo.setText("Passwords does not match");
+            label_warninginfo.setText("Please fill out the information");
         }
     }
 
