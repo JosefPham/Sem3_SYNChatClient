@@ -1,8 +1,9 @@
 package Acquaintance;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface IUser {
+public interface IUser extends Serializable{
     public int getUserID();
     public String getTmpName();
     public boolean isBanned();
