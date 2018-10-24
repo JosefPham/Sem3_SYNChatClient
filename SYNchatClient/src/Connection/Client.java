@@ -6,6 +6,7 @@
 package Connection;
 
 import Acquaintance.ILogin;
+import Business.Login; // outcomment
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,8 +41,12 @@ public class Client {
         }
         this.port = port;
 
-        connectToServer();
+        //outcomment
+        ILogin login = new Login("Hej@Peter.dk", "12345678");
 
+        connectToServer();
+        sendLogin(login);
+        recieveLogin();
         startPublicThreads();
 
         //   startPrivateThreads();
@@ -65,19 +70,19 @@ public class Client {
         try {
             output.writeObject(login);
             System.out.println("Sent login info");
+
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public ILogin recieveLogin() {
-        ILogin login = null;
-
         while (true) {
             try {
-                System.out.println("Trying to recieve login info");
                 ILogin recievedLogin = (ILogin) input.readObject();
+                System.out.println("Vi læste noget o.o");
                 if (recievedLogin != null) {
+                    System.out.println("Fik login som ikke var null!");
                     return recievedLogin;
                 }
             } catch (IOException ex) {
@@ -122,7 +127,7 @@ public class Client {
                 try {
                     while (true) {
                         //    System.out.println("HEllo");
-                        String text = input.readUTF();
+                        String text = (String) input.readObject(); // writeObject
                         System.out.println(text);
                     }
                 } catch (Exception e) {
@@ -157,7 +162,7 @@ public class Client {
                         String msg = scan.nextLine();
                         try {
 
-                            output.writeUTF(local + "   " + msg);
+                            output.writeObject(local + "   " + msg);
 
                             //     System.out.println("Sending");
                             output.flush();
@@ -179,7 +184,7 @@ public class Client {
                 try {
                     while (true) {
                         //    System.out.println("HEllo");
-                        String text = input.readUTF();
+                        String text = (String) input.readObject();
                         System.out.println(text);
                     }
                 } catch (Exception e) {
