@@ -92,7 +92,9 @@ public class Client {
     public ILogin recieveLogin() {
         while (true) {
             try {
-                ILogin recievedLogin = (ILogin) input.readObject();
+                Object o =  input.readObject();
+                ILogin ilog = (ILogin) o;
+                ILogin recievedLogin = new Login(ilog.getLoginvalue(), null);
                 System.out.println("Vi læste noget o.o");
                 if (recievedLogin != null) {
                     System.out.println("Fik login som ikke var null!");
