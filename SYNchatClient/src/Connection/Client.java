@@ -6,7 +6,7 @@
 package Connection;
 
 import Acquaintance.ILogin;
-import Business.Login;
+import Business.Login; // outcomment
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -41,6 +41,8 @@ public class Client{
         }
         this.port = port;
         
+        
+        //outcomment
         ILogin login = new Login("Hej@Peter.dk", "12345678");
         
         
