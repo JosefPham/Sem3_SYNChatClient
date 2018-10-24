@@ -30,8 +30,8 @@ public class ConnectionFacade implements IConnection {
     }
 
     public ILogin login(ILogin ilogin) {
-        return client.sendLogin(ilogin);
-//        return ilogin;
+        client.sendLogin(ilogin);
+        return client.recieveLogin();
     }
 
     public Boolean regBool(List regList) {
