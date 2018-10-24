@@ -41,6 +41,11 @@ public class Client{
         this.port = port;
         
         connectToServer();
+<<<<<<< HEAD
+=======
+        sendLogin(login);
+        recieveLogin();
+>>>>>>> Connection
         
         startPublicThreads();
         
@@ -73,8 +78,30 @@ public class Client{
         }
     }
     
+<<<<<<< HEAD
     
 
+=======
+    public ILogin recieveLogin(){
+        ILogin login = null;
+        
+      while(true){
+            try {
+                System.out.println("Trying to recieve login info");
+                ILogin recievedLogin =  (ILogin) input.readObject();
+                if(recievedLogin!=null){
+                    return recievedLogin;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+      }  
+       
+    }
+    
+>>>>>>> Connection
     
     public void startPrivateThreads(){
             
