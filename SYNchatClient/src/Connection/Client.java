@@ -46,11 +46,11 @@ public class Client {
         //outcomment
         ILogin login = new Login("Hej@Peter.dk", "12345678");
         
-        IUser user = new User();
+    //    IUser user = new User();
 
         connectToServer();
         send(login);
-        send(user);
+    //    send(user);
         recieveLogin();
         startPublicThreads();
 
