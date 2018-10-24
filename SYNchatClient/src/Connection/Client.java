@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Pottemuld
  */
-public class Client{
+public class Client {
 
     Socket serverSocket;
     InetAddress ip;
@@ -34,36 +34,32 @@ public class Client{
     public Client() {
         try {
             this.ip = (InetAddress) InetAddress.getByName("10.126.33.99");
-            
+
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.port = port;
-        
-        connectToServer();
-        
-        startPublicThreads();
-        
-     //   startPrivateThreads();
-        
 
+        connectToServer();
+
+        startPublicThreads();
+
+        //   startPrivateThreads();
     }
 
     public void connectToServer() {
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
-            this.serverSocket = new Socket(ip,port);
+            this.serverSocket = new Socket(ip, port);
             console = new DataInputStream(System.in);
             output = new ObjectOutputStream(serverSocket.getOutputStream());
             input = new ObjectInputStream(serverSocket.getInputStream());
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
-    
 
     public void sendLogin(ILogin login) {
         try {
@@ -73,14 +69,14 @@ public class Client{
         }
     }
 
-    public ILogin recieveLogin(){
+    public ILogin recieveLogin() {
         ILogin login = null;
-        
-      while(true){
+
+        while (true) {
             try {
                 System.out.println("Trying to recieve login info");
-                ILogin recievedLogin =  (ILogin) input.readObject();
-                if(recievedLogin!=null){
+                ILogin recievedLogin = (ILogin) input.readObject();
+                if (recievedLogin != null) {
                     return recievedLogin;
                 }
             } catch (IOException ex) {
@@ -88,134 +84,121 @@ public class Client{
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
-      }  
-       
+        }
+
     }
-    
-    public void startPrivateThreads(){
-            
+
+    public void startPrivateThreads() {
+
         Scanner scan = new Scanner(System.in);
-        
+
         Thread sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true){ 
-            try { 
-                InetAddress local = InetAddress.getLocalHost();
-                String msg = scan.nextLine();
-                try {
-                    
-                    output.writeUTF(":" + local + "   " + msg);
-                    
-                    //     System.out.println("Sending");
-                    output.flush();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } // Sæt vores tråd til null ved finally
-            } catch (UnknownHostException ex) {
+                while (true) {
+                    try {
+                        InetAddress local = InetAddress.getLocalHost();
+                        String msg = scan.nextLine();
+                        try {
+
+                            output.writeUTF(":" + local + "   " + msg);
+
+                            //     System.out.println("Sending");
+                            output.flush();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        } // Sæt vores tråd til null ved finally
+                    } catch (UnknownHostException ex) {
                         Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            } // Sæt vores tråd til null ved finally
-        }
+                    } // Sæt vores tråd til null ved finally
+                }
             }
         });
-        
-        
-        
-        
+
         Thread readMessage = new Thread(new Runnable() {
             @Override
             public void run() {
-        try {
-            while(true){
-            //    System.out.println("HEllo");
-                String text = input.readUTF(); 
-                System.out.println(text);
-            }
-        } catch (Exception e) {
-        } finally{
-             // Sæt vores tråd til null
-            try{
-                output.close();
-            } catch (IOException ex) {
-                ex.printStackTrace ();
-            }
-        }
+                try {
+                    while (true) {
+                        //    System.out.println("HEllo");
+                        String text = input.readUTF();
+                        System.out.println(text);
+                    }
+                } catch (Exception e) {
+                } finally {
+                    // Sæt vores tråd til null
+                    try {
+                        output.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
-        
-        
+
         sendMessage.start();
         readMessage.start();
     }
-    
-    
-    public void startPublicThreads(){
-         
+
+    public void startPublicThreads() {
+
         Scanner scan = new Scanner(System.in);
-        
-     
-        
+
         sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true){ 
-            try { 
-                InetAddress local = InetAddress.getLocalHost();
-                String msg = scan.nextLine();
-                try {
-                    
-                    output.writeUTF(local + "   " + msg);
-                    
-                    //     System.out.println("Sending");
-                    output.flush();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } // Sæt vores tråd til null ved finally
-            } catch (UnknownHostException ex) {
+                while (true) {
+                    try {
+                        InetAddress local = InetAddress.getLocalHost();
+                        String msg = scan.nextLine();
+                        try {
+
+                            output.writeUTF(local + "   " + msg);
+
+                            //     System.out.println("Sending");
+                            output.flush();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        } // Sæt vores tråd til null ved finally
+                    } catch (UnknownHostException ex) {
                         Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            finally{
-                sendMessage.interrupt();
-            }
-        }
+                    } finally {
+                        sendMessage.interrupt();
+                    }
+                }
             }
         });
-        
-        
+
         readMessage = new Thread(new Runnable() {
             @Override
             public void run() {
-        try {
-            while(true){
-            //    System.out.println("HEllo");
-                String text = input.readUTF(); 
-                System.out.println(text);
-            }
-        } catch (Exception e) {
-        } finally{
-         // Sæt vores tråd til null
-            try{
-                readMessage.interrupt();
-                output.close();
-            } catch (IOException ex) {
-                ex.printStackTrace ();
-            }
-        }
+                try {
+                    while (true) {
+                        //    System.out.println("HEllo");
+                        String text = input.readUTF();
+                        System.out.println(text);
+                    }
+                } catch (Exception e) {
+                } finally {
+                    // Sæt vores tråd til null
+                    try {
+                        readMessage.interrupt();
+                        output.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
-        
-        
+
         sendMessage.start();
         readMessage.start();
-        
+
     }
- 
+
     // skal outcomments
-          public static void main(String[] args) {
-              Client client = new Client();
-    }   
- 
-    
-    
-  
+    public static void main(String[] args) {
+        Client client = new Client();
+    }
+
 }
