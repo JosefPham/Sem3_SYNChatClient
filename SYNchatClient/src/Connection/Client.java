@@ -67,7 +67,7 @@ public class Client{
 
     public void sendLogin(ILogin login) {
         try {
-            output.writeUnshared(login);
+            output.writeObject(login);
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
