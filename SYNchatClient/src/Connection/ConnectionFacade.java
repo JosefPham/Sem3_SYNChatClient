@@ -41,6 +41,6 @@ public class ConnectionFacade implements IConnection {
 
     public Client getClient() {
         return client;
-    }
+    } 
 
 }
