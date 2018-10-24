@@ -29,8 +29,8 @@ public class ConnectionFacade implements IConnection {
         return instance;
     }
 
-    public ILogin login(ILogin ilogin) {
-        return client.sendLogin(ilogin);
+    public void login(ILogin ilogin) {
+        client.sendLogin(ilogin);
 //        return ilogin;
     }
 

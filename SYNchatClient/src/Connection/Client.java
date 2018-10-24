@@ -41,11 +41,6 @@ public class Client{
         this.port = port;
         
         connectToServer();
-<<<<<<< HEAD
-=======
-        sendLogin(login);
-        recieveLogin();
->>>>>>> Connection
         
         startPublicThreads();
         
@@ -77,11 +72,7 @@ public class Client{
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-<<<<<<< HEAD
-    
 
-=======
     public ILogin recieveLogin(){
         ILogin login = null;
         
@@ -100,8 +91,6 @@ public class Client{
       }  
        
     }
-    
->>>>>>> Connection
     
     public void startPrivateThreads(){
             
@@ -191,16 +180,6 @@ public class Client{
         }
             }
         });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         readMessage = new Thread(new Runnable() {
