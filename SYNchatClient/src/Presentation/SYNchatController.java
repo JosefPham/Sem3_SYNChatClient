@@ -52,10 +52,10 @@ public class SYNchatController implements Initializable {
     private AnchorPane Popup_pane;
     @FXML
     private JFXTextField txtArea_YourChat;
-    private JFXTextArea txtArea_rightChat;
-    private JFXTextArea txtArea_leftChat;
     @FXML
-    private JFXTextArea txtArea_totalChat;
+    private JFXTextArea txtArea_rightChat;
+    @FXML
+    private JFXTextArea txtArea_leftChat;
 
     /**
      * Initializes the controller class.

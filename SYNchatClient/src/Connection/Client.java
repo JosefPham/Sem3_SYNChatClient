@@ -189,7 +189,7 @@ public class Client implements IClient{
     @Override
      public void startPublicThreads() {
 
-        Scanner scan = new Scanner(System.in);
+        /*Scanner scan = new Scanner(System.in);
 
         sendMessage = new Thread(new Runnable() {
             @Override
@@ -213,7 +213,7 @@ public class Client implements IClient{
                     }
                 }
             }
-        });
+        });*/
 
         readMessage = new Thread(new Runnable() {
             @Override
@@ -238,7 +238,7 @@ public class Client implements IClient{
             }
         });
 
-        sendMessage.start();
+        //sendMessage.start();
         readMessage.start();
 
     }
