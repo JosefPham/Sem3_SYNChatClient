@@ -40,7 +40,7 @@ public class Client implements IClient{
         }
         this.port = port;
 
-        
+        connectToServer();
         /*
         //outcomment
         ILogin login = new Login("test@test12.dk", "12345678");
@@ -50,7 +50,7 @@ public class Client implements IClient{
         IUser user = new User("Peet");
         login.setUser(user);
         
-        connectToServer();
+        
         send(login);
     //    send(user);
        // recieveLogin();
