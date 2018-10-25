@@ -31,15 +31,13 @@ public class ConnectionFacade implements IConnection {
 
     public ILogin login(ILogin ilogin) {
         client.send(ilogin);
-        return ilogin;
-        //Sendts login information to server and calls to get user and accesslevel back as return
-        client.sendLogin(ilogin);
+        
         return client.recieveLogin();
     }
 
     public Boolean regBool(ILogin ilogin) {
-        //server connection
-        return true;
+        client.send(ilogin);
+        return client.recieveBool();
     }
 
     public Client getClient() {
