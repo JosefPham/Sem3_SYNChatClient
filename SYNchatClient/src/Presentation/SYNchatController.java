@@ -52,10 +52,10 @@ public class SYNchatController implements Initializable {
     private AnchorPane Popup_pane;
     @FXML
     private JFXTextField txtArea_YourChat;
-    @FXML
     private JFXTextArea txtArea_rightChat;
-    @FXML
     private JFXTextArea txtArea_leftChat;
+    @FXML
+    private JFXTextArea txtArea_totalChat;
 
     /**
      * Initializes the controller class.
@@ -75,9 +75,12 @@ public class SYNchatController implements Initializable {
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
             PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
+            String nameMsg = "";
             String yourMsg = "";
             String dateMsg = "";
-            yourMsg = "Default user: " + txtArea_YourChat.getText() + "\n";
+            nameMsg = "Default user:\n";
+            txtArea_rightChat.appendText(dateMsg);
+            yourMsg = txtArea_YourChat.getText() + "\n";
             txtArea_rightChat.appendText(yourMsg);
             dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
             txtArea_rightChat.appendText(dateMsg);
@@ -106,9 +109,12 @@ public class SYNchatController implements Initializable {
 
     public void recievePublicMsg(String s) {
         System.out.println("En eller anden faggots besked: " + s);
+        String nameMsg = "";
         String yourMsg = "";
         String dateMsg = "";
-        yourMsg = "Default user: " + s + "\n";
+        nameMsg = "Default user:\n";
+        txtArea_leftChat.appendText(nameMsg);
+        yourMsg = s + "\n";
         txtArea_leftChat.appendText(yourMsg);
         dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
         txtArea_leftChat.appendText(dateMsg);
