@@ -49,6 +49,12 @@
                                     <Image url="@../Assets/GIF_icon.png" />
                                  </image>
                               </ImageView>
+                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="8.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Sound_icon.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton layoutX="52.0" layoutY="105.0" text="Soundclips" />
                                     </children>
                                 </AnchorPane>
                         <GridPane layoutX="72.0" layoutY="98.0" prefHeight="424.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
