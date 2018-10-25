@@ -5,6 +5,7 @@
  */
 package Connection;
 
+import Acquaintance.IClient;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class ConnectionFacade implements IConnection {
 
     private static ConnectionFacade instance = null;
-    private Client client;
+    private IClient client;
 
     private ConnectionFacade() {
         client = new Client();
@@ -40,7 +41,7 @@ public class ConnectionFacade implements IConnection {
         return client.recieveBool();
     }
 
-    public Client getClient() {
+    public IClient getClient() {
         return client;
     } 
 
@@ -50,5 +51,9 @@ public class ConnectionFacade implements IConnection {
     
     public void startPrivateThreads() {
         client.startPrivateThreads();
+    }
+    
+    public void recievePublicMsg(String s){
+        //send sting to gui
     }
 }
