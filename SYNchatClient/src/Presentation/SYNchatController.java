@@ -73,6 +73,9 @@ public class SYNchatController implements Initializable {
             txtArea_rightChat.appendText(yourMsg);
             dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
             txtArea_rightChat.appendText(dateMsg);
+            
+            txtArea_leftChat.appendText("\n\n");
+            
             txtArea_YourChat.clear();
         }
     }
