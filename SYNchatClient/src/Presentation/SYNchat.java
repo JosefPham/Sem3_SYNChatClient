@@ -19,7 +19,7 @@ public class SYNchat extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SYNchat.fxml"));
         stage.setTitle("SYNchat");
         
         javafx.scene.image.Image image = new javafx.scene.image.Image("/Assets/SYNlogo_mini.png");

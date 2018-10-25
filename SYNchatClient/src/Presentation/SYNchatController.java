@@ -56,6 +56,8 @@ public class SYNchatController implements Initializable {
     private JFXTextArea txtArea_rightChat;
     @FXML
     private JFXTextArea txtArea_leftChat;
+    @FXML
+    private AnchorPane AnchorPane_List;
 
     /**
      * Initializes the controller class.
@@ -63,7 +65,7 @@ public class SYNchatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Popup_pane.setDisable(true);
+        //AnchorPane_List.setStyle("-fx-background-image: url('src/Assets/Overlay.jpg')");
     }
 
     @FXML
