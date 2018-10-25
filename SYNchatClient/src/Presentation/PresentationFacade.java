@@ -53,11 +53,12 @@ public class PresentationFacade implements IPresentation {
 
     @Override
     public void recievePublicMsg(String s) {
+        System.out.println("presentationfacade");
         SYNchatController.getInstance().recievePublicMsg(s);
     }
 
     @Override
-    public void sendPublicMsg(String s) {
+    public void sendPublicMsg(String s) {    
         Ibus.sendPublicMsg(s);
     }
 
