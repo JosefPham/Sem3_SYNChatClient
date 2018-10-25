@@ -52,10 +52,12 @@ public class Login implements ILogin, Serializable {
         return user;
     }
 
+    @Override
     public void setLoginvalue(int loginvalue) {
         this.loginvalue = loginvalue;
     }
 
+    @Override
     public void setUser(IUser user) {
         this.user = user;
     }

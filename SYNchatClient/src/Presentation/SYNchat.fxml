@@ -1,10 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
-   <children>
-      <Label layoutX="246.0" layoutY="145.0" text="Waddup" />
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
+    <children>
+        <GridPane prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="615.0" minWidth="10.0" prefWidth="600.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="200.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="550.0" minHeight="10.0" prefHeight="351.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <GridPane style="-fx-border-color: black;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="426.0" minHeight="10.0" prefHeight="425.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="245.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <AnchorPane prefHeight="340.0" prefWidth="466.0">
+                            <children>
+                                <AnchorPane fx:id="Popup_pane" layoutX="424.0" layoutY="279.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black;">
+                                    <children>
+                                        <ImageView fitHeight="41.0" fitWidth="27.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Assets/AttachFileClip.png" />
+                                            </image>
+                                        </ImageView>
+                                        <JFXButton layoutX="41.0" layoutY="15.0" text="Attach File" />
+                                    </children>
+                                </AnchorPane>
+                                  <JFXTextArea fx:id="txtArea_totalChat" editable="false" layoutX="-1.0" prefHeight="424.0" prefWidth="600.0" style="-fx-background-color: WHITE;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                           <cursor>
+                              <Cursor fx:constant="NONE" />
+                           </cursor>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding></JFXTextArea>
+                            </children>
+                        </AnchorPane>
+                        <GridPane GridPane.rowIndex="1">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="526.0" minWidth="10.0" prefWidth="487.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="113.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1">
+                                    <children>
+                                        <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="57.0" layoutY="17.0" onMousePressed="#popOpHandler" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Assets/SYNlogo_mini.png" />
+                                            </image>
+                                        </ImageView>
+                                        <JFXButton fx:id="btn_send" defaultButton="true" layoutX="14.0" layoutY="25.0" onAction="#sendMsg" text="Send">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></JFXButton>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white;" />
+                                <JFXTextField fx:id="txtArea_YourChat" prefHeight="72.0" prefWidth="486.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></JFXTextField>
+                            </children>
+                        </GridPane>
+                    </children>
+                </GridPane>
+                <GridPane GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="324.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="1">
+                            <children>
+                                <JFXButton fx:id="btn_publicChat" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" text="Public Chat">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                                <JFXButton fx:id="btn_privatChat" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" text="Privat Chat">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                            <children>
+                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="43.0" text="Default User Info" />
+                                <ImageView fx:id="pic_profile" fitHeight="75.0" fitWidth="75.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../Assets/NoPhoto.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

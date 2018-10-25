@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -77,8 +77,8 @@ public class Client {
 
     public void send(Object o) {
         try {
-            output.writeObject(o);
-            System.out.println("Sent info");
+            output.writeObject(login);
+            System.out.println("Sent login info");
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,14 +87,11 @@ public class Client {
     
     
     
-    
 
     public ILogin recieveLogin() {
         while (true) {
             try {
-                Object o =  input.readObject();
-                Login ilog = (Login) o;
-                Login recievedLogin = new Login(ilog.getLoginvalue(), null);
+                ILogin recievedLogin = (ILogin) input.readObject();
                 System.out.println("Vi læste noget o.o");
                 if (recievedLogin != null) {
                     System.out.println("Fik login som ikke var null!");
@@ -164,7 +161,7 @@ public class Client {
     
     
     
-    public void startPublicThreads() {
+    protected void startPublicThreads() {
 
         Scanner scan = new Scanner(System.in);
 
@@ -178,9 +175,9 @@ public class Client {
                         try {
 
                             output.writeObject(local + "   " + msg);
-
-                            //     System.out.println("Sending");
+                                 System.out.println("Sending");
                             output.flush();
+                            System.out.println("Sent");
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         } // Sæt vores tråd til null ved finally

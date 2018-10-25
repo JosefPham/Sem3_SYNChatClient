@@ -15,4 +15,8 @@ public interface IBusiness {
     public int login(String mail, String pw);
     
     public Boolean regUser(String tmpName, String mail, String pw);
+    
+    public void publicThreads();
+    
+    public void privateThreads();
 }

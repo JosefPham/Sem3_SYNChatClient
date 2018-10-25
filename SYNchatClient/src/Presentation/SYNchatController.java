@@ -5,9 +5,20 @@
  */
 package Presentation;
 
+import Connection.ConnectionFacade;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -16,12 +27,61 @@ import javafx.fxml.Initializable;
  */
 public class SYNchatController implements Initializable {
 
+    ConnectionFacade facade = ConnectionFacade.getInstance();
+
+    @FXML
+    private JFXButton btn_publicChat;
+    @FXML
+    private JFXTextArea txtArea_totalChat;
+    @FXML
+    private JFXButton btn_send;
+    @FXML
+    private ImageView pic_profile;
+    @FXML
+    private Label label_userInfo;
+    @FXML
+    private JFXButton btn_privatChat;
+    @FXML
+    private AnchorPane Popup_pane;
+    @FXML
+    private JFXTextField txtArea_YourChat;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+        Popup_pane.setDisable(true);
+    }
+
+    @FXML
+    public void startPublicChat(ActionEvent event) {
+        PresentationFacade.Ibus.publicThreads();
+    }
+
+    @FXML
+    private void sendMsg(ActionEvent event) {
+        if (!txtArea_YourChat.getText().isEmpty()) {
+            txtArea_totalChat.appendText("Default user: " + txtArea_YourChat.getText() + "\n");
+            txtArea_YourChat.clear();
+        }
+    }
+
+    @FXML
+    private void startPrivatChat(ActionEvent event) {
+        PresentationFacade.Ibus.privateThreads();
+    }
+
+    @FXML
+    private void popOpHandler(MouseEvent event) {
+        if (Popup_pane.isDisabled()) {
+            Popup_pane.setDisable(false);
+            Popup_pane.toFront();
+        } else {
+            Popup_pane.setDisable(true);
+            Popup_pane.toBack();
+        }
+    }
+
 }
