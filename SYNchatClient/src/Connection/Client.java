@@ -42,8 +42,10 @@ public class Client {
         //outcomment
         ILogin login = new Login("test@test12.dk", "12345678");
         
-    //    IUser user = new User();
+        IUser user = new User("Peet");
 
+        login.setUser(user);
+        
         connectToServer();
         send(login);
     //    send(user);
