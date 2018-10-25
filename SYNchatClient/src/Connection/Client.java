@@ -44,15 +44,15 @@ public class Client implements IClient{
         connectToServer();
         
         //outcomment
-        ILogin login = new Login("test@test12.dk", "12345678");
+        //ILogin login = new Login("test@test12.dk", "12345678");
         
         
         
-        IUser user = new User("Peet");
-        login.setUser(user);
+        //IUser user = new User("Peet");
+        //login.setUser(user);
         
         
-        send(login);
+        //send(login);
     //    send(user);
        // recieveLogin();
 //         recieveBool();

@@ -109,6 +109,7 @@ public class LoginController implements Initializable {
 
     private void loginHandler(ActionEvent event) {
         int validationInt = PresentationFacade.getInstance().login(txt_email.getText(), txt_pw.getText());
+        //System.out.println(validationInt);
         switch (validationInt) {
             case 0:
                 label_wrongInfo.setText("Email doesn't exist");
