@@ -105,6 +105,7 @@ public class SYNchatController implements Initializable {
     }
 
     public void recievePublicMsg(String s) {
+        System.out.println("En eller anden faggots besked: " + s);
         String yourMsg = "";
         String dateMsg = "";
         yourMsg = "Default user: " + s + "\n";
