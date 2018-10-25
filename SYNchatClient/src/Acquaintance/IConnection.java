@@ -10,5 +10,15 @@ package Acquaintance;
  * @author Sigurd E. Espersen
  */
 public interface IConnection {
+       public ILogin login(ILogin ilogin) ;
+
+    public Boolean regBool(ILogin ilogin);
+
+    public IClient getClient();
+
+    public void startPublicThreads();
     
+    public void startPrivateThreads();
+    
+    public void recievePublicMsg(String s);
 }

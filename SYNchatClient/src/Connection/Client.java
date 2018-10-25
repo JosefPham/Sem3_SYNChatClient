@@ -1,6 +1,7 @@
 
 package Connection;
 
+import Acquaintance.IClient;
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
 import Business.Login; // outcomment
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Pottemuld
  */
-public class Client {
+public class Client implements IClient{
 
     Socket serverSocket;
     InetAddress ip;
@@ -183,7 +184,9 @@ public class Client {
     
     
     
-    protected void startPublicThreads() {
+    
+    @Override
+     public void startPublicThreads() {
 
         Scanner scan = new Scanner(System.in);
 
@@ -195,7 +198,6 @@ public class Client {
                         InetAddress local = InetAddress.getLocalHost();
                         String msg = scan.nextLine();
                         try {
-
                             output.writeObject(local + "   " + msg);
                                  System.out.println("Sending");
                             output.flush();
@@ -219,6 +221,7 @@ public class Client {
                     while (true) {
                         //    System.out.println("HEllo");
                         String text = (String) input.readObject();
+                        ConnectionFacade.getInstance().recievePublicMsg(text);
                         System.out.println(text);
                     }
                 } catch (Exception e) {
