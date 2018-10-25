@@ -44,7 +44,7 @@ public class Client {
         this.port = port;
 
         //outcomment
-        ILogin login = new Login("Hej@Peter.dk", "12345678");
+        ILogin login = new Login("test@test12.dk", "12345678");
         
     //    IUser user = new User();
 
