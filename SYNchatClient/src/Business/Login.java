@@ -16,8 +16,13 @@ import java.io.Serializable;
 public class Login implements ILogin, Serializable {
     
     
+<<<<<<< HEAD
     private final String hMail;
     private final String hPW;
+=======
+    private String hMail;
+    private String hPW;
+>>>>>>> testBranch
     private int loginvalue = -1;
     private IUser user = null;
     
@@ -25,6 +30,14 @@ public class Login implements ILogin, Serializable {
         hMail = mail;
         hPW = pw;
     }
+    
+      public Login(int loginvalue, IUser user) {
+        this.loginvalue = loginvalue;
+        this.user = user;
+        this.hMail = null;
+        this.hPW = null;
+    }
+    
 
     @Override
     public String gethMail() {
@@ -36,12 +49,10 @@ public class Login implements ILogin, Serializable {
         return hPW;
     }
 
-    @Override
     public int getLoginvalue() {
         return loginvalue;
     }
 
-    @Override
     public IUser getUser() {
         return user;
     }
