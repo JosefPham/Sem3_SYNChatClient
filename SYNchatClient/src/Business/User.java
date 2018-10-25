@@ -15,6 +15,16 @@ public class User implements IUser{
         this.tmpName = tmpName;
     }
 
+    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats) {
+        this.userID = userID;
+        this.tmpName = tmpName;
+        this.banned = banned;
+        this.reports = reports;
+        this.chats = chats;
+    }
+
+    
+    
     @Override
     public int getUserID() {
         return userID;
