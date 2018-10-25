@@ -12,5 +12,6 @@ package Acquaintance;
 public interface IPresentation {
     public void injectBusiness(IBusiness bus);
     public void startApplication(String[] args);
-    
+    public void recievePublicMsg(String s);
+    public void sendPublicMsg(String s);
 }

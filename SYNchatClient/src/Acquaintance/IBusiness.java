@@ -11,6 +11,8 @@ package Acquaintance;
  */
 public interface IBusiness {
     public void injectConnection(IConnection con);
+    
+    public void injectPresentation(IPresentation pres);
 
     public int login(String mail, String pw);
     
@@ -19,4 +21,8 @@ public interface IBusiness {
     public void publicThreads();
     
     public void privateThreads();
+    
+    public void recievePublicMsg(String s);
+    
+    public void sendPublicMsg(String s);
 }

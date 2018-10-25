@@ -21,4 +21,8 @@ public interface IConnection {
     public void startPrivateThreads();
     
     public void recievePublicMsg(String s);
+    
+    public void sendPublicMsg(String s);
+    
+    public void injectBusiness(IBusiness bus);
 }

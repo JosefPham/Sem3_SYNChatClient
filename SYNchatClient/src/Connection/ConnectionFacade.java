@@ -5,10 +5,10 @@
  */
 package Connection;
 
+import Acquaintance.IBusiness;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
-import java.util.List;
 
 /**
  *
@@ -18,9 +18,15 @@ public class ConnectionFacade implements IConnection {
 
     private static ConnectionFacade instance = null;
     private IClient client;
+    private IBusiness Ibus;
 
     private ConnectionFacade() {
         client = new Client();
+    }
+    
+    @Override
+    public void injectBusiness(IBusiness bus) {
+        this.Ibus = bus;
     }
 
     public static ConnectionFacade getInstance() {
@@ -53,7 +59,15 @@ public class ConnectionFacade implements IConnection {
         client.startPrivateThreads();
     }
     
+    @Override
     public void recievePublicMsg(String s){
-        //send sting to gui
+        Ibus.recievePublicMsg(s);
     }
+
+    @Override
+    public void sendPublicMsg(String s) {
+        client.send(s);
+    }
+    
+    
 }

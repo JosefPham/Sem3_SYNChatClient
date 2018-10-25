@@ -1,4 +1,4 @@
-﻿
+
 package Connection;
 
 import Acquaintance.IClient;
@@ -42,7 +42,7 @@ public class Client implements IClient{
 
 
         connectToServer();
-        /*
+        
         //outcomment
         ILogin login = new Login("test@test12.dk", "12345678");
         

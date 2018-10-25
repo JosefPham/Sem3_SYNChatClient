@@ -29,7 +29,14 @@ import javafx.scene.layout.AnchorPane;
  */
 public class SYNchatController implements Initializable {
 
-    ConnectionFacade facade = ConnectionFacade.getInstance();
+    private static SYNchatController instance = null;
+
+    public static SYNchatController getInstance() {
+        if (instance == null) {
+            instance = new SYNchatController();
+        }
+        return instance;
+    }
 
     @FXML
     private JFXButton btn_publicChat;
@@ -67,15 +74,16 @@ public class SYNchatController implements Initializable {
     @FXML
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
+            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             String yourMsg = "";
             String dateMsg = "";
             yourMsg = "Default user: " + txtArea_YourChat.getText() + "\n";
             txtArea_rightChat.appendText(yourMsg);
             dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
             txtArea_rightChat.appendText(dateMsg);
-            
+
             txtArea_leftChat.appendText("\n\n");
-            
+
             txtArea_YourChat.clear();
         }
     }
@@ -94,6 +102,16 @@ public class SYNchatController implements Initializable {
             Popup_pane.setDisable(true);
             Popup_pane.toBack();
         }
+    }
+
+    public void recievePublicMsg(String s) {
+        String yourMsg = "";
+        String dateMsg = "";
+        yourMsg = "Default user: " + s + "\n";
+        txtArea_leftChat.appendText(yourMsg);
+        dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
+        txtArea_leftChat.appendText(dateMsg);
+        txtArea_rightChat.appendText("\n\n");
     }
 
 }

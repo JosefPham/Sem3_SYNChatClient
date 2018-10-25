@@ -7,7 +7,6 @@ package Presentation;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IPresentation;
-import Business.BusinessFacade;
 
 /**
  *
@@ -50,6 +49,16 @@ public class PresentationFacade implements IPresentation {
             synchat = new SYNchat();
         }
         synchat.startApplication(args);
+    }
+
+    @Override
+    public void recievePublicMsg(String s) {
+        SYNchatController.getInstance().recievePublicMsg(s);
+    }
+
+    @Override
+    public void sendPublicMsg(String s) {
+        Ibus.sendPublicMsg(s);
     }
 
 }
