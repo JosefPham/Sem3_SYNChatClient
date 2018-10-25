@@ -79,7 +79,7 @@ public class SYNchatController implements Initializable {
             String yourMsg = "";
             String dateMsg = "";
             nameMsg = "Default user:\n";
-            txtArea_rightChat.appendText(dateMsg);
+            txtArea_rightChat.appendText(nameMsg);
             yourMsg = txtArea_YourChat.getText() + "\n";
             txtArea_rightChat.appendText(yourMsg);
             dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
