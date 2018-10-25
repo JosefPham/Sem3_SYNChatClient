@@ -16,13 +16,8 @@ import java.io.Serializable;
 public class Login implements ILogin, Serializable {
     
     
-<<<<<<< HEAD
     private final String hMail;
     private final String hPW;
-=======
-    private String hMail;
-    private String hPW;
->>>>>>> testBranch
     private int loginvalue = -1;
     private IUser user = null;
     

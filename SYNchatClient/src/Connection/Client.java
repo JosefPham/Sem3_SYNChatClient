@@ -67,7 +67,6 @@ public class Client {
         startPublicThreads();
 */
         //   startPrivateThreads();
->>>>>>> testBranch
     }
 
     public void connectToServer() {
