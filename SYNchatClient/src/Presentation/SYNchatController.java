@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,8 +34,6 @@ public class SYNchatController implements Initializable {
     @FXML
     private JFXButton btn_publicChat;
     @FXML
-    private JFXTextArea txtArea_totalChat;
-    @FXML
     private JFXButton btn_send;
     @FXML
     private ImageView pic_profile;
@@ -45,6 +45,10 @@ public class SYNchatController implements Initializable {
     private AnchorPane Popup_pane;
     @FXML
     private JFXTextField txtArea_YourChat;
+    @FXML
+    private JFXTextArea txtArea_rightChat;
+    @FXML
+    private JFXTextArea txtArea_leftChat;
 
     /**
      * Initializes the controller class.
@@ -62,8 +66,13 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void sendMsg(ActionEvent event) {
-        if (!txtArea_YourChat.getText().isEmpty()) {
-            txtArea_totalChat.appendText("Default user: " + txtArea_YourChat.getText() + "\n");
+        if (!txtArea_YourChat.getText().trim().isEmpty()) {
+            String yourMsg = "";
+            String dateMsg = "";
+            yourMsg = "Default user: " + txtArea_YourChat.getText() + "\n";
+            txtArea_rightChat.appendText(yourMsg);
+            dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
+            txtArea_rightChat.appendText(dateMsg);
             txtArea_YourChat.clear();
         }
     }

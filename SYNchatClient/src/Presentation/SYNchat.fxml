@@ -33,27 +33,6 @@
                         <RowConstraints maxHeight="245.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane prefHeight="340.0" prefWidth="466.0">
-                            <children>
-                                <AnchorPane fx:id="Popup_pane" layoutX="424.0" layoutY="279.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black;">
-                                    <children>
-                                        <ImageView fitHeight="41.0" fitWidth="27.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../Assets/AttachFileClip.png" />
-                                            </image>
-                                        </ImageView>
-                                        <JFXButton layoutX="41.0" layoutY="15.0" text="Attach File" />
-                                    </children>
-                                </AnchorPane>
-                                  <JFXTextArea fx:id="txtArea_totalChat" editable="false" layoutX="-1.0" prefHeight="424.0" prefWidth="600.0" style="-fx-background-color: WHITE;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                           <cursor>
-                              <Cursor fx:constant="NONE" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding></JFXTextArea>
-                            </children>
-                        </AnchorPane>
                         <GridPane GridPane.rowIndex="1">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="526.0" minWidth="10.0" prefWidth="487.0" />
@@ -86,6 +65,48 @@
                            </cursor></JFXTextField>
                             </children>
                         </GridPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                                      <AnchorPane fx:id="Popup_pane" layoutX="124.0" layoutY="279.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black; -fx-background-color: black;">
+                                          <children>
+                                              <ImageView fitHeight="41.0" fitWidth="27.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../Assets/AttachFileClip.png" />
+                                                  </image>
+                                              </ImageView>
+                                              <JFXButton layoutX="41.0" layoutY="15.0" text="Attach File" />
+                                          </children>
+                                      </AnchorPane>
+                              <JFXTextArea fx:id="txtArea_rightChat" editable="false" layoutX="-82.0" layoutY="86.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="382.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </JFXTextArea>
+                           </children>
+                        </AnchorPane>
+                              <AnchorPane prefHeight="424.0" prefWidth="225.0">
+                           <children>
+                                        <JFXTextArea fx:id="txtArea_leftChat" editable="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="424.0" prefWidth="299.0" style="-fx-background-color: WHITE;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <cursor>
+                                    <Cursor fx:constant="NONE" />
+                                 </cursor>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </JFXTextArea>
+                           </children>
+                              </AnchorPane>
+                     </children>
+                  </GridPane>
                     </children>
                 </GridPane>
                 <GridPane GridPane.columnIndex="1">
