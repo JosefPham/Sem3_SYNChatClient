@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Connection;
 
 import Acquaintance.ILogin;
+import Acquaintance.IUser;
 import Business.Login; // outcomment
+import Business.User;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -34,22 +32,41 @@ public class Client {
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("10.126.100.12");
+            this.ip = (InetAddress) InetAddress.getByName("10.126.33.99");
 
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.port = port;
 
+        
+        /*
         //outcomment
+<<<<<<< HEAD
 //        ILogin login = new Login("Hej@Peter.dk", "12345678");
 
-        //connectToServer();
+        connectToServer();
 //        sendLogin(login);
 //        recieveLogin();
 //        startPublicThreads();
 
 //           startPrivateThreads();
+=======
+        ILogin login = new Login("test@test12.dk", "12345678");
+        
+        
+        
+        IUser user = new User("Peet");
+        login.setUser(user);
+        
+        connectToServer();
+        send(login);
+    //    send(user);
+       // recieveLogin();
+         recieveBool();
+        startPublicThreads();
+*/
+        //   startPrivateThreads();
     }
 
     public void connectToServer() {
@@ -65,16 +82,23 @@ public class Client {
         }
 
     }
+    
+    
+    
+    
 
-    public void sendLogin(ILogin login) {
+    public void send(Object o) {
         try {
-            output.writeObject(login);
-            System.out.println("Sent login info");
+            output.writeObject(o);
+           // System.out.println("Sent login info");
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    
 
     public ILogin recieveLogin() {
         while (true) {
@@ -84,6 +108,26 @@ public class Client {
                 if (recievedLogin != null) {
                     System.out.println("Fik login som ikke var null!");
                     return recievedLogin;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+    
+    
+    
+    public Boolean recieveBool() {
+        while (true) {
+            try {
+                Boolean recievedBool = (Boolean) input.readObject();
+                System.out.println("Vi læste noget o.o");
+                if (recievedBool != null) {
+                    System.out.println("Fik en boolean!");
+                    return recievedBool;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,7 +207,6 @@ public class Client {
                         try {
 
                             output.writeObject(local + "   " + msg);
-
                                  System.out.println("Sending");
                             output.flush();
                             System.out.println("Sent");
