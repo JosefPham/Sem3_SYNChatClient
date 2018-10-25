@@ -44,7 +44,7 @@ public class Client {
         //outcomment
 //        ILogin login = new Login("Hej@Peter.dk", "12345678");
 
-        connectToServer();
+        //connectToServer();
 //        sendLogin(login);
 //        recieveLogin();
 //        startPublicThreads();

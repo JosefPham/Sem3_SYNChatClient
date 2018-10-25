@@ -47,11 +47,8 @@ public class ClientSystem {
     protected boolean regUser(String tmpName, String mail, String pw) {
         IUser iuser = new User(tmpName);
         ILogin ilogin = new Login(hash(mail), hash(pw));
+        ilogin.setUser(iuser);
         
-        List<Object> regList = new ArrayList<>();
-        regList.add(iuser);
-        regList.add(ilogin);
-        
-        return BusinessFacade.getInstance().regBool(regList);
+        return BusinessFacade.getInstance().regBool(ilogin);
     }
 }

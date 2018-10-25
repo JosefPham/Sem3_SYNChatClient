@@ -50,8 +50,8 @@ public class BusinessFacade implements IBusiness {
         return ClientSystem.getInstance().regUser(tmpName, mail, pw);
     }
     
-    protected Boolean regBool(List regList) {
-        return ConnectionFacade.getInstance().regBool(regList);
+    protected Boolean regBool(ILogin ilogin) {
+        return ConnectionFacade.getInstance().regBool(ilogin);
     }
     
     @Override

@@ -9,6 +9,7 @@ import Connection.ConnectionFacade;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -43,7 +44,7 @@ public class SYNchatController implements Initializable {
     @FXML
     private AnchorPane Popup_pane;
     @FXML
-    private JFXButton btn_popup;
+    private JFXTextField txtArea_YourChat;
 
     /**
      * Initializes the controller class.
@@ -61,6 +62,10 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void sendMsg(ActionEvent event) {
+        if (!txtArea_YourChat.getText().isEmpty()) {
+            txtArea_totalChat.appendText("Default user: " + txtArea_YourChat.getText() + "\n");
+            txtArea_YourChat.clear();
+        }
     }
 
     @FXML
@@ -69,15 +74,14 @@ public class SYNchatController implements Initializable {
     }
 
     @FXML
-    private void popOpHandler(ActionEvent event) {
-        if(!Popup_pane.isDisabled()) {
-            Popup_pane.setDisable(true);
-            Popup_pane.toBack();
-        } else if(Popup_pane.isDisabled()) {
+    private void popOpHandler(MouseEvent event) {
+        if (Popup_pane.isDisabled()) {
             Popup_pane.setDisable(false);
             Popup_pane.toFront();
+        } else {
+            Popup_pane.setDisable(true);
+            Popup_pane.toBack();
         }
-//        Popup_pane.toBack();
     }
 
 }
