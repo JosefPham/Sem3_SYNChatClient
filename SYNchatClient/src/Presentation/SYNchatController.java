@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 
 /**
  * FXML Controller class
@@ -71,6 +72,8 @@ public class SYNchatController implements Initializable {
     @FXML
     public void startPublicChat(ActionEvent event) {
         PresentationFacade.Ibus.publicThreads();
+        btn_publicChat.setStyle("-fx-background-color: GREY");
+        btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
     }
 
     @FXML
@@ -96,6 +99,8 @@ public class SYNchatController implements Initializable {
     @FXML
     private void startPrivatChat(ActionEvent event) {
         PresentationFacade.Ibus.privateThreads();
+        btn_privatChat.setStyle("-fx-background-color: GREY");
+        btn_publicChat.setStyle("-fx-background-color: TRANSPARENT");
     }
 
     @FXML

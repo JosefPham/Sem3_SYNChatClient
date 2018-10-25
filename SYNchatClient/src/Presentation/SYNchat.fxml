@@ -97,14 +97,14 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: wihte;" GridPane.columnIndex="1">
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white;" GridPane.columnIndex="1">
                                     <children>
                                         <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="57.0" layoutY="17.0" onMousePressed="#popOpHandler" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../Assets/SYNlogo_mini.png" />
                                             </image>
                                         </ImageView>
-                                        <JFXButton fx:id="btn_send" buttonType="RAISED" defaultButton="true" layoutX="14.0" layoutY="25.0" onAction="#sendMsg" text="Send">
+                                        <JFXButton fx:id="btn_send" buttonType="RAISED" defaultButton="true" layoutX="14.0" layoutY="25.0" onAction="#sendMsg" ripplerFill="GREEN" text="Send">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></JFXButton>
@@ -132,22 +132,22 @@
                         <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="2" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="1">
+                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;" GridPane.rowIndex="2" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;" GridPane.rowIndex="1">
                             <children>
-                                <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" ripplerFill="BLUE" text="Public Chat">
+                                <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" ripplerFill="GREEN" text="Public Chat" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></JFXButton>
-                                <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" ripplerFill="GREEN" text="Privat Chat">
+                                <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" ripplerFill="GREEN" text="Private Chat" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></JFXButton>
                             </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;">
                             <children>
-                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="43.0" text="Default User Info" />
+                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="43.0" text="Default User Info" textFill="WHITE" />
                                 <ImageView fx:id="pic_profile" fitHeight="75.0" fitWidth="75.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../Assets/NoPhoto.png" />
@@ -160,7 +160,6 @@
                         </ImageView>
                             </children>
                         </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="171.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
                     </children>
                 </GridPane>
             </children>
