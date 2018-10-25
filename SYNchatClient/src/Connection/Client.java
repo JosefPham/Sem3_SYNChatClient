@@ -47,7 +47,8 @@ public class Client {
         connectToServer();
         send(login);
     //    send(user);
-        recieveLogin();
+       // recieveLogin();
+       recieveBool();
         startPublicThreads();
 
         //   startPrivateThreads();
@@ -110,7 +111,7 @@ public class Client {
                 Boolean recievedBool = (Boolean) input.readObject();
                 System.out.println("Vi læste noget o.o");
                 if (recievedBool != null) {
-                    System.out.println("Fik login som ikke var null!");
+                    System.out.println("Fik en boolean!");
                     return recievedBool;
                 }
             } catch (IOException ex) {
