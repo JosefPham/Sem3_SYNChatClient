@@ -123,10 +123,10 @@ public class RegisterNewUserController implements Initializable {
                 if (txt_Password1.getText().equals(txt_password2.getText())) {
                     if (txt_Password1.getText().length() >= 8) {
                         if (!choice_Country.getValue().toString().equals("Select Country")) {
-                            check = true;
-                            if (check) {
-//                        PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())
-                                return true;
+                            if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
+                                label_warninginfo.setText("Registration complete");
+                                //Wait 2 seconds and re-route user to login-page
+                              
                             } else {
                                 label_warninginfo.setText("Mail already registred");
                             }
