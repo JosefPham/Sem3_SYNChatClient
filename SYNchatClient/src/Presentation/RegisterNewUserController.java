@@ -56,6 +56,7 @@ public class RegisterNewUserController implements Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
+    private String selectedCountry = "";
 
     /**
      * Initializes the controller class.
@@ -88,50 +89,41 @@ public class RegisterNewUserController implements Initializable {
     @FXML
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
-//                        PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())
-
-            label_warninginfo.setText("Registration Complete");
-//                            backToLoginHandler(Event);
-
-        }
-
-        }
-
-        @FXML
-        public void backToLoginHandler
-        (ActionEvent event
-        
-            ) {
-        try {
-                Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
-                Scene newScene = new Scene(login);
-                Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                appStage.setScene(newScene);
-                appStage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            //TODO: default country string mangler at blive sendt med
+            if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
+                label_warninginfo.setText("Registration Complete");
+                backToLoginHandler(Event);
+            } else {
+                label_warninginfo.setText("Mail already registred");
             }
-        }
 
-    
+        }
+    }
+
+    @FXML
+    public void backToLoginHandler(ActionEvent event) {
+        try {
+            Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Scene newScene = new Scene(login);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(newScene);
+            appStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private boolean validateInfo() {
-
-        boolean check = false;
         if (!txt_firstName.getText().isEmpty() && !txt_lastName.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_Password1.getText().isEmpty() && !txt_password2.getText().isEmpty()) {
             if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {
                 if (txt_Password1.getText().equals(txt_password2.getText())) {
                     if (txt_Password1.getText().length() >= 8) {
-                        if (!choice_Country.getValue().toString().equals("Select Country")) {
-                            if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
-                                label_warninginfo.setText("Registration complete");
-                                //Wait 2 seconds and re-route user to login-page
-                              
-                            } else {
-                                label_warninginfo.setText("Mail already registred");
-                            }
+                        if (!choice_Country.getValue().equals("Select Country")) {
+                            selectedCountry = choice_Country.getValue();
+                            return true;
                         } else {
-                            label_warninginfo.setText("Please select your country");
+                            selectedCountry = "Default";
+                            return true;
                         }
                     } else {
                         label_warninginfo.setText("Password must be atleast 8 characters");
@@ -145,8 +137,6 @@ public class RegisterNewUserController implements Initializable {
         } else {
             label_warninginfo.setText("Please fill out the information");
         }
-        // delete when done
         return false;
     }
-
 }

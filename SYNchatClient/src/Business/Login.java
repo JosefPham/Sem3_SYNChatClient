@@ -14,25 +14,23 @@ import java.io.Serializable;
  * @author Group 9
  */
 public class Login implements ILogin, Serializable {
-    
-    
+
     private final String hMail;
     private final String hPW;
     private int loginvalue = -1;
     private IUser user = null;
-    
+
     public Login(String mail, String pw) {
         hMail = mail;
         hPW = pw;
     }
-    
-      public Login(int loginvalue, IUser user) {
+
+    public Login(int loginvalue, IUser user) {
         this.loginvalue = loginvalue;
         this.user = user;
         this.hMail = null;
         this.hPW = null;
     }
-    
 
     @Override
     public String gethMail() {
@@ -44,10 +42,12 @@ public class Login implements ILogin, Serializable {
         return hPW;
     }
 
+    @Override
     public int getLoginvalue() {
         return loginvalue;
     }
 
+    @Override
     public IUser getUser() {
         return user;
     }
@@ -61,15 +61,10 @@ public class Login implements ILogin, Serializable {
     public void setUser(IUser user) {
         this.user = user;
     }
-    
-    
-    
-    
+
     @Override
     public int login(int loginValue) {
-               
         if (loginValue == 2) {
-            
             //fetch and inplement user object through socket
         }
         return loginValue;
