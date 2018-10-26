@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.media.MediaView?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
     <children>
@@ -132,7 +133,10 @@
                         <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;" GridPane.rowIndex="2" />
+                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="2">
+                     <children>
+                        <MediaView fx:id="mv_background" fitHeight="339.0" fitWidth="200.0" layoutX="-2.0" preserveRatio="false" />
+                     </children></AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;" GridPane.rowIndex="1">
                             <children>
                                 <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" ripplerFill="GREEN" text="Public Chat" textFill="WHITE">

@@ -3,6 +3,7 @@ package Presentation;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 /**
  * FXML Controller class
@@ -52,6 +56,10 @@ public class SYNchatController implements Initializable {
     private JFXTextArea txtArea_leftChat;
     @FXML
     private AnchorPane AnchorPane_List;
+    @FXML
+    private MediaView mv_background;
+    private MediaPlayer mp;
+    private Media me;
 
     /**
      * Initializes the controller class.
@@ -59,7 +67,12 @@ public class SYNchatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //AnchorPane_List.setStyle("-fx-background-image: url('src/Assets/Overlay.jpg')");
+        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        me = new Media(new File(path).toURI().toString());
+        mp = new MediaPlayer(me);
+        mv_background.setMediaPlayer(mp);
+        mp.setCycleCount(mp.INDEFINITE);
+        mp.setAutoPlay(true);
     }
 
     @FXML
