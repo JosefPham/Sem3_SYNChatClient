@@ -86,6 +86,7 @@ public class SYNchatController implements Initializable {
             public void run() {
                 String s = "";
                 while (true) {
+                    System.out.println("");
                     System.out.println(" .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------. ");
                     System.out.println("| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |");
                     System.out.println("| |    _______   | || |  ____  ____  | || | ____  _____  | || |     ______   | || |  ____  ____  | || |      __      | || |  _________   | |");
@@ -97,6 +98,7 @@ public class SYNchatController implements Initializable {
                     System.out.println("| |              | || |              | || |              | || |              | || |              | || |              | || |              | |");
                     System.out.println("| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |");
                     System.out.println(" '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'");
+                    System.out.println("");
                     String tmp = PresentationFacade.getInstance().getS();
                     if (!tmp.equals(s)) {
                         s = tmp;
