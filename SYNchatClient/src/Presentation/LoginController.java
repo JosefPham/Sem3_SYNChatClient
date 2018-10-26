@@ -54,12 +54,12 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txt_email.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
-        txt_pw.setStyle("-fx-prompt-text-fill: WHITE;"
-                           + "-fx-text-inner-color: WHITE;");
+        txt_email.setStyle("-fx-prompt-text-fill: #ffe0bd;"
+                           + "-fx-text-inner-color: #ffe0bd;");
+        txt_pw.setStyle("-fx-prompt-text-fill: #ffe0bd;"
+                           + "-fx-text-inner-color: #ffe0bd;");
 
-        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        String path = new File("src/Assets/backgroundAnimation2.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
         mv_background.setMediaPlayer(mp);

@@ -222,7 +222,7 @@ public class Client implements IClient{
                     while (true) {
                         //    System.out.println("HEllo");
                         String text = (String) input.readObject();
-                        ConnectionFacade.getInstance().recievePublicMsg(text);
+                        //ConnectionFacade.getInstance().recievePublicMsg(text);
                         System.out.println(text);
                     }
                 } catch (Exception e) {

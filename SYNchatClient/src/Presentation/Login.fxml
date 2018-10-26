@@ -8,8 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
+<AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
    <children>
       <MediaView fx:id="mv_background" fitHeight="350.0" fitWidth="400.0" layoutX="-25.0" layoutY="26.0" preserveRatio="false" rotate="90.0" />
       <ImageView fitHeight="400.0" fitWidth="350.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -17,10 +19,27 @@
             <Image url="@../Assets/SYNlogo_White.png" />
          </image>
       </ImageView>
-      <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="306.0" prefHeight="40.0" prefWidth="149.0" textFill="WHITE" wrapText="true" />
-      <JFXTextField fx:id="txt_email" focusColor="WHITE" layoutX="109.0" layoutY="151.0" promptText="Mail" unFocusColor="#722365" />
-      <JFXPasswordField fx:id="txt_pw" focusColor="WHITE" layoutX="108.0" layoutY="216.0" promptText="Password" unFocusColor="#722365" />
-      <JFXButton fx:id="btn_login" defaultButton="true" layoutX="102.0" layoutY="281.0" onAction="#btn_login_action" text="Login" textFill="WHITE" />
-      <JFXButton fx:id="btn_register" layoutX="184.0" layoutY="281.0" onAction="#btn_register_action" text="Register" textFill="WHITE" />
+      <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="315.0" prefHeight="40.0" prefWidth="149.0" textFill="#ffe0bd" wrapText="true">
+         <font>
+            <Font name="Centaur" size="18.0" />
+         </font></Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d34d" height="46.0" layoutX="86.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+      <JFXTextField fx:id="txt_email" focusColor="#120e8d" layoutX="91.0" layoutY="153.0" prefHeight="39.0" prefWidth="172.0" promptText="Mail" unFocusColor="#143bc9">
+         <font>
+            <Font name="Centaur" size="18.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="txt_pw" focusColor="#120e8d" layoutX="91.0" layoutY="220.0" prefHeight="34.0" prefWidth="172.0" promptText="Password" unFocusColor="#143bc9">
+         <font>
+            <Font name="Centaur" size="18.0" />
+         </font></JFXPasswordField>
+      <JFXButton fx:id="btn_login" buttonType="RAISED" defaultButton="true" layoutX="91.0" layoutY="281.0" onAction="#btn_login_action" ripplerFill="#120e8d" text="Login" textFill="#ffe0bd">
+         <font>
+            <Font name="Centaur" size="18.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="btn_register" buttonType="RAISED" layoutX="185.0" layoutY="281.0" onAction="#btn_register_action" text="Register" textFill="#ffe0bd">
+         <font>
+            <Font name="Centaur" size="18.0" />
+         </font></JFXButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d34d" height="46.0" layoutX="86.0" layoutY="220.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
    </children>
 </AnchorPane>
