@@ -14,6 +14,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -74,21 +75,20 @@ public class SYNchatController implements Initializable {
         PresentationFacade.Ibus.publicThreads();
         btn_publicChat.setStyle("-fx-background-color: GREY");
         btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
-        
-        Thread readMessage = new Thread(new Runnable() {
+
+        Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 String s = "";
-                while(true) {
+                while (true) {
                     String tmp = PresentationFacade.getInstance().getS();
-                    if(!tmp.equals(s)) {
+                    if (!tmp.equals(s)) {
                         s = tmp;
                         recievePublicMsg(s);
                     }
                 }
             }
         });
-        
     }
 
     @FXML
