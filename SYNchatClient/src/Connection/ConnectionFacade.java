@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Connection;
 
 import Acquaintance.IBusiness;
@@ -12,7 +8,7 @@ import Acquaintance.ILogin;
 
 /**
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class ConnectionFacade implements IConnection {
 
@@ -23,7 +19,7 @@ public class ConnectionFacade implements IConnection {
     private ConnectionFacade() {
         client = new Client();
     }
-    
+
     @Override
     public void injectBusiness(IBusiness bus) {
         this.Ibus = bus;
@@ -38,7 +34,7 @@ public class ConnectionFacade implements IConnection {
 
     public ILogin login(ILogin ilogin) {
         client.send(ilogin);
-        
+
         return client.recieveLogin();
     }
 
@@ -49,18 +45,18 @@ public class ConnectionFacade implements IConnection {
 
     public IClient getClient() {
         return client;
-    } 
+    }
 
     public void startPublicThreads() {
         client.startPublicThreads();
     }
-    
+
     public void startPrivateThreads() {
         client.startPrivateThreads();
     }
-    
+
     @Override
-    public void recievePublicMsg(String s){
+    public void recievePublicMsg(String s) {
         System.out.println("connectionfacade");
         Ibus.recievePublicMsg(s);
     }
@@ -69,6 +65,5 @@ public class ConnectionFacade implements IConnection {
     public void sendPublicMsg(String s) {
         client.send(s);
     }
-    
-    
+
 }

@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentation;
-
-import Connection.ConnectionFacade;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -14,7 +7,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,12 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 
 /**
  * FXML Controller class
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class SYNchatController implements Initializable {
 
@@ -79,7 +70,7 @@ public class SYNchatController implements Initializable {
 
         this.t = startrun();
     }
-    
+
     private synchronized Thread startrun() {
         Runnable runnable = new Runnable() {
             @Override
@@ -105,7 +96,7 @@ public class SYNchatController implements Initializable {
                         recievePublicMsg(s);
                     }
                 }
-            }         
+            }
         };
         Thread t = new Thread(runnable);
         t.setDaemon(true);

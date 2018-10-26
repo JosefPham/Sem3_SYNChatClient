@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Acquaintance.IPresentation;
-import Connection.ConnectionFacade;
 
 /**
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class BusinessFacade implements IBusiness {
 

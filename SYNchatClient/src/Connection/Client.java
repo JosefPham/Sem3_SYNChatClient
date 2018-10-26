@@ -1,11 +1,7 @@
-
 package Connection;
 
 import Acquaintance.IClient;
 import Acquaintance.ILogin;
-import Acquaintance.IUser;
-import Business.Login; // outcomment
-import Business.User;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,9 +15,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Pottemuld
+ * @author Group 9
  */
-public class Client implements IClient{
+public class Client implements IClient {
 
     Socket serverSocket;
     InetAddress ip;
@@ -40,24 +36,17 @@ public class Client implements IClient{
         }
         this.port = port;
 
-
         connectToServer();
-        
+
         //outcomment
         //ILogin login = new Login("test@test12.dk", "12345678");
-        
-        
-        
         //IUser user = new User("Peet");
         //login.setUser(user);
-        
-        
         //send(login);
-    //    send(user);
-       // recieveLogin();
+        //    send(user);
+        // recieveLogin();
 //         recieveBool();
 //        startPublicThreads();
-
         //   startPrivateThreads();
     }
 
@@ -74,23 +63,16 @@ public class Client implements IClient{
         }
 
     }
-    
-    
-    
-    
 
     public void send(Object o) {
         try {
             output.writeObject(o);
-           // System.out.println("Sent login info");
+            // System.out.println("Sent login info");
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
 
     public ILogin recieveLogin() {
         while (true) {
@@ -109,9 +91,7 @@ public class Client implements IClient{
         }
 
     }
-    
-    
-    
+
     public Boolean recieveBool() {
         while (true) {
             try {
@@ -182,12 +162,8 @@ public class Client implements IClient{
         readMessage.start();
     }
 
-    
-    
-    
-    
     @Override
-     public void startPublicThreads() {
+    public void startPublicThreads() {
 
         /*Scanner scan = new Scanner(System.in);
 
@@ -214,7 +190,6 @@ public class Client implements IClient{
                 }
             }
         });*/
-
         readMessage = new Thread(new Runnable() {
             @Override
             public void run() {

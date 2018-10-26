@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentation;
 
 import java.io.File;
@@ -29,7 +25,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class LoginController implements Initializable {
 
@@ -55,9 +51,9 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txt_email.setStyle("-fx-prompt-text-fill: #ffe0bd;"
-                           + "-fx-text-inner-color: #ffe0bd;");
+                + "-fx-text-inner-color: #ffe0bd;");
         txt_pw.setStyle("-fx-prompt-text-fill: #ffe0bd;"
-                           + "-fx-text-inner-color: #ffe0bd;");
+                + "-fx-text-inner-color: #ffe0bd;");
 
         String path = new File("src/Assets/backgroundAnimation2.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());

@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acquaintance;
 
 /**
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public interface IPresentation {
+
     public void injectBusiness(IBusiness bus);
+
     public void startApplication(String[] args);
+
     public void recievePublicMsg(String s);
+
     public void sendPublicMsg(String s);
+
     public String getS();
 }

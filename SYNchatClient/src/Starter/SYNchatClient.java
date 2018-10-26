@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Starter;
 
 import Acquaintance.IBusiness;
@@ -14,7 +9,7 @@ import Presentation.PresentationFacade;
 
 /**
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class SYNchatClient {
 
@@ -22,7 +17,7 @@ public class SYNchatClient {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         IBusiness business = BusinessFacade.getInstance();
         IConnection connection = ConnectionFacade.getInstance();
         IPresentation presentation = PresentationFacade.getInstance();
@@ -31,10 +26,9 @@ public class SYNchatClient {
         business.injectConnection(connection);
         business.injectPresentation(presentation);
         connection.injectBusiness(business);
-        
-        
+
         //Calls PresentationFacade with FXML startup command
         presentation.startApplication(args);
     }
-    
+
 }
