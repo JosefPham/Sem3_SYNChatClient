@@ -31,6 +31,7 @@ import javafx.scene.layout.Background;
  */
 public class SYNchatController implements Initializable {
 
+    private Thread t = null;
     private static SYNchatController instance = null;
 
     public static SYNchatController getInstance() {
@@ -76,19 +77,28 @@ public class SYNchatController implements Initializable {
         btn_publicChat.setStyle("-fx-background-color: GREY");
         btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
 
-        Platform.runLater(new Runnable() {
+        this.t = startrun();
+    }
+    
+    private synchronized Thread startrun() {
+        Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 String s = "";
                 while (true) {
+                    System.out.println("");
                     String tmp = PresentationFacade.getInstance().getS();
                     if (!tmp.equals(s)) {
                         s = tmp;
                         recievePublicMsg(s);
                     }
                 }
-            }
-        });
+            }         
+        };
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        t.start();
+        return t;
     }
 
     @FXML
