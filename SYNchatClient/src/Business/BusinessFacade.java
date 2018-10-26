@@ -51,7 +51,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     protected Boolean regBool(ILogin ilogin) {
-        return Icon.regBool(ilogin);
+        return Icon.regUser(ilogin);
     }
 
     @Override

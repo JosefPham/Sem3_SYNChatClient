@@ -8,7 +8,7 @@ public interface IConnection {
 
     public ILogin login(ILogin ilogin);
 
-    public Boolean regBool(ILogin ilogin);
+    public Boolean regUser(ILogin ilogin);
 
     public IClient getClient();
 
