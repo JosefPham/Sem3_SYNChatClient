@@ -8,7 +8,7 @@ public class User implements IUser {
     private int userID;
     private String tmpName; //must be removed when profile is implemented
     private boolean banned; // a flag for if the user is banned
-    private int reports;    // the amount of reprts a user have recived
+    private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
 
     public User(String tmpName) {

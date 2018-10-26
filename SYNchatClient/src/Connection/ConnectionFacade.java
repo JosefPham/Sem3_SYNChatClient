@@ -35,12 +35,12 @@ public class ConnectionFacade implements IConnection {
     public ILogin login(ILogin ilogin) {
         client.send(ilogin);
 
-        return client.recieveLogin();
+        return client.receiveLogin();
     }
 
     public Boolean regBool(ILogin ilogin) {
         client.send(ilogin);
-        return client.recieveBool();
+        return client.receiveBool();
     }
 
     public IClient getClient() {
@@ -56,9 +56,9 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void recievePublicMsg(String s) {
+    public void receivePublicMsg(String s) {
         System.out.println("connectionfacade");
-        Ibus.recievePublicMsg(s);
+        Ibus.receivePublicMsg(s);
     }
 
     @Override

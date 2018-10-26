@@ -10,7 +10,7 @@ public interface IPresentation {
 
     public void startApplication(String[] args);
 
-    public void recievePublicMsg(String s);
+    public void receivePublicMsg(String s);
 
     public void sendPublicMsg(String s);
 

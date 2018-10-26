@@ -93,7 +93,7 @@ public class SYNchatController implements Initializable {
                     String tmp = PresentationFacade.getInstance().getS();
                     if (!tmp.equals(s)) {
                         s = tmp;
-                        recievePublicMsg(s);
+                        receivePublicMsg(s);
                     }
                 }
             }
@@ -142,7 +142,7 @@ public class SYNchatController implements Initializable {
         }
     }
 
-    public void recievePublicMsg(String s) {
+    public void receivePublicMsg(String s) {
         System.out.println("En eller anden faggots besked: " + s);
         String nameMsg = "";
         String yourMsg = "";

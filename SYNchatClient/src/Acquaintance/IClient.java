@@ -8,9 +8,9 @@ public interface IClient {
 
     void send(Object o);
 
-    ILogin recieveLogin();
+    ILogin receiveLogin();
 
-    Boolean recieveBool();
+    Boolean receiveBool();
 
     void startPublicThreads();
 

@@ -48,10 +48,10 @@ public class PresentationFacade implements IPresentation {
     }
 
     @Override
-    public void recievePublicMsg(String s) {
+    public void receivePublicMsg(String s) {
         this.s = s;
         System.out.println("presentationfacade");
-        //SYNchatController.getInstance().recievePublicMsg(s);
+        //SYNchatController.getInstance().receivePublicMsg(s);
     }
 
     @Override

@@ -65,9 +65,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void recievePublicMsg(String s) {
+    public void receivePublicMsg(String s) {
         System.out.println("businessfacade");
-        Ipres.recievePublicMsg(s);
+        Ipres.receivePublicMsg(s);
     }
 
     @Override

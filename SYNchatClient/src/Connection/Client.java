@@ -44,8 +44,8 @@ public class Client implements IClient {
         //login.setUser(user);
         //send(login);
         //    send(user);
-        // recieveLogin();
-//         recieveBool();
+        // receiveLogin();
+//         receiveBool();
 //        startPublicThreads();
         //   startPrivateThreads();
     }
@@ -74,14 +74,14 @@ public class Client implements IClient {
         }
     }
 
-    public ILogin recieveLogin() {
+    public ILogin receiveLogin() {
         while (true) {
             try {
-                ILogin recievedLogin = (ILogin) input.readObject();
+                ILogin receivedLogin = (ILogin) input.readObject();
                 System.out.println("Vi læste noget o.o");
-                if (recievedLogin != null) {
+                if (receivedLogin != null) {
                     System.out.println("Fik login som ikke var null!");
-                    return recievedLogin;
+                    return receivedLogin;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,14 +92,14 @@ public class Client implements IClient {
 
     }
 
-    public Boolean recieveBool() {
+    public Boolean receiveBool() {
         while (true) {
             try {
-                Boolean recievedBool = (Boolean) input.readObject();
+                Boolean receivedBool = (Boolean) input.readObject();
                 System.out.println("Vi læste noget o.o");
-                if (recievedBool != null) {
+                if (receivedBool != null) {
                     System.out.println("Fik en boolean!");
-                    return recievedBool;
+                    return receivedBool;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -197,7 +197,7 @@ public class Client implements IClient {
                     while (true) {
                         //    System.out.println("HEllo");
                         String text = (String) input.readObject();
-                        ConnectionFacade.getInstance().recievePublicMsg(text);
+                        ConnectionFacade.getInstance().receivePublicMsg(text);
                         System.out.println(text);
                     }
                 } catch (Exception e) {
