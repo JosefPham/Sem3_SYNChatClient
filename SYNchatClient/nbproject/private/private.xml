@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/Semester-project-3/SYNchatClient/src/Acquaintance/ILogin.java</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/Semester-project-3/SYNchatClient/src/Business/Login.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Presentation/PresentationFacade.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Business/ClientSystem.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Presentation/SYNchat.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Starter/SYNchatClient.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Connection/ConnectionFacade.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Connection/Client.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Presentation/SYNchatController.java</file>
+            <file>file:/C:/Users/lalal/OneDrive/Dokumenter/GitHub/Semester-project-3/SYNchatClient/src/Acquaintance/IBusiness.java</file>
         </group>
     </open-files>
 </project-private>

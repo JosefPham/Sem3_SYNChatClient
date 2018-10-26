@@ -16,6 +16,7 @@ public class PresentationFacade implements IPresentation {
     
     protected static IBusiness Ibus;
     private SYNchat synchat;
+    private String s;
 
     private static PresentationFacade instance = null;
 
@@ -53,8 +54,14 @@ public class PresentationFacade implements IPresentation {
 
     @Override
     public void recievePublicMsg(String s) {
+        this.s = s;
         System.out.println("presentationfacade");
         SYNchatController.getInstance().recievePublicMsg(s);
+    }
+    
+    @Override
+    public String getS() {
+        return s;
     }
 
     @Override

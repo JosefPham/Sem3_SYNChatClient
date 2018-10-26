@@ -74,6 +74,21 @@ public class SYNchatController implements Initializable {
         PresentationFacade.Ibus.publicThreads();
         btn_publicChat.setStyle("-fx-background-color: GREY");
         btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
+        
+        Thread readMessage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String s = "";
+                while(true) {
+                    String tmp = PresentationFacade.getInstance().getS();
+                    if(!tmp.equals(s)) {
+                        s = tmp;
+                        recievePublicMsg(s);
+                    }
+                }
+            }
+        });
+        
     }
 
     @FXML
