@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
         txt_pw.setStyle("-fx-prompt-text-fill: #1d1f21;"
                 + "-fx-text-inner-color: #1d1f21;");
 
-        String path = new File("src/Assets/backgroundAnimation2.mp4").getAbsolutePath();
+        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
         mv_background.setMediaPlayer(mp);
