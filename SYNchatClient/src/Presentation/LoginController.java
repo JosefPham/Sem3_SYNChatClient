@@ -50,10 +50,10 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txt_email.setStyle("-fx-prompt-text-fill: #ffe0bd;"
-                + "-fx-text-inner-color: #ffe0bd;");
-        txt_pw.setStyle("-fx-prompt-text-fill: #ffe0bd;"
-                + "-fx-text-inner-color: #ffe0bd;");
+        txt_email.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
+        txt_pw.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
 
         String path = new File("src/Assets/backgroundAnimation2.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
             if (txt_pw.getText().length() >= 8) {
                 return true;
             } else {
-                label_wrongInfo.setText("Password must be atleast 8 characters long");
+                label_wrongInfo.setText("Incorrect password");
                 return false;
             }
         } else {
