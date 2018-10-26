@@ -1,5 +1,6 @@
 package Presentation;
 
+import com.jfoenix.controls.JFXPasswordField;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -34,8 +35,6 @@ public class RegisterNewUserController implements Initializable {
     @FXML
     private TextField txt_Password1;
     @FXML
-    private TextField txt_password2;
-    @FXML
     private Button btn_register;
     @FXML
     private ChoiceBox<String> choice_Country;
@@ -52,6 +51,8 @@ public class RegisterNewUserController implements Initializable {
     private MediaPlayer mp;
     private Media me;
     private String selectedCountry = "";
+    @FXML
+    private JFXPasswordField txt_Password2;
 
     /**
      * Initializes the controller class.
@@ -69,16 +70,16 @@ public class RegisterNewUserController implements Initializable {
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
 
-        txt_firstName.setStyle("-fx-prompt-text-fill: WHITE;"
-                + "-fx-text-inner-color: WHITE;");
-        txt_lastName.setStyle("-fx-prompt-text-fill: WHITE;"
-                + "-fx-text-inner-color: WHITE;");
-        txt_email.setStyle("-fx-prompt-text-fill: WHITE;"
-                + "-fx-text-inner-color: WHITE;");
-        txt_Password1.setStyle("-fx-prompt-text-fill: WHITE;"
-                + "-fx-text-inner-color: WHITE;");
-        txt_password2.setStyle("-fx-prompt-text-fill: WHITE;"
-                + "-fx-text-inner-color: WHITE;");
+        txt_firstName.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
+        txt_lastName.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
+        txt_email.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
+        txt_Password1.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
+        txt_Password2.setStyle("-fx-prompt-text-fill: #1d1f21;"
+                + "-fx-text-inner-color: #1d1f21;");
     }
 
     @FXML
@@ -109,9 +110,9 @@ public class RegisterNewUserController implements Initializable {
     }
 
     private boolean validateInfo() {
-        if (!txt_firstName.getText().isEmpty() && !txt_lastName.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_Password1.getText().isEmpty() && !txt_password2.getText().isEmpty()) {
+        if (!txt_firstName.getText().isEmpty() && !txt_lastName.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_Password1.getText().isEmpty() && !txt_Password2.getText().isEmpty()) {
             if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {
-                if (txt_Password1.getText().equals(txt_password2.getText())) {
+                if (txt_Password1.getText().equals(txt_Password2.getText())) {
                     if (txt_Password1.getText().length() >= 8) {
                         if (!choice_Country.getValue().equals("Select Country")) {
                             selectedCountry = choice_Country.getValue();
