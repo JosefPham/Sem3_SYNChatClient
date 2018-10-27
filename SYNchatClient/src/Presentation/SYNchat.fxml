@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
     <children>
@@ -25,7 +26,7 @@
                 <RowConstraints maxHeight="550.0" minHeight="10.0" prefHeight="351.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane style="-fx-border-color: black;">
+                <GridPane>
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -36,26 +37,48 @@
                     <children>
                         <AnchorPane prefHeight="340.0" prefWidth="466.0">
                             <children>
-                                <AnchorPane fx:id="Popup_pane" layoutX="424.0" layoutY="279.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: purple; -fx-background-color: white;">
+                                <AnchorPane fx:id="Popup_pane" layoutX="423.0" layoutY="280.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black; -fx-background-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-radius: 25;">
                                     <children>
-                                        <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="28.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../Assets/AttachFileClip.png" />
                                             </image>
                                         </ImageView>
-                                        <JFXButton layoutX="50.0" layoutY="15.0" text="Attach File" />
-                              <JFXButton layoutX="50.0" layoutY="60.0" text="GIFs" />
-                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="8.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="28.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/GIF_icon.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="8.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Sound_icon.png" />
                                  </image>
                               </ImageView>
-                              <JFXButton layoutX="52.0" layoutY="105.0" text="Soundclips" />
+                              <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="101.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Emoji_icon.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="27.0" layoutY="59.0" text="Attach file">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="108.0" layoutY="59.0" text="Sound">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="38.0" layoutY="122.0" text="GIFs">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="107.0" layoutY="122.0" text="Emojis">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="10.0" />
+                                 </font>
+                              </Label>
                                     </children>
                                 </AnchorPane>
                         <GridPane layoutX="72.0" layoutY="98.0" prefHeight="424.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -69,19 +92,25 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" layoutX="-65.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="424.0" prefWidth="399.0" style="-fx-background-color: white;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="424.0" prefWidth="399.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="Gill Sans MT" size="12.0" />
+                                       </font>
                                     </JFXTextArea>
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
-                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" layoutX="-117.0" layoutY="63.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="347.0" style="-fx-background-color: white;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="63.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="347.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="Gill Sans MT" size="12.0" />
+                                       </font>
                                     </JFXTextArea>
                                  </children>
                               </AnchorPane>
@@ -89,38 +118,75 @@
                         </GridPane>
                             </children>
                         </AnchorPane>
-                        <GridPane GridPane.rowIndex="1">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="526.0" minWidth="10.0" prefWidth="487.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="113.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white;" GridPane.columnIndex="1">
-                                    <children>
-                                        <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="57.0" layoutY="17.0" onMousePressed="#popOpHandler" pickOnBounds="true" preserveRatio="true">
+                  <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <MediaView fx:id="mv_background" fitHeight="426.0" fitWidth="600.0" layoutY="1.0" preserveRatio="false" />
+                        <ImageView fitHeight="184.0" fitWidth="254.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/SYNlogo_White.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="85.0" layoutY="43.0" text="- Welcome" textFill="#1f96e0">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="101.0" text="SYNchat News:" textFill="#1f96e0">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="14.0" layoutY="126.0" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: WHITE;" text="- We're working hard to fix known bugs. Thank you for your patience!&#10;&#10;- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com&#10;&#10;- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!&#10;&#10;- &gt;&gt;DEVELOPER UPDATE&lt;&lt; Added cross cultural chatting, addressing multiple culture adaptation" unFocusColor="#4d4d4d00" wrapText="true">
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="400.0" layoutY="126.0" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: WHITE;" text="- Join either public or privat chat with the buttons to the right&#10;&#10;- You can change your profile picture by pressing the cog in the upper right corner&#10;&#10;- You want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)" unFocusColor="#4d4d4d00" wrapText="true">
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="600.0" GridPane.rowIndex="1">
+                     <children>
+                        <AnchorPane prefHeight="75.0" prefWidth="602.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                                      <AnchorPane layoutX="7.0" layoutY="12.0" prefHeight="53.0" prefWidth="593.0" style="-fx-border-color: #1f96e0; -fx-border-radius: 50; -fx-border-width: 2;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                            <JFXTextField fx:id="txtArea_YourChat" focusColor="#405aa800" layoutX="15.0" layoutY="10.0" prefHeight="37.0" prefWidth="464.0" unFocusColor="#4d4d4d00" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="8.0">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font name="Gill Sans MT" size="12.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </AnchorPane>
+                                        <JFXButton fx:id="btn_send" buttonType="RAISED" defaultButton="true" layoutX="485.0" layoutY="25.0" onAction="#sendMsg" opacity="0.7" ripplerFill="#1f98de" style="-fx-background-color: #1f96e0;" text="  Send  ">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                                        <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="541.0" layoutY="17.0" onMousePressed="#popOpHandler" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../Assets/SYNlogo_mini.png" />
                                             </image>
                                         </ImageView>
-                                        <JFXButton fx:id="btn_send" buttonType="RAISED" defaultButton="true" layoutX="14.0" layoutY="25.0" onAction="#sendMsg" ripplerFill="GREEN" text="Send">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></JFXButton>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white;" />
-                                <JFXTextField fx:id="txtArea_YourChat" prefHeight="72.0" prefWidth="486.0">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor></JFXTextField>
-                            </children>
-                        </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
                     </children>
                 </GridPane>
                 <GridPane GridPane.columnIndex="1">
@@ -133,33 +199,44 @@
                         <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="2">
+                        <AnchorPane fx:id="AnchorPane_List" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;" GridPane.rowIndex="2" />
+                  <AnchorPane prefHeight="159.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.rowIndex="1">
                      <children>
-                        <MediaView fx:id="mv_background" fitHeight="339.0" fitWidth="200.0" layoutX="-2.0" preserveRatio="false" />
-                     </children></AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;" GridPane.rowIndex="1">
+                              <AnchorPane layoutX="7.0" layoutY="-69.0" prefHeight="131.0" prefWidth="207.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 50;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <children>
+                                      <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" opacity="0.7" ripplerFill="GREEN" text="Public Chat" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                                      <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" opacity="0.7" ripplerFill="GREEN" text="Private Chat" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                                  </children>
+                              </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;">
                             <children>
-                                <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" ripplerFill="GREEN" text="Public Chat" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></JFXButton>
-                                <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" ripplerFill="GREEN" text="Private Chat" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></JFXButton>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: purple;">
-                            <children>
-                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="43.0" text="Default User Info" textFill="WHITE" />
+                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="37.0" text="Default user&#10;Default country&#10;" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="12.0" />
+                           </font></Label>
                                 <ImageView fx:id="pic_profile" fitHeight="75.0" fitWidth="75.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../Assets/NoPhoto.png" />
                                     </image>
                                 </ImageView>
-                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="169.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/Cog_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/Flag_DK_Color.png" />
                            </image>
                         </ImageView>
                             </children>

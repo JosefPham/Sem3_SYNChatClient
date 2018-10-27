@@ -60,6 +60,9 @@ public class SYNchatController implements Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
+    @FXML
+    private AnchorPane pane_Welcome;
+    boolean b = true;
 
     /**
      * Initializes the controller class.
@@ -77,8 +80,10 @@ public class SYNchatController implements Initializable {
 
     @FXML
     public void startPublicChat(ActionEvent event) {
+        pane_Welcome.toBack();
+        mp.stop();
         PresentationFacade.Ibus.publicThreads();
-        btn_publicChat.setStyle("-fx-background-color: GREY");
+        btn_publicChat.setStyle("-fx-background-color: BLUE");
         btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
 
         this.t = startrun();
@@ -120,7 +125,7 @@ public class SYNchatController implements Initializable {
     @FXML
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
-            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
+            //PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             String nameMsg = "";
             String yourMsg = "";
             String dateMsg = "";
@@ -139,19 +144,21 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void startPrivatChat(ActionEvent event) {
+        mp.stop();
+        pane_Welcome.toBack();
         PresentationFacade.Ibus.privateThreads();
-        btn_privatChat.setStyle("-fx-background-color: GREY");
+        btn_privatChat.setStyle("-fx-background-color: BLUE");
         btn_publicChat.setStyle("-fx-background-color: TRANSPARENT");
     }
 
     @FXML
     private void popOpHandler(MouseEvent event) {
-        if (Popup_pane.isDisabled()) {
-            Popup_pane.setDisable(false);
+        if(b) {
             Popup_pane.toFront();
+            b = false;
         } else {
-            Popup_pane.setDisable(true);
             Popup_pane.toBack();
+            b = true;
         }
     }
 
