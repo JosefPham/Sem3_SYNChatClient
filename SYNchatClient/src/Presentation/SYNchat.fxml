@@ -90,9 +90,14 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                              <AnchorPane minWidth="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                                  <children>
-                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="424.0" prefWidth="399.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ImageView fitHeight="300.0" fitWidth="425.0" layoutX="-98.0" layoutY="98.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+                                       <image>
+                                          <Image url="@../Assets/Overlay.png" />
+                                       </image>
+                                    </ImageView>
+                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="425.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
@@ -102,9 +107,9 @@
                                     </JFXTextArea>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.columnIndex="1">
                                  <children>
-                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="63.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="347.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="63.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="347.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
@@ -118,7 +123,7 @@
                         </GridPane>
                             </children>
                         </AnchorPane>
-                  <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                      <children>
                         <MediaView fx:id="mv_background" fitHeight="426.0" fitWidth="600.0" layoutY="1.0" preserveRatio="false" />
                         <ImageView fitHeight="184.0" fitWidth="254.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
@@ -155,7 +160,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="600.0" GridPane.rowIndex="1">
                      <children>
-                        <AnchorPane prefHeight="75.0" prefWidth="602.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="pane_chat" prefHeight="75.0" prefWidth="602.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                                       <AnchorPane layoutX="7.0" layoutY="12.0" prefHeight="53.0" prefWidth="593.0" style="-fx-border-color: #1f96e0; -fx-border-radius: 50; -fx-border-width: 2;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="10.0">
                                  <children>
@@ -248,7 +253,7 @@
                         </ImageView>
                         <AnchorPane fx:id="pane_cogView" layoutX="56.0" layoutY="51.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: black; -fx-border-radius: 25; -fx-border-width: 2;">
                            <children>
-                              <Label layoutX="11.0" layoutY="3.0" text="Change profile picture">
+                              <Label layoutX="11.0" layoutY="3.0" onMousePressed="#changeProfilePicture" text="Change profile picture">
                                  <font>
                                     <Font name="Gill Sans MT" size="10.0" />
                                  </font>

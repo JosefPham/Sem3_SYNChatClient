@@ -1,6 +1,7 @@
 
 package Presentation;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -44,12 +46,15 @@ public class LoginController implements Initializable {
     private Media me;
     @FXML
     private Button btn_register;
+    @FXML
+    private JFXButton btn_forgotPW;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btn_forgotPW.setVisible(false);
         txt_email.setStyle("-fx-prompt-text-fill: #1d1f21;"
                 + "-fx-text-inner-color: #1d1f21;");
         txt_pw.setStyle("-fx-prompt-text-fill: #1d1f21;"
@@ -95,6 +100,7 @@ public class LoginController implements Initializable {
                 return true;
             } else {
                 label_wrongInfo.setText("Incorrect password");
+                btn_forgotPW.setVisible(true);
                 return false;
             }
         } else {
@@ -134,5 +140,25 @@ public class LoginController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void btn_register_out(MouseEvent event) {
+        btn_register.setUnderline(false);
+    }
+
+    @FXML
+    private void btn_register_in(MouseEvent event) {
+        btn_register.setUnderline(true);
+    }
+
+    @FXML
+    private void btn_forgotPW_out(MouseEvent event) {
+        btn_forgotPW.setUnderline(false);
+    }
+
+    @FXML
+    private void btn_forgotPW_in(MouseEvent event) {
+        btn_forgotPW.setUnderline(true);
     }
 }

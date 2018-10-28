@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
    <children>
-      <MediaView fx:id="mv_background" fitHeight="350.0" fitWidth="400.0" layoutX="-25.0" layoutY="26.0" preserveRatio="false" rotate="90.0" />
+      <MediaView fx:id="mv_background" fitHeight="350.0" fitWidth="400.0" layoutX="-25.0" layoutY="27.0" preserveRatio="false" rotate="90.0" />
       <ImageView fitHeight="184.0" fitWidth="200.0" layoutX="-5.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/SYNlogo_White.png" />
@@ -20,7 +20,7 @@
       </ImageView>
       <AnchorPane layoutX="83.0" layoutY="219.0" opacity="0.5" prefHeight="43.0" prefWidth="192.0" style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-color: WHITE; -fx-background-radius: 25;" />
       <AnchorPane layoutX="83.0" layoutY="159.0" opacity="0.5" prefHeight="43.0" prefWidth="192.0" style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-color: WHITE; -fx-background-radius: 25;" />
-      <Label fx:id="label_wrongInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="261.0" prefHeight="22.0" prefWidth="102.0" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+      <Label fx:id="label_wrongInfo" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="331.0" prefHeight="43.0" prefWidth="102.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Gill Sans MT Bold" size="11.0" />
          </font></Label>
@@ -46,9 +46,14 @@
          <font>
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font></JFXButton>
-      <JFXButton fx:id="btn_register" layoutX="102.0" layoutY="261.0" onAction="#btn_register_action" ripplerFill="WHITE" style="-fx-background-radius: 25;" text="Register" textFill="WHITE">
+      <JFXButton fx:id="btn_register" alignment="CENTER" layoutX="102.0" layoutY="261.0" onAction="#btn_register_action" onMouseEntered="#btn_register_in" onMouseExited="#btn_register_out" ripplerFill="WHITE" style="-fx-background-radius: 25;" text="Register" textFill="WHITE">
          <font>
             <Font name="Gill Sans MT Bold" size="11.0" />
          </font></JFXButton>
+      <JFXButton fx:id="btn_forgotPW" alignment="CENTER" layoutX="166.0" layoutY="261.0" onAction="#btn_register_action" onMouseEntered="#btn_forgotPW_in" onMouseExited="#btn_forgotPW_out" ripplerFill="WHITE" style="-fx-background-radius: 25;" text="Forgot password?" textFill="WHITE">
+         <font>
+            <Font name="Gill Sans MT Bold" size="11.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package Presentation;
 
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -37,8 +40,6 @@ public class RegisterNewUserController implements Initializable {
     @FXML
     private Button btn_register;
     @FXML
-    private ChoiceBox<String> choice_Country;
-    @FXML
     private TextField txt_firstName;
     @FXML
     private TextField txt_lastName;
@@ -50,9 +51,20 @@ public class RegisterNewUserController implements Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
-    private String selectedCountry = "";
+    private String selectedCountry = "Default";
+    private Boolean countryB = true;
     @FXML
     private JFXPasswordField txt_Password2;
+    @FXML
+    private AnchorPane pane_countries;
+    @FXML
+    private Label country_DK;
+    @FXML
+    private Label country_USA;
+    @FXML
+    private Label country_Japan;
+    @FXML
+    private Label label_country;
 
     /**
      * Initializes the controller class.
@@ -60,9 +72,7 @@ public class RegisterNewUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        choice_Country.getItems().addAll("Select Country", "Denmark", "Japan", "USA");
-        choice_Country.setValue("Select Country");
-
+        pane_countries.setVisible(false);
         String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
@@ -114,13 +124,7 @@ public class RegisterNewUserController implements Initializable {
             if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {
                 if (txt_Password1.getText().equals(txt_Password2.getText())) {
                     if (txt_Password1.getText().length() >= 8) {
-                        if (!choice_Country.getValue().equals("Select Country")) {
-                            selectedCountry = choice_Country.getValue();
-                            return true;
-                        } else {
-                            selectedCountry = "Default";
-                            return true;
-                        }
+                            return true;                                                
                     } else {
                         label_warninginfo.setText("Password must be atleast 8 characters");
                     }
@@ -134,5 +138,70 @@ public class RegisterNewUserController implements Initializable {
             label_warninginfo.setText("Please fill out the information");
         }
         return false;
+    }
+
+    @FXML
+    private void selectCountry_handler(MouseEvent event) {
+        if(countryB) {
+        pane_countries.setVisible(true);
+        countryB = false;
+        } else {
+            pane_countries.setVisible(false);
+            countryB = true;
+        }
+    }
+
+    @FXML
+    private void countryDK_out(MouseEvent event) {
+        country_DK.setUnderline(false);
+    }
+
+    @FXML
+    private void countryDK_in(MouseEvent event) {
+        country_DK.setUnderline(true);
+    }
+
+    @FXML
+    private void countryUSA_out(MouseEvent event) {
+        country_USA.setUnderline(false);
+    }
+
+    @FXML
+    private void countryUSA_in(MouseEvent event) {
+        country_USA.setUnderline(true);
+    }
+
+    @FXML
+    private void countryJapan_out(MouseEvent event) {
+        country_Japan.setUnderline(false);
+    }
+
+    @FXML
+    private void countryJapan_in(MouseEvent event) {
+        country_Japan.setUnderline(true);
+    }
+
+    @FXML
+    private void countryDK_handle(MouseEvent event) {
+        selectedCountry = "Denmark";
+        pane_countries.setVisible(false);
+        countryB = true;
+        label_country.setText("Denmark");
+    }
+
+    @FXML
+    private void countryUSA_handle(MouseEvent event) {
+        selectedCountry = "USA";        
+        pane_countries.setVisible(false);
+        countryB = true;
+        label_country.setText("USA");
+    }
+
+    @FXML
+    private void countryJapan_handle(MouseEvent event) {
+        selectedCountry = "Japan";        
+        pane_countries.setVisible(false);
+        countryB = true;
+        label_country.setText("Japan");
     }
 }

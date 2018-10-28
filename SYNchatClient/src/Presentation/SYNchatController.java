@@ -66,6 +66,8 @@ public class SYNchatController implements Initializable {
     boolean cog = true;
     @FXML
     private AnchorPane pane_cogView;
+    @FXML
+    private AnchorPane pane_chat;
 
     /**
      * Initializes the controller class.
@@ -80,10 +82,13 @@ public class SYNchatController implements Initializable {
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
         pane_cogView.setVisible(false);
+        Popup_pane.setVisible(false);
+        pane_chat.setDisable(true);
     }
 
     @FXML
     public void startPublicChat(ActionEvent event) {
+        pane_chat.setDisable(false);
         pane_Welcome.toBack();
         mp.stop();
         PresentationFacade.Ibus.publicThreads();
@@ -148,6 +153,7 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void startPrivatChat(ActionEvent event) {
+        pane_chat.setDisable(false);
         mp.stop();
         pane_Welcome.toBack();
         PresentationFacade.Ibus.privateThreads();
@@ -159,9 +165,11 @@ public class SYNchatController implements Initializable {
     private void popOpHandler(MouseEvent event) {
         if (popUp) {
             Popup_pane.toFront();
+            Popup_pane.setVisible(true);
             popUp = false;
         } else {
             Popup_pane.toBack();
+            Popup_pane.setVisible(false);
             popUp = true;
         }
     }
@@ -191,6 +199,11 @@ public class SYNchatController implements Initializable {
             pane_cogView.toBack();
             cog = true;
         }
+    }
+
+    @FXML
+    private void changeProfilePicture(MouseEvent event) {
+        
     }
 
 }
