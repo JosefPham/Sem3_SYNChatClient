@@ -56,7 +56,7 @@
          <font>
             <Font name="Gill Sans MT" size="11.0" />
          </font></Label>
-      <JFXButton fx:id="btn_register" buttonType="RAISED" defaultButton="true" layoutX="76.0" layoutY="351.0" onAction="#registerNewUser" opacity="0.7" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="Register" textFill="WHITE">
+      <JFXButton fx:id="btn_register" buttonType="RAISED" defaultButton="true" layoutX="76.0" layoutY="351.0" onAction="#registerNewUser" opacity="0.7" ripplerFill="#162ab7" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="Register" textFill="WHITE">
          <font>
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font></JFXButton>

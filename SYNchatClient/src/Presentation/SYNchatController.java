@@ -62,7 +62,10 @@ public class SYNchatController implements Initializable {
     private Media me;
     @FXML
     private AnchorPane pane_Welcome;
-    boolean b = true;
+    boolean popUp = true;
+    boolean cog = true;
+    @FXML
+    private AnchorPane pane_cogView;
 
     /**
      * Initializes the controller class.
@@ -76,6 +79,7 @@ public class SYNchatController implements Initializable {
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
+        pane_cogView.setVisible(false);
     }
 
     @FXML
@@ -83,8 +87,8 @@ public class SYNchatController implements Initializable {
         pane_Welcome.toBack();
         mp.stop();
         PresentationFacade.Ibus.publicThreads();
-        btn_publicChat.setStyle("-fx-background-color: BLUE");
-        btn_privatChat.setStyle("-fx-background-color: TRANSPARENT");
+        btn_privatChat.setStyle(btn_publicChat.getStyle());
+        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
 
         this.t = startrun();
     }
@@ -147,18 +151,18 @@ public class SYNchatController implements Initializable {
         mp.stop();
         pane_Welcome.toBack();
         PresentationFacade.Ibus.privateThreads();
-        btn_privatChat.setStyle("-fx-background-color: BLUE");
-        btn_publicChat.setStyle("-fx-background-color: TRANSPARENT");
+        btn_publicChat.setStyle(btn_privatChat.getStyle());
+        btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
     }
 
     @FXML
     private void popOpHandler(MouseEvent event) {
-        if(b) {
+        if (popUp) {
             Popup_pane.toFront();
-            b = false;
+            popUp = false;
         } else {
             Popup_pane.toBack();
-            b = true;
+            popUp = true;
         }
     }
 
@@ -174,6 +178,19 @@ public class SYNchatController implements Initializable {
         dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
         txtArea_leftChat.appendText(dateMsg);
         txtArea_rightChat.appendText("\n\n");
+    }
+
+    @FXML
+    private void cogHandler(MouseEvent event) {
+        if (cog) {
+            pane_cogView.setVisible(true);
+            pane_cogView.toFront();
+            cog = false;
+        } else {
+            pane_cogView.setVisible(false);
+            pane_cogView.toBack();
+            cog = true;
+        }
     }
 
 }
