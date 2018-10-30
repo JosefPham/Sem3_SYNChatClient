@@ -242,6 +242,8 @@ public class SYNchatController implements Initializable {
     private void returnToWelcome(ActionEvent event) {
         pane_chat.setDisable(true);
         pane_Welcome.toFront();
+        btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #1f96e0");
+        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #1f96e0");
     }
 
     @FXML
