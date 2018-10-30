@@ -25,7 +25,7 @@ public class Client implements IClient {
     private DataInputStream console; // takes input from keyboard (system in)
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
-    Thread sendMessage, readMessage;
+    Thread sendMessage, readMessage = null;
 
     public Client() {
         try {
