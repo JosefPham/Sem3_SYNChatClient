@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -66,10 +72,17 @@ public class SYNchatController implements Initializable {
     private AnchorPane pane_Welcome;
     boolean popUp = true;
     boolean cog = true;
+    boolean settings = true;
     @FXML
     private AnchorPane pane_cogView;
     @FXML
     private AnchorPane pane_chat;
+    @FXML
+    private JFXButton btn_logout;
+    @FXML
+    private AnchorPane pane_settings;
+    @FXML
+    private ImageView hamburger_settings;
 
     /**
      * Initializes the controller class.
@@ -86,13 +99,13 @@ public class SYNchatController implements Initializable {
         pane_cogView.setVisible(false);
         Popup_pane.setVisible(false);
         pane_chat.setDisable(true);
+        pane_settings.setVisible(false);
     }
 
     @FXML
     public void startPublicChat(ActionEvent event) {
         pane_chat.setDisable(false);
         pane_Welcome.toBack();
-        mp.stop();
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
         btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
@@ -161,7 +174,6 @@ public class SYNchatController implements Initializable {
     @FXML
     private void startPrivatChat(ActionEvent event) {
         pane_chat.setDisable(false);
-        mp.stop();
         pane_Welcome.toBack();
         PresentationFacade.Ibus.privateThreads();
         btn_publicChat.setStyle(btn_privatChat.getStyle());
@@ -211,6 +223,36 @@ public class SYNchatController implements Initializable {
     @FXML
     private void changeProfilePicture(MouseEvent event) {
         
+    }
+
+    @FXML
+    private void logoutAction(ActionEvent event) {
+        try {
+            Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Scene newScene = new Scene(login);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(newScene);
+            appStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void returnToWelcome(ActionEvent event) {
+        pane_chat.setDisable(true);
+        pane_Welcome.toFront();
+    }
+
+    @FXML
+    private void hamburger_handler(MouseEvent event) {
+        if (settings) {
+            pane_settings.setVisible(true);
+            settings = false;
+        } else {
+            pane_settings.setVisible(false);
+            settings = true;
+        }
     }
 
 }

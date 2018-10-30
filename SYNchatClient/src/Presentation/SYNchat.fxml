@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
@@ -35,7 +36,7 @@
                         <RowConstraints maxHeight="245.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane prefHeight="340.0" prefWidth="466.0">
+                        <AnchorPane prefHeight="340.0" prefWidth="466.0" style="-fx-background-color: WHITE;">
                             <children>
                                 <AnchorPane fx:id="Popup_pane" layoutX="423.0" layoutY="280.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black; -fx-background-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-radius: 25;">
                                     <children>
@@ -90,14 +91,14 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane minWidth="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
+                              <AnchorPane minWidth="300.0" prefHeight="200.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fitHeight="300.0" fitWidth="425.0" layoutX="-98.0" layoutY="98.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                                        <image>
                                           <Image url="@../Assets/Overlay.png" />
                                        </image>
                                     </ImageView>
-                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="425.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="60.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="365.0" prefWidth="300.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
@@ -107,9 +108,9 @@
                                     </JFXTextArea>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.columnIndex="1">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
-                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="63.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="424.0" prefWidth="347.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="60.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="365.0" prefWidth="300.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
@@ -121,6 +122,32 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
+                        <AnchorPane fx:id="pane_settings" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #1f96e0;">
+                           <children>
+                              <JFXButton fx:id="btn_logout" buttonType="RAISED" layoutX="520.0" layoutY="17.0" onAction="#logoutAction" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Logout" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Gill Sans MT" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="75.0" layoutY="17.0" onAction="#returnToWelcome" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Disconnect from all chats" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Gill Sans MT" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <ImageView fx:id="hamburger_settings" fitHeight="39.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" onMousePressed="#hamburger_handler" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/Hamburger_settings.png" />
+                           </image>
+                        </ImageView>
+                        <Line endX="600.0" layoutY="60.0" />
                             </children>
                         </AnchorPane>
                   <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">

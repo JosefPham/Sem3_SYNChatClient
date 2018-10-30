@@ -44,9 +44,8 @@ public class ClientSystem {
 
     protected boolean regUser(String tmpName, String mail, String pw) {
         IUser iuser = new User(tmpName);
-        ILogin ilogin = new Login(hash(mail), hash(pw));
+        ILogin ilogin = new Login(hash(mail), hash(pw)); 
         ilogin.setUser(iuser);
-
         return BusinessFacade.getInstance().regBool(ilogin);
     }
 }
