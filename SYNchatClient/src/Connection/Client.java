@@ -191,6 +191,7 @@ public class Client implements IClient {
                 }
             }
         });*/
+        if(readMessage == null){
         readMessage = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -216,7 +217,7 @@ public class Client implements IClient {
 
         //sendMessage.start();
         readMessage.start();
-
+        }
     }
 
     // skal outcomments
