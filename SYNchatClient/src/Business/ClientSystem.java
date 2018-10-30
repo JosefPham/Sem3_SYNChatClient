@@ -46,7 +46,8 @@ public class ClientSystem {
         IUser iuser = new User(tmpName);
         ILogin ilogin = new Login(hash(mail), hash(pw));
         ilogin.setUser(iuser);
-
-        return BusinessFacade.getInstance().regBool(ilogin);
+        boolean b = BusinessFacade.getInstance().regBool(ilogin);
+        System.out.println("clientSystem: " + b);
+        return b;
     }
 }
