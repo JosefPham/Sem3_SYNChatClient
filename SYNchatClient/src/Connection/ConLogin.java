@@ -5,10 +5,6 @@
  */
 package Connection;
 
-/**
- *
- * @author Peter
- */
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
 
