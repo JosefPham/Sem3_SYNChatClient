@@ -99,6 +99,7 @@ public class Client implements IClient {
                 System.out.println("Vi læste noget o.o");
                 if (receivedBool != null) {
                     System.out.println("Fik en boolean!");
+                    System.out.println(receivedBool);
                     return receivedBool;
                 }
             } catch (IOException ex) {

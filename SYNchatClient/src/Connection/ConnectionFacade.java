@@ -32,25 +32,32 @@ public class ConnectionFacade implements IConnection {
         return instance;
     }
 
+    @Override
     public ILogin login(ILogin ilogin) {
+        // the login to send to server
+        ILogin sendLogin = new ConLogin(ilogin.gethMail(), ilogin.gethPW(), ilogin.getLoginvalue(), ilogin.getUser());
         client.send(ilogin);
-
+        //ILogin recieveLogin = new ConLogin
         return client.receiveLogin();
     }
 
+    @Override
     public Boolean regUser(ILogin ilogin) {
         client.send(ilogin);
         return client.receiveBool();
     }
 
+    @Override
     public IClient getClient() {
         return client;
     }
 
+    @Override
     public void startPublicThreads() {
         client.startPublicThreads();
     }
 
+    @Override
     public void startPrivateThreads() {
         client.startPrivateThreads();
     }
