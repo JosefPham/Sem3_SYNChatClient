@@ -96,7 +96,7 @@ public class RegisterNewUserController implements Initializable {
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
             //TODO: default country string mangler at blive sendt med
-            if (PresentationFacade.getInstance().regUser((txt_lastName.getText() + ", " + txt_firstName.getText()), txt_email.getText(), txt_Password1.getText())) {
+            if (PresentationFacade.getInstance().regUser((txt_firstName.getText() + " " + txt_lastName.getText()), txt_email.getText(), txt_Password1.getText())) {
                 label_warninginfo.setText("Registration Complete");
                 backToLoginHandler(Event);
             } else {
