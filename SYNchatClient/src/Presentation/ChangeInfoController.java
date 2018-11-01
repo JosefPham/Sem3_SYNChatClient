@@ -7,7 +7,9 @@ package Presentation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.PasswordField;
 
 /**
  * FXML Controller class
@@ -15,6 +17,13 @@ import javafx.fxml.Initializable;
  * @author Pottemuld
  */
 public class ChangeInfoController implements Initializable {
+
+    @FXML
+    private PasswordField pwField_oldPW;
+    @FXML
+    private PasswordField pwField_newPW;
+    @FXML
+    private PasswordField pwField_confirm;
 
     /**
      * Initializes the controller class.

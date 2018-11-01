@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ChangeInfoController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Presentation.ChangeInfoController">
+   <children>
+      <Label layoutX="172.0" layoutY="26.0" text="Change password">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pwField_oldPW" layoutX="175.0" layoutY="117.0" promptText="Old password" />
+      <PasswordField fx:id="pwField_newPW" layoutX="175.0" layoutY="158.0" promptText="New password" />
+      <PasswordField fx:id="pwField_confirm" layoutX="176.0" layoutY="193.0" promptText="Confirm new password" />
+   </children>
 </AnchorPane>
