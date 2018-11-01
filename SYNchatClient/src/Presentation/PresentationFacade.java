@@ -63,5 +63,13 @@ public class PresentationFacade implements IPresentation {
     public void sendPublicMsg(String s) {
         Ibus.sendPublicMsg(s);
     }
+    
+    public boolean changeMail(String pw, String mail) {
+        return Ibus.changeMail(pw, mail);
+    }
+    
+    public boolean changePw(String oldPw, String newPw) {
+        return Ibus.changePw(oldPw, newPw);
+    }
 
 }

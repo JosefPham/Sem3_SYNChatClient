@@ -99,4 +99,13 @@ public class BusinessFacade implements IBusiness {
     boolean updateFriends(Friends friends) {
         return Icon.updateFriends(friends);
     }
+    
+    public boolean changeMail(String pw, String mail) {
+        return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
+    }
+    
+    @Override
+    public boolean changePw(String oldPw, String newPw) {
+        return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
+    }
 }
