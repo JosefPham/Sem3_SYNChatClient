@@ -1,6 +1,8 @@
 
 package Presentation;
 
+import Acquaintance.IController;
+import static Presentation.PresentationFacade.stage;
 import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Group 9
  */
-public class LoginController implements Initializable {
+public class LoginController implements IController, Initializable {
 
     @FXML
     private TextField txt_email;
@@ -39,7 +40,6 @@ public class LoginController implements Initializable {
     private Button btn_login;
     @FXML
     private Label label_wrongInfo;
-    private Stage stage;
     @FXML
     private MediaView mv_background;
     private MediaPlayer mp;
@@ -48,12 +48,14 @@ public class LoginController implements Initializable {
     private Button btn_register;
     @FXML
     private JFXButton btn_forgotPW;
+    private Stage stage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("pfacade " + PresentationFacade.getInstance());
         btn_forgotPW.setVisible(false);
         txt_email.setStyle("-fx-prompt-text-fill: #1d1f21;"
                 + "-fx-text-inner-color: #1d1f21;");
@@ -66,10 +68,6 @@ public class LoginController implements Initializable {
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
-//        DoubleProperty width = mv_background.fitWidthProperty();
-//        DoubleProperty height = mv_background.fitHeightProperty();
-//        width.bind(Bindings.selectDouble(mv_background.sceneProperty(), "width"));
-//        height.bind(Bindings.selectDouble(mv_background.sceneProperty(), "height"));
     }
 
     @FXML
@@ -83,16 +81,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void btn_register_action(ActionEvent event) {
-        try {
-            Parent register = FXMLLoader.load(getClass().getResource("RegisterNewUser.fxml"));
-            Scene newScene = new Scene(register);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setScene(newScene);
-            appStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        PresentationFacade.getInstance().changeScene("RegisterNewUser.fxml");
     }
+    
 
     private boolean validateInfo() {
         if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {
@@ -123,22 +114,10 @@ public class LoginController implements Initializable {
                 break;
             case 2:
                 //*login*
-                changeScene(event);
+                PresentationFacade.getInstance().changeScene("SYNchat.fxml");
                 break;
             default:
                 label_wrongInfo.setText("Something went wrong");
-        }
-    }
-
-    private void changeScene(ActionEvent event) {
-        try {
-            Parent SYNchat = FXMLLoader.load(getClass().getResource("SYNchat.fxml"));
-            Scene newScene = new Scene(SYNchat);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setScene(newScene);
-            appStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -160,5 +139,10 @@ public class LoginController implements Initializable {
     @FXML
     private void btn_forgotPW_in(MouseEvent event) {
         btn_forgotPW.setUnderline(true);
+    }
+
+    @Override
+    public void injectStage(Stage stage) {
+        PresentationFacade.stage = stage;
     }
 }

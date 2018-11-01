@@ -1,17 +1,26 @@
 package Presentation;
 
 import Acquaintance.IBusiness;
+import Acquaintance.IController;
 import Acquaintance.IPresentation;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Group 9
  */
-public class PresentationFacade implements IPresentation {
+public class PresentationFacade implements IPresentation, IController {
 
     protected static IBusiness Ibus;
     private SYNchat synchat;
     private String s = "";
+    public static Stage stage;
 
     private static PresentationFacade instance = null;
 
@@ -64,4 +73,28 @@ public class PresentationFacade implements IPresentation {
         Ibus.sendPublicMsg(s);
     }
 
+    public void changeScene(String resource) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
+            Parent root = loader.load();
+            IController controller = loader.getController();
+            controller.injectStage(stage);
+
+            Scene newScene = new Scene(root);
+            stage.setScene(newScene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void injectStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    @Override
+    public void logoutHandling(String logout) {
+        Ibus.logoutHandling(logout);
+    }
 }

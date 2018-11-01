@@ -73,4 +73,11 @@ public class ConnectionFacade implements IConnection {
         client.send(s);
     }
 
+    @Override
+    public void logoutHandling(String logout) {
+        System.out.println("virker");
+        client.send(logout);
+    }
+
+    
 }

@@ -76,4 +76,9 @@ public class BusinessFacade implements IBusiness {
         
     }
 
+    @Override
+    public void logoutHandling(String logout) {
+        Icon.logoutHandling(logout);
+    }
+
 }

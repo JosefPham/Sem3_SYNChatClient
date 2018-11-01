@@ -15,4 +15,6 @@ public interface IPresentation {
     public void sendPublicMsg(String s);
 
     public String getS();
+    
+    public void logoutHandling(String logout);
 }
