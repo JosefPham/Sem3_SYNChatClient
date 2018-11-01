@@ -38,10 +38,9 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="176.0" layoutY="74.0" promptText="Old email" />
-                        <TextField fx:id="textField_newEmail" layoutX="176.0" layoutY="148.0" promptText="New email" />
-                        <TextField fx:id="textField_confirmEmail" layoutX="176.0" layoutY="185.0" promptText="Confirm new email" />
-                        <PasswordField fx:id="pwField_changeEmailPassword" layoutX="176.0" layoutY="110.0" promptText="Password" />
+                        <TextField fx:id="textField_newEmail" layoutX="176.0" layoutY="135.0" promptText="New email" />
+                        <TextField fx:id="textField_confirmEmail" layoutX="176.0" layoutY="168.0" promptText="Confirm new email" />
+                        <PasswordField fx:id="pwField_changeEmailPassword" layoutX="176.0" layoutY="85.0" promptText="Password" />
                      </children>
                   </AnchorPane>
             </content>
