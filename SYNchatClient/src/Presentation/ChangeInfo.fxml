@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
@@ -24,6 +25,7 @@
                         <PasswordField fx:id="pwField_oldPW" layoutX="175.0" layoutY="94.0" promptText="Old password" />
                         <PasswordField fx:id="pwField_newPW" layoutX="176.0" layoutY="135.0" promptText="New password" />
                         <PasswordField fx:id="pwField_confirmPW" layoutX="175.0" layoutY="169.0" promptText="Confirm new password" />
+                        <Button fx:id="btn_password" layoutX="401.0" layoutY="135.0" mnemonicParsing="false" onAction="#changepw" text="Change" />
                      </children>
                   </AnchorPane>
             </content>
@@ -40,6 +42,7 @@
                         <TextField fx:id="textField_newEmail" layoutX="176.0" layoutY="135.0" promptText="New email" />
                         <TextField fx:id="textField_confirmEmail" layoutX="176.0" layoutY="168.0" promptText="Confirm new email" />
                         <PasswordField fx:id="pwField_changeEmailPassword" layoutX="176.0" layoutY="85.0" promptText="Password" />
+                        <Button fx:id="btn_mail" layoutX="400.0" layoutY="135.0" mnemonicParsing="false" onAction="#changeMail" text="Change" />
                      </children>
                   </AnchorPane>
             </content>

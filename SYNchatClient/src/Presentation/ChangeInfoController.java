@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
@@ -38,6 +39,10 @@ public class ChangeInfoController implements Initializable {
     private PasswordField pwField_confirmPW;
     @FXML
     private Label label_warning;
+    @FXML
+    private Button btn_password;
+    @FXML
+    private Button btn_mail;
 
     /**
      * Initializes the controller class.
@@ -47,7 +52,9 @@ public class ChangeInfoController implements Initializable {
         // TODO
     }
 
+    @FXML
     public void changeMail(ActionEvent event) {
+        label_warning.setText("");
         if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
             if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText())) {
                 label_warning.setText("Mail was successfully changed");
@@ -59,7 +66,9 @@ public class ChangeInfoController implements Initializable {
         }
     }
     
+    @FXML
     public void changepw(ActionEvent event) {
+        label_warning.setText("");
         if(pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
             if(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
                 label_warning.setText("Password has been successfully changed");
