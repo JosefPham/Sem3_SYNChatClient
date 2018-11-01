@@ -25,6 +25,8 @@ public class Profile {
         this.nationality = nationality;
     }
 
+    //All setter-methods will be called through updateInfo() via User-class
+    
     public void setName(String name) {
         this.name = name;
     }
