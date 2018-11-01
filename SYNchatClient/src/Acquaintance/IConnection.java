@@ -21,4 +21,10 @@ public interface IConnection {
     public void sendPublicMsg(String s);
 
     public void injectBusiness(IBusiness bus);
+    
+    public boolean verifyPw(int userID, String pw);
+    
+    public boolean changePw(int userID, String newPw);
+    
+    public boolean changeMail(int userID, String mail);
 }

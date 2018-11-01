@@ -21,4 +21,10 @@ public interface IBusiness {
     public void receivePublicMsg(String s);
 
     public void sendPublicMsg(String s);
+    
+    public boolean verifyPw(int userID, String pw);
+    
+    public boolean changePw(int userID, String newPw);
+    
+    public boolean changeMail(String userID, String mail);
 }

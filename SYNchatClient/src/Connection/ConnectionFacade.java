@@ -72,5 +72,20 @@ public class ConnectionFacade implements IConnection {
     public void sendPublicMsg(String s) {
         client.send(s);
     }
+    
+    @Override
+    public boolean verifyPw(int userID, String pw) {
+        return client.verifyPw(userID, pw);
+    }
+    
+    @Override
+    public boolean changePw(int userID, String newPw) {
+        return client.changePw(userID, newPw);
+    }
+    
+    @Override
+    public boolean changeMail(int userID, String mail) {
+        return client.changeMail(userID, mail);
+    }
 
 }

@@ -48,4 +48,33 @@ public class User implements IUser {
         return chats;
     }
 
+    @Override
+    public boolean changePw(String oldPw, String newPw) {
+        if (verifyPw(oldPw)) {
+            if (BusinessFacade.getInstance().changePw(this.userID, newPw)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeMail(String pw, String newMail) {
+        if(verifyPw(pw)) {
+            if(BusinessFacade.getInstance().changeMail(this.userID, pw)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean verifyPw(String pw) {
+        if (BusinessFacade.getInstance().verifyPw(this.userID, pw)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
