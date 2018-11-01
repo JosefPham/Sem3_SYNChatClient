@@ -10,17 +10,19 @@ public class User implements IUser {
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
+    private Friends friends;
 
     public User(String tmpName) {
         this.tmpName = tmpName;
     }
 
-    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats) {
+    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, Friends friends) {
         this.userID = userID;
         this.tmpName = tmpName;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
+        this.friends = friends;
     }
 
     @Override
@@ -75,6 +77,22 @@ public class User implements IUser {
         } else {
             return false;
         }
+
+    public boolean addFriend(int userID, String profileName) {
+        if (friends.addFriend(userID, profileName)) {
+            return updateFriends(friends);
+        } else{
+            return true;
+        }
+    }
+    
+    public boolean removeFriend (int userID) {
+        friends.removeFriend(userID);
+        return updateFriends(friends);
+    }
+
+    boolean updateFriends(Friends friends) {
+       return BusinessFacade.getInstance().updateFriends(friends);
     }
 
 }

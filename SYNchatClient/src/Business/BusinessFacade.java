@@ -91,4 +91,15 @@ public class BusinessFacade implements IBusiness {
         return Icon.changeMail(userID, mail);
     }
 
+    public boolean addFriend(int userID, String profileName){
+        return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
+    }
+    
+    public boolean removeFriend(int userID){
+        return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
+    }
+    
+    boolean updateFriends(Friends friends) {
+        return Icon.updateFriends(friends);
+    }
 }

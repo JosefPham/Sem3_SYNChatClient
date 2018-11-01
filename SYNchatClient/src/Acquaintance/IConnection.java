@@ -1,5 +1,7 @@
 package Acquaintance;
 
+import Business.Friends;
+
 /**
  *
  * @author Group 9
@@ -27,4 +29,6 @@ public interface IConnection {
     public boolean changePw(int userID, String newPw);
     
     public boolean changeMail(int userID, String mail);
+
+    public boolean updateFriends(Friends friends);
 }
