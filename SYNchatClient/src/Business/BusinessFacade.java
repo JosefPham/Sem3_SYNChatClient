@@ -76,17 +76,14 @@ public class BusinessFacade implements IBusiness {
         
     }
     
-    @Override
     public boolean verifyPw(int userID, String pw) {
         return Icon.verifyPw(userID, pw);
     }
     
-    @Override
     public boolean changePw(int userID, String newPw) {
         return Icon.changePw(userID, newPw);
     }
     
-    @Override
     public boolean changeMail(int userID, String mail) {
         return Icon.changeMail(userID, mail);
     }

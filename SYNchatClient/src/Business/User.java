@@ -62,8 +62,8 @@ public class User implements IUser {
 
     @Override
     public boolean changeMail(String pw, String newMail) {
-        if(verifyPw(pw)) {
-            if(BusinessFacade.getInstance().changeMail(this.userID, pw)){
+        if (verifyPw(pw)) {
+            if (BusinessFacade.getInstance().changeMail(this.userID, pw)) {
                 return true;
             }
         }
@@ -77,22 +77,23 @@ public class User implements IUser {
         } else {
             return false;
         }
+    }
 
     public boolean addFriend(int userID, String profileName) {
         if (friends.addFriend(userID, profileName)) {
             return updateFriends(friends);
-        } else{
+        } else {
             return true;
         }
     }
-    
-    public boolean removeFriend (int userID) {
+
+    public boolean removeFriend(int userID) {
         friends.removeFriend(userID);
         return updateFriends(friends);
     }
 
     boolean updateFriends(Friends friends) {
-       return BusinessFacade.getInstance().updateFriends(friends);
+        return BusinessFacade.getInstance().updateFriends(friends);
     }
 
 }

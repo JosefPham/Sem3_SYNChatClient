@@ -22,12 +22,6 @@ public interface IBusiness {
 
     public void sendPublicMsg(String s);
 
-    public boolean verifyPw(int userID, String pw);
-    
-    public boolean changePw(int userID, String newPw);
-    
-    public boolean changeMail(int userID, String mail);
-
     public boolean addFriend(int userID, String profileName);
     
     public boolean removeFriend(int userID);
