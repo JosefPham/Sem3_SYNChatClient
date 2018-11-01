@@ -21,4 +21,8 @@ public interface IBusiness {
     public void receivePublicMsg(String s);
 
     public void sendPublicMsg(String s);
+    
+    public boolean addFriend(int userID, String profileName);
+    
+    public boolean removeFriend(int userID);
 }

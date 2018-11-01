@@ -5,6 +5,7 @@ import Acquaintance.IBusiness;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
+import Business.Friends;
 
 /**
  *
@@ -71,6 +72,11 @@ public class ConnectionFacade implements IConnection {
     @Override
     public void sendPublicMsg(String s) {
         client.send(s);
+    }
+
+    @Override
+    public boolean updateFriends(Friends friends) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

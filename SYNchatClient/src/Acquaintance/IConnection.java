@@ -1,5 +1,7 @@
 package Acquaintance;
 
+import Business.Friends;
+
 /**
  *
  * @author Group 9
@@ -21,4 +23,6 @@ public interface IConnection {
     public void sendPublicMsg(String s);
 
     public void injectBusiness(IBusiness bus);
+
+    public boolean updateFriends(Friends friends);
 }

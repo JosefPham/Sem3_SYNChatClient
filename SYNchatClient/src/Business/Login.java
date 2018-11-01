@@ -62,7 +62,7 @@ public class Login implements ILogin, Serializable {
 
         if (loginValue == 2) {
 
-            //fetch and inplement user object through socket
+           ClientSystem.getInstance().setUser((User) this.user);
         }
         return loginValue;
     }

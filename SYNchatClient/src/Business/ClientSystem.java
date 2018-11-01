@@ -14,9 +14,13 @@ import java.util.logging.Logger;
  */
 public class ClientSystem {
 
+            User currentUser;
+            
     private static ClientSystem instance = null;
 
     private ClientSystem() {
+
+        
     }
 
     public static ClientSystem getInstance() {
@@ -42,6 +46,8 @@ public class ClientSystem {
         return ilogin.login(BusinessFacade.getInstance().login(ilogin).getLoginvalue());
     }
 
+    
+
     protected boolean regUser(String tmpName, String mail, String pw) {
         IUser iuser = new User(tmpName);
         ILogin ilogin = new Login(hash(mail), hash(pw)); 
@@ -59,4 +65,12 @@ public class ClientSystem {
         
         return msg;
     }
+    
+    User getCurrentUser() {
+        return currentUser;
+    }
+    
+     void setUser(User user){
+         this.currentUser = user;
+     }
 }
