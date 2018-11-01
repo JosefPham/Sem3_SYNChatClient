@@ -26,5 +26,5 @@ public interface IBusiness {
     
     public boolean changePw(int userID, String newPw);
     
-    public boolean changeMail(String userID, String mail);
+    public boolean changeMail(int userID, String mail);
 }
