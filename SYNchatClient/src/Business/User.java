@@ -4,11 +4,9 @@ import Acquaintance.IUser;
 import java.util.List;
 
 public class User implements IUser {
-    
 
     Management management;
     ClientSystem client = ClientSystem.getInstance();
-    
 
     private int userID;
     private String tmpName; //must be removed when profile is implemented
@@ -55,19 +53,16 @@ public class User implements IUser {
         return chats;
     }
 
-    @Override
     public int verifyPw(String pw) {
         management = new Management(1, client.hash(pw));
         return BusinessFacade.getInstance().sendVerifyPw(management);
     }
 
-    @Override
     public int changePw(String oldPw, String newPw) {
         management = new Management(2, client.hash(oldPw), client.hash(newPw));
         return BusinessFacade.getInstance().sendChangePw(management);
     }
 
-    @Override
     public int changeMail(String pw, String newMail) {
         management = new Management(3, client.hash(pw), client.hash(newMail));
         return BusinessFacade.getInstance().sendChangeMail(management);

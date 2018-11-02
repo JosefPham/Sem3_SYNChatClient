@@ -1,6 +1,5 @@
 package Connection;
 
-
 import Acquaintance.IUser;
 import java.util.List;
 
@@ -48,22 +47,4 @@ public class ConUser implements IUser {
     public List<Integer> getChats() {
         return chats;
     }
-
-    
-    //Not to be implemented
-    @Override
-    public boolean changePw(String oldPw, String newPw) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean changeMail(String pw, String newMail) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean verifyPw(String pw) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

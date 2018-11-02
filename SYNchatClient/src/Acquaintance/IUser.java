@@ -14,10 +14,4 @@ public interface IUser extends Serializable {
     public int getReports();
 
     public List<Integer> getChats();
-    
-    public int changePw(String oldPw, String newPw);
-    
-    public int changeMail(String pw, String newMail);
-    
-    public int verifyPw(String pw);
 }
