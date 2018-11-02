@@ -5,13 +5,14 @@
  */
 package Business;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Sigurd E. Espersen
  */
-public abstract class Message {
+public abstract class Message implements Serializable {
 
     int senderID;
     Date timestamp;
