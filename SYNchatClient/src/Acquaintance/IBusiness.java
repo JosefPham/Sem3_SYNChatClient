@@ -25,10 +25,16 @@ public interface IBusiness {
     public boolean addFriend(int userID, String profileName);
 
     public boolean removeFriend(int userID);
+    
+    public boolean verifyPw(String pw);
+    
+    public boolean changePw(String oldPw, String newPw);
+    
+    public boolean changeMail(String pw, String mail);
 
-    public boolean sendVerifyPw(int userID, String pw);
+    public boolean sendVerifyPw(IManagement management);
 
-    public boolean sendChangePw(int userID, String newPw);
+    public boolean sendChangePw(IManagement management);
 
-    public boolean sendChangeMail(int userID, String mail);
+    public boolean sendChangeMail(IManagement management);
 }

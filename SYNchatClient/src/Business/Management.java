@@ -5,10 +5,12 @@
  */
 package Business;
 
+import Acquaintance.IManagement;
+
 /**
  *
  */
-public class Management {
+public class Management implements IManagement {
     
     ClientSystem client = ClientSystem.getInstance();
     

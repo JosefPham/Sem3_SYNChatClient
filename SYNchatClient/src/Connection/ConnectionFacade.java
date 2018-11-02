@@ -5,6 +5,7 @@ import Acquaintance.IBusiness;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
+import Acquaintance.IManagement;
 import Business.Friends;
 
 /**
@@ -75,18 +76,21 @@ public class ConnectionFacade implements IConnection {
     }
     
     @Override
-    public boolean verifyPw(int userID, String pw) {
-        return client.verifyPw(userID, pw);
+    public boolean sendVerifyPw(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
     }
     
     @Override
-    public boolean changePw(int userID, String newPw) {
-        return client.changePw(userID, newPw);
+    public boolean sendChangePw(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
     }
     
     @Override
-    public boolean changeMail(int userID, String mail) {
-        return client.changeMail(userID, mail);
+    public boolean sendChangeMail(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
     }
 
     @Override

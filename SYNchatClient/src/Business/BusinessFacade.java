@@ -3,6 +3,7 @@ package Business;
 import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
+import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
 import java.util.List;
 
@@ -79,18 +80,18 @@ public class BusinessFacade implements IBusiness {
     }
     
     @Override
-    public boolean sendVerifyPw(int userID, String pw) {
-        return Icon.verifyPw(userID, pw);
+    public boolean sendVerifyPw(IManagement management) {
+        return Icon.sendVerifyPw(management);
     }
     
     @Override
-    public boolean sendChangePw(int userID, String newPw) {
-        return Icon.changePw(userID, newPw);
+    public boolean sendChangePw(IManagement management) {
+        return Icon.sendChangePw(management);
     }
 
     @Override
-    public boolean sendChangeMail(int userID, String mail) {
-        return Icon.changeMail(userID, mail);
+    public boolean sendChangeMail(IManagement managemnt) {
+        return Icon.sendChangeMail(management);
     }
 
     public boolean addFriend(int userID, String profileName){
@@ -105,15 +106,15 @@ public class BusinessFacade implements IBusiness {
         return Icon.updateFriends(friends);
     }
     
-    public List verifyPw(String pw) {
+    public boolean verifyPw(String pw) {
         return ClientSystem.getInstance().getCurrentUser().verifyPw(pw);
     }
     
-    public List changePw(String oldPw, String newPw) {
+    public boolean changePw(String oldPw, String newPw) {
         return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
     }
     
-    public List changeMail(String pw, String mail) {
+    public boolean changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
     }
     

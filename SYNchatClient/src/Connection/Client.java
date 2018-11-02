@@ -220,9 +220,9 @@ public class Client implements IClient {
         }
     }
 
-    // skal outcomments
-    public static void main(String[] args) {
-        Client client = new Client();
-    }
+//    // skal outcomments
+//    public static void main(String[] args) {
+//        Client client = new Client();
+//    }
 
 }

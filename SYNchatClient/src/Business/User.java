@@ -1,15 +1,11 @@
 package Business;
 
 import Acquaintance.IUser;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class User implements IUser {
-    
+
     Management management;
-    List<Management> managementList = new ArrayList<>();
 
     private int userID;
     private String tmpName; //must be removed when profile is implemented
@@ -57,28 +53,21 @@ public class User implements IUser {
     }
 
     @Override
-    public List verifyPw(String pw) {
-        managementList.clear();
+    public boolean verifyPw(String pw) {
         management = new Management(1, pw);
-        managementList.add(management);
-        return managementList;
-    }
-    
-    @Override
-    public List changePw(String oldPw, String newPw) {
-        managementList.clear();
-        management = new Management(2, oldPw, newPw);
-        managementList.add(management);
-        return managementList;
+        return BusinessFacade.getInstance().sendVerifyPw(management);
     }
 
     @Override
-    public List changeMail(String pw, String newMail) {
-        managementList.clear();
+    public boolean changePw(String oldPw, String newPw) {
+        management = new Management(2, oldPw, newPw);
+        return BusinessFacade.getInstance().sendChangePw(management);
+    }
+
+    @Override
+    public boolean changeMail(String pw, String newMail) {
         management = new Management(3, pw, newMail);
-        managementList.add(management);
-        return managementList;     
-                
+        return BusinessFacade.getInstance().sendChangeMail(management);
     }
 
     public boolean addFriend(int userID, String profileName) {

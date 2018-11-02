@@ -24,11 +24,11 @@ public interface IConnection {
 
     public void injectBusiness(IBusiness bus);
     
-    public boolean verifyPw(int userID, String pw);
+    public boolean sendVerifyPw(IManagement management);
     
-    public boolean changePw(int userID, String newPw);
+    public boolean sendChangePw(IManagement management);
     
-    public boolean changeMail(int userID, String mail);
+    public boolean sendChangeMail(IManagement management);
 
     public boolean updateFriends(Friends friends);
 }
