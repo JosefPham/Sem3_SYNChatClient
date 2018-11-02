@@ -17,4 +17,6 @@ public interface IClient {
     void startPublicThreads();
 
     void startPrivateThreads();
+    
+    public void connectToServer();
 }

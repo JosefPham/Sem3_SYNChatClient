@@ -4,6 +4,7 @@ package Connection;
 import Acquaintance.IBusiness;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
+import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Business.Friends;
@@ -71,8 +72,8 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void sendPublicMsg(String s) {
-        client.send(s);
+    public void sendPublicMsg(Object msg) {
+        client.send(msg);
     }
     
     @Override
@@ -94,8 +95,17 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public boolean updateFriends(Friends friends) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void logoutHandling(String logout) {
+        client.send(logout);
     }
 
+    public void connect() {
+        client.connectToServer();
+    }
+    
+    public boolean updateFriends(Friends friends) {
+       IFriends sendFriends = new ConFriends(friends.getFriendlist());
+       client.send(sendFriends);
+       return client.receiveBool();
+    }
 }

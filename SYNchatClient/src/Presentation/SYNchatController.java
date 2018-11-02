@@ -1,5 +1,6 @@
 package Presentation;
 
+import Acquaintance.IController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -32,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author Group 9
  */
-public class SYNchatController implements Initializable {
+public class SYNchatController implements IController, Initializable {
 
     private Thread t = null;
     private static SYNchatController instance = null;
@@ -227,15 +228,8 @@ public class SYNchatController implements Initializable {
 
     @FXML
     private void logoutAction(ActionEvent event) {
-        try {
-            Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Scene newScene = new Scene(login);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setScene(newScene);
-            appStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        PresentationFacade.getInstance().logoutHandling("!SYN!-logout-!SYN!");
+        PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 
     @FXML
@@ -255,6 +249,11 @@ public class SYNchatController implements Initializable {
             pane_settings.setVisible(false);
             settings = true;
         }
+    }
+
+    @Override
+    public void injectStage(Stage stage) {
+        PresentationFacade.stage = stage;
     }
 
 }

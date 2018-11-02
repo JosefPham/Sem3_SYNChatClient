@@ -75,8 +75,19 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void sendPublicMsg(String s) {
 //        ClientSystem.getInstance().cipherMsg(s);
-        Icon.sendPublicMsg(ClientSystem.getInstance().cipherMsg(s));
-        
+        Object msg = new TextMessage(0, ClientSystem.getInstance().cipherMsg(s));
+        Icon.sendPublicMsg(msg);
+
+    }
+
+    @Override
+    public void logoutHandling(String logout) {
+        Icon.logoutHandling(logout);
+    }
+
+    @Override
+    public void connect() {
+        Icon.connect();
     }
     
     @Override
@@ -94,14 +105,18 @@ public class BusinessFacade implements IBusiness {
         return Icon.sendChangeMail(management);
     }
 
+    @Override
     public boolean addFriend(int userID, String profileName){
         return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
     }
     
+    @Override
     public boolean removeFriend(int userID){
         return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
     }
-    
+    /*
+    method for updating the friendsobject in database
+    */
     boolean updateFriends(Friends friends) {
         return Icon.updateFriends(friends);
     }

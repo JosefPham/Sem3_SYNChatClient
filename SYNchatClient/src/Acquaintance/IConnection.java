@@ -20,7 +20,7 @@ public interface IConnection {
 
     public void receivePublicMsg(String s);
 
-    public void sendPublicMsg(String s);
+    public void sendPublicMsg(Object msg);
 
     public void injectBusiness(IBusiness bus);
     
@@ -29,6 +29,10 @@ public interface IConnection {
     public int sendChangePw(IManagement management);
     
     public int sendChangeMail(IManagement management);
+
+    public void logoutHandling(String logout);
+    
+    public void connect();
 
     public boolean updateFriends(Friends friends);
 }

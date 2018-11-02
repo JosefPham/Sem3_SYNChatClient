@@ -10,7 +10,10 @@ public class Friends {
 
     
     
-    
+    public Map<Integer, String> getFriendlist() {
+        return friendlist;
+    }
+
     boolean addFriend(int userID, String profileName){
         if (!friendlist.containsKey(userID)){
             friendlist.put(userID, profileName);
