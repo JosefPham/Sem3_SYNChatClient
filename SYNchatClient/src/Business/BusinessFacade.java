@@ -73,12 +73,17 @@ public class BusinessFacade implements IBusiness {
     public void sendPublicMsg(String s) {
 //        ClientSystem.getInstance().cipherMsg(s);
         Icon.sendPublicMsg(ClientSystem.getInstance().cipherMsg(s));
-        
+
     }
 
     @Override
     public void logoutHandling(String logout) {
         Icon.logoutHandling(logout);
+    }
+
+    @Override
+    public void connect() {
+        Icon.connect();
     }
 
 }

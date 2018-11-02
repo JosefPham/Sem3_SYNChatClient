@@ -23,4 +23,6 @@ public interface IConnection {
     public void injectBusiness(IBusiness bus);
     
     public void logoutHandling(String logout);
+    
+    public void connect();
 }

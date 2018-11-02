@@ -23,4 +23,6 @@ public interface IBusiness {
     public void sendPublicMsg(String s);
     
     public void logoutHandling(String logout);
+    
+    public void connect();
 }

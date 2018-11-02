@@ -78,5 +78,8 @@ public class ConnectionFacade implements IConnection {
         client.send(logout);
     }
 
+    public void connect() {
+        client.connectToServer();
+    }
     
 }

@@ -1,21 +1,13 @@
-
 package Presentation;
 
 import Acquaintance.IController;
-import static Presentation.PresentationFacade.stage;
 import com.jfoenix.controls.JFXButton;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -49,6 +41,7 @@ public class LoginController implements IController, Initializable {
     @FXML
     private JFXButton btn_forgotPW;
     private Stage stage;
+    private Boolean connected;
 
     /**
      * Initializes the controller class.
@@ -68,12 +61,17 @@ public class LoginController implements IController, Initializable {
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
+        connected = false;
     }
 
     @FXML
     private void btn_login_action(ActionEvent event) {
         label_wrongInfo.setText("");
         if (validateInfo()) {
+            if(!connected) {
+            PresentationFacade.getInstance().connect();
+            connected = true;
+            }
             loginHandler(event);
         }
 
@@ -81,9 +79,12 @@ public class LoginController implements IController, Initializable {
 
     @FXML
     private void btn_register_action(ActionEvent event) {
+        if(!connected) {
+        PresentationFacade.getInstance().connect();
+        connected = true;
+        }
         PresentationFacade.getInstance().changeScene("RegisterNewUser.fxml");
     }
-    
 
     private boolean validateInfo() {
         if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {

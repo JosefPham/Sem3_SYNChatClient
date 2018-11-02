@@ -97,4 +97,8 @@ public class PresentationFacade implements IPresentation, IController {
     public void logoutHandling(String logout) {
         Ibus.logoutHandling(logout);
     }
+    
+    public void connect() {
+        Ibus.connect();
+    }
 }
