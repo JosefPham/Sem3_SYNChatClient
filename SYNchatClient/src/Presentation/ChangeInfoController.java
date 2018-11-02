@@ -56,7 +56,7 @@ public class ChangeInfoController implements Initializable {
     public void changeMail(ActionEvent event) {
         label_warning.setText("");
         if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-            if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText())) {
+            if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText()) == 1) {
                 label_warning.setText("Mail was successfully changed");
             } else {
                 label_warning.setText("Something went wrong");
@@ -70,9 +70,9 @@ public class ChangeInfoController implements Initializable {
     public void changepw(ActionEvent event) {
         label_warning.setText("");
         if(pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
-            if(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
+            if(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
                 label_warning.setText("Password has been successfully changed");
-            } else {
+            } else if(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
                 label_warning.setText("Something went wrong!");
             }
         } else if(!pwField_newPW.getText().equals(pwField_confirmPW.getText())) {

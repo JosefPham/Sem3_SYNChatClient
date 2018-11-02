@@ -76,21 +76,21 @@ public class ConnectionFacade implements IConnection {
     }
     
     @Override
-    public boolean sendVerifyPw(IManagement management) {
+    public int sendVerifyPw(IManagement management) {
         client.send(management);
-        return client.receiveBool();
+        return client.receiveInt();
     }
     
     @Override
-    public boolean sendChangePw(IManagement management) {
+    public int sendChangePw(IManagement management) {
         client.send(management);
-        return client.receiveBool();
+        return client.receiveInt();
     }
     
     @Override
-    public boolean sendChangeMail(IManagement management) {
+    public int sendChangeMail(IManagement management) {
         client.send(management);
-        return client.receiveBool();
+        return client.receiveInt();
     }
 
     @Override

@@ -11,6 +11,8 @@ public interface IClient {
     ILogin receiveLogin();
 
     Boolean receiveBool();
+    
+    int receiveInt();
 
     void startPublicThreads();
 

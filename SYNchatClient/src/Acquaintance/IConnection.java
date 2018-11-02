@@ -24,11 +24,11 @@ public interface IConnection {
 
     public void injectBusiness(IBusiness bus);
     
-    public boolean sendVerifyPw(IManagement management);
+    public int sendVerifyPw(IManagement management);
     
-    public boolean sendChangePw(IManagement management);
+    public int sendChangePw(IManagement management);
     
-    public boolean sendChangeMail(IManagement management);
+    public int sendChangeMail(IManagement management);
 
     public boolean updateFriends(Friends friends);
 }

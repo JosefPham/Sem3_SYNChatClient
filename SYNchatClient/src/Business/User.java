@@ -56,19 +56,19 @@ public class User implements IUser {
     }
 
     @Override
-    public boolean verifyPw(String pw) {
+    public int verifyPw(String pw) {
         management = new Management(1, client.hash(pw));
         return BusinessFacade.getInstance().sendVerifyPw(management);
     }
 
     @Override
-    public boolean changePw(String oldPw, String newPw) {
+    public int changePw(String oldPw, String newPw) {
         management = new Management(2, client.hash(oldPw), client.hash(newPw));
         return BusinessFacade.getInstance().sendChangePw(management);
     }
 
     @Override
-    public boolean changeMail(String pw, String newMail) {
+    public int changeMail(String pw, String newMail) {
         management = new Management(3, client.hash(pw), client.hash(newMail));
         return BusinessFacade.getInstance().sendChangeMail(management);
     }

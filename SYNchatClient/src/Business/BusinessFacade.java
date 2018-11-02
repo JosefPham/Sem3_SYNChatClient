@@ -80,17 +80,17 @@ public class BusinessFacade implements IBusiness {
     }
     
     @Override
-    public boolean sendVerifyPw(IManagement management) {
+    public int sendVerifyPw(IManagement management) {
         return Icon.sendVerifyPw(management);
     }
     
     @Override
-    public boolean sendChangePw(IManagement management) {
+    public int sendChangePw(IManagement management) {
         return Icon.sendChangePw(management);
     }
 
     @Override
-    public boolean sendChangeMail(IManagement managemnt) {
+    public int sendChangeMail(IManagement managemnt) {
         return Icon.sendChangeMail(management);
     }
 
@@ -106,15 +106,15 @@ public class BusinessFacade implements IBusiness {
         return Icon.updateFriends(friends);
     }
     
-    public boolean verifyPw(String pw) {
+    public int verifyPw(String pw) {
         return ClientSystem.getInstance().getCurrentUser().verifyPw(pw);
     }
     
-    public boolean changePw(String oldPw, String newPw) {
+    public int changePw(String oldPw, String newPw) {
         return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
     }
     
-    public boolean changeMail(String pw, String mail) {
+    public int changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
     }
     

@@ -110,6 +110,25 @@ public class Client implements IClient {
         }
 
     }
+    
+    public int receiveInt() {
+        while (true) {
+            try {
+                int receivedInt = (int) input.readObject();
+                System.out.println("Vi læste noget o.o");
+                if (receivedInt >= 0) {
+                    System.out.println("Fik en int!");
+                    System.out.println(receivedInt);
+                    return receivedInt;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
 
     public void startPrivateThreads() {
 
