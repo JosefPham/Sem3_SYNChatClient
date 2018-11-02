@@ -1,9 +1,15 @@
 package Business;
 
 import Acquaintance.IUser;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User implements IUser {
+    
+    Management management;
+    List<Management> managementList = new ArrayList<>();
 
     private int userID;
     private String tmpName; //must be removed when profile is implemented
@@ -51,32 +57,28 @@ public class User implements IUser {
     }
 
     @Override
-    public boolean changePw(String oldPw, String newPw) {
-        if (verifyPw(oldPw)) {
-            if (BusinessFacade.getInstance().changePw(this.userID, newPw)) {
-                return true;
-            }
-        }
-        return false;
+    public List verifyPw(String pw) {
+        managementList.clear();
+        management = new Management(1, pw);
+        managementList.add(management);
+        return managementList;
+    }
+    
+    @Override
+    public List changePw(String oldPw, String newPw) {
+        managementList.clear();
+        management = new Management(2, oldPw, newPw);
+        managementList.add(management);
+        return managementList;
     }
 
     @Override
-    public boolean changeMail(String pw, String newMail) {
-        if (verifyPw(pw)) {
-            if (BusinessFacade.getInstance().changeMail(this.userID, pw)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean verifyPw(String pw) {
-        if (BusinessFacade.getInstance().verifyPw(this.userID, pw)) {
-            return true;
-        } else {
-            return false;
-        }
+    public List changeMail(String pw, String newMail) {
+        managementList.clear();
+        management = new Management(3, pw, newMail);
+        managementList.add(management);
+        return managementList;     
+                
     }
 
     public boolean addFriend(int userID, String profileName) {

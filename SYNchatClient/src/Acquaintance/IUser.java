@@ -15,9 +15,9 @@ public interface IUser extends Serializable {
 
     public List<Integer> getChats();
     
-    public boolean changePw(String oldPw, String newPw);
+    public List changePw(String oldPw, String newPw);
     
-    public boolean changeMail(String pw, String newMail);
+    public List changeMail(String pw, String newMail);
     
-    public boolean verifyPw(String pw);
+    public List verifyPw(String pw);
 }

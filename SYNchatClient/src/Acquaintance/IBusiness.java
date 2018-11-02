@@ -23,10 +23,12 @@ public interface IBusiness {
     public void sendPublicMsg(String s);
 
     public boolean addFriend(int userID, String profileName);
-    
+
     public boolean removeFriend(int userID);
-    
-    public boolean changeMail(String pw, String mail);
-    
-    public boolean changePw(String oldPw, String newPw);
+
+    public boolean sendVerifyPw(int userID, String pw);
+
+    public boolean sendChangePw(int userID, String newPw);
+
+    public boolean sendChangeMail(int userID, String mail);
 }

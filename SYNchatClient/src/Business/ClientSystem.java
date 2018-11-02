@@ -30,7 +30,7 @@ public class ClientSystem {
         return instance;
     }
 
-    private String hash(String hashString) {
+    protected String hash(String hashString) {
         try {
             MessageDigest hash = MessageDigest.getInstance("MD5");
             hash.update(hashString.getBytes(), 0, hashString.length());
