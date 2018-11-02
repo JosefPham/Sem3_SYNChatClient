@@ -72,7 +72,8 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void sendPublicMsg(String s) {
 //        ClientSystem.getInstance().cipherMsg(s);
-        Icon.sendPublicMsg(ClientSystem.getInstance().cipherMsg(s));
+        Object msg = new TextMessage(0, ClientSystem.getInstance().cipherMsg(s));
+        Icon.sendPublicMsg(msg);
 
     }
 

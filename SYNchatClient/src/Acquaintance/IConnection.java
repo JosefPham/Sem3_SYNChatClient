@@ -18,7 +18,7 @@ public interface IConnection {
 
     public void receivePublicMsg(String s);
 
-    public void sendPublicMsg(String s);
+    public void sendPublicMsg(Object msg);
 
     public void injectBusiness(IBusiness bus);
     

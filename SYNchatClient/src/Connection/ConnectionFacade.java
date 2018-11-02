@@ -69,8 +69,8 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void sendPublicMsg(String s) {
-        client.send(s);
+    public void sendPublicMsg(Object msg) {
+        client.send(msg);
     }
 
     @Override
