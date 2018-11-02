@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Acquaintance.IController;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,13 +19,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Pottemuld
  */
-public class ChangeInfoController implements Initializable {
+public class ChangeInfoController implements IController, Initializable {
 
     @FXML
     private PasswordField pwField_oldPW;
@@ -39,8 +41,6 @@ public class ChangeInfoController implements Initializable {
     @FXML
     private PasswordField pwField_confirmPW;
     @FXML
-    private Label label_warning;
-    @FXML
     private Button btn_password;
     @FXML
     private Button btn_mail;
@@ -53,8 +53,6 @@ public class ChangeInfoController implements Initializable {
     @FXML
     private JFXTextField textField_lname;
     @FXML
-    private Label label_warning1;
-    @FXML
     private AnchorPane pane_countries;
     @FXML
     private Label country_DK;
@@ -63,6 +61,10 @@ public class ChangeInfoController implements Initializable {
     @FXML
     private Label country_Japan;
     private Boolean countryB = true;
+    @FXML
+    private Label label_warningPW;
+    @FXML
+    private Label label_warningMail;
 
     /**
      * Initializes the controller class.
@@ -74,38 +76,46 @@ public class ChangeInfoController implements Initializable {
 
     @FXML
     public void changeMail(ActionEvent event) {
-        label_warning.setText("");
-        if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
+        if (textField_newEmail.getText().equals(textField_confirmEmail.getText()) && !textField_newEmail.getText().isEmpty()) {
             if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText()) == 1) {
-                label_warning.setText("Mail was successfully changed");
+                label_warningMail.setText("Mail was successfully changed");
             } else {
-                label_warning.setText("Something went wrong");
+                label_warningMail.setText("Something went wrong");
             }
         } else if (!textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-            label_warning.setText("Mails does not match!");
+            label_warningMail.setText("Mails does not match!");
         }
     }
 
     @FXML
     public void changepw(ActionEvent event) {
-        label_warning.setText("");
-        if (pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
+        if (pwField_newPW.getText().equals(pwField_confirmPW.getText()) && !pwField_newPW.getText().isEmpty()) {
             if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warning.setText("Password has been successfully changed");
+                label_warningPW.setText("Password has been successfully changed");
             } else if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warning.setText("Something went wrong!");
+                label_warningPW.setText("Something went wrong!");
             }
         } else if (!pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
-            label_warning.setText("Passwords does not match!");
+            label_warningPW.setText("Passwords does not match!");
         }
     }
 
     @FXML
     private void changeFname(MouseEvent event) {
+        if (!textField_fname.isEditable()) {
+            textField_fname.setEditable(true);
+        } else if (textField_fname.isEditable()) {
+            //TODO - Opdater SQL med nyt fornavn
+        }
     }
 
     @FXML
     private void changeLname(MouseEvent event) {
+        if (!textField_lname.isEditable()) {
+            textField_lname.setEditable(true);
+        } else if (textField_lname.isEditable()) {
+            //TODO - Opdater SQL med nyt efternavn
+        }
     }
 
     @FXML
@@ -121,6 +131,7 @@ public class ChangeInfoController implements Initializable {
 
     @FXML
     private void btn_home_action(ActionEvent event) {
+        PresentationFacade.getInstance().changeScene("SYNchat.fxml");
     }
 
     @FXML
@@ -157,6 +168,7 @@ public class ChangeInfoController implements Initializable {
     private void countryDK_handle(MouseEvent event) {
         textField_nationality.setText("Denmark");
         pane_countries.setVisible(false);
+        //TODO - Opdater SQL med land
         countryB = true;
     }
 
@@ -164,6 +176,7 @@ public class ChangeInfoController implements Initializable {
     private void countryUSA_handle(MouseEvent event) {
         textField_nationality.setText("USA");
         pane_countries.setVisible(false);
+        //TODO - Opdater SQL med land
         countryB = true;
     }
 
@@ -171,7 +184,13 @@ public class ChangeInfoController implements Initializable {
     private void countryJapan_handle(MouseEvent event) {
         textField_nationality.setText("Japan");
         pane_countries.setVisible(false);
+        //TODO - Opdater SQL med land
         countryB = true;
+    }
+
+    @Override
+    public void injectStage(Stage stage) {
+        PresentationFacade.stage = stage;
     }
 
 }

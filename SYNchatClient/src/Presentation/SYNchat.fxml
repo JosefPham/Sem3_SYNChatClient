@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -229,92 +230,136 @@
                   </AnchorPane>
                     </children>
                 </GridPane>
-                <GridPane GridPane.columnIndex="1">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="324.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <AnchorPane fx:id="AnchorPane_List" maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;" GridPane.rowIndex="2">
-                     <children>
-                        <ImageView fitHeight="200.0" fitWidth="339.0" layoutX="-69.0" layoutY="70.0" opacity="0.7" pickOnBounds="true" rotate="90.0">
-                           <image>
-                              <Image url="@../Assets/Overlay.png" />
-                           </image>
-                        </ImageView>
-                     </children></AnchorPane>
-                  <AnchorPane prefHeight="159.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.rowIndex="1">
-                     <children>
-                              <AnchorPane layoutX="7.0" layoutY="-69.0" prefHeight="131.0" prefWidth="207.0" style="-fx-background-color: #1f96e0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                  <children>
-                                      <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Private Chat" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <font>
-                                    <Font name="Gill Sans MT" size="12.0" />
-                                 </font>
-                              </JFXButton>
-                                      <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" opacity="0.7" ripplerFill="#162ab7" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: BLACK; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Public Chat" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <font>
-                                    <Font name="Gill Sans MT" size="12.0" />
-                                 </font>
-                              </JFXButton>
-                                  </children>
-                              </AnchorPane>
-                     </children>
-                  </AnchorPane>
-                        <AnchorPane maxHeight="102.0" minHeight="102.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;">
-                            <children>
-                        <ImageView fitHeight="102.0" fitWidth="200.0" opacity="0.7" pickOnBounds="true">
-                           <image>
-                              <Image url="@../Assets/Overlay.png" />
-                           </image>
-                        </ImageView>
-                        <AnchorPane fx:id="pane_cogView" layoutX="56.0" layoutY="51.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: black; -fx-border-radius: 25; -fx-border-width: 2;">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                      <GridPane prefHeight="500.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="324.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <children>
+                              <AnchorPane fx:id="AnchorPane_List" maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="11.0" layoutY="3.0" onMousePressed="#changeProfilePicture" text="Change profile picture">
-                                 <font>
-                                    <Font name="Gill Sans MT" size="10.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="32.0" layoutY="16.0" text="View profile">
-                                 <font>
-                                    <Font name="Gill Sans MT" size="10.0" />
-                                 </font>
-                              </Label>
+                              <ImageView fitHeight="200.0" fitWidth="339.0" layoutX="-69.0" layoutY="70.0" opacity="0.7" pickOnBounds="true" rotate="90.0">
+                                 <image>
+                                    <Image url="@../Assets/Overlay.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
-                                <Label fx:id="label_userInfo" layoutX="14.0" layoutY="37.0" text="Default user&#10;Default country&#10;" textAlignment="RIGHT">
-                           <font>
-                              <Font name="Gill Sans MT Bold" size="12.0" />
-                           </font></Label>
-                                <ImageView fx:id="pic_profile" fitHeight="75.0" fitWidth="75.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../Assets/NoPhoto.png" />
-                                    </image>
-                                </ImageView>
-                        <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="36.0" onMousePressed="#cogHandler" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Assets/Cog_icon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="52.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../Assets/Flag_DK_Color.png" />
-                           </image>
-                        </ImageView>
-                            </children>
+                        <AnchorPane prefHeight="159.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.rowIndex="1">
+                           <children>
+                                    <AnchorPane layoutX="7.0" layoutY="-69.0" prefHeight="131.0" prefWidth="207.0" style="-fx-background-color: #1f96e0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <children>
+                                            <JFXButton fx:id="btn_privatChat" buttonType="RAISED" layoutX="14.0" layoutY="16.0" onAction="#startPrivatChat" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Private Chat" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Gill Sans MT" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                            <JFXButton fx:id="btn_publicChat" buttonType="RAISED" layoutX="110.0" layoutY="16.0" onAction="#startPublicChat" opacity="0.7" ripplerFill="#162ab7" style="-fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: BLACK; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Public Chat" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="Gill Sans MT" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                        </children>
+                                    </AnchorPane>
+                           </children>
                         </AnchorPane>
-                    </children>
-                </GridPane>
+                              <AnchorPane maxHeight="102.0" minHeight="102.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;">
+                                  <children>
+                              <ImageView fitHeight="102.0" fitWidth="200.0" opacity="0.7" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Assets/Overlay.png" />
+                                 </image>
+                              </ImageView>
+                              <AnchorPane fx:id="pane_cogView" layoutX="56.0" layoutY="51.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: black; -fx-border-radius: 25; -fx-border-width: 2;">
+                                 <children>
+                                    <Label fx:id="label_changeProfilePic" layoutX="11.0" layoutY="3.0" onMouseEntered="#changeProfilePicture_in" onMouseExited="#changeProfilePicture_out" onMousePressed="#changeProfilePicture" text="Change profile picture">
+                                       <font>
+                                          <Font name="Gill Sans MT" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="label_viewProfile" layoutX="32.0" layoutY="16.0" onMouseEntered="#viewProfile_in" onMouseExited="#viewProfile_out" onMousePressed="#viewProfile" text="View profile">
+                                       <font>
+                                          <Font name="Gill Sans MT" size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                                      <Label fx:id="label_userInfo" layoutX="14.0" layoutY="37.0" text="Default user&#10;Default country&#10;" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Gill Sans MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                                      <ImageView fx:id="pic_profile" fitHeight="50.0" fitWidth="50.0" layoutX="127.0" layoutY="26.0" pickOnBounds="true">
+                                          <image>
+                                              <Image url="@../Assets/NoPhoto.png" />
+                                          </image>
+                                      </ImageView>
+                              <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="36.0" onMousePressed="#cogHandler" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Cog_icon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="52.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Assets/Flag_DK_Color.png" />
+                                 </image>
+                              </ImageView>
+                                  </children>
+                              </AnchorPane>
+                          </children>
+                      </GridPane>
+                  <ScrollPane fx:id="ScrollPane_AvatarChooser" hbarPolicy="NEVER" layoutX="50.0" layoutY="90.0" prefHeight="150.0" prefWidth="105.0" style="-fx-border-color: Black; -fx-border-width: 2;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
+                           <children>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_1.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="100.0" onMousePressed="#AvatarChooser2" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="190.0" onMousePressed="#AvatarChooser3" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_3.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="280.0" onMousePressed="#AvatarChooser4" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_4.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="370.0" onMousePressed="#AvatarChooser5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_5.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="460.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_6.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
             </children>
         </GridPane>
     </children>

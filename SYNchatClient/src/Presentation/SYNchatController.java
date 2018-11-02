@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,12 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -74,6 +71,7 @@ public class SYNchatController implements IController, Initializable {
     boolean popUp = true;
     boolean cog = true;
     boolean settings = true;
+    boolean scrollPane = true;
     @FXML
     private AnchorPane pane_cogView;
     @FXML
@@ -84,6 +82,13 @@ public class SYNchatController implements IController, Initializable {
     private AnchorPane pane_settings;
     @FXML
     private ImageView hamburger_settings;
+    @FXML
+    private Label label_viewProfile;
+    @FXML
+    private Label label_changeProfilePic;
+    @FXML
+    private ScrollPane ScrollPane_AvatarChooser;
+    
 
     /**
      * Initializes the controller class.
@@ -101,6 +106,7 @@ public class SYNchatController implements IController, Initializable {
         Popup_pane.setVisible(false);
         pane_chat.setDisable(true);
         pane_settings.setVisible(false);
+        ScrollPane_AvatarChooser.setVisible(false);
     }
 
     @FXML
@@ -216,14 +222,22 @@ public class SYNchatController implements IController, Initializable {
             cog = false;
         } else {
             pane_cogView.setVisible(false);
+            ScrollPane_AvatarChooser.setVisible(false);
             pane_cogView.toBack();
             cog = true;
+            scrollPane = true;
         }
     }
 
     @FXML
     private void changeProfilePicture(MouseEvent event) {
-        
+        if(scrollPane) {
+            ScrollPane_AvatarChooser.setVisible(true);
+            scrollPane = false;
+        } else {
+            ScrollPane_AvatarChooser.setVisible(false);
+            scrollPane = true;
+        }
     }
 
     @FXML
@@ -254,6 +268,85 @@ public class SYNchatController implements IController, Initializable {
     @Override
     public void injectStage(Stage stage) {
         PresentationFacade.stage = stage;
+    }
+
+    @FXML
+    private void viewProfile_out(MouseEvent event) {
+        label_viewProfile.setUnderline(false);
+    }
+
+    @FXML
+    private void viewProfile_in(MouseEvent event) {
+        label_viewProfile.setUnderline(true);
+    }
+
+    @FXML
+    private void viewProfile(MouseEvent event) {
+        PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+    }
+
+    @FXML
+    private void changeProfilePicture_out(MouseEvent event) {
+        label_changeProfilePic.setUnderline(false);
+    }
+
+    @FXML
+    private void changeProfilePicture_in(MouseEvent event) {
+        label_changeProfilePic.setUnderline(true);
+    }
+
+    @FXML
+    private void AvatarChooser1(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_1.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+    }
+
+    @FXML
+    private void AvatarChooser2(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_2.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+    }
+
+    @FXML
+    private void AvatarChooser3(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_3.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+    }
+
+    @FXML
+    private void AvatarChooser4(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_4.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+    }
+
+    @FXML
+    private void AvatarChooser5(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_5.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+    }
+
+    @FXML
+    private void AvatarChooser6(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_6.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
     }
 
 }
