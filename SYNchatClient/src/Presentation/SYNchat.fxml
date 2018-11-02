@@ -303,7 +303,7 @@
                               </Label>
                                       <ImageView fx:id="pic_profile" fitHeight="50.0" fitWidth="50.0" layoutX="127.0" layoutY="26.0" pickOnBounds="true">
                                           <image>
-                                              <Image url="@../Assets/NoPhoto.png" />
+                                              <Image url="@../Assets/Avatar_0.png" />
                                           </image>
                                       </ImageView>
                               <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="36.0" onMousePressed="#cogHandler" pickOnBounds="true" preserveRatio="true">
