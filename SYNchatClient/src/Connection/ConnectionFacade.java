@@ -4,7 +4,9 @@ package Connection;
 import Acquaintance.IBusiness;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
+import Acquaintance.IFriends;
 import Acquaintance.ILogin;
+import Business.Friends;
 
 /**
  *
@@ -82,4 +84,9 @@ public class ConnectionFacade implements IConnection {
         client.connectToServer();
     }
     
+    public boolean updateFriends(Friends friends) {
+       IFriends sendFriends = new ConFriends(friends.getFriendlist());
+       client.send(sendFriends);
+       return client.receiveBool();
+    }
 }

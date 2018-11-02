@@ -87,4 +87,19 @@ public class BusinessFacade implements IBusiness {
         Icon.connect();
     }
 
+    @Override
+    public boolean addFriend(int userID, String profileName){
+        return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
+    }
+    
+    @Override
+    public boolean removeFriend(int userID){
+        return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
+    }
+    /*
+    method for updating the friendsobject in database
+    */
+    boolean updateFriends(Friends friends) {
+        return Icon.updateFriends(friends);
+    }
 }

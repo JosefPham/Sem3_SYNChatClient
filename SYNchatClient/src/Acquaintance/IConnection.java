@@ -1,5 +1,7 @@
 package Acquaintance;
 
+import Business.Friends;
+
 /**
  *
  * @author Group 9
@@ -25,4 +27,6 @@ public interface IConnection {
     public void logoutHandling(String logout);
     
     public void connect();
+
+    public boolean updateFriends(Friends friends);
 }
