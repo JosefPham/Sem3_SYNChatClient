@@ -1,6 +1,7 @@
 package Business;
 
 import Acquaintance.ILogin;
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.math.BigInteger;
@@ -73,5 +74,10 @@ public class ClientSystem {
     
      void setUser(User user){
          this.currentUser = user;
+     }
+     
+     protected boolean updateProfile(String firstName, String lastName, Nationality nationality, String profileText) {
+         IProfile profile = new Profile(firstName, lastName, nationality, profileText);
+        return BusinessFacade.getInstance().updateProfile(profile);
      }
 }

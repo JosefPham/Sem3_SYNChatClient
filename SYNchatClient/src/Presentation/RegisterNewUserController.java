@@ -44,7 +44,6 @@ public class RegisterNewUserController implements IController, Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
-    private Nationality selectedCountry;
     private Boolean countryB = true;
     @FXML
     private JFXPasswordField txt_Password2;

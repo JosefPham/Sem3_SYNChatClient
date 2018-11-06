@@ -6,6 +6,7 @@
 package Presentation;
 
 import Acquaintance.IController;
+import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -53,8 +54,6 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private JFXTextField textField_nationality;
     @FXML
-    private JFXTextField textField_email;
-    @FXML
     private JFXTextField textField_lname;
     @FXML
     private AnchorPane pane_countries;
@@ -73,6 +72,8 @@ public class ChangeInfoController implements IController, Initializable {
     private JFXButton btn_saveChanges;
     @FXML
     private JFXTextArea textArea_profileText;
+    @FXML
+    private Label label_changeStatus;
 
     /**
      * Initializes the controller class.
@@ -81,20 +82,19 @@ public class ChangeInfoController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
 
-        //Inserting data into textFields if there is a value to the specific field
-        if (presentationFacade.getUser().getProfile().getFirstName().length() > 0) {
-            textField_fname.setText(presentationFacade.getUser().getProfile().getFirstName());
-        }
-        if (presentationFacade.getUser().getProfile().getLastName().length() > 0) {
-            textField_lname.setText(presentationFacade.getUser().getProfile().getLastName());
-        }
-        if (presentationFacade.getUser().getProfile().getNationality().toString().length() > 0) {
-            textField_nationality.setText(presentationFacade.getUser().getProfile().getNationality().toString());
-        }
-        if (presentationFacade.getUser().getProfile().getProfileText().length() > 0) {
-            textArea_profileText.setText(presentationFacade.getUser().getProfile().getProfileText());
-        }
-
+//        //Inserting data into textFields if there is a value to the specific field
+//        if (presentationFacade.getUser().getProfile().getFirstName().length() > 0) {
+//            textField_fname.setText(presentationFacade.getUser().getProfile().getFirstName());
+//        }
+//        if (presentationFacade.getUser().getProfile().getLastName().length() > 0) {
+//            textField_lname.setText(presentationFacade.getUser().getProfile().getLastName());
+//        }
+//        if (presentationFacade.getUser().getProfile().getNationality().toString().length() > 0) {
+//            textField_nationality.setText(presentationFacade.getUser().getProfile().getNationality().toString());
+//        }
+//        if (presentationFacade.getUser().getProfile().getProfileText().length() > 0) {
+//            textArea_profileText.setText(presentationFacade.getUser().getProfile().getProfileText());
+//        }
     }
 
     @FXML
@@ -137,10 +137,21 @@ public class ChangeInfoController implements IController, Initializable {
         }
     }
 
+    @FXML
     public void changeInfo(ActionEvent event) {
-
+        label_changeStatus.setText("");
+        if (!textField_fname.getText().isEmpty() && !textField_lname.getText().isEmpty() && !textField_nationality.getText().isEmpty()) {
+            if (presentationFacade.editProfileInfo(textField_fname.getText(), textField_lname.getText(), Nationality.valueOf(textField_nationality.getText()), textArea_profileText.getText())) {
+                label_changeStatus.setText("Changes has been saved");
+            } else {
+                label_changeStatus.setText("Something went wrong\nChanges has not been saved");
+            }
+        }
+        
+        label_changeStatus.setText("Firstname, lastname and country must be filled out");
     }
 
+    
     @FXML
     private void changeFname(MouseEvent event) {
         if (!textField_fname.isEditable()) {
@@ -232,10 +243,6 @@ public class ChangeInfoController implements IController, Initializable {
     @Override
     public void injectStage(Stage stage) {
         PresentationFacade.stage = stage;
-    }
-
-    @FXML
-    private void saveChange(ActionEvent event) {
     }
 
 }

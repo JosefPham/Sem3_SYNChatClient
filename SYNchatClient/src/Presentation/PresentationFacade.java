@@ -122,4 +122,8 @@ public class PresentationFacade implements IPresentation, IController {
     public IUser getUser() {
         return Ibus.getUser();
     }
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
+        return Ibus.editProfileInfo(firstName, lastName, nationality, profileText);
+    }
 }

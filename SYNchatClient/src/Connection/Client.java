@@ -36,7 +36,7 @@ public class Client implements IClient {
         }
         this.port = port;
 
-        //connectToServer();
+        connectToServer();
 
         //outcomment
         //ILogin login = new Login("test@test12.dk", "12345678");

@@ -29,6 +29,13 @@ public class Profile implements IProfile{
         this.nationality = nationality;
     }
     
+    public Profile(String firstName, String lastName, Nationality nationality, String profileText) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.profileText = profileText;
+    }
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

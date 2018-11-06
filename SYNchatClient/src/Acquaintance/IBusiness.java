@@ -43,4 +43,8 @@ public interface IBusiness {
     public int sendChangeMail(IManagement management);
     
     public IUser getUser();
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
+    
+    public boolean updateProfile(IProfile profile);
 }

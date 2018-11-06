@@ -5,6 +5,7 @@ import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 
@@ -137,6 +138,14 @@ public class BusinessFacade implements IBusiness {
     @Override
     public IUser getUser() {
         return ClientSystem.getInstance().getCurrentUser();
+    }
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
+        return ClientSystem.getInstance().updateProfile(firstName, lastName, nationality, profileText);
+    }
+    
+    public boolean updateProfile(IProfile profile) {
+        return Icon.updateProfile(profile);
     }
     
     

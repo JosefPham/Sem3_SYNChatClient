@@ -19,4 +19,6 @@ public interface IPresentation {
     public void logoutHandling(String logout);
     
     public IUser getUser();
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
 }

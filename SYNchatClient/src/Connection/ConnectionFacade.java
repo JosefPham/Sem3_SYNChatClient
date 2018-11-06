@@ -7,6 +7,7 @@ import Acquaintance.IConnection;
 import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
+import Acquaintance.IProfile;
 import Business.Friends;
 
 /**
@@ -99,13 +100,21 @@ public class ConnectionFacade implements IConnection {
         client.send(logout);
     }
 
+    @Override
     public void connect() {
         client.connectToServer();
     }
     
+    @Override
     public boolean updateFriends(Friends friends) {
        IFriends sendFriends = new ConFriends(friends.getFriendlist());
        client.send(sendFriends);
        return client.receiveBool();
+    }
+    
+    @Override
+    public boolean updateProfile(IProfile profile) {
+        client.send(profile);
+        return client.receiveBool();
     }
 }
