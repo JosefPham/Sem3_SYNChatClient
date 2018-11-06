@@ -55,18 +55,13 @@ public class User implements IUser {
         return profile;
     }
 
-    public int verifyPw(String pw) {
-        management = new Management(1, client.hash(pw));
-        return BusinessFacade.getInstance().sendVerifyPw(management);
-    }
-
     public int changePw(String oldPw, String newPw) {
-        management = new Management(2, client.hash(oldPw), client.hash(newPw));
+        management = new Management(2, client.getCurrentUser().getUserID(), client.hash(oldPw), client.hash(newPw));
         return BusinessFacade.getInstance().sendChangePw(management);
     }
 
     public int changeMail(String pw, String newMail) {
-        management = new Management(3, client.hash(pw), client.hash(newMail));
+        management = new Management(1, client.getCurrentUser().getUserID(), client.hash(pw), client.hash(newMail));
         return BusinessFacade.getInstance().sendChangeMail(management);
     }
 

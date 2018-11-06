@@ -2,6 +2,7 @@ package Presentation;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IController;
+import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
@@ -75,16 +76,14 @@ public class PresentationFacade implements IPresentation, IController {
         Ibus.sendPublicMsg(s);
     }
     
-    public int verifyPw(String pw) {
-        return Ibus.verifyPw(pw);
-    }
-   
+    @Override
     public int changePw(String oldPw, String newPw) {
         return Ibus.changePw(oldPw, newPw);
     }
     
-    public int changeMail(String pw, String mail) {
-        return Ibus.changeMail(pw, mail);
+    @Override
+    public int changeMail(String pw, String newMail) {
+        return Ibus.changeMail(pw, newMail);
     }
     
     

@@ -8,6 +8,7 @@ import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IProfile;
+import Acquaintance.IUser;
 import Business.Friends;
 
 /**
@@ -75,12 +76,6 @@ public class ConnectionFacade implements IConnection {
     @Override
     public void sendPublicMsg(Object msg) {
         client.send(msg);
-    }
-    
-    @Override
-    public int sendVerifyPw(IManagement management) {
-        client.send(management);
-        return client.receiveInt();
     }
     
     @Override

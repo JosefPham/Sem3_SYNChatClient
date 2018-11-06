@@ -30,13 +30,9 @@ public interface IBusiness {
 
     public boolean removeFriend(int userID);
     
-    public int verifyPw(String pw);
-    
     public int changePw(String oldPw, String newPw);
     
     public int changeMail(String pw, String mail);
-
-    public int sendVerifyPw(IManagement management);
 
     public int sendChangePw(IManagement management);
 

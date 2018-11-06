@@ -24,8 +24,6 @@ public interface IConnection {
 
     public void injectBusiness(IBusiness bus);
     
-    public int sendVerifyPw(IManagement management);
-    
     public int sendChangePw(IManagement management);
     
     public int sendChangeMail(IManagement management);
