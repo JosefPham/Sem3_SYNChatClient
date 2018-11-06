@@ -49,8 +49,6 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private JFXTextField textField_nationality;
     @FXML
-    private JFXTextField textField_email;
-    @FXML
     private JFXTextField textField_lname;
     @FXML
     private AnchorPane pane_countries;

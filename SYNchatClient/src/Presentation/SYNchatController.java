@@ -252,7 +252,6 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 
-    @FXML
     private void returnToWelcome(ActionEvent event) {
         pane_chat.setDisable(true);
         pane_Welcome.toFront();

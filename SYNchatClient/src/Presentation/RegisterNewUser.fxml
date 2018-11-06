@@ -88,7 +88,7 @@
                   <Font name="Gill Sans MT Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="73.0" text="More countries in devolpment.." textFill="WHITE">
+            <Label layoutX="23.0" layoutY="73.0" text="More countries coming soon.." textFill="WHITE">
                <font>
                   <Font name="Gill Sans MT Bold" size="10.0" />
                </font>
