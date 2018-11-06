@@ -8,7 +8,7 @@ package Acquaintance;
 
 
 /**
- *
+ * @author Group 9
  */
 public interface IProfile {
     

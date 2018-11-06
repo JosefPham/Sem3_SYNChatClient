@@ -13,7 +13,7 @@ import javafx.scene.image.Image; //Might not be a correct import...
 
 
 /**
- *
+ * @author Group 9
  */
 public class Profile implements IProfile{
     
