@@ -82,19 +82,19 @@ public class ChangeInfoController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
 
-//        //Inserting data into textFields if there is a value to the specific field
-//        if (presentationFacade.getUser().getProfile().getFirstName().length() > 0) {
-//            textField_fname.setText(presentationFacade.getUser().getProfile().getFirstName());
-//        }
-//        if (presentationFacade.getUser().getProfile().getLastName().length() > 0) {
-//            textField_lname.setText(presentationFacade.getUser().getProfile().getLastName());
-//        }
-//        if (presentationFacade.getUser().getProfile().getNationality().toString().length() > 0) {
-//            textField_nationality.setText(presentationFacade.getUser().getProfile().getNationality().toString());
-//        }
-//        if (presentationFacade.getUser().getProfile().getProfileText().length() > 0) {
-//            textArea_profileText.setText(presentationFacade.getUser().getProfile().getProfileText());
-//        }
+        //Inserting data into textFields if there is a value to the specific field
+        if (presentationFacade.getUser().getProfile().getFirstName().length() > 0) {
+            textField_fname.setText(presentationFacade.getUser().getProfile().getFirstName());
+        }
+        if (presentationFacade.getUser().getProfile().getLastName().length() > 0) {
+            textField_lname.setText(presentationFacade.getUser().getProfile().getLastName());
+        }
+        if (presentationFacade.getUser().getProfile().getNationality().toString().length() > 0) {
+            textField_nationality.setText(presentationFacade.getUser().getProfile().getNationality().toString());
+        }
+        if (presentationFacade.getUser().getProfile().getProfileText().length() > 0) {
+            textArea_profileText.setText(presentationFacade.getUser().getProfile().getProfileText());
+        }
     }
 
     @FXML
