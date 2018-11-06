@@ -16,6 +16,5 @@ public class TextMessage extends Message {
     public TextMessage(int senderID, String msg) {
         super(senderID);
         this.msg = msg;
-    }
-    
+    }  
 }
