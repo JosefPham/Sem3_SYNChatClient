@@ -22,21 +22,6 @@
             <Image url="@../Assets/SYNlogo_White.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="177.0" onMousePressed="#changeFname" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Assets/pencil_icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="217.0" onMousePressed="#changeLname" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Assets/pencil_icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="257.0" onMousePressed="#changeNat" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Assets/pencil_icon.png" />
-         </image>
-      </ImageView>
       <Line endX="500.0" layoutY="110.0" stroke="#1f98de" />
       <Line endX="500.0" layoutY="350.0" stroke="#1f98de" />
       <Line layoutX="250.0" layoutY="350.0" startY="250.0" stroke="#1f98de" />
@@ -70,6 +55,21 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="177.0" onMousePressed="#changeFname" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/pencil_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="217.0" onMousePressed="#changeLname" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/pencil_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="257.0" onMousePressed="#changeNat" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/pencil_icon.png" />
+         </image>
+      </ImageView>
       <JFXTextField fx:id="textField_email" editable="false" focusColor="#182db5" layoutX="106.0" layoutY="295.0" promptText="Mail" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
