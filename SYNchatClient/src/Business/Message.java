@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Acquaintance.IMessage;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author Sigurd E. Espersen
  */
-public abstract class Message implements Serializable {
+public abstract class Message implements Serializable, IMessage {
 
     int senderID;
     Date timestamp;
@@ -22,10 +23,12 @@ public abstract class Message implements Serializable {
         timestamp = new Date();
     }
 
+    @Override
     public int getSenderID() {
         return senderID;
     }
 
+    @Override
     public Date getTimestamp() {
         return timestamp;
     }
