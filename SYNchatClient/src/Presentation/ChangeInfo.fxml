@@ -31,7 +31,7 @@
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="txtArea_profileText" focusTraversable="false" layoutX="265.0" layoutY="180.0" prefHeight="158.0" prefWidth="218.0" promptText="Click here to edit your profile description" style="-fx-border-color: #1f98de;" wrapText="true">
+      <JFXTextArea fx:id="textArea_profileText" focusTraversable="false" layoutX="265.0" layoutY="180.0" prefHeight="158.0" prefWidth="218.0" promptText="Click here to edit your profile description" style="-fx-border-color: #1f98de;" wrapText="true">
          <font>
             <Font size="12.0" />
          </font>

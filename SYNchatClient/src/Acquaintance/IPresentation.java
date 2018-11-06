@@ -17,4 +17,6 @@ public interface IPresentation {
     public String getS();
     
     public void logoutHandling(String logout);
+    
+    public IUser getUser();
 }

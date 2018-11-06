@@ -1,6 +1,7 @@
 package Presentation;
 
 import Acquaintance.IController;
+import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.File;
 import java.net.URL;
@@ -43,7 +44,7 @@ public class RegisterNewUserController implements IController, Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
-    private String selectedCountry = "Default";
+    private Nationality selectedCountry;
     private Boolean countryB = true;
     @FXML
     private JFXPasswordField txt_Password2;
@@ -88,7 +89,7 @@ public class RegisterNewUserController implements IController, Initializable {
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
             //TODO: default country string mangler at blive sendt med
-            if (PresentationFacade.getInstance().regUser((txt_firstName.getText() + " " + txt_lastName.getText()), txt_email.getText(), txt_Password1.getText())) {
+            if (PresentationFacade.getInstance().regUser(txt_firstName.getText() + "_tmp", txt_email.getText(), txt_Password2.getText(), txt_firstName.getText(), txt_lastName.getText(), Nationality.valueOf(label_country.getText()))) {
                 label_warninginfo.setText("Registration Complete");
                 PresentationFacade.getInstance().changeScene("Login.fxml");
             } else {
@@ -167,15 +168,13 @@ public class RegisterNewUserController implements IController, Initializable {
 
     @FXML
     private void countryDK_handle(MouseEvent event) {
-        selectedCountry = "Denmark";
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("Denmark");
     }
 
     @FXML
-    private void countryUSA_handle(MouseEvent event) {
-        selectedCountry = "USA";        
+    private void countryUSA_handle(MouseEvent event) {        
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("USA");
@@ -183,7 +182,6 @@ public class RegisterNewUserController implements IController, Initializable {
 
     @FXML
     private void countryJapan_handle(MouseEvent event) {
-        selectedCountry = "Japan";        
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("Japan");

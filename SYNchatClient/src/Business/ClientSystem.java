@@ -2,6 +2,7 @@ package Business;
 
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -48,8 +49,8 @@ public class ClientSystem {
 
     
 
-    protected boolean regUser(String tmpName, String mail, String pw) {
-        IUser iuser = new User(tmpName);
+    protected boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality) {
+        IUser iuser = new User(tmpName, firstName, lastName, nationality);
         ILogin ilogin = new Login(hash(mail), hash(pw)); 
         ilogin.setUser(iuser);
         boolean b = BusinessFacade.getInstance().regBool(ilogin);

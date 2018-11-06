@@ -3,6 +3,8 @@ package Presentation;
 import Acquaintance.IBusiness;
 import Acquaintance.IController;
 import Acquaintance.IPresentation;
+import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,8 +45,8 @@ public class PresentationFacade implements IPresentation, IController {
         return Ibus.login(mail, pw);
     }
 
-    public Boolean regUser(String tmpName, String mail, String pw) {
-        return Ibus.regUser(tmpName, mail, pw);
+    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality) {
+        return Ibus.regUser(tmpName, mail, pw, firstName, lastName, nationality);
     }
 
     //Call from Starter to SYNchat with System Startup command
@@ -114,5 +116,10 @@ public class PresentationFacade implements IPresentation, IController {
     
     public void connect() {
         Ibus.connect();
+    }
+    
+    @Override
+    public IUser getUser() {
+        return Ibus.getUser();
     }
 }

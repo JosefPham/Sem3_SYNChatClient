@@ -12,7 +12,7 @@ public interface IBusiness {
 
     public int login(String mail, String pw);
 
-    public Boolean regUser(String tmpName, String mail, String pw);
+    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality);
 
     public void publicThreads();
 
@@ -41,4 +41,6 @@ public interface IBusiness {
     public int sendChangePw(IManagement management);
 
     public int sendChangeMail(IManagement management);
+    
+    public IUser getUser();
 }

@@ -30,6 +30,8 @@ import javafx.stage.Stage;
  */
 public class ChangeInfoController implements IController, Initializable {
 
+    private PresentationFacade presentationFacade = PresentationFacade.getInstance();
+
     @FXML
     private PasswordField pwField_oldPW;
     @FXML
@@ -70,7 +72,7 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private JFXButton btn_saveChanges;
     @FXML
-    private JFXTextArea txtArea_profileText;
+    private JFXTextArea textArea_profileText;
 
     /**
      * Initializes the controller class.
@@ -78,6 +80,21 @@ public class ChangeInfoController implements IController, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
+
+        //Inserting data into textFields if there is a value to the specific field
+        if (presentationFacade.getUser().getProfile().getFirstName().length() > 0) {
+            textField_fname.setText(presentationFacade.getUser().getProfile().getFirstName());
+        }
+        if (presentationFacade.getUser().getProfile().getLastName().length() > 0) {
+            textField_lname.setText(presentationFacade.getUser().getProfile().getLastName());
+        }
+        if (presentationFacade.getUser().getProfile().getNationality().toString().length() > 0) {
+            textField_nationality.setText(presentationFacade.getUser().getProfile().getNationality().toString());
+        }
+        if (presentationFacade.getUser().getProfile().getProfileText().length() > 0) {
+            textArea_profileText.setText(presentationFacade.getUser().getProfile().getProfileText());
+        }
+
     }
 
     @FXML
@@ -103,7 +120,7 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     public void changepw(ActionEvent event) {
         if (pwField_newPW.getText().equals(pwField_confirmPW.getText()) && !pwField_newPW.getText().isEmpty()) {
-            switch(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
+            switch (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
                 case 1:
                     label_warningPW.setText("Password was successfully changed");
                     break;
@@ -118,6 +135,10 @@ public class ChangeInfoController implements IController, Initializable {
                     break;
             }
         }
+    }
+
+    public void changeInfo(ActionEvent event) {
+
     }
 
     @FXML

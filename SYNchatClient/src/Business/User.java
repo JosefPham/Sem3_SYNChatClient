@@ -1,6 +1,8 @@
 package Business;
 
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.util.List;
 
 public class User implements IUser {
@@ -14,18 +16,21 @@ public class User implements IUser {
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
     private Friends friends;
+    private Profile profile;
 
-    public User(String tmpName) {
+    public User(String tmpName, String firstName, String lastName, Nationality nationality) {
         this.tmpName = tmpName;
+        new Profile(firstName, lastName, nationality);
     }
 
-    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, Friends friends) {
+    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
         this.userID = userID;
         this.tmpName = tmpName;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
         this.friends = friends;
+        this.profile = profile;
     }
 
     @Override
@@ -51,6 +56,11 @@ public class User implements IUser {
     @Override
     public List<Integer> getChats() {
         return chats;
+    }
+    
+    @Override
+    public IProfile getProfile() {
+        return profile;
     }
 
     public int verifyPw(String pw) {

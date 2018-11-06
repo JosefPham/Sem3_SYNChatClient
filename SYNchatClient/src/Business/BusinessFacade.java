@@ -5,7 +5,8 @@ import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
-import java.util.List;
+import Acquaintance.IUser;
+import Acquaintance.Nationality;
 
 /**
  *
@@ -49,8 +50,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public Boolean regUser(String tmpName, String mail, String pw) {
-        return ClientSystem.getInstance().regUser(tmpName, mail, pw);
+    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality) {
+        return ClientSystem.getInstance().regUser(tmpName, mail, pw, firstName, lastName, nationality);
     }
 
     protected Boolean regBool(ILogin ilogin) {
@@ -131,6 +132,11 @@ public class BusinessFacade implements IBusiness {
     
     public int changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
+    }
+    
+    @Override
+    public IUser getUser() {
+        return ClientSystem.getInstance().getCurrentUser();
     }
     
     

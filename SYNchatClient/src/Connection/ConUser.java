@@ -1,5 +1,6 @@
 package Connection;
 
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import java.util.List;
 
@@ -10,17 +11,19 @@ public class ConUser implements IUser {
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have recived
     private List<Integer> chats;
+    private IProfile profile;
 
     public ConUser(String tmpName) {
         this.tmpName = tmpName;
     }
 
-    public ConUser(int userID, String tmpName, boolean banned, int reports, List<Integer> chats) {
+    public ConUser(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, IProfile profile) {
         this.userID = userID;
         this.tmpName = tmpName;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
+        this.profile = profile;
     }
 
     @Override
@@ -46,5 +49,10 @@ public class ConUser implements IUser {
     @Override
     public List<Integer> getChats() {
         return chats;
+    }
+
+    @Override
+    public IProfile getProfile() {
+        return profile;
     }
 }

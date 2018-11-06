@@ -6,6 +6,8 @@
 
 package Business;
 
+import Acquaintance.IProfile;
+import Acquaintance.Nationality;
 import javafx.scene.image.Image; //Might not be a correct import...
 
 
@@ -13,7 +15,7 @@ import javafx.scene.image.Image; //Might not be a correct import...
 /**
  *
  */
-public class Profile {
+public class Profile implements IProfile{
     
     String firstName;
     String lastName;
@@ -47,7 +49,7 @@ public class Profile {
         return firstName;
     }
     
-    public String getLastName(String lastName) {
+    public String getLastName() {
         return lastName;
     }
 
@@ -58,7 +60,5 @@ public class Profile {
     public String getProfileText() {
         return profileText;
     }
-    
-    
     
 }
