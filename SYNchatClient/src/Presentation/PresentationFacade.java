@@ -45,8 +45,8 @@ public class PresentationFacade implements IPresentation, IController {
         return Ibus.login(mail, pw);
     }
 
-    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality) {
-        return Ibus.regUser(tmpName, mail, pw, firstName, lastName, nationality);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
+        return Ibus.regUser(firstName, lastName, mail, pw, nationality);
     }
 
     //Call from Starter to SYNchat with System Startup command

@@ -50,8 +50,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality) {
-        return ClientSystem.getInstance().regUser(tmpName, mail, pw, firstName, lastName, nationality);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
+        return ClientSystem.getInstance().regUser(firstName, lastName, mail, pw, nationality);
     }
 
     protected Boolean regBool(ILogin ilogin) {

@@ -11,21 +11,18 @@ public class User implements IUser {
     ClientSystem client = ClientSystem.getInstance();
 
     private int userID;
-    private String tmpName; //must be removed when profile is implemented
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
     private Friends friends;
     private Profile profile;
 
-    public User(String tmpName, String firstName, String lastName, Nationality nationality) {
-        this.tmpName = tmpName;
+    public User(String firstName, String lastName, Nationality nationality) {
         new Profile(firstName, lastName, nationality);
     }
 
-    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
+    public User(int userID, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
         this.userID = userID;
-        this.tmpName = tmpName;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
@@ -36,11 +33,6 @@ public class User implements IUser {
     @Override
     public int getUserID() {
         return userID;
-    }
-
-    @Override
-    public String getTmpName() {
-        return tmpName;
     }
 
     @Override

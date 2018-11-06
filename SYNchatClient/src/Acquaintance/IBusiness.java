@@ -12,7 +12,7 @@ public interface IBusiness {
 
     public int login(String mail, String pw);
 
-    public Boolean regUser(String tmpName, String mail, String pw, String firstName, String lastName, Nationality nationality);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality);
 
     public void publicThreads();
 
