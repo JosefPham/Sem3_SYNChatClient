@@ -15,20 +15,24 @@ import javafx.scene.image.Image; //Might not be a correct import...
  */
 public class Profile {
     
-    String name;
+    String firstName;
+    String lastName;
     Nationality nationality;
     Image picture; //Watch out for the datatype!
     String profileText;
 
-    public Profile(String name, Nationality nationality) {
-        this.name = name;
+    public Profile(String firstName, String lastName, Nationality nationality) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.nationality = nationality;
     }
-
-    //All setter-methods will be called through updateInfo() via User-class
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setNationality(Nationality nationality) {
@@ -39,8 +43,12 @@ public class Profile {
         this.profileText = profileText;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName(String lastName) {
+        return lastName;
     }
 
     public Nationality getNationality() {
