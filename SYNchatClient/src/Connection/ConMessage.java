@@ -2,7 +2,7 @@ package Connection;
 
 import Acquaintance.IMessage;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 
 /**
  *
@@ -11,11 +11,11 @@ import java.util.Date;
 public abstract class ConMessage implements Serializable, IMessage {
 
     int senderID;
-    Date timestamp;
+    Instant timestamp;
 
     public ConMessage(int senderID) {
         this.senderID = senderID;
-        timestamp = new Date();
+        timestamp = Instant.now();
     }
 
     @Override
@@ -24,7 +24,7 @@ public abstract class ConMessage implements Serializable, IMessage {
     }
 
     @Override
-    public Date getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 

@@ -67,22 +67,20 @@ public class LoginController implements IController, Initializable {
     @FXML
     private void btn_login_action(ActionEvent event) {
         label_wrongInfo.setText("");
-        if (validateInfo()) {
-            if(!connected) {
-            PresentationFacade.getInstance().connect();
-            connected = true;
-            }
-            loginHandler(event);
-        }
-
+//        if (validateInfo()) {
+//            if(!connected) {
+//            PresentationFacade.getInstance().connect();
+//            connected = true;
+//            }
+        loginHandler(event);
     }
 
     @FXML
     private void btn_register_action(ActionEvent event) {
-        if(!connected) {
-        PresentationFacade.getInstance().connect();
-        connected = true;
-        }
+//        if(!connected) {
+//        PresentationFacade.getInstance().connect();
+//        connected = true;
+//        }
         PresentationFacade.getInstance().changeScene("RegisterNewUser.fxml");
     }
 

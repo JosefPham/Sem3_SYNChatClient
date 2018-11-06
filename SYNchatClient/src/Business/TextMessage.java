@@ -32,4 +32,6 @@ public class TextMessage extends Message implements ITextMessage {
     public String getContext() {
         return msg;
     }
+    
+
 }

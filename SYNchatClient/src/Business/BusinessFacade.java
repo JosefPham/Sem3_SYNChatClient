@@ -68,8 +68,10 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void receivePublicMsg(String s) {
-        Ipres.receivePublicMsg(ClientSystem.getInstance().cipherMsg(s));
+    public void receivePublicMsg(IMessage msg) {        
+        Message finalMsg = new TextMessage(msg.getSenderID(), ClientSystem.getInstance().cipherMsg(msg.getContext()));
+        finalMsg.setTimestamp(msg.getTimestamp());
+        Ipres.receivePublicMsg(finalMsg);
     }
 
     @Override

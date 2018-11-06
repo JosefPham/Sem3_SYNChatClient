@@ -1,6 +1,7 @@
 package Presentation;
 
 import Acquaintance.IController;
+import Acquaintance.IMessage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -124,7 +125,9 @@ public class SYNchatController implements IController, Initializable {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                String s = "";
+                String comparisonString = "";
+                int comparisonInt = 0;
+                IMessage Imsg;
                 while (true) {
                     try {
                         Thread.sleep(0);
@@ -144,10 +147,13 @@ public class SYNchatController implements IController, Initializable {
 //                    System.out.println("| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |");
 //                    System.out.println(" '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'");
 //                    System.out.println("");
-                    String tmp = PresentationFacade.getInstance().getS();
-                    if (!tmp.equals(s)) {
-                        s = tmp;
-                        receivePublicMsg(s);
+                    String context = PresentationFacade.getInstance().getContext();
+                    int senderID = PresentationFacade.getInstance().getSenderID();
+                    if (!context.equals(comparisonString) && (senderID != comparisonInt)) {
+                        comparisonString = context;
+                        comparisonInt = senderID;
+                        Imsg = PresentationFacade.getInstance().getImsg();
+                        receivePublicMsg(Imsg);
                     }
                 }
             }
@@ -200,16 +206,16 @@ public class SYNchatController implements IController, Initializable {
         }
     }
 
-    public void receivePublicMsg(String s) {
-        System.out.println("En eller anden faggots besked: " + s);
+    public void receivePublicMsg(IMessage msg) {
+        System.out.println("En eller anden faggots besked: " + msg.getContext());
         String nameMsg = "";
         String yourMsg = "";
         String dateMsg = "";
         nameMsg = "Default user:\n";
         txtArea_leftChat.appendText(nameMsg);
-        yourMsg = s + "\n";
+        yourMsg = msg.getContext() + "\n";
         txtArea_leftChat.appendText(yourMsg);
-        dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
+        dateMsg = msg.getTimestamp().toString() + "\n";
         txtArea_leftChat.appendText(dateMsg);
         txtArea_rightChat.appendText("\n\n");
     }

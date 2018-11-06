@@ -2,6 +2,7 @@ package Presentation;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IController;
+import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,7 +20,9 @@ public class PresentationFacade implements IPresentation, IController {
 
     protected static IBusiness Ibus;
     private SYNchat synchat;
-    private String s = "";
+    private String context = "";
+    private int senderID;
+    private IMessage Imsg;
     public static Stage stage;
 
     private static PresentationFacade instance = null;
@@ -57,15 +60,15 @@ public class PresentationFacade implements IPresentation, IController {
     }
 
     @Override
-    public void receivePublicMsg(String s) {
-        this.s = s;
-        System.out.println("presentationfacade");
-        //SYNchatController.getInstance().receivePublicMsg(s);
+    public void receivePublicMsg(IMessage msg) {
+        this.context = msg.getContext();
+        this.senderID = msg.getSenderID();
+        this.Imsg = msg;
     }
 
     @Override
-    public String getS() {
-        return s;
+    public String getContext() {
+        return context;
     }
 
     @Override
@@ -114,5 +117,14 @@ public class PresentationFacade implements IPresentation, IController {
     
     public void connect() {
         Ibus.connect();
+    }
+
+    @Override
+    public int getSenderID() {
+        return senderID;
+    }
+
+    public IMessage getImsg() {
+        return Imsg;
     }
 }

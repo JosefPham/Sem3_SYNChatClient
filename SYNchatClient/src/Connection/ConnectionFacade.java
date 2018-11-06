@@ -67,9 +67,9 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void receivePublicMsg(String s) {
+    public void receivePublicMsg(IMessage msg) {
         System.out.println("connectionfacade");
-        Ibus.receivePublicMsg(s);
+        Ibus.receivePublicMsg(msg);
     }
 
     @Override

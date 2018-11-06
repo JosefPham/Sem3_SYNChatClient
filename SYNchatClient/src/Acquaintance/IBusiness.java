@@ -18,7 +18,7 @@ public interface IBusiness {
 
     public void privateThreads();
 
-    public void receivePublicMsg(String s);
+    public void receivePublicMsg(IMessage msg);
 
     public void sendPublicMsg(String s);
     

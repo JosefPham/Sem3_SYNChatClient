@@ -2,7 +2,7 @@ package Business;
 
 import Acquaintance.IMessage;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 
 /**
  *
@@ -10,12 +10,12 @@ import java.util.Date;
  */
 public abstract class Message implements Serializable, IMessage {
 
-    int senderID;
-    Date timestamp;
+    private int senderID;
+    private Instant timestamp;
 
     public Message(int senderID) {
         this.senderID = senderID;
-        timestamp = new Date();
+        timestamp = Instant.now();
     }
 
     @Override
@@ -24,12 +24,16 @@ public abstract class Message implements Serializable, IMessage {
     }
 
     @Override
-    public Date getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
     
     @Override
     public String getContext() {
         return "Abstract klasse getContext";
+    }
+    
+    public void setTimestamp(Instant timestamp){
+        this.timestamp = timestamp;
     }
 }

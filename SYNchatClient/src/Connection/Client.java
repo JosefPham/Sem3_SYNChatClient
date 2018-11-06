@@ -36,7 +36,7 @@ public class Client implements IClient {
         }
         this.port = port;
 
-        //connectToServer();
+        connectToServer();
 
         //outcomment
         //ILogin login = new Login("test@test12.dk", "12345678");
@@ -216,9 +216,10 @@ public class Client implements IClient {
             public void run() {
                 try {
                     while (true) {
-                        String text = (String) input.readObject();
-                        ConnectionFacade.getInstance().receivePublicMsg(text);
-                        System.out.println(text);
+                        //String text = (String) input.readObject();
+                        ConTextMessage msg = (ConTextMessage) input.readObject();
+                        ConnectionFacade.getInstance().receivePublicMsg(msg);
+                        System.out.println(msg.getContext());
                     }
                 } catch (Exception e) {
                 } finally {

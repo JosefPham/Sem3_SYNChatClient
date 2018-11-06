@@ -18,7 +18,7 @@ public interface IConnection {
 
     public void startPrivateThreads();
 
-    public void receivePublicMsg(String s);
+    public void receivePublicMsg(IMessage msg);
 
     public void sendPublicMsg(IMessage msg);
 

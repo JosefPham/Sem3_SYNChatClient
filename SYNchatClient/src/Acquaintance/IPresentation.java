@@ -10,11 +10,13 @@ public interface IPresentation {
 
     public void startApplication(String[] args);
 
-    public void receivePublicMsg(String s);
+    public void receivePublicMsg(IMessage msg);
 
     public void sendPublicMsg(String s);
 
-    public String getS();
+    public String getContext();
+    
+    public int getSenderID();
     
     public void logoutHandling(String logout);
 }

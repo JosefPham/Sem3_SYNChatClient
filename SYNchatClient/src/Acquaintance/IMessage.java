@@ -1,6 +1,6 @@
 package Acquaintance;
 
-import java.util.Date;
+import java.time.Instant;
 
 /**
  *
@@ -10,7 +10,7 @@ public interface IMessage {
 
     int getSenderID();
 
-    Date getTimestamp();
+    Instant getTimestamp();
     
     String getContext();
 }
