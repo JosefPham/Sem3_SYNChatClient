@@ -9,7 +9,6 @@ import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Business.Friends;
-import Business.TextMessage;
 
 /**
  *

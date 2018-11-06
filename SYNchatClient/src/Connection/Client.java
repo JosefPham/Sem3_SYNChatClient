@@ -216,7 +216,6 @@ public class Client implements IClient {
             public void run() {
                 try {
                     while (true) {
-                        //    System.out.println("HEllo");
                         String text = (String) input.readObject();
                         ConnectionFacade.getInstance().receivePublicMsg(text);
                         System.out.println(text);
