@@ -77,26 +77,40 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     public void changeMail(ActionEvent event) {
         if (textField_newEmail.getText().equals(textField_confirmEmail.getText()) && !textField_newEmail.getText().isEmpty()) {
-            if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText()) == 1) {
-                label_warningMail.setText("Mail was successfully changed");
-            } else {
-                label_warningMail.setText("Something went wrong");
+            switch (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText())) {
+                case 1:
+                    label_warningMail.setText("Mail was successfully changed");
+                    break;
+                case 2:
+                    label_warningMail.setText("Unknown error!\nCheck password or try again later");
+                    break;
+                case 3:
+                    label_warningMail.setText("Wrong password\nChange denied!");
+                    break;
+                case 4:
+                    label_warningMail.setText("Password verification error\nPlease try again later");
+                    break;
             }
-        } else if (!textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-            label_warningMail.setText("Mails does not match!");
         }
     }
 
     @FXML
     public void changepw(ActionEvent event) {
         if (pwField_newPW.getText().equals(pwField_confirmPW.getText()) && !pwField_newPW.getText().isEmpty()) {
-            if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warningPW.setText("Password has been successfully changed");
-            } else if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warningPW.setText("Something went wrong!");
+            switch(PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
+                case 1:
+                    label_warningPW.setText("Password was successfully changed");
+                    break;
+                case 2:
+                    label_warningPW.setText("Unknown error\nPlease try again later");
+                    break;
+                case 3:
+                    label_warningPW.setText("Wrong password\nChange denied!");
+                    break;
+                case 4:
+                    label_warningPW.setText("Password verification error\nPlease try again later");
+                    break;
             }
-        } else if (!pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
-            label_warningPW.setText("Passwords does not match!");
         }
     }
 
