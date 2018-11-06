@@ -20,7 +20,7 @@ public interface IConnection {
 
     public void receivePublicMsg(String s);
 
-    public void sendPublicMsg(Object msg);
+    public void sendPublicMsg(IMessage msg);
 
     public void injectBusiness(IBusiness bus);
     

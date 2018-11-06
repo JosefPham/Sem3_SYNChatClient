@@ -27,4 +27,9 @@ public abstract class Message implements Serializable, IMessage {
     public Date getTimestamp() {
         return timestamp;
     }
+    
+    @Override
+    public String getContext() {
+        return "Abstract klasse getContext";
+    }
 }

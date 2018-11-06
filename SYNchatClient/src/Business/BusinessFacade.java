@@ -4,8 +4,8 @@ import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
+import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
-import java.util.List;
 
 /**
  *
@@ -75,7 +75,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void sendPublicMsg(String s) {
 //        ClientSystem.getInstance().cipherMsg(s);
-        Object msg = new TextMessage(0, ClientSystem.getInstance().cipherMsg(s));
+        IMessage msg = new TextMessage(0, ClientSystem.getInstance().cipherMsg(s));
         Icon.sendPublicMsg(msg);
 
     }

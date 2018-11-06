@@ -11,4 +11,6 @@ public interface IMessage {
     int getSenderID();
 
     Date getTimestamp();
+    
+    String getContext();
 }

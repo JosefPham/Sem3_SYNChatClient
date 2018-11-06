@@ -7,7 +7,9 @@ import Acquaintance.IConnection;
 import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
+import Acquaintance.IMessage;
 import Business.Friends;
+import Business.TextMessage;
 
 /**
  *
@@ -72,8 +74,9 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void sendPublicMsg(Object msg) {
-        client.send(msg);
+    public void sendPublicMsg(IMessage msg) {
+        ConTextMessage conMsg = new ConTextMessage(msg.getSenderID(), msg.getContext());
+        client.send(conMsg);
     }
     
     @Override
