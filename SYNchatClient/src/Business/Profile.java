@@ -37,6 +37,20 @@ public class Profile {
 
     public void setProfileText(String profileText) {
         this.profileText = profileText;
-    }    
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Nationality getNationality() {
+        return nationality;
+    }
+
+    public String getProfileText() {
+        return profileText;
+    }
+    
+    
     
 }

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="500.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ChangeInfoController">
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="500.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ChangeInfoController">
    <children>
       <ImageView fitHeight="324.0" fitWidth="600.0" layoutX="39.0" layoutY="139.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
@@ -30,7 +31,17 @@
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="38.0" onAction="#btn_home_action" opacity="0.7" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Home   ">
+      <JFXTextArea fx:id="txtArea_profileText" focusTraversable="false" layoutX="265.0" layoutY="180.0" prefHeight="158.0" prefWidth="218.0" promptText="Click here to edit your profile description" style="-fx-border-color: #1f98de;" wrapText="true">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton fx:id="btn_saveChanges" buttonType="RAISED" layoutX="386.0" layoutY="122.0" onAction="#saveChange" opacity="0.7" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text=" Save changes ">
+         <font>
+            <Font name="Gill Sans MT" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="409.0" layoutY="39.0" onAction="#btn_home_action" opacity="0.7" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Home   ">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
@@ -40,42 +51,42 @@
             <Font name="Gill Sans MT Bold" size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="textField_fname" editable="false" focusColor="#182db5" layoutX="106.0" layoutY="175.0" promptText="First name" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_fname" editable="false" focusColor="#182db5" layoutX="58.0" layoutY="177.0" promptText="First name" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textField_lname" editable="false" focusColor="#182db5" layoutX="106.0" layoutY="215.0" promptText="Last name" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_lname" editable="false" focusColor="#182db5" layoutX="58.0" layoutY="217.0" promptText="Last name" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textField_nationality" editable="false" focusColor="#182db5" layoutX="106.0" layoutY="255.0" promptText="Nationality" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_nationality" editable="false" focusColor="#182db5" layoutX="58.0" layoutY="257.0" promptText="Nationality" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="177.0" onMousePressed="#changeFname" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="192.0" layoutY="179.0" onMousePressed="#changeFname" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/pencil_icon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="217.0" onMousePressed="#changeLname" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="192.0" layoutY="219.0" onMousePressed="#changeLname" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/pencil_icon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="240.0" layoutY="257.0" onMousePressed="#changeNat" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="192.0" layoutY="259.0" onMousePressed="#changeNat" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/pencil_icon.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="textField_email" editable="false" focusColor="#182db5" layoutX="106.0" layoutY="295.0" promptText="Mail" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_email" editable="false" focusColor="#182db5" layoutX="58.0" layoutY="297.0" promptText="Mail" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <AnchorPane fx:id="pane_countries" layoutX="269.0" layoutY="216.0" prefHeight="100.0" prefWidth="192.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: BLACK; -fx-border-radius: 25; -fx-border-width: 2;">
+      <AnchorPane fx:id="pane_countries" layoutX="221.0" layoutY="218.0" prefHeight="100.0" prefWidth="192.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: BLACK; -fx-border-radius: 25; -fx-border-width: 2;">
          <children>
             <Label fx:id="country_DK" layoutX="25.0" layoutY="14.0" onMouseEntered="#countryDK_in" onMouseExited="#countryDK_out" onMousePressed="#countryDK_handle" text="Denmark" textFill="WHITE">
                <font>

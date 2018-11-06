@@ -6,6 +6,8 @@
 package Presentation;
 
 import Acquaintance.IController;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,6 +67,10 @@ public class ChangeInfoController implements IController, Initializable {
     private Label label_warningPW;
     @FXML
     private Label label_warningMail;
+    @FXML
+    private JFXButton btn_saveChanges;
+    @FXML
+    private JFXTextArea txtArea_profileText;
 
     /**
      * Initializes the controller class.
@@ -205,6 +211,10 @@ public class ChangeInfoController implements IController, Initializable {
     @Override
     public void injectStage(Stage stage) {
         PresentationFacade.stage = stage;
+    }
+
+    @FXML
+    private void saveChange(ActionEvent event) {
     }
 
 }
