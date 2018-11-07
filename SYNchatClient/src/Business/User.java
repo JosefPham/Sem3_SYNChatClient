@@ -1,6 +1,8 @@
 package Business;
 
+import Acquaintance.IPrivateChat;
 import Acquaintance.IUser;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements IUser {
@@ -14,6 +16,7 @@ public class User implements IUser {
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
     private Friends friends;
+    private List<IPrivateChat> activePrivateChats = new ArrayList<>();
 
     public User(String tmpName) {
         this.tmpName = tmpName;
@@ -83,6 +86,11 @@ public class User implements IUser {
 
     boolean updateFriends(Friends friends) {
         return BusinessFacade.getInstance().updateFriends(friends);
+    }
+    
+    @Override
+    public IPrivateChat loadPrivateChat(int chatID){
+       throw new UnsupportedOperationException("this method shuld fetch private chat form server with many 10 messages in chathistory");
     }
 
 }
