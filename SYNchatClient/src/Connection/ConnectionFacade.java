@@ -43,7 +43,7 @@ public class ConnectionFacade implements IConnection {
     public ILogin login(ILogin ilogin) {
         // the login to send to server
         ILogin sendLogin = new ConLogin(ilogin.gethMail(), ilogin.gethPW(), ilogin.getLoginvalue(), ilogin.getUser());
-        client.send(ilogin);
+        client.send(sendLogin);
         //ILogin recieveLogin = new ConLogin
         return client.receiveLogin();
     }

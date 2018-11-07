@@ -6,11 +6,13 @@
 
 package Acquaintance;
 
+import java.io.Serializable;
+
 
 /**
  * @author Group 9
  */
-public interface IProfile {
+public interface IProfile extends Serializable {
     
     public void setFirstName(String firstName);
     
