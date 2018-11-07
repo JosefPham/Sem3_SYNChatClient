@@ -6,6 +6,8 @@
 package Presentation;
 
 import Acquaintance.IController;
+import Acquaintance.Nationality;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -63,6 +64,10 @@ public class ChangeInfoController implements IController, Initializable {
     private Label label_warningPW;
     @FXML
     private Label label_warningMail;
+    @FXML
+    private JFXTextArea textArea_profileInfo;
+    @FXML
+    private Label label_changeStatus;
 
     /**
      * Initializes the controller class.
@@ -70,31 +75,58 @@ public class ChangeInfoController implements IController, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
+        //Inserting data into textFields if there is a value to the specific field
+//        if (PresentationFacade.getInstance().getUser().getProfile().getFirstName().length() > 0) {
+//            textField_fname.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+//        }
+//        if (PresentationFacade.getInstance().getUser().getProfile().getLastName().length() > 0) {
+//            textField_lname.setText(PresentationFacade.getInstance().getUser().getProfile().getLastName());
+//        }
+//        if (PresentationFacade.getInstance().getUser().getProfile().getNationality().toString().length() > 0) {
+//            textField_nationality.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
+//        }
+//        if (PresentationFacade.getInstance().getUser().getProfile().getProfileText().length() > 0) {
+//            textArea_profileInfo.setText(PresentationFacade.getInstance().getUser().getProfile().getProfileText());
+//        }
     }
 
     @FXML
     public void changeMail(ActionEvent event) {
         if (textField_newEmail.getText().equals(textField_confirmEmail.getText()) && !textField_newEmail.getText().isEmpty()) {
-            if (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText()) == 1) {
-                label_warningMail.setText("Mail was successfully changed");
-            } else {
-                label_warningMail.setText("Something went wrong");
+            switch (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText())) {
+                case 1:
+                    label_warningMail.setText("Mail was successfully changed");
+                    break;
+                case 2:
+                    label_warningMail.setText("Unknown error!\nCheck password or try again later");
+                    break;
+                case 3:
+                    label_warningMail.setText("Wrong password\nChange denied!");
+                    break;
+                case 4:
+                    label_warningMail.setText("Password verification error\nPlease try again later");
+                    break;
             }
-        } else if (!textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-            label_warningMail.setText("Mails does not match!");
         }
     }
 
     @FXML
     public void changepw(ActionEvent event) {
         if (pwField_newPW.getText().equals(pwField_confirmPW.getText()) && !pwField_newPW.getText().isEmpty()) {
-            if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warningPW.setText("Password has been successfully changed");
-            } else if (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText()) == 1) {
-                label_warningPW.setText("Something went wrong!");
+            switch (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
+                case 1:
+                    label_warningPW.setText("Password was successfully changed");
+                    break;
+                case 2:
+                    label_warningPW.setText("Unknown error\nPlease try again later");
+                    break;
+                case 3:
+                    label_warningPW.setText("Wrong password\nChange denied!");
+                    break;
+                case 4:
+                    label_warningPW.setText("Password verification error\nPlease try again later");
+                    break;
             }
-        } else if (!pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
-            label_warningPW.setText("Passwords does not match!");
         }
     }
 
@@ -191,4 +223,12 @@ public class ChangeInfoController implements IController, Initializable {
         PresentationFacade.stage = stage;
     }
 
+    @FXML
+    private void changeProfile(ActionEvent event) {
+        if (PresentationFacade.getInstance().editProfileInfo(textField_fname.getText(), textField_lname.getText(), Nationality.valueOf(textField_nationality.getText()), textArea_profileInfo.getText())) {
+            label_changeStatus.setText("Changes has been saved");
+        } else {
+            label_changeStatus.setText("Something went wrong\nChanges have not been saved");
+        }
+    }
 }

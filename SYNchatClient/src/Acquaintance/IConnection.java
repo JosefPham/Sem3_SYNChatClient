@@ -34,5 +34,5 @@ public interface IConnection {
 
     public boolean updateFriends(Friends friends);
     
-    public boolean updateProfile(IProfile profile);
+    public boolean updateProfile(IUser user);
 }

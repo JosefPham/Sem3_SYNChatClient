@@ -3,7 +3,6 @@ package Presentation;
 import Acquaintance.IBusiness;
 import Acquaintance.IController;
 import Acquaintance.IMessage;
-import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
@@ -127,12 +126,13 @@ public class PresentationFacade implements IPresentation, IController {
 
     public IMessage getImsg() {
         return Imsg;
-    
+    }
     @Override
     public IUser getUser() {
         return Ibus.getUser();
     }
     
+    @Override
     public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
         return Ibus.editProfileInfo(firstName, lastName, nationality, profileText);
     }

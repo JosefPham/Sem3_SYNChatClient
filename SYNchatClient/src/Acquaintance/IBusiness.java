@@ -42,5 +42,5 @@ public interface IBusiness {
     
     public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
     
-    public boolean updateProfile(IProfile profile);
+    public boolean updateProfile(IUser user);
 }

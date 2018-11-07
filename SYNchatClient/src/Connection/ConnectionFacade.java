@@ -110,8 +110,8 @@ public class ConnectionFacade implements IConnection {
     }
     
     @Override
-    public boolean updateProfile(IProfile profile) {
-        client.send(profile);
+    public boolean updateProfile(IUser user) {
+        client.send(user);
         return client.receiveBool();
     }
 }

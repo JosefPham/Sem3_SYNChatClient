@@ -143,8 +143,8 @@ public class BusinessFacade implements IBusiness {
     }
     
     @Override
-    public boolean updateProfile(IProfile profile) {
-        return Icon.updateProfile(profile);
+    public boolean updateProfile(IUser user) {
+        return Icon.updateProfile(user);
     }
     
     

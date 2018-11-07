@@ -1,7 +1,6 @@
 package Business;
 
 import Acquaintance.ILogin;
-import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.math.BigInteger;
@@ -16,13 +15,12 @@ import java.util.logging.Logger;
  */
 public class ClientSystem {
 
-            User currentUser;
-            
+    User currentUser;
+
     private static ClientSystem instance = null;
 
     private ClientSystem() {
 
-        
     }
 
     public static ClientSystem getInstance() {
@@ -48,36 +46,37 @@ public class ClientSystem {
         return ilogin.login(BusinessFacade.getInstance().login(ilogin).getLoginvalue());
     }
 
-    
-
     protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
         IUser iuser = new User(firstName, lastName, nationality);
-        ILogin ilogin = new Login(hash(mail), hash(pw)); 
+        ILogin ilogin = new Login(hash(mail), hash(pw));
         ilogin.setUser(iuser);
         boolean b = BusinessFacade.getInstance().regBool(ilogin);
         System.out.println("clientSystem: " + b);
         return b;
     }
-    
+
     protected String cipherMsg(String msg) {
         Cipher cipher = new Cipher();
         System.out.println("Origin : " + msg);
         msg = cipher.cipher(msg);
         System.out.println("cipher : " + msg);
-        
+
         return msg;
     }
-    
+
     User getCurrentUser() {
         return currentUser;
     }
-    
-     void setUser(User user){
-         this.currentUser = user;
-     }
-     
-     protected boolean updateProfile(String firstName, String lastName, Nationality nationality, String profileText) {
-         IProfile profile = new Profile(firstName, lastName, nationality, profileText);
-        return BusinessFacade.getInstance().updateProfile(profile);
-     }
+
+    void setUser(User user) {
+        this.currentUser = user;
+    }
+
+    protected boolean updateProfile(String firstName, String lastName, Nationality nationality, String profileText) {
+        currentUser.getProfile().setFirstName(firstName);
+        currentUser.getProfile().setLastName(lastName);
+        currentUser.getProfile().setNationality(nationality);
+        currentUser.getProfile().setProfileText(profileText);
+        return BusinessFacade.getInstance().updateProfile(currentUser);
+    }
 }
