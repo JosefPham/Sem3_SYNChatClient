@@ -5,6 +5,8 @@
  */
 package Acquaintance;
 
+import java.util.List;
+
 /**
  *
  * @author Patrick
@@ -12,5 +14,6 @@ package Acquaintance;
 public interface IChatHistory {
     
     int loadMoreMessages();
-    
+    public int getMsgLoadedCount();
+    public List<IMessage> getMsgList();
 }

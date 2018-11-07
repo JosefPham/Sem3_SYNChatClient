@@ -29,7 +29,5 @@ public abstract class Message implements Serializable, IMessage {
     }
     
     @Override
-    public String getContext() {
-        return "Abstract klasse getContext";
-    }
+    public abstract String getContext();
 }

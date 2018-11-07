@@ -1,11 +1,13 @@
 package Business;
 
 import Acquaintance.IBusiness;
+import Acquaintance.IChatHistory;
 import Acquaintance.IConnection;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
+import Acquaintance.IPrivateChat;
 
 /**
  *
@@ -131,6 +133,10 @@ public class BusinessFacade implements IBusiness {
     
     public int changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
+    }
+
+    boolean sendPrivateMessage(IPrivateChat newMegPrivateChat) {
+        return Icon.sendPrivateMessage(newMegPrivateChat);
     }
     
     

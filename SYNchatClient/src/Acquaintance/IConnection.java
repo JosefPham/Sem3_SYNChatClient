@@ -35,4 +35,6 @@ public interface IConnection {
     public void connect();
 
     public boolean updateFriends(Friends friends);
+
+    public boolean sendPrivateMessage(IPrivateChat newMegPrivateChat);
 }
