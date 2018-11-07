@@ -208,6 +208,9 @@ public class SYNchatController implements IController, Initializable {
 
     public void receivePublicMsg(IMessage msg) {
         System.out.println("En eller anden faggots besked: " + msg.getContext());
+        System.out.println("timestamp " + msg.getTimestamp().toString());
+        System.out.println("...");
+        System.out.println("navn:" + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
         String nameMsg = "";
         String yourMsg = "";
         String dateMsg = "";

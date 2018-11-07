@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class ClientSystem {
 
-    User currentUser;
+    private User currentUser;
 
     private static ClientSystem instance = null;
 
@@ -62,11 +62,11 @@ public class ClientSystem {
         return msg;
     }
 
-    User getCurrentUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 
-    void setUser(User user) {
+    public void setUser(User user) {
         this.currentUser = user;
     }
 

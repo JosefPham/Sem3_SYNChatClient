@@ -43,6 +43,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     protected ILogin login(ILogin ilogin) {
+        ClientSystem.getInstance().setUser(ilogin.getUser());
         return Icon.login(ilogin);
     }
 
