@@ -215,7 +215,7 @@ public class Client implements IClient {
             @Override
             public void run() {
                 try {
-                    while (true) {
+                    while (serverSocket.isConnected()) {
                         //String text = (String) input.readObject();
                         ConTextMessage msg = (ConTextMessage) input.readObject();
                         ConnectionFacade.getInstance().receivePublicMsg(msg);
