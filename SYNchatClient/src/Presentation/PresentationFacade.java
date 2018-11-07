@@ -63,9 +63,10 @@ public class PresentationFacade implements IPresentation, IController {
 
     @Override
     public void receivePublicMsg(IMessage msg) {
-        this.context = msg.getContext();
-        this.senderID = msg.getSenderID();
-        this.Imsg = msg;
+//        this.context = msg.getContext();
+//        this.senderID = msg.getSenderID();
+//        this.Imsg = msg;
+        SYNchatController.getInstance().receivePublicMsg(msg);
     }
 
     @Override
