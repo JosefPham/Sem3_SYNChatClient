@@ -12,7 +12,7 @@ public interface IBusiness {
 
     public int login(String mail, String pw);
 
-    public Boolean regUser(String tmpName, String mail, String pw);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality);
 
     public void publicThreads();
 
@@ -30,15 +30,17 @@ public interface IBusiness {
 
     public boolean removeFriend(int userID);
     
-    public int verifyPw(String pw);
-    
     public int changePw(String oldPw, String newPw);
     
     public int changeMail(String pw, String mail);
 
-    public int sendVerifyPw(IManagement management);
-
     public int sendChangePw(IManagement management);
 
     public int sendChangeMail(IManagement management);
+    
+    public IUser getUser();
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
+    
+    public boolean updateProfile(IProfile profile);
 }

@@ -6,6 +6,10 @@ import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
+import Acquaintance.IProfile;
+import Acquaintance.IUser;
+import Acquaintance.Nationality;
+import com.sun.applet2.preloader.event.UserDeclinedEvent;
 
 /**
  *
@@ -49,8 +53,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public Boolean regUser(String tmpName, String mail, String pw) {
-        return ClientSystem.getInstance().regUser(tmpName, mail, pw);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
+        return ClientSystem.getInstance().regUser(firstName, lastName, mail, pw, nationality);
     }
 
     protected Boolean regBool(ILogin ilogin) {
@@ -93,11 +97,6 @@ public class BusinessFacade implements IBusiness {
     }
     
     @Override
-    public int sendVerifyPw(IManagement management) {
-        return Icon.sendVerifyPw(management);
-    }
-    
-    @Override
     public int sendChangePw(IManagement management) {
         return Icon.sendChangePw(management);
     }
@@ -123,16 +122,29 @@ public class BusinessFacade implements IBusiness {
         return Icon.updateFriends(friends);
     }
     
-    public int verifyPw(String pw) {
-        return ClientSystem.getInstance().getCurrentUser().verifyPw(pw);
-    }
-    
+    @Override
     public int changePw(String oldPw, String newPw) {
         return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
     }
     
+    @Override
     public int changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
+    }
+    
+    @Override
+    public IUser getUser() {
+        return ClientSystem.getInstance().getCurrentUser();
+    }
+    
+    @Override
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
+        return ClientSystem.getInstance().updateProfile(firstName, lastName, nationality, profileText);
+    }
+    
+    @Override
+    public boolean updateProfile(IProfile profile) {
+        return Icon.updateProfile(profile);
     }
     
     

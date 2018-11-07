@@ -10,5 +10,13 @@ package Acquaintance;
  *
  */
 public interface IManagement {
+    
+    public int getAction();
+
+    public int getUserID();
+
+    public String getPw();
+
+    public String getString();
 
 }

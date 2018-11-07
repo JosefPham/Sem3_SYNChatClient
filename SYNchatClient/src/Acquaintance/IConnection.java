@@ -24,8 +24,6 @@ public interface IConnection {
 
     public void injectBusiness(IBusiness bus);
     
-    public int sendVerifyPw(IManagement management);
-    
     public int sendChangePw(IManagement management);
     
     public int sendChangeMail(IManagement management);
@@ -35,4 +33,6 @@ public interface IConnection {
     public void connect();
 
     public boolean updateFriends(Friends friends);
+    
+    public boolean updateProfile(IProfile profile);
 }

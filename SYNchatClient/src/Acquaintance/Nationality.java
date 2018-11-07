@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+
+package Acquaintance;
 
 /**
  *
- * @author CasaRol
  */
 public enum Nationality {
     
-    USA, Denmark, Japan
-    
+        Denmark, USA, Japan
+   
 }

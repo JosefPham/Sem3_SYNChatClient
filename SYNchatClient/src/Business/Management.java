@@ -17,22 +17,32 @@ public class Management implements IManagement {
     int action;
     int userID;
     String newPw;
-    String oldPw;
-    String mail;
-
+    String pw;
+    String string; //Either mail or password
     
-    //Method for creating an object of Management for verifyPw purposes
-    public Management(int action, String oldPw) {
+    public Management(int action, int userID, String pw, String string) {
         this.action = action;
         this.userID = client.getCurrentUser().getUserID();
-        this.oldPw = oldPw;
+        this.pw = pw;
+        this.string = string;
     }
 
-    //Method for creating an object of Management for changeMail purposes
-    public Management(int action, String oldPw, String mail) {
-        this.action = action;
-        this.oldPw = oldPw;
-        this.mail = mail;
+    public int getAction() {
+        return action;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public String getString() {
+        return string;
+    }
+    
+    
 
 }

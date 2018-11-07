@@ -3,7 +3,10 @@ package Presentation;
 import Acquaintance.IBusiness;
 import Acquaintance.IController;
 import Acquaintance.IMessage;
+import Acquaintance.IManagement;
 import Acquaintance.IPresentation;
+import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,8 +49,8 @@ public class PresentationFacade implements IPresentation, IController {
         return Ibus.login(mail, pw);
     }
 
-    public Boolean regUser(String tmpName, String mail, String pw) {
-        return Ibus.regUser(tmpName, mail, pw);
+    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
+        return Ibus.regUser(firstName, lastName, mail, pw, nationality);
     }
 
     //Call from Starter to SYNchat with System Startup command
@@ -76,16 +79,14 @@ public class PresentationFacade implements IPresentation, IController {
         Ibus.sendPublicMsg(s);
     }
     
-    public int verifyPw(String pw) {
-        return Ibus.verifyPw(pw);
-    }
-   
+    @Override
     public int changePw(String oldPw, String newPw) {
         return Ibus.changePw(oldPw, newPw);
     }
     
-    public int changeMail(String pw, String mail) {
-        return Ibus.changeMail(pw, mail);
+    @Override
+    public int changeMail(String pw, String newMail) {
+        return Ibus.changeMail(pw, newMail);
     }
     
     
@@ -126,5 +127,13 @@ public class PresentationFacade implements IPresentation, IController {
 
     public IMessage getImsg() {
         return Imsg;
+    
+    @Override
+    public IUser getUser() {
+        return Ibus.getUser();
+    }
+    
+    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
+        return Ibus.editProfileInfo(firstName, lastName, nationality, profileText);
     }
 }

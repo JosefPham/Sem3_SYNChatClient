@@ -1,6 +1,8 @@
 package Business;
 
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.util.List;
 
 public class User implements IUser {
@@ -9,33 +11,28 @@ public class User implements IUser {
     ClientSystem client = ClientSystem.getInstance();
 
     private int userID;
-    private String tmpName; //must be removed when profile is implemented
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
     private Friends friends;
+    private Profile profile;
 
-    public User(String tmpName) {
-        this.tmpName = tmpName;
+    public User(String firstName, String lastName, Nationality nationality) {
+        new Profile(firstName, lastName, nationality);
     }
 
-    public User(int userID, String tmpName, boolean banned, int reports, List<Integer> chats, Friends friends) {
+    public User(int userID, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
         this.userID = userID;
-        this.tmpName = tmpName;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
         this.friends = friends;
+        this.profile = profile;
     }
 
     @Override
     public int getUserID() {
         return userID;
-    }
-
-    @Override
-    public String getTmpName() {
-        return tmpName;
     }
 
     @Override
@@ -52,19 +49,19 @@ public class User implements IUser {
     public List<Integer> getChats() {
         return chats;
     }
-
-    public int verifyPw(String pw) {
-        management = new Management(1, client.hash(pw));
-        return BusinessFacade.getInstance().sendVerifyPw(management);
+    
+    @Override
+    public IProfile getProfile() {
+        return profile;
     }
 
     public int changePw(String oldPw, String newPw) {
-        management = new Management(2, client.hash(oldPw), client.hash(newPw));
+        management = new Management(2, client.getCurrentUser().getUserID(), client.hash(oldPw), client.hash(newPw));
         return BusinessFacade.getInstance().sendChangePw(management);
     }
 
     public int changeMail(String pw, String newMail) {
-        management = new Management(3, client.hash(pw), client.hash(newMail));
+        management = new Management(1, client.getCurrentUser().getUserID(), client.hash(pw), client.hash(newMail));
         return BusinessFacade.getInstance().sendChangeMail(management);
     }
 

@@ -6,29 +6,42 @@
 
 package Business;
 
+import Acquaintance.IProfile;
+import Acquaintance.Nationality;
 import javafx.scene.image.Image; //Might not be a correct import...
 
 
 
 /**
- *
+ * @author Group 9
  */
-public class Profile {
+public class Profile implements IProfile{
     
-    String name;
+    String firstName;
+    String lastName;
     Nationality nationality;
     Image picture; //Watch out for the datatype!
     String profileText;
 
-    public Profile(String name, Nationality nationality) {
-        this.name = name;
+    public Profile(String firstName, String lastName, Nationality nationality) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.nationality = nationality;
     }
-
-    //All setter-methods will be called through updateInfo() via User-class
     
-    public void setName(String name) {
-        this.name = name;
+    public Profile(String firstName, String lastName, Nationality nationality, String profileText) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.profileText = profileText;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setNationality(Nationality nationality) {
@@ -37,6 +50,22 @@ public class Profile {
 
     public void setProfileText(String profileText) {
         this.profileText = profileText;
-    }    
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Nationality getNationality() {
+        return nationality;
+    }
+
+    public String getProfileText() {
+        return profileText;
+    }
     
 }
