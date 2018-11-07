@@ -50,9 +50,7 @@ public class ClientSystem {
         IUser iuser = new User(firstName, lastName, nationality);
         ILogin ilogin = new Login(hash(mail), hash(pw));
         ilogin.setUser(iuser);
-        boolean b = BusinessFacade.getInstance().regBool(ilogin);
-        System.out.println("clientSystem: " + b);
-        return b;
+        return BusinessFacade.getInstance().regBool(ilogin);
     }
 
     protected String cipherMsg(String msg) {

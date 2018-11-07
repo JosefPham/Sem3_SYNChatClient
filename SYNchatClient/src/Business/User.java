@@ -18,7 +18,7 @@ public class User implements IUser {
     private Profile profile;
 
     public User(String firstName, String lastName, Nationality nationality) {
-        new Profile(firstName, lastName, nationality);
+        profile = new Profile(firstName, lastName, nationality);
     }
 
     public User(int userID, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
