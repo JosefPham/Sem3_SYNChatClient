@@ -47,7 +47,7 @@ public class ClientSystem {
     }
 
     protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
-        IUser iuser = new User(firstName, lastName, nationality);
+        IUser iuser = new User(firstName, lastName, nationality, "");
         ILogin ilogin = new Login(hash(mail), hash(pw));
         ilogin.setUser(iuser);
         return BusinessFacade.getInstance().regBool(ilogin);

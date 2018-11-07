@@ -3,7 +3,10 @@ package Acquaintance;
 import java.util.Map;
 
 public interface IFriends {
-    
-     public Map<Integer, String> getFriendlist();
 
+    Map<Integer, String> getFriendlist();
+
+    boolean addFriend(int userID, String profileName);
+    
+    void removeFriend(int userID);
 }

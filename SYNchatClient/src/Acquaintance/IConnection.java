@@ -32,7 +32,7 @@ public interface IConnection {
     
     public void connect();
 
-    public boolean updateFriends(Friends friends);
+    public boolean updateFriends(IFriends friends);
     
     public boolean updateProfile(IUser user);
 }

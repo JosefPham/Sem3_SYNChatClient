@@ -1,20 +1,23 @@
 package Business;
 
+import Acquaintance.IFriends;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Friends {
+public class Friends implements IFriends {
     
-    Map<Integer,String> friendlist = new HashMap<Integer, String>();
+    Map<Integer,String> friendlist = new HashMap<>();
 
     
     
+    @Override
     public Map<Integer, String> getFriendlist() {
         return friendlist;
     }
 
-    boolean addFriend(int userID, String profileName){
+    @Override
+    public boolean addFriend(int userID, String profileName){
         if (!friendlist.containsKey(userID)){
             friendlist.put(userID, profileName);
             return true;}
@@ -24,7 +27,8 @@ public class Friends {
         }
     }
 
-    void removeFriend(int userID) {
+    @Override
+    public void removeFriend(int userID) {
         friendlist.remove(userID);
     }
 }

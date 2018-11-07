@@ -2,14 +2,13 @@ package Business;
 
 import Acquaintance.IBusiness;
 import Acquaintance.IConnection;
+import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
-import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
-import com.sun.applet2.preloader.event.UserDeclinedEvent;
 
 /**
  *
@@ -118,7 +117,7 @@ public class BusinessFacade implements IBusiness {
     /*
     method for updating the friendsobject in database
     */
-    boolean updateFriends(Friends friends) {
+    boolean updateFriends(IFriends friends) {
         return Icon.updateFriends(friends);
     }
     

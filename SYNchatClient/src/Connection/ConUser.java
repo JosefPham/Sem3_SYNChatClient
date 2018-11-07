@@ -13,6 +13,10 @@ public class ConUser implements IUser {
     private List<Integer> chats;
     private IProfile profile;
 
+    public ConUser(String firstName, String lastName, Nationality nationality, String profileText) {
+        profile = new ConProfile(firstName, lastName, nationality, "");
+    }
+
     public ConUser(int userID, boolean banned, int reports, List<Integer> chats, IProfile profile) {
         this.userID = userID;
         this.banned = banned;

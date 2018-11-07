@@ -1,5 +1,6 @@
 package Business;
 
+import Acquaintance.IFriends;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
@@ -14,14 +15,14 @@ public class User implements IUser {
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
-    private Friends friends;
-    private Profile profile;
+    private IFriends friends;
+    private IProfile profile;
 
-    public User(String firstName, String lastName, Nationality nationality) {
-        profile = new Profile(firstName, lastName, nationality);
+    public User(String firstName, String lastName, Nationality nationality, String profileText) {
+        profile = new Profile(firstName, lastName, nationality, "");
     }
 
-    public User(int userID, boolean banned, int reports, List<Integer> chats, Friends friends, Profile profile) {
+    public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, Profile profile) {
         this.userID = userID;
         this.banned = banned;
         this.reports = reports;
@@ -78,7 +79,7 @@ public class User implements IUser {
         return updateFriends(friends);
     }
 
-    boolean updateFriends(Friends friends) {
+    boolean updateFriends(IFriends friends) {
         return BusinessFacade.getInstance().updateFriends(friends);
     }
 

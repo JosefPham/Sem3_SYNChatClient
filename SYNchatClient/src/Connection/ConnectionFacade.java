@@ -10,6 +10,7 @@ import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import Business.Friends;
 
 /**
@@ -49,6 +50,9 @@ public class ConnectionFacade implements IConnection {
 
     @Override
     public Boolean regUser(ILogin ilogin) {
+        IUser tmpUser = ilogin.getUser();
+        ConUser user = new ConUser(tmpUser.getProfile().getFirstName(), tmpUser.getProfile().getLastName(), tmpUser.getProfile().getNationality(), tmpUser.getProfile().getProfileText());
+        ilogin.setUser(user);
         client.send(ilogin);
         return client.receiveBool();
     }
@@ -103,7 +107,7 @@ public class ConnectionFacade implements IConnection {
     }
     
     @Override
-    public boolean updateFriends(Friends friends) {
+    public boolean updateFriends(IFriends friends) {
        IFriends sendFriends = new ConFriends(friends.getFriendlist());
        client.send(sendFriends);
        return client.receiveBool();

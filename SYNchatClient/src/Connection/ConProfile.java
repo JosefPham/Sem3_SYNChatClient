@@ -3,27 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package Business;
+package Connection;
 
 import Acquaintance.IProfile;
 import Acquaintance.Nationality;
-import javafx.scene.image.Image; //Might not be a correct import...
-
-
+import javafx.scene.image.Image;
 
 /**
- * @author Group 9
+ *
+ * @author Sigurd E. Espersen
  */
-public class Profile implements IProfile{
-    
+public class ConProfile implements IProfile {
     private String firstName;
     private String lastName;
     private Nationality nationality;
     private Image picture; //Watch out for the datatype!
     private String profileText;
     
-    public Profile(String firstName, String lastName, Nationality nationality, String profileText) {
+    public ConProfile(String firstName, String lastName, Nationality nationality, String profileText) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationality = nationality;
@@ -69,5 +66,4 @@ public class Profile implements IProfile{
     public String getProfileText() {
         return profileText;
     }
-    
 }
