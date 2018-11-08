@@ -61,13 +61,13 @@ public class ConLogin implements ILogin {
     }
 
     @Override
-    public int login(int loginValue) {
+    public int login(ILogin finalLogin) {
 
-        if (loginValue == 2) {
+        if (finalLogin.getLoginvalue() == 2) {
 
             //fetch and inplement user object through socket
         }
-        return loginValue;
+        return finalLogin.getLoginvalue();
     }
 
     @Override

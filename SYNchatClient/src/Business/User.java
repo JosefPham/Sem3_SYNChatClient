@@ -22,13 +22,15 @@ public class User implements IUser {
         profile = new Profile(firstName, lastName, nationality, "");
     }
 
-    public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, Profile profile) {
+    public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, IProfile profile) {
         this.userID = userID;
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
-        this.friends = friends;
-        this.profile = profile;
+        IFriends finalFriends = new Friends(friends.getFriendlist());
+        this.friends = finalFriends;
+        IProfile finalProfile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText());
+        this.profile = finalProfile;
     }
 
     @Override
@@ -81,6 +83,11 @@ public class User implements IUser {
 
     boolean updateFriends(IFriends friends) {
         return BusinessFacade.getInstance().updateFriends(friends);
+    }
+
+    @Override
+    public IFriends getFriends() {
+        return friends;
     }
 
 }
