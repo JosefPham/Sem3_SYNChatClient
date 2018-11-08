@@ -43,7 +43,7 @@ public class ClientSystem {
 
     protected int Login(String mail, String pw) {
         ILogin ilogin = new Login(hash(mail), hash(pw));
-        return BusinessFacade.getInstance().login(ilogin).getLoginvalue();
+        return ilogin.login(BusinessFacade.getInstance().login(ilogin));
     }
 
     protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
