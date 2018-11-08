@@ -58,10 +58,6 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private JFXTextField txtArea_YourChat;
     @FXML
-    private JFXTextArea txtArea_rightChat;
-    @FXML
-    private JFXTextArea txtArea_leftChat;
-    @FXML
     private AnchorPane AnchorPane_List;
     @FXML
     private MediaView mv_background;
@@ -89,6 +85,8 @@ public class SYNchatController implements IController, Initializable {
     private Label label_changeProfilePic;
     @FXML
     private ScrollPane ScrollPane_AvatarChooser;
+    @FXML
+    private JFXTextArea txtArea_Chat;
     
 
     /**
@@ -172,14 +170,11 @@ public class SYNchatController implements IController, Initializable {
             String yourMsg = "";
             String dateMsg = "";
             nameMsg = "Default user:\n";
-            txtArea_rightChat.appendText(nameMsg);
+            txtArea_Chat.appendText(nameMsg);
             yourMsg = txtArea_YourChat.getText() + "\n";
-            txtArea_rightChat.appendText(yourMsg);
+            txtArea_Chat.appendText(yourMsg);
             dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
-            txtArea_rightChat.appendText(dateMsg);
-
-            txtArea_leftChat.appendText("\n\n");
-
+            txtArea_Chat.appendText(dateMsg);
             txtArea_YourChat.clear();
         }
     }
@@ -215,12 +210,11 @@ public class SYNchatController implements IController, Initializable {
         String yourMsg = "";
         String dateMsg = "";
         nameMsg = "Default user:\n";
-        txtArea_leftChat.appendText(nameMsg);
+        txtArea_Chat.appendText(nameMsg);
         yourMsg = msg.getContext() + "\n";
-        txtArea_leftChat.appendText(yourMsg);
+        txtArea_Chat.appendText(yourMsg);
         dateMsg = msg.getTimestamp().toString() + "\n";
-        txtArea_leftChat.appendText(dateMsg);
-        txtArea_rightChat.appendText("\n\n");
+        txtArea_Chat.appendText(dateMsg);
     }
 
     @FXML

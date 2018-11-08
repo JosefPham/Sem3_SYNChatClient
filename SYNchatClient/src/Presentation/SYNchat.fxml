@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
@@ -83,49 +82,9 @@
                               </Label>
                                     </children>
                                 </AnchorPane>
-                        <GridPane layoutX="72.0" layoutY="98.0" prefHeight="424.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <AnchorPane fx:id="pane_settings" maxWidth="65.0" minWidth="65.0" prefHeight="427.0" prefWidth="65.0" style="-fx-background-color: #1f96e0;">
                            <children>
-                              <AnchorPane minWidth="300.0" prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="300.0" fitWidth="425.0" layoutX="-98.0" layoutY="98.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
-                                       <image>
-                                          <Image url="@../Assets/Overlay.png" />
-                                       </image>
-                                    </ImageView>
-                                    <JFXTextArea fx:id="txtArea_leftChat" editable="false" focusColor="#ffffff00" layoutX="-65.0" layoutY="60.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="365.0" prefWidth="300.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="Gill Sans MT" size="12.0" />
-                                       </font>
-                                    </JFXTextArea>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                 <children>
-                                    <JFXTextArea fx:id="txtArea_rightChat" editable="false" focusColor="#405aa800" layoutX="-117.0" layoutY="60.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="365.0" prefWidth="300.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="Gill Sans MT" size="12.0" />
-                                       </font>
-                                    </JFXTextArea>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </GridPane>
-                        <AnchorPane fx:id="pane_settings" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #1f96e0;">
-                           <children>
-                              <JFXButton fx:id="btn_logout" buttonType="RAISED" layoutX="520.0" layoutY="17.0" onAction="#logoutAction" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Logout" textFill="WHITE">
+                              <JFXButton fx:id="btn_logout" buttonType="RAISED" layoutX="5.0" layoutY="65.0" onAction="#logoutAction" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Logout" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -133,14 +92,25 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXButton>
-                           </children>
-                        </AnchorPane>
-                        <ImageView fx:id="hamburger_settings" fitHeight="39.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" onMousePressed="#hamburger_handler" pickOnBounds="true" preserveRatio="true">
+                           </children></AnchorPane>
+                        <ImageView fitHeight="300.0" fitWidth="425.0" layoutX="-98.0" layoutY="99.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+                           <image>
+                              <Image url="@../Assets/Overlay.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hamburger_settings" fitHeight="39.0" fitWidth="50.0" layoutX="13.0" layoutY="14.0" onMousePressed="#hamburger_handler" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/Hamburger_settings.png" />
                            </image>
                         </ImageView>
-                        <Line endX="600.0" layoutY="60.0" stroke="#1f96e0" />
+                        <JFXTextArea fx:id="txtArea_Chat" editable="false" focusColor="#ffffff00" layoutX="65.0" maxWidth="535.0" minWidth="535.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="427.0" prefWidth="535.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
                             </children>
                         </AnchorPane>
                   <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
@@ -156,22 +126,32 @@
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
                         </Label>
+                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="14.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: black; -fx-background-color: rgba(31,150,224,0.5);" text="- We're working hard to fix known bugs. Thank you for your patience!&#10;&#10;- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com&#10;&#10;- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!&#10;&#10;- &gt;&gt;DEVELOPER UPDATE&lt;&lt; Added cross cultural chatting, addressing multiple culture adaptation" unFocusColor="#4d4d4d00" wrapText="true">
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
                         <Label layoutX="14.0" layoutY="101.0" text="SYNchat News" textFill="#1f96e0">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
                         </Label>
-                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="14.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: WHITE;" text="- We're working hard to fix known bugs. Thank you for your patience!&#10;&#10;- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com&#10;&#10;- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!&#10;&#10;- &gt;&gt;DEVELOPER UPDATE&lt;&lt; Added cross cultural chatting, addressing multiple culture adaptation" unFocusColor="#4d4d4d00" wrapText="true">
+                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="400.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="- Join either public or privat chat with the buttons to the right&#10;&#10;- You can change your profile picture by pressing the cog in the upper right corner&#10;&#10;- You want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)" unFocusColor="#4d4d4d00" wrapText="true">
                            <font>
                               <Font name="Gill Sans MT" size="12.0" />
                            </font>
                         </JFXTextArea>
-                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="400.0" layoutY="126.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: WHITE;" text="- Join either public or privat chat with the buttons to the right&#10;&#10;- You can change your profile picture by pressing the cog in the upper right corner&#10;&#10;- You want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)" unFocusColor="#4d4d4d00" wrapText="true">
+                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="207.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="Current time: &lt;User time&gt;&#10;&#10;Current temperature: &#10;&#10;Total users online: &#10;" unFocusColor="#4d4d4d00" wrapText="true">
                            <font>
                               <Font name="Gill Sans MT" size="12.0" />
                            </font>
                         </JFXTextArea>
                         <Label layoutX="447.0" layoutY="101.0" text="SYNchat Features" textFill="#1f96e0">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="70.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="#1f96e0" wrapText="true">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
