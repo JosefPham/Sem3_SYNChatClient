@@ -165,7 +165,7 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
-            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
+            //PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             String nameMsg = "";
             String yourMsg = "";
             String dateMsg = "";
@@ -260,6 +260,9 @@ public class SYNchatController implements IController, Initializable {
     private void hamburger_handler(MouseEvent event) {
         if (settings) {
             pane_settings.setVisible(true);
+            pane_settings.toFront();
+            btn_logout.toFront();
+            hamburger_settings.toFront();
             settings = false;
         } else {
             pane_settings.setVisible(false);

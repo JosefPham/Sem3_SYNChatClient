@@ -16,7 +16,7 @@ public class SYNchat extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SYNchat.fxml"));
         Parent root = loader.load();
         Scene newScene = new Scene(root);
         IController controller = loader.getController();
