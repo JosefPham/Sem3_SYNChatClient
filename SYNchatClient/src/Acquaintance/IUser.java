@@ -15,5 +15,4 @@ public interface IUser extends Serializable {
 
     public List<Integer> getChats();
     
-    IPrivateChat loadPrivateChat(int chatID);
 }

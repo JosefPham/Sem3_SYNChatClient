@@ -88,8 +88,8 @@ public class User implements IUser {
         return BusinessFacade.getInstance().updateFriends(friends);
     }
     
-    @Override
-    public IPrivateChat loadPrivateChat(int chatID){
+
+    IPrivateChat loadPrivateChat(int chatID){
        throw new UnsupportedOperationException("this method shuld fetch private chat form server with many 10 messages in chathistory");
     }
 
