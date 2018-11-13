@@ -69,5 +69,15 @@ public class Profile implements IProfile{
     public String getProfileText() {
         return profileText;
     }
+
+    @Override
+    public Image getPicture() {
+        return picture;
+    }
+
+    @Override
+    public void setPicture(Image picture) {
+        this.picture = picture;
+    }
     
 }

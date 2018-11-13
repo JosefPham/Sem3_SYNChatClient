@@ -138,6 +138,7 @@ public class SYNchatController implements IController, Initializable {
                 image_yourCountry.setImage(new Image(new File("src/Assets/Flag_Japan_Color.png").toURI().toString()));
                 break;
         }
+        pic_profile.setImage(PresentationFacade.getInstance().getUser().getProfile().getPicture());
     }
 
     @FXML
@@ -334,11 +335,13 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void AvatarChooser1(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_1.png").toURI().toString()));
+        Image avatar = new Image(new File("src/Assets/Avatar_1.png").toURI().toString());
+        pic_profile.setImage(avatar);
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture(avatar);
     }
 
     @FXML
