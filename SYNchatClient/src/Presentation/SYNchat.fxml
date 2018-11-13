@@ -331,32 +331,32 @@
                                     <Image url="@../Assets/Avatar_6.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="550.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="550.0" onMousePressed="#AvatarChooser7" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_7.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="640.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="640.0" onMousePressed="#AvatarChooser8" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_8.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="730.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="730.0" onMousePressed="#AvatarChooser9" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_9.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="820.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="820.0" onMousePressed="#AvatarChooser10" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_10.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="910.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="910.0" onMousePressed="#AvatarChooser11" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_11.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="1000.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="1000.0" onMousePressed="#AvatarChooser12" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_12.png" />
                                  </image>
