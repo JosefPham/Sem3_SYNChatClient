@@ -299,7 +299,7 @@
                       </GridPane>
                   <ScrollPane fx:id="ScrollPane_AvatarChooser" hbarPolicy="NEVER" layoutX="50.0" layoutY="90.0" prefHeight="150.0" prefWidth="105.0" style="-fx-border-color: Black; -fx-border-width: 2;">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1020.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
                                  <image>
