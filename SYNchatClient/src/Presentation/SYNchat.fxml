@@ -299,7 +299,7 @@
                       </GridPane>
                   <ScrollPane fx:id="ScrollPane_AvatarChooser" hbarPolicy="NEVER" layoutX="50.0" layoutY="90.0" prefHeight="150.0" prefWidth="105.0" style="-fx-border-color: Black; -fx-border-width: 2;">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1020.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -329,6 +329,36 @@
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="460.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_6.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="550.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_7.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="640.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_8.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="730.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_9.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="820.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_10.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="910.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_11.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="1000.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/Avatar_12.png" />
                                  </image>
                               </ImageView>
                            </children>
