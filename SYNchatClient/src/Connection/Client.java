@@ -110,6 +110,25 @@ public class Client implements IClient {
         }
 
     }
+    
+    public int receiveInt() {
+        while (true) {
+            try {
+                int receivedInt = (int) input.readObject();
+                System.out.println("Vi læste noget o.o");
+                if (receivedInt >= 0) {
+                    System.out.println("Fik en int!");
+                    System.out.println(receivedInt);
+                    return receivedInt;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
 
     public void startPrivateThreads() {
 
@@ -196,11 +215,11 @@ public class Client implements IClient {
             @Override
             public void run() {
                 try {
-                    while (true) {
-                        //    System.out.println("HEllo");
-                        String text = (String) input.readObject();
-                        ConnectionFacade.getInstance().receivePublicMsg(text);
-                        System.out.println(text);
+                    while (serverSocket.isConnected()) {
+                        //String text = (String) input.readObject();
+                        ConTextMessage msg = (ConTextMessage) input.readObject();
+                        ConnectionFacade.getInstance().receivePublicMsg(msg);
+                        System.out.println(msg.getContext());
                     }
                 } catch (Exception e) {
                 } finally {
@@ -220,9 +239,9 @@ public class Client implements IClient {
         }
     }
 
-    // skal outcomments
-    public static void main(String[] args) {
-        Client client = new Client();
-    }
+//    // skal outcomments
+//    public static void main(String[] args) {
+//        Client client = new Client();
+//    }
 
 }

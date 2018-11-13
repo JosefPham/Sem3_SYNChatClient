@@ -1,22 +1,15 @@
 package Presentation;
 
+import Acquaintance.IController;
+import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -31,7 +24,7 @@ import javafx.stage.Stage;
  *
  * @author Group 9
  */
-public class RegisterNewUserController implements Initializable {
+public class RegisterNewUserController implements IController, Initializable {
 
     @FXML
     private TextField txt_email;
@@ -51,7 +44,6 @@ public class RegisterNewUserController implements Initializable {
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
-    private String selectedCountry = "Default";
     private Boolean countryB = true;
     @FXML
     private JFXPasswordField txt_Password2;
@@ -96,9 +88,9 @@ public class RegisterNewUserController implements Initializable {
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
             //TODO: default country string mangler at blive sendt med
-            if (PresentationFacade.getInstance().regUser((txt_firstName.getText() + " " + txt_lastName.getText()), txt_email.getText(), txt_Password1.getText())) {
+            if (PresentationFacade.getInstance().regUser(txt_firstName.getText(), txt_lastName.getText(), txt_email.getText(), txt_Password2.getText(), Nationality.valueOf(label_country.getText()))) {
                 label_warninginfo.setText("Registration Complete");
-                backToLoginHandler(Event);
+                PresentationFacade.getInstance().changeScene("Login.fxml");
             } else {
                 label_warninginfo.setText("Mail already registred");
             }
@@ -108,15 +100,7 @@ public class RegisterNewUserController implements Initializable {
 
     @FXML
     public void backToLoginHandler(ActionEvent event) {
-        try {
-            Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Scene newScene = new Scene(login);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setScene(newScene);
-            appStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 
     private boolean validateInfo() {
@@ -183,15 +167,13 @@ public class RegisterNewUserController implements Initializable {
 
     @FXML
     private void countryDK_handle(MouseEvent event) {
-        selectedCountry = "Denmark";
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("Denmark");
     }
 
     @FXML
-    private void countryUSA_handle(MouseEvent event) {
-        selectedCountry = "USA";        
+    private void countryUSA_handle(MouseEvent event) {        
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("USA");
@@ -199,9 +181,13 @@ public class RegisterNewUserController implements Initializable {
 
     @FXML
     private void countryJapan_handle(MouseEvent event) {
-        selectedCountry = "Japan";        
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("Japan");
+    }
+
+    @Override
+    public void injectStage(Stage stage) {
+        PresentationFacade.stage = stage;
     }
 }

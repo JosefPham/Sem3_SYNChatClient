@@ -2,6 +2,7 @@ package Business;
 
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,9 +15,12 @@ import java.util.logging.Logger;
  */
 public class ClientSystem {
 
+    private User currentUser;
+
     private static ClientSystem instance = null;
 
     private ClientSystem() {
+
     }
 
     public static ClientSystem getInstance() {
@@ -26,7 +30,7 @@ public class ClientSystem {
         return instance;
     }
 
-    private String hash(String hashString) {
+    protected String hash(String hashString) {
         try {
             MessageDigest hash = MessageDigest.getInstance("MD5");
             hash.update(hashString.getBytes(), 0, hashString.length());
@@ -39,24 +43,38 @@ public class ClientSystem {
 
     protected int Login(String mail, String pw) {
         ILogin ilogin = new Login(hash(mail), hash(pw));
-        return ilogin.login(BusinessFacade.getInstance().login(ilogin).getLoginvalue());
+        return ilogin.login(BusinessFacade.getInstance().login(ilogin));
     }
 
-    protected boolean regUser(String tmpName, String mail, String pw) {
-        IUser iuser = new User(tmpName);
-        ILogin ilogin = new Login(hash(mail), hash(pw)); 
+    protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
+        IUser iuser = new User(firstName, lastName, nationality, "");
+        ILogin ilogin = new Login(hash(mail), hash(pw));
         ilogin.setUser(iuser);
-        boolean b = BusinessFacade.getInstance().regBool(ilogin);
-        System.out.println("clientSystem: " + b);
-        return b;
+        return BusinessFacade.getInstance().regBool(ilogin);
     }
-    
+
     protected String cipherMsg(String msg) {
         Cipher cipher = new Cipher();
         System.out.println("Origin : " + msg);
         msg = cipher.cipher(msg);
         System.out.println("cipher : " + msg);
-        
+
         return msg;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setUser(User user) {
+        this.currentUser = user;
+    }
+
+    protected boolean updateProfile(String firstName, String lastName, Nationality nationality, String profileText) {
+        currentUser.getProfile().setFirstName(firstName);
+        currentUser.getProfile().setLastName(lastName);
+        currentUser.getProfile().setNationality(nationality);
+        currentUser.getProfile().setProfileText(profileText);
+        return BusinessFacade.getInstance().updateProfile(currentUser);
     }
 }

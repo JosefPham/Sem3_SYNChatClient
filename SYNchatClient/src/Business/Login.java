@@ -58,12 +58,12 @@ public class Login implements ILogin, Serializable {
     }
 
     @Override
-    public int login(int loginValue) {
+    public int login(ILogin finalLogin) {
 
-        if (loginValue == 2) {
-
-            //fetch and inplement user object through socket
+        if (finalLogin.getLoginvalue() == 2) {
+            User currentUser = new User(finalLogin.getUser().getUserID(), finalLogin.getUser().isBanned(), finalLogin.getUser().getReports(), finalLogin.getUser().getChats(), finalLogin.getUser().getFriends(), finalLogin.getUser().getProfile());
+            ClientSystem.getInstance().setUser(currentUser);
         }
-        return loginValue;
+        return finalLogin.getLoginvalue();
     }
 }
