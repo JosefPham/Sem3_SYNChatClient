@@ -2,6 +2,7 @@ package Presentation;
 
 import Acquaintance.IController;
 import Acquaintance.IMessage;
+import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -89,7 +90,22 @@ public class SYNchatController implements IController, Initializable {
     private Label label_userName;
     @FXML
     private Label label_userCountry;
-    
+    @FXML
+    private JFXTextArea SYN_news;
+    @FXML
+    private JFXTextArea SYN_features;
+    @FXML
+    private JFXTextArea SYN_welcome;
+    @FXML
+    private Label label_logo;
+    @FXML
+    private Label label_features;
+    @FXML
+    private Label label_welcome;
+    @FXML
+    private Label label_news;
+    @FXML
+    private ImageView image_yourCountry;
 
     /**
      * Initializes the controller class.
@@ -109,6 +125,19 @@ public class SYNchatController implements IController, Initializable {
         pane_settings.setVisible(false);
         ScrollPane_AvatarChooser.setVisible(false);
         label_userName.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+        label_userCountry.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
+        NationalityInterface(PresentationFacade.getInstance().getUser().getProfile().getNationality());
+        switch (PresentationFacade.getInstance().getUser().getProfile().getNationality()) {
+            case Denmark:
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_DK_Color.png").toURI().toString()));
+                break;
+            case USA:
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_USA_Color.png").toURI().toString()));
+                break;
+            case Japan:
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_Japan_Color.png").toURI().toString()));
+                break;
+        }
     }
 
     @FXML
@@ -237,7 +266,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void changeProfilePicture(MouseEvent event) {
-        if(scrollPane) {
+        if (scrollPane) {
             ScrollPane_AvatarChooser.setVisible(true);
             scrollPane = false;
         } else {
@@ -355,6 +384,82 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+    }
+
+    private void NationalityInterface(Nationality nat) {
+        switch (nat) {
+            case Denmark:
+                label_logo.setText("Velkommen");
+                label_news.setText("SYNchat Nyheder");
+                label_welcome.setText("Velkommen " + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+                label_features.setText("SYNchat funktioner");
+                SYN_news.setText("- Vi arbejder hårdt på at fikse kendte fejl. Tak for din tålmodighed!\n"
+                        + "\n"
+                        + "- Er der nogle ændringer du mener der mangler? Skriv endelig en mail til os med dine forslag på mail: post@synchat.com\n"
+                        + "\n"
+                        + "- Software ingeniører på SDU i Odense programmerer systemer på professionelt niveau allerede på 3. semester!\n"
+                        + "\n"
+                        + "- >>UDVIKLINGS OPDATERING<< Tilføjet ”Cross Cultural chatting”, tilpasser systemmeddelelser til diverse kulturelle forskelle.");
+                SYN_welcome.setText("Nuværende tidspunkt: <User time>\n"
+                        + "\n"
+                        + "Temperatur: \n"
+                        + "\n"
+                        + "Antal online brugere:");
+                SYN_features.setText("- Tillslut enten privat eller offentlig chat ved brug af de to knapper til højre.\n"
+                        + "\n"
+                        + "- Du kan ændre dit profilbillede ved at trykke på tandhjulet i øverste højre hjørne.\n"
+                        + "\n"
+                        + "- Har du brug for at sende en GIF, en fil, eller et lydklip? Tryk på SYNchat logoet ved siden af send-knappen (Vi elsker ferskner!).");
+                break;
+            case USA:
+                label_logo.setText("Welcome");
+                label_news.setText("SYNchat News");
+                label_welcome.setText("Welcome " + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+                label_features.setText("SYNchat features");
+                SYN_news.setText("- We're working hard to fix known bugs. Thank you for your patience!\n"
+                        + "\n"
+                        + "- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com\n"
+                        + "\n"
+                        + "- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!\n"
+                        + "\n"
+                        + "- >>DEVELOPER UPDATE<< Added cross cultural chatting, addressing multiple culture adaptation");
+                SYN_welcome.setText("Current time: <User time>\n"
+                        + "\n"
+                        + "Current temperature: \n"
+                        + "\n"
+                        + "Total users online:");
+                SYN_features.setText("- Join either public or privat chat with the buttons to the right\n"
+                        + "\n"
+                        + "- You can change your profile picture by pressing the cog in the upper right corner\n"
+                        + "\n"
+                        + "- Want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)");
+                break;
+            case Japan:
+                label_logo.setText("ようこそ");
+                label_news.setText("SYNchat ニュース");
+                label_welcome.setText("ようこそ " + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+                label_features.setText("SYNchat 機能");
+                SYN_news.setText("- 私たちは既知のバグを修正するために懸命に努めています. お待ちいただいてありがとうございます！\n"
+                        + "\n"
+                        + "- あなたが欠けていると思っている機能はありますか？ 私たちにメールをお送りください: post@synchat.com\n"
+                        + "\n"
+                        + "- SDUオーデンセのソフトウェアエンジニアは、すでに第3学期にプロフェッショナルレベルのソフトウェアをプログラミングしています！\n"
+                        + "\n"
+                        + "- >>開発者の更新<< クロスカルチャーチャットの追加, 複数の文化適応に取り組む.");
+                SYN_welcome.setText("現在の時刻： <User time>\n"
+                        + "\n"
+                        + "現在の温度： <Temperature>\n"
+                        + "\n"
+                        + "オンラインユーザー総数：<Users online>");
+                SYN_features.setText("- 右側のボタンで公開チャットまたはプライベートチャットに参加する.\n"
+                        + "\n"
+                        + "- 右上のコグを押すとプロフィール画像を変更できます.\n"
+                        + "\n"
+                        + "- あなたはgifを送ったり、ファイルを添付したり、サウンドクリップを送ったりしたいですか？送信ボタンのすぐ隣にあるSYNchatの桃を押してください。. （私たちは桃を愛する)");
+                break;
+            default:
+                break;
+        }
     }
 
 }

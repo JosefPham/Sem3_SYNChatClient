@@ -121,37 +121,37 @@
                               <Image url="@../Assets/SYNlogo_White.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="85.0" layoutY="43.0" text="- Welcome" textFill="#1f96e0">
+                        <Label fx:id="label_logo" layoutX="85.0" layoutY="43.0" text="- Welcome" textFill="#1f96e0">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
                         </Label>
-                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="14.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: black; -fx-background-color: rgba(31,150,224,0.5);" text="- We're working hard to fix known bugs. Thank you for your patience!&#10;&#10;- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com&#10;&#10;- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!&#10;&#10;- &gt;&gt;DEVELOPER UPDATE&lt;&lt; Added cross cultural chatting, addressing multiple culture adaptation" unFocusColor="#4d4d4d00" wrapText="true">
+                        <JFXTextArea fx:id="SYN_news" editable="false" focusColor="#405aa800" layoutX="14.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: black; -fx-background-color: rgba(31,150,224,0.5);" text="- We're working hard to fix known bugs. Thank you for your patience!&#10;&#10;- Have any features you think we're missing? Feel free to send us a mail: post@synchat.com&#10;&#10;- Software engineers at SDU Odense is programming professionel level software already at 3rd semester!&#10;&#10;- &gt;&gt;DEVELOPER UPDATE&lt;&lt; Added cross cultural chatting, addressing multiple culture adaptation" unFocusColor="#4d4d4d00" wrapText="true">
                            <font>
                               <Font name="Gill Sans MT" size="12.0" />
                            </font>
                         </JFXTextArea>
-                        <Label layoutX="14.0" layoutY="101.0" text="SYNchat News" textFill="#1f96e0">
+                        <JFXTextArea fx:id="SYN_features" editable="false" focusColor="#405aa800" layoutX="400.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="- Join either public or privat chat with the buttons to the right&#10;&#10;- You can change your profile picture by pressing the cog in the upper right corner&#10;&#10;- You want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)" unFocusColor="#4d4d4d00" wrapText="true">
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXTextArea fx:id="SYN_welcome" editable="false" focusColor="#405aa800" layoutX="207.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="Current time: &lt;User time&gt;&#10;&#10;Current temperature: &#10;&#10;Total users online: &#10;" unFocusColor="#4d4d4d00" wrapText="true">
+                           <font>
+                              <Font name="Gill Sans MT" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Label fx:id="label_features" layoutX="447.0" layoutY="101.0" text="SYNchat Features" textFill="#1f96e0">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
                         </Label>
-                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="400.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="- Join either public or privat chat with the buttons to the right&#10;&#10;- You can change your profile picture by pressing the cog in the upper right corner&#10;&#10;- You want to send a gif, attach a file or even send a sound clip? Press the SYNchat Peach right next to the send button. (We love peaches)" unFocusColor="#4d4d4d00" wrapText="true">
-                           <font>
-                              <Font name="Gill Sans MT" size="12.0" />
-                           </font>
-                        </JFXTextArea>
-                        <JFXTextArea editable="false" focusColor="#405aa800" layoutX="207.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="184.0" style="-fx-text-fill: BLACK; -fx-background-color: rgba(31,150,224,0.5);" text="Current time: &lt;User time&gt;&#10;&#10;Current temperature: &#10;&#10;Total users online: &#10;" unFocusColor="#4d4d4d00" wrapText="true">
-                           <font>
-                              <Font name="Gill Sans MT" size="12.0" />
-                           </font>
-                        </JFXTextArea>
-                        <Label layoutX="447.0" layoutY="101.0" text="SYNchat Features" textFill="#1f96e0">
+                        <Label fx:id="label_welcome" alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="70.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="#1f96e0" wrapText="true">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="70.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="#1f96e0" wrapText="true">
+                        <Label fx:id="label_news" layoutX="14.0" layoutY="101.0" text="SYNchat News" textFill="#1f96e0">
                            <font>
                               <Font name="Gill Sans MT Bold" size="16.0" />
                            </font>
@@ -268,7 +268,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                                      <Label fx:id="label_userName" layoutX="14.0" layoutY="38.0" prefHeight="14.0" prefWidth="89.0" text="Default user&#10;">
+                                      <Label fx:id="label_userName" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="38.0" prefHeight="14.0" prefWidth="89.0" text="Default user" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="12.0" />
                                  </font>
@@ -283,12 +283,12 @@
                                     <Image url="@../Assets/Cog_icon.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="52.0" pickOnBounds="true">
+                              <ImageView fx:id="image_yourCountry" fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="52.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Assets/Flag_DK_Color.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="label_userCountry" layoutX="12.0" layoutY="53.0" text="Default country&#10;" textAlignment="RIGHT">
+                              <Label fx:id="label_userCountry" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="53.0" text="Default country&#10;" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="12.0" />
                                  </font>
