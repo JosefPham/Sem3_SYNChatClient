@@ -77,4 +77,8 @@ public class ConUser implements IUser {
     public IFriends getFriends() {
         return friends;
     }
+    
+    public void setFriends(IFriends friends) {
+        this.friends = friends;
+    }
 }

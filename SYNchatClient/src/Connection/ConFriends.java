@@ -4,23 +4,20 @@ import Acquaintance.IFriends;
 import java.util.HashMap;
 import java.util.Map;
 
+public class ConFriends implements IFriends {
 
-public class ConFriends implements IFriends{
-    
-     Map<Integer,String> friendlist;
+    Map<Integer, String> friendlist;
 
     public ConFriends(Map<Integer, String> friends) {
         this.friendlist = new HashMap<>();
-        for(Integer id: friends.keySet()){
+        for (Integer id : friends.keySet()) {
             friendlist.put(id, friends.get(id));
         }
     }
-     
-     
 
     @Override
     public Map<Integer, String> getFriendlist() {
-        return friendlist; 
+        return friendlist;
     }
 
     @Override

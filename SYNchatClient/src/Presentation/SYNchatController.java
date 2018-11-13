@@ -50,8 +50,6 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private ImageView pic_profile;
     @FXML
-    private Label label_userInfo;
-    @FXML
     private JFXButton btn_privatChat;
     @FXML
     private AnchorPane Popup_pane;
@@ -87,6 +85,10 @@ public class SYNchatController implements IController, Initializable {
     private ScrollPane ScrollPane_AvatarChooser;
     @FXML
     private JFXTextArea txtArea_Chat;
+    @FXML
+    private Label label_userName;
+    @FXML
+    private Label label_userCountry;
     
 
     /**
@@ -106,6 +108,7 @@ public class SYNchatController implements IController, Initializable {
         pane_chat.setDisable(true);
         pane_settings.setVisible(false);
         ScrollPane_AvatarChooser.setVisible(false);
+        label_userName.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
     }
 
     @FXML
@@ -165,7 +168,7 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
-            //PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
+            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             String nameMsg = "";
             String yourMsg = "";
             String dateMsg = "";
@@ -206,15 +209,15 @@ public class SYNchatController implements IController, Initializable {
         System.out.println("timestamp " + msg.getTimestamp().toString());
         System.out.println("...");
         System.out.println("navn:" + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
-        String nameMsg = "";
-        String yourMsg = "";
-        String dateMsg = "";
-        nameMsg = "Default user:\n";
-        txtArea_Chat.appendText(nameMsg);
-        yourMsg = msg.getContext() + "\n";
-        txtArea_Chat.appendText(yourMsg);
-        dateMsg = msg.getTimestamp().toString() + "\n";
-        txtArea_Chat.appendText(dateMsg);
+//        String nameMsg = "";
+//        String yourMsg = "";
+//        String dateMsg = "";
+//        nameMsg = "Default user:\n";
+//        txtArea_Chat.appendText(nameMsg);
+//        yourMsg = msg.getContext() + "\n";
+//        txtArea_Chat.appendText(yourMsg);
+//        dateMsg = msg.getTimestamp().toString() + "\n";
+//        txtArea_Chat.appendText(dateMsg);
     }
 
     @FXML
