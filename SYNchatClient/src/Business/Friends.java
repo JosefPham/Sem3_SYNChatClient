@@ -19,7 +19,6 @@ public class Friends implements IFriends {
         return friendlist;
     }
 
-    @Override
     public boolean addFriend(int userID, String profileName) {
         if (!friendlist.containsKey(userID)) {
             friendlist.put(userID, profileName);
@@ -30,7 +29,6 @@ public class Friends implements IFriends {
         }
     }
 
-    @Override
     public void removeFriend(int userID) {
         friendlist.remove(userID);
     }
