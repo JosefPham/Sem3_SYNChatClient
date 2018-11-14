@@ -36,6 +36,6 @@ public interface IConnection {
     
     public boolean updateProfile(IUser user);
 
-    public boolean sendPrivateMessage(IPrivateChat newMegPrivateChat);
+    public void sendPrivateMessage(IPrivateChat newMegPrivateChat);
 
 }

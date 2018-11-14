@@ -122,10 +122,8 @@ public class ConnectionFacade implements IConnection {
 	}
 	
      @Override
-    public boolean sendPrivateMessage(IPrivateChat newMegPrivateChat) {
+    public void sendPrivateMessage(IPrivateChat newMegPrivateChat) {
         IPrivateChat sendChat = new ConPrivateChat(newMegPrivateChat.getUserIDs(), newMegPrivateChat.getChatID(), newMegPrivateChat.getName(), newMegPrivateChat.getCh());
         client.send(sendChat);
-     return client.receiveBool();
-
     }
 }

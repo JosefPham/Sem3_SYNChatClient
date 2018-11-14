@@ -75,7 +75,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void receivePublicMsg(IMessage msg) {        
+    public void receivePublicMsg(IMessage msg) {
         Message finalMsg = new TextMessage(msg.getSenderID(), ClientSystem.getInstance().cipherMsg(msg.getContext()));
         finalMsg.setTimestamp(msg.getTimestamp());
         Ipres.receivePublicMsg(finalMsg);
@@ -98,7 +98,7 @@ public class BusinessFacade implements IBusiness {
     public void connect() {
         Icon.connect();
     }
-    
+
     @Override
     public int sendChangePw(IManagement management) {
         return Icon.sendChangePw(management);
@@ -110,49 +110,49 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public boolean addFriend(int userID, String profileName){
+    public boolean addFriend(int userID, String profileName) {
         return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
     }
-    
+
     @Override
-    public boolean removeFriend(int userID){
+    public boolean removeFriend(int userID) {
         return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
     }
+
     /*
     method for updating the friendsobject in database
-    */
+     */
     boolean updateFriends(IFriends friends) {
         return Icon.updateFriends(friends);
     }
-    
+
     @Override
     public int changePw(String oldPw, String newPw) {
         return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
     }
-    
+
     @Override
     public int changeMail(String pw, String mail) {
         return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
     }
 
-    boolean sendPrivateMessage(IPrivateChat newMegPrivateChat) {
-        return Icon.sendPrivateMessage(newMegPrivateChat);
+    void sendPrivateMessage(IPrivateChat newMegPrivateChat) {
+        Icon.sendPrivateMessage(newMegPrivateChat);
     }
-    
+
     @Override
     public IUser getUser() {
         return ClientSystem.getInstance().getCurrentUser();
     }
-    
+
     @Override
     public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
         return ClientSystem.getInstance().updateProfile(firstName, lastName, nationality, profileText);
     }
-    
+
     @Override
     public boolean updateProfile(IUser user) {
         return Icon.updateProfile(user);
     }
-    
-    
+
 }

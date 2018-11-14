@@ -2,12 +2,15 @@ package Business;
 
 
 import Acquaintance.IFriends;
+import Acquaintance.IMessage;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import Acquaintance.IPrivateChat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User implements IUser {
 
@@ -17,16 +20,16 @@ public class User implements IUser {
     private int userID;
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
-    private List<Integer> chats;
+    private Map<Integer, String> chats;
     private IFriends friends;
     private IProfile profile;
-    private List<IPrivateChat> activePrivateChats = new ArrayList<>();
+    private Map<Integer,PrivateChat> activePrivateChats = new HashMap<Integer, PrivateChat>();
 
     public User(String firstName, String lastName, Nationality nationality, String profileText) {
         profile = new Profile(firstName, lastName, nationality, "");
     }
 
-    public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, IProfile profile) {
+    public User(int userID, boolean banned, int reports, Map<Integer, String> chats, IFriends friends, IProfile profile) {
         this.userID = userID;
         this.banned = banned;
         this.reports = reports;
@@ -53,7 +56,7 @@ public class User implements IUser {
     }
 
     @Override
-    public List<Integer> getChats() {
+    public Map<Integer, String> getChats() {
         return chats;
     }
     
@@ -72,8 +75,15 @@ public class User implements IUser {
         return BusinessFacade.getInstance().sendChangeMail(management);
     }
 
-    public boolean addFriend(int userID, String profileName) {
+    /**
+     * method for adding a frind, it checks if the frind is alredy in the frindslist. and then ask the server to add the fring as well. At this point it also creates a chat with that user, this may be a contention of change in a later iteration.
+     * @param friendID  the user id of the frind i question
+     * @param profileName the profile name of the friend
+     * @return 
+     */
+    public boolean addFriend(int friendID, String profileName) {
         if (friends.addFriend(userID, profileName)) {
+            createChat(userID, profileName + " " + profile.getFirstName() + " " + profile.getLastName());
             return updateFriends(friends);
         } else {
             return true;
@@ -97,6 +107,28 @@ public class User implements IUser {
     @Override
     public IFriends getFriends() {
         return friends;
+    }
+    /**
+     * method for creating a new chat with a user
+     * @param frindID   id on the user that the chat is initiated with
+     * @param name name of the chat
+     */
+    void createChat(int frindID,String name){
+        IPrivateChat newChat = new PrivateChat(this.userID, frindID, name);
+        BusinessFacade.getInstance().sendPrivateMessage(newChat);
+        
+    }
+   /**
+    * method for adding a chat to the chatsmap when reciving a new chat privateChat object on the stream
+    * @param newChat 
+    */ 
+    void addPrivateChat(IPrivateChat newChat){
+        chats.put(newChat.getChatID(), newChat.getName());
+        
+    }
+    
+    void sendPrivateMessage(int chatID, IMessage msg){
+        activePrivateChats.get(chatID).sendMessage(msg);
     }
 
 }
