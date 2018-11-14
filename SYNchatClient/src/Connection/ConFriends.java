@@ -1,26 +1,27 @@
 package Connection;
 
 import Acquaintance.IFriends;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
 
 public class ConFriends implements IFriends{
     
-     Map<Integer,String> friendlist;
+     List<Integer> friendlist;
 
-    public ConFriends(Map<Integer, String> friends) {
-        this.friendlist = new HashMap<>();
-        for(Integer id: friends.keySet()){
-            friendlist.put(id, friends.get(id));
+    public ConFriends(List<Integer> friends) {
+        this.friendlist = new ArrayList<>();
+        for(Integer id: friends) {
+            friendlist.add(id);
         }
     }
      
      
 
     @Override
-    public Map<Integer, String> getFriendlist() {
+    public List<Integer> getFriendlist() {
         return friendlist; 
     }
 
