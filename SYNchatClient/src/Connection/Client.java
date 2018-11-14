@@ -67,7 +67,6 @@ public class Client implements IClient {
     public void send(Object o) {
         try {
             output.writeObject(o);
-            // System.out.println("Sent login info");
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,9 +77,7 @@ public class Client implements IClient {
         while (true) {
             try {
                 ILogin receivedLogin = (ILogin) input.readObject();
-                System.out.println("Vi læste noget o.o");
                 if (receivedLogin != null) {
-                    System.out.println("Fik login som ikke var null!");
                     return receivedLogin;
                 }
             } catch (IOException ex) {
@@ -96,10 +93,7 @@ public class Client implements IClient {
         while (true) {
             try {
                 Boolean receivedBool = (Boolean) input.readObject();
-                System.out.println("Vi læste noget o.o");
                 if (receivedBool != null) {
-                    System.out.println("Fik en boolean!");
-                    System.out.println(receivedBool);
                     return receivedBool;
                 }
             } catch (IOException ex) {
@@ -115,10 +109,7 @@ public class Client implements IClient {
         while (true) {
             try {
                 int receivedInt = (int) input.readObject();
-                System.out.println("Vi læste noget o.o");
                 if (receivedInt >= 0) {
-                    System.out.println("Fik en int!");
-                    System.out.println(receivedInt);
                     return receivedInt;
                 }
             } catch (IOException ex) {
@@ -145,7 +136,6 @@ public class Client implements IClient {
 
                             output.writeUTF(":" + local + "   " + msg);
 
-                            //     System.out.println("Sending");
                             output.flush();
                         } catch (IOException ex) {
                             ex.printStackTrace();
@@ -162,9 +152,7 @@ public class Client implements IClient {
             public void run() {
                 try {
                     while (true) {
-                        //    System.out.println("HEllo");
                         String text = (String) input.readObject(); // writeObject
-                        System.out.println(text);
                     }
                 } catch (Exception e) {
                 } finally {
@@ -193,7 +181,6 @@ public class Client implements IClient {
                         //String text = (String) input.readObject();
                         ConTextMessage msg = (ConTextMessage) input.readObject();
                         ConnectionFacade.getInstance().receivePublicMsg(msg);
-                        System.out.println(msg.getContext());
                     }
                 } catch (Exception e) {
                 } finally {

@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Acquaintance;
 
 /**
  *
  */
 public enum Nationality {
-    
-        Denmark, USA, Japan
-   
+
+    Denmark, USA, Japan
+
 }
