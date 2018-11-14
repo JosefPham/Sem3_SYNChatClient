@@ -1,9 +1,12 @@
 package Business;
 
+
 import Acquaintance.IFriends;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
+import Acquaintance.IPrivateChat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements IUser {
@@ -17,6 +20,7 @@ public class User implements IUser {
     private List<Integer> chats;
     private IFriends friends;
     private IProfile profile;
+    private List<IPrivateChat> activePrivateChats = new ArrayList<>();
 
     public User(String firstName, String lastName, Nationality nationality, String profileText) {
         profile = new Profile(firstName, lastName, nationality, "");
@@ -83,6 +87,11 @@ public class User implements IUser {
 
     boolean updateFriends(IFriends friends) {
         return BusinessFacade.getInstance().updateFriends(friends);
+    }
+    
+
+    IPrivateChat loadPrivateChat(int chatID){
+       throw new UnsupportedOperationException("this method shuld fetch private chat form server with many 10 messages in chathistory");
     }
 
     @Override

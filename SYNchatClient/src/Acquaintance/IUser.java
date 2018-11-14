@@ -16,4 +16,7 @@ public interface IUser extends Serializable {
     IProfile getProfile();
 
     IFriends getFriends();
+
+    public List<Integer> getChats();
+    
 }

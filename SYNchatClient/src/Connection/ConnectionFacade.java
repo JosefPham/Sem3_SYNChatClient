@@ -2,6 +2,7 @@
 package Connection;
 
 import Acquaintance.IBusiness;
+import Acquaintance.IChatHistory;
 import Acquaintance.IClient;
 import Acquaintance.IConnection;
 import Acquaintance.IFriends;
@@ -11,7 +12,7 @@ import Acquaintance.IMessage;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
-import Business.Friends;
+import Acquaintance.IPrivateChat;
 
 /**
  *
@@ -113,9 +114,18 @@ public class ConnectionFacade implements IConnection {
        return client.receiveBool();
     }
     
+
     @Override
     public boolean updateProfile(IUser user) {
         client.send(user);
         return client.receiveBool();
+	}
+	
+     @Override
+    public boolean sendPrivateMessage(IPrivateChat newMegPrivateChat) {
+        IPrivateChat sendChat = new ConPrivateChat(newMegPrivateChat.getUserIDs(), newMegPrivateChat.getChatID(), newMegPrivateChat.getName(), newMegPrivateChat.getCh());
+        client.send(sendChat);
+     return client.receiveBool();
+
     }
 }

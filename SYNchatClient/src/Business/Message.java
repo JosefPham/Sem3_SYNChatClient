@@ -28,12 +28,11 @@ public abstract class Message implements Serializable, IMessage {
         return timestamp;
     }
     
-    @Override
-    public String getContext() {
-        return "Abstract klasse getContext";
-    }
     
     public void setTimestamp(Instant timestamp){
         this.timestamp = timestamp;
     }
+
+    public abstract String getContext();
+
 }
