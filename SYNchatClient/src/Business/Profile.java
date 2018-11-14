@@ -8,7 +8,6 @@ package Business;
 
 import Acquaintance.IProfile;
 import Acquaintance.Nationality;
-import javafx.scene.image.Image; //Might not be a correct import...
 
 
 
