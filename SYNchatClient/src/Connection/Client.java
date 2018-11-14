@@ -184,32 +184,6 @@ public class Client implements IClient {
 
     @Override
     public void startPublicThreads() {
-
-        /*Scanner scan = new Scanner(System.in);
-
-        sendMessage = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        InetAddress local = InetAddress.getLocalHost();
-                        String msg = scan.nextLine();
-                        try {
-                            output.writeObject(local + "   " + msg);
-                                 System.out.println("Sending");
-                            output.flush();
-                            System.out.println("Sent");
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        } // Sæt vores tråd til null ved finally
-                    } catch (UnknownHostException ex) {
-                        Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-                    } finally {
-                        sendMessage.interrupt();
-                    }
-                }
-            }
-        });*/
         if(readMessage == null){
         readMessage = new Thread(new Runnable() {
             @Override

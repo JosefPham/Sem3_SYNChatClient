@@ -76,18 +76,10 @@ public class ChangeInfoController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
         //Inserting data into textFields if there is a value to the specific field
-//        if (PresentationFacade.getInstance().getUser().getProfile().getFirstName().length() > 0) {
-//            textField_fname.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
-//        }
-//        if (PresentationFacade.getInstance().getUser().getProfile().getLastName().length() > 0) {
-//            textField_lname.setText(PresentationFacade.getInstance().getUser().getProfile().getLastName());
-//        }
-//        if (PresentationFacade.getInstance().getUser().getProfile().getNationality().toString().length() > 0) {
-//            textField_nationality.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
-//        }
-//        if (PresentationFacade.getInstance().getUser().getProfile().getProfileText().length() > 0) {
-//            textArea_profileInfo.setText(PresentationFacade.getInstance().getUser().getProfile().getProfileText());
-//        }
+        textField_fname.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
+        textField_lname.setText(PresentationFacade.getInstance().getUser().getProfile().getLastName());
+        textField_nationality.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
+        textArea_profileInfo.setText(PresentationFacade.getInstance().getUser().getProfile().getProfileText());
     }
 
     @FXML

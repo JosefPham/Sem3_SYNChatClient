@@ -23,8 +23,7 @@ public class PresentationFacade implements IPresentation, IController {
     protected static IBusiness Ibus;
     private SYNchat synchat;
     private String context = "";
-    private int senderID;
-    private IMessage Imsg;
+    private IMessage iMsg;
     public static Stage stage;
 
     private static PresentationFacade instance = null;
@@ -63,10 +62,8 @@ public class PresentationFacade implements IPresentation, IController {
 
     @Override
     public void receivePublicMsg(IMessage msg) {
-//        this.context = msg.getContext();
-//        this.senderID = msg.getSenderID();
-//        this.Imsg = msg;
-        SYNchatController.getInstance().receivePublicMsg(msg);
+        this.iMsg = msg;
+        //SYNchatController.getInstance().receivePublicMsg(msg.getContext());
     }
 
     @Override
@@ -120,13 +117,8 @@ public class PresentationFacade implements IPresentation, IController {
         Ibus.connect();
     }
 
-    @Override
-    public int getSenderID() {
-        return senderID;
-    }
-
-    public IMessage getImsg() {
-        return Imsg;
+    public IMessage getIMsg() {
+        return iMsg;
     }
     @Override
     public IUser getUser() {

@@ -16,8 +16,6 @@ public interface IPresentation {
 
     public String getContext();
     
-    public int getSenderID();
-    
     public void logoutHandling(String logout);
     
     public IUser getUser();

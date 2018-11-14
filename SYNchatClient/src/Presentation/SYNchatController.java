@@ -8,7 +8,11 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.net.URL;
+import java.security.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -16,6 +20,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -43,6 +48,8 @@ public class SYNchatController implements IController, Initializable {
         }
         return instance;
     }
+
+    IMessage iMsg;
 
     @FXML
     private JFXButton btn_publicChat;
@@ -138,7 +145,8 @@ public class SYNchatController implements IController, Initializable {
                 image_yourCountry.setImage(new Image(new File("src/Assets/Flag_Japan_Color.png").toURI().toString()));
                 break;
         }
-        pic_profile.setImage(PresentationFacade.getInstance().getUser().getProfile().getPicture());
+        System.out.println("pic: " + PresentationFacade.getInstance().getUser().getProfile().getPicture());
+        pic_profile.setImage(new Image(new File(PresentationFacade.getInstance().getUser().getProfile().getPicture()).toURI().toString()));
     }
 
     @FXML
@@ -157,34 +165,22 @@ public class SYNchatController implements IController, Initializable {
             @Override
             public void run() {
                 String comparisonString = "";
-                int comparisonInt = 0;
-                IMessage Imsg;
+                int comparisonInt = -1;
                 while (true) {
                     try {
                         Thread.sleep(0);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(SYNchatController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-//                    System.out.println("");
-//                    System.out.println(" .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------. ");
-//                    System.out.println("| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |");
-//                    System.out.println("| |    _______   | || |  ____  ____  | || | ____  _____  | || |     ______   | || |  ____  ____  | || |      __      | || |  _________   | |");
-//                    System.out.println("| |   /  ___  |  | || | |_  _||_  _| | || ||_   \\|_   _| | || |   .' ___  |  | || | |_   ||   _| | || |     /  \\     | || | |  _   _  |  | |");
-//                    System.out.println("| |  |  (__ \\_|  | || |   \\ \\  / /   | || |  |   \\ | |   | || |  / .'   \\_|  | || |   | |__| |   | || |    / /\\ \\    | || | |_/ | | \\_|  | |");
-//                    System.out.println("| |   '.___`-.   | || |    \\ \\/ /    | || |  | |\\ \\| |   | || |  | |         | || |   |  __  |   | || |   / ____ \\   | || |     | |      | |");
-//                    System.out.println("| |  |`\\____) |  | || |    _|  |_    | || | _| |_\\   |_  | || |  \\ `.___.'\\  | || |  _| |  | |_  | || | _/ /    \\ \\_ | || |    _| |_     | |");
-//                    System.out.println("| |  |_______.'  | || |   |______|   | || ||_____|\\____| | || |   `._____.'  | || | |____||____| | || ||____|  |____|| || |   |_____|    | |");
-//                    System.out.println("| |              | || |              | || |              | || |              | || |              | || |              | || |              | |");
-//                    System.out.println("| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |");
-//                    System.out.println(" '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'");
-//                    System.out.println("");
-                    String context = PresentationFacade.getInstance().getContext();
-                    int senderID = PresentationFacade.getInstance().getSenderID();
-                    if (!context.equals(comparisonString) && (senderID != comparisonInt)) {
-                        comparisonString = context;
-                        comparisonInt = senderID;
-                        Imsg = PresentationFacade.getInstance().getImsg();
-                        receivePublicMsg(Imsg);
+                    if (PresentationFacade.getInstance().getIMsg() != null) {
+                        iMsg = PresentationFacade.getInstance().getIMsg();
+                        int senderID = iMsg.getSenderID();
+                        String context = iMsg.getContext();
+                        if (!context.equals(comparisonString) || (senderID != comparisonInt)) {
+                            comparisonString = context;
+                            comparisonInt = senderID;
+                            receivePublicMsg(iMsg);
+                        }
                     }
                 }
             }
@@ -199,15 +195,6 @@ public class SYNchatController implements IController, Initializable {
     private void sendMsg(ActionEvent event) {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
             PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
-            String nameMsg = "";
-            String yourMsg = "";
-            String dateMsg = "";
-            nameMsg = "Default user:\n";
-            txtArea_Chat.appendText(nameMsg);
-            yourMsg = txtArea_YourChat.getText() + "\n";
-            txtArea_Chat.appendText(yourMsg);
-            dateMsg = new SimpleDateFormat("HH.mm").format(new Date()) + "\n";
-            txtArea_Chat.appendText(dateMsg);
             txtArea_YourChat.clear();
         }
     }
@@ -235,19 +222,12 @@ public class SYNchatController implements IController, Initializable {
     }
 
     public void receivePublicMsg(IMessage msg) {
-        System.out.println("En eller anden faggots besked: " + msg.getContext());
-        System.out.println("timestamp " + msg.getTimestamp().toString());
-        System.out.println("...");
-        System.out.println("navn:" + PresentationFacade.getInstance().getUser().getProfile().getFirstName());
-//        String nameMsg = "";
-//        String yourMsg = "";
-//        String dateMsg = "";
-//        nameMsg = "Default user:\n";
-//        txtArea_Chat.appendText(nameMsg);
-//        yourMsg = msg.getContext() + "\n";
-//        txtArea_Chat.appendText(yourMsg);
-//        dateMsg = msg.getTimestamp().toString() + "\n";
-//        txtArea_Chat.appendText(dateMsg);
+        txtArea_Chat.appendText(String.valueOf(iMsg.getSenderID()) + ": ");
+        txtArea_Chat.appendText(iMsg.getContext() + "\n");
+        Date date = new Date();
+        date.setTime(iMsg.getTimestamp().toEpochMilli());
+        String timeStamp = new SimpleDateFormat("HH.mm").format(date);
+        txtArea_Chat.appendText(timeStamp + "\n\n");
     }
 
     @FXML
@@ -335,13 +315,12 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void AvatarChooser1(MouseEvent event) {
-        Image avatar = new Image(new File("src/Assets/Avatar_1.png").toURI().toString());
-        pic_profile.setImage(avatar);
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_1.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture(avatar);
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_1.png");
     }
 
     @FXML
@@ -351,6 +330,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_2.png");
     }
 
     @FXML
@@ -360,6 +340,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_3.png");
     }
 
     @FXML
@@ -369,6 +350,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_4.png");
     }
 
     @FXML
@@ -378,6 +360,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_5.png");
     }
 
     @FXML
@@ -387,6 +370,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_6.png");
     }
 
     private void NationalityInterface(Nationality nat) {
@@ -472,6 +456,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_7.png");
     }
 
     @FXML
@@ -481,6 +466,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_8.png");
     }
 
     @FXML
@@ -490,6 +476,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_9.png");
     }
 
     @FXML
@@ -499,6 +486,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_10.png");
     }
 
     @FXML
@@ -508,6 +496,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_11.png");
     }
 
     @FXML
@@ -517,6 +506,7 @@ public class SYNchatController implements IController, Initializable {
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_12.png");
     }
 
 }
