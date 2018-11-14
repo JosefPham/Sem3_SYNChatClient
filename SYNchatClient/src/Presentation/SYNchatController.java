@@ -8,11 +8,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.net.URL;
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -20,7 +16,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -145,7 +140,6 @@ public class SYNchatController implements IController, Initializable {
                 image_yourCountry.setImage(new Image(new File("src/Assets/Flag_Japan_Color.png").toURI().toString()));
                 break;
         }
-        System.out.println("pic: " + PresentationFacade.getInstance().getUser().getProfile().getPicture());
         pic_profile.setImage(new Image(new File(PresentationFacade.getInstance().getUser().getProfile().getPicture()).toURI().toString()));
     }
 

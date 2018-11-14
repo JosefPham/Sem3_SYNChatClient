@@ -48,7 +48,6 @@ public class LoginController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("pfacade " + PresentationFacade.getInstance());
         btn_forgotPW.setVisible(false);
         txt_email.setStyle("-fx-prompt-text-fill: #1d1f21;"
                 + "-fx-text-inner-color: #1d1f21;");
@@ -101,7 +100,6 @@ public class LoginController implements IController, Initializable {
 
     private void loginHandler(ActionEvent event) {
         int validationInt = PresentationFacade.getInstance().login(txt_email.getText(), txt_pw.getText());
-        //System.out.println(validationInt);
         switch (validationInt) {
             case 0:
                 label_wrongInfo.setText("Email doesn't exist");

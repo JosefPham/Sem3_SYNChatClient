@@ -55,9 +55,7 @@ public class ClientSystem {
 
     protected String cipherMsg(String msg) {
         Cipher cipher = new Cipher();
-        System.out.println("Origin : " + msg);
         msg = cipher.cipher(msg);
-        System.out.println("cipher : " + msg);
 
         return msg;
     }
