@@ -9,6 +9,7 @@ import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
+import java.util.Map;
 
 /**
  *
@@ -87,8 +88,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void logoutHandling(String logout) {
-        Icon.logoutHandling(logout);
+    public void commandHandling(String command) {
+        Icon.commandHandling(command);
     }
 
     @Override
@@ -145,6 +146,16 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean updateProfile(IUser user) {
         return Icon.updateProfile(user);
+    }
+
+    @Override
+    public void userMap(Map userMap) {
+        Ipres.userMap(userMap);
+    }
+
+    @Override
+    public void publicUser(IUser pUser) {
+        Ipres.publicUser(pUser);
     }
     
     

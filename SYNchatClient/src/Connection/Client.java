@@ -2,6 +2,7 @@ package Connection;
 
 import Acquaintance.IClient;
 import Acquaintance.ILogin;
+import Acquaintance.IUser;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -178,9 +180,18 @@ public class Client implements IClient {
             public void run() {
                 try {
                     while (serverSocket.isConnected()) {
-                        //String text = (String) input.readObject();
-                        ConTextMessage msg = (ConTextMessage) input.readObject();
-                        ConnectionFacade.getInstance().receivePublicMsg(msg);
+                        Object obj;
+                        if ((obj = input.readObject()) != null) {
+                            if(obj instanceof ConTextMessage) {
+                                ConTextMessage msg = (ConTextMessage) obj;
+                                ConnectionFacade.getInstance().receivePublicMsg(msg);
+                            } if (obj instanceof Map) {
+                                ConnectionFacade.getInstance().userMap((Map) obj);
+                            } if (obj instanceof IUser) {
+                                ConnectionFacade.getInstance().publicUser((IUser) obj);
+                            }
+                        }
+                        
                     }
                 } catch (Exception e) {
                 } finally {

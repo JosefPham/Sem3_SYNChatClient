@@ -1,5 +1,7 @@
 package Acquaintance;
 
+import java.util.Map;
+
 /**
  *
  * @author Group 9
@@ -13,10 +15,8 @@ public interface IPresentation {
     public void receivePublicMsg(IMessage msg);
 
     public void sendPublicMsg(String s);
-
-    public String getContext();
     
-    public void logoutHandling(String logout);
+    public void commandHandling(String command);
     
     public IUser getUser();
     
@@ -25,4 +25,8 @@ public interface IPresentation {
     public int changeMail(String pw, String newMail);
     
     public int changePw(String oldPw, String newPw);
+    
+    public void userMap(Map userMap);
+    
+    public void publicUser(IUser pUser);
 }

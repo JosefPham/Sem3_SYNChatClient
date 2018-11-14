@@ -8,10 +8,8 @@ import Acquaintance.IFriends;
 import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
-import Acquaintance.IProfile;
 import Acquaintance.IUser;
-import Acquaintance.Nationality;
-import Business.Friends;
+import java.util.Map;
 
 /**
  *
@@ -96,8 +94,8 @@ public class ConnectionFacade implements IConnection {
     }
 
     @Override
-    public void logoutHandling(String logout) {
-        client.send(logout);
+    public void commandHandling(String command) {
+        client.send(command);
     }
 
     @Override
@@ -116,5 +114,15 @@ public class ConnectionFacade implements IConnection {
     public boolean updateProfile(IUser user) {
         client.send(user);
         return client.receiveBool();
+    }
+
+    @Override
+    public void userMap(Map userMap) {
+        Ibus.userMap(userMap);
+    }
+    
+    @Override
+    public void publicUser(IUser pUser) {
+        Ibus.publicUser(pUser);
     }
 }

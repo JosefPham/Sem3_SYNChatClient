@@ -1,6 +1,6 @@
 package Acquaintance;
 
-import Business.Friends;
+import java.util.Map;
 
 /**
  *
@@ -28,11 +28,15 @@ public interface IConnection {
     
     public int sendChangeMail(IManagement management);
 
-    public void logoutHandling(String logout);
+    public void commandHandling(String command);
     
     public void connect();
 
     public boolean updateFriends(IFriends friends);
     
     public boolean updateProfile(IUser user);
+    
+    public void userMap(Map userMap);
+    
+    public void publicUser(IUser pUser);
 }

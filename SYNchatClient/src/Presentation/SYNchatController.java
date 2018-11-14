@@ -2,6 +2,7 @@ package Presentation;
 
 import Acquaintance.IController;
 import Acquaintance.IMessage;
+import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -10,9 +11,12 @@ import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +48,9 @@ public class SYNchatController implements IController, Initializable {
         return instance;
     }
 
-    IMessage iMsg;
+    private IMessage iMsg;
+    private Map<Integer, IUser> pUserMap;
+    private IUser pUser;
 
     @FXML
     private JFXButton btn_publicChat;
@@ -145,6 +151,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     public void startPublicChat(ActionEvent event) {
+        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         pane_chat.setDisable(false);
         pane_Welcome.toBack();
         PresentationFacade.Ibus.publicThreads();
@@ -195,11 +202,28 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void startPrivatChat(ActionEvent event) {
+        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         pane_chat.setDisable(false);
         pane_Welcome.toBack();
         PresentationFacade.Ibus.privateThreads();
         btn_publicChat.setStyle(btn_privatChat.getStyle());
         btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
+    }
+
+    public void userMap(Map userMap) {
+        userMap = new HashMap<>();
+        pUserMap = userMap;
+        for (Integer i : pUserMap.keySet()) {
+            System.out.println(pUserMap.get(i).getProfile().getFirstName());
+        }
+    }
+
+    public void publicUser(IUser pUser) {
+        if (!pUserMap.containsKey(pUser.getUserID())) {
+            pUserMap.put(pUser.getUserID(), pUser);
+        } else {
+            pUserMap.remove(pUser.getUserID());
+        }
     }
 
     @FXML
@@ -252,7 +276,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void logoutAction(ActionEvent event) {
-        PresentationFacade.getInstance().logoutHandling("!SYN!-logout-!SYN!");
+        PresentationFacade.getInstance().commandHandling("!SYN!-logout-!SYN!");
         PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 

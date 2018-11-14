@@ -7,6 +7,7 @@ import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,6 @@ public class PresentationFacade implements IPresentation, IController {
 
     protected static IBusiness Ibus;
     private SYNchat synchat;
-    private String context = "";
     private IMessage iMsg;
     public static Stage stage;
 
@@ -63,30 +63,22 @@ public class PresentationFacade implements IPresentation, IController {
     @Override
     public void receivePublicMsg(IMessage msg) {
         this.iMsg = msg;
-        //SYNchatController.getInstance().receivePublicMsg(msg.getContext());
-    }
-
-    @Override
-    public String getContext() {
-        return context;
     }
 
     @Override
     public void sendPublicMsg(String s) {
         Ibus.sendPublicMsg(s);
     }
-    
+
     @Override
     public int changePw(String oldPw, String newPw) {
         return Ibus.changePw(oldPw, newPw);
     }
-    
+
     @Override
     public int changeMail(String pw, String newMail) {
         return Ibus.changeMail(pw, newMail);
     }
-    
-    
 
     public void changeScene(String resource) {
         try {
@@ -109,10 +101,10 @@ public class PresentationFacade implements IPresentation, IController {
     }
 
     @Override
-    public void logoutHandling(String logout) {
-        Ibus.logoutHandling(logout);
+    public void commandHandling(String command) {
+        Ibus.commandHandling(command);
     }
-    
+
     public void connect() {
         Ibus.connect();
     }
@@ -120,13 +112,24 @@ public class PresentationFacade implements IPresentation, IController {
     public IMessage getIMsg() {
         return iMsg;
     }
+
     @Override
     public IUser getUser() {
         return Ibus.getUser();
     }
-    
+
     @Override
     public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
         return Ibus.editProfileInfo(firstName, lastName, nationality, profileText);
+    }
+
+    @Override
+    public void userMap(Map userMap) {
+        SYNchatController.getInstance().userMap(userMap);
+    }
+
+    @Override
+    public void publicUser(IUser pUser) {
+        
     }
 }
