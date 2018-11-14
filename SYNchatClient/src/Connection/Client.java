@@ -195,7 +195,7 @@ public class Client implements IClient {
                     }
                 } catch (Exception e) {
                 } finally {
-                    // Sæt vores tråd til null
+                    readMessage = null;
                     try {
                         readMessage.interrupt();
                         output.close();
@@ -205,15 +205,7 @@ public class Client implements IClient {
                 }
             }
         });
-
-        //sendMessage.start();
         readMessage.start();
         }
     }
-
-//    // skal outcomments
-//    public static void main(String[] args) {
-//        Client client = new Client();
-//    }
-
 }
