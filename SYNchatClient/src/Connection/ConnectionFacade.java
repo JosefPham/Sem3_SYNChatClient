@@ -109,21 +109,30 @@ public class ConnectionFacade implements IConnection {
 
     @Override
     public boolean checkPW(IManagement management) {
-        ConManagement conMana = new ConManagement(management.getAction(), management.getPw(), management.getMail(), management.getProfile());
+        ConManagement conMana = new ConManagement(management.getAction());
+        conMana.setPw(management.getPw());
+        conMana.setMail(management.getMail());
+        conMana.setProfile(management.getProfile());
         client.send(conMana);
         return client.receiveBool();
     }
 
     @Override
     public boolean checkMail(IManagement management) {
-        ConManagement conMana = new ConManagement(management.getAction(), management.getPw(), management.getMail(), management.getProfile());
+        ConManagement conMana = new ConManagement(management.getAction());
+        conMana.setPw(management.getPw());
+        conMana.setMail(management.getMail());
+        conMana.setProfile(management.getProfile());
         client.send(conMana);
         return client.receiveBool();
     }
 
     @Override
     public boolean updateUserInfo(IManagement management) {
-        ConManagement conMana = new ConManagement(management.getAction(), management.getPw(), management.getMail(), management.getProfile());
+        ConManagement conMana = new ConManagement(management.getAction());
+        conMana.setPw(management.getPw());
+        conMana.setMail(management.getMail());
+        conMana.setProfile(management.getProfile());
         client.send(conMana);
         return client.receiveBool();
     }
