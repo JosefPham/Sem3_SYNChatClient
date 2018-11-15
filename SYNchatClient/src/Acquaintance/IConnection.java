@@ -23,20 +23,20 @@ public interface IConnection {
     public void sendPublicMsg(IMessage msg);
 
     public void injectBusiness(IBusiness bus);
-    
-    public int sendChangePw(IManagement management);
-    
-    public int sendChangeMail(IManagement management);
 
     public void commandHandling(String command);
-    
+
     public void connect();
 
     public boolean updateFriends(IFriends friends);
-    
-    public boolean updateProfile(IUser user);
-    
+
     public void userMap(Map userMap);
-    
+
     public void publicUser(IUser pUser);
+
+    public boolean checkPW(IManagement management);
+
+    public boolean checkMail(IManagement management);
+
+    public boolean updateUserInfo(IManagement management);
 }

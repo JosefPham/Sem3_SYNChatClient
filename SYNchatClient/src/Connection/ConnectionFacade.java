@@ -1,4 +1,3 @@
-
 package Connection;
 
 import Acquaintance.IBusiness;
@@ -80,18 +79,6 @@ public class ConnectionFacade implements IConnection {
         ConTextMessage conMsg = new ConTextMessage(msg.getSenderID(), msg.getContext());
         client.send(conMsg);
     }
-    
-    @Override
-    public int sendChangePw(IManagement management) {
-        client.send(management);
-        return client.receiveInt();
-    }
-    
-    @Override
-    public int sendChangeMail(IManagement management) {
-        client.send(management);
-        return client.receiveInt();
-    }
 
     @Override
     public void commandHandling(String command) {
@@ -102,17 +89,11 @@ public class ConnectionFacade implements IConnection {
     public void connect() {
         client.connectToServer();
     }
-    
+
     @Override
     public boolean updateFriends(IFriends friends) {
-       IFriends sendFriends = new ConFriends(friends.getFriendlist());
-       client.send(sendFriends);
-       return client.receiveBool();
-    }
-    
-    @Override
-    public boolean updateProfile(IUser user) {
-        client.send(user);
+        IFriends sendFriends = new ConFriends(friends.getFriendlist());
+        client.send(sendFriends);
         return client.receiveBool();
     }
 
@@ -120,9 +101,27 @@ public class ConnectionFacade implements IConnection {
     public void userMap(Map userMap) {
         Ibus.userMap(userMap);
     }
-    
+
     @Override
     public void publicUser(IUser pUser) {
         Ibus.publicUser(pUser);
+    }
+
+    @Override
+    public boolean checkPW(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
+    }
+
+    @Override
+    public boolean checkMail(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
+    }
+
+    @Override
+    public boolean updateUserInfo(IManagement management) {
+        client.send(management);
+        return client.receiveBool();
     }
 }

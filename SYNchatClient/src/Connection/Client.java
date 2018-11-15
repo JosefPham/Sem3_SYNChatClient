@@ -39,19 +39,9 @@ public class Client implements IClient {
         this.port = port;
 
         connectToServer();
-
-        //outcomment
-        //ILogin login = new Login("test@test12.dk", "12345678");
-        //IUser user = new User("Peet");
-        //login.setUser(user);
-        //send(login);
-        //    send(user);
-        // receiveLogin();
-//         receiveBool();
-//        startPublicThreads();
-        //   startPrivateThreads();
     }
 
+    @Override
     public void connectToServer() {
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
@@ -66,6 +56,7 @@ public class Client implements IClient {
 
     }
 
+    @Override
     public void send(Object o) {
         try {
             output.writeObject(o);
@@ -75,6 +66,7 @@ public class Client implements IClient {
         }
     }
 
+    @Override
     public ILogin receiveLogin() {
         while (true) {
             try {
@@ -91,6 +83,7 @@ public class Client implements IClient {
 
     }
 
+    @Override
     public Boolean receiveBool() {
         while (true) {
             try {
@@ -107,6 +100,7 @@ public class Client implements IClient {
 
     }
     
+    @Override
     public int receiveInt() {
         while (true) {
             try {
@@ -123,6 +117,7 @@ public class Client implements IClient {
 
     }
 
+    @Override
     public void startPrivateThreads() {
 
         Scanner scan = new Scanner(System.in);

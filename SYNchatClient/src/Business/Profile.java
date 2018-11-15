@@ -22,11 +22,12 @@ public class Profile implements IProfile{
     private String picture; //Watch out for the datatype!
     private String profileText;
     
-    public Profile(String firstName, String lastName, Nationality nationality, String profileText) {
+    public Profile(String firstName, String lastName, Nationality nationality, String profileText, String picture) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationality = nationality;
         this.profileText = profileText;
+        this.picture = picture;
     }
     
     @Override

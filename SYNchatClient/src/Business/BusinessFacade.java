@@ -7,6 +7,7 @@ import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IPresentation;
+import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.util.Map;
@@ -96,16 +97,6 @@ public class BusinessFacade implements IBusiness {
     public void connect() {
         Icon.connect();
     }
-    
-    @Override
-    public int sendChangePw(IManagement management) {
-        return Icon.sendChangePw(management);
-    }
-
-    @Override
-    public int sendChangeMail(IManagement managemnt) {
-        return Icon.sendChangeMail(management);
-    }
 
     @Override
     public boolean addFriend(int userID, String profileName){
@@ -124,28 +115,8 @@ public class BusinessFacade implements IBusiness {
     }
     
     @Override
-    public int changePw(String oldPw, String newPw) {
-        return ClientSystem.getInstance().getCurrentUser().changePw(oldPw, newPw);
-    }
-    
-    @Override
-    public int changeMail(String pw, String mail) {
-        return ClientSystem.getInstance().getCurrentUser().changeMail(pw, mail);
-    }
-    
-    @Override
     public IUser getUser() {
         return ClientSystem.getInstance().getCurrentUser();
-    }
-    
-    @Override
-    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
-        return ClientSystem.getInstance().updateProfile(firstName, lastName, nationality, profileText);
-    }
-    
-    @Override
-    public boolean updateProfile(IUser user) {
-        return Icon.updateProfile(user);
     }
 
     @Override
@@ -157,6 +128,29 @@ public class BusinessFacade implements IBusiness {
     public void publicUser(IUser pUser) {
         Ipres.publicUser(pUser);
     }
-    
-    
+
+    @Override
+    public boolean checkPW(String pw) {
+        IManagement mana = new Management(0);
+        mana.setPw(ClientSystem.getInstance().hash(pw));
+        return Icon.checkPW(mana);
+    }
+
+    @Override
+    public boolean checkMail(String mail) {
+        IManagement mana = new Management(1);
+        mana.setMail(ClientSystem.getInstance().hash(mail));
+        return Icon.checkPW(mana);
+    }
+
+    @Override
+    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture) {
+        IManagement mana = new Management(2);
+        mana.setPw(ClientSystem.getInstance().hash(pw));
+        mana.setMail(ClientSystem.getInstance().hash(mail));
+        IProfile profile = new Profile(firstName, lastName, nationality, profileText, picture);
+        mana.setProfile(profile);
+        ClientSystem.getInstance().updateProfile(profile);
+        return Icon.updateUserInfo(mana);
+    }
 }

@@ -20,13 +20,13 @@ public interface IPresentation {
     
     public IUser getUser();
     
-    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
-    
-    public int changeMail(String pw, String newMail);
-    
-    public int changePw(String oldPw, String newPw);
+    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
     
     public void userMap(Map userMap);
     
     public void publicUser(IUser pUser);
+    
+    public boolean checkPW(String pw);
+    
+    public boolean checkMail(String mail);
 }

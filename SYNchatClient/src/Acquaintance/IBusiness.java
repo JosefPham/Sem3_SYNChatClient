@@ -32,21 +32,15 @@ public interface IBusiness {
 
     public boolean removeFriend(int userID);
 
-    public int changePw(String oldPw, String newPw);
-
-    public int changeMail(String pw, String mail);
-
-    public int sendChangePw(IManagement management);
-
-    public int sendChangeMail(IManagement management);
-
     public IUser getUser();
 
-    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText);
-
-    public boolean updateProfile(IUser user);
+    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
 
     public void userMap(Map userMap);
-    
+
     public void publicUser(IUser pUser);
+
+    public boolean checkPW(String pw);
+
+    public boolean checkMail(String mail);
 }

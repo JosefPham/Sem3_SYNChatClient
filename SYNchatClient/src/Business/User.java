@@ -3,13 +3,9 @@ package Business;
 import Acquaintance.IFriends;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
-import Acquaintance.Nationality;
 import java.util.List;
 
 public class User implements IUser {
-
-    Management management;
-    ClientSystem client = ClientSystem.getInstance();
 
     private int userID;
     private boolean banned; // a flag for if the user is banned
@@ -18,8 +14,8 @@ public class User implements IUser {
     private IFriends friends;
     private IProfile profile;
 
-    public User(String firstName, String lastName, Nationality nationality, String profileText) {
-        profile = new Profile(firstName, lastName, nationality, "");
+    public User(IProfile profile) {
+        this.profile = profile;
     }
 
     public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, IProfile profile) {
@@ -27,10 +23,8 @@ public class User implements IUser {
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
-        IFriends finalFriends = new Friends(friends.getFriendlist());
-        this.friends = finalFriends;
-        IProfile finalProfile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText());
-        this.profile = finalProfile;
+        this.friends = new Friends(friends.getFriendlist());
+        this.profile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText(), profile.getPicture());
     }
 
     @Override
@@ -52,20 +46,10 @@ public class User implements IUser {
     public List<Integer> getChats() {
         return chats;
     }
-    
+
     @Override
     public IProfile getProfile() {
         return profile;
-    }
-
-    public int changePw(String oldPw, String newPw) {
-        management = new Management(2, client.getCurrentUser().getUserID(), client.hash(oldPw), client.hash(newPw));
-        return BusinessFacade.getInstance().sendChangePw(management);
-    }
-
-    public int changeMail(String pw, String newMail) {
-        management = new Management(1, client.getCurrentUser().getUserID(), client.hash(pw), client.hash(newMail));
-        return BusinessFacade.getInstance().sendChangeMail(management);
     }
 
     public boolean addFriend(int userID, String profileName) {

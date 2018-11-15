@@ -69,6 +69,8 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private Label label_changeStatus;
 
+    private Nationality nat;
+
     /**
      * Initializes the controller class.
      */
@@ -80,46 +82,6 @@ public class ChangeInfoController implements IController, Initializable {
         textField_lname.setText(PresentationFacade.getInstance().getUser().getProfile().getLastName());
         textField_nationality.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
         textArea_profileInfo.setText(PresentationFacade.getInstance().getUser().getProfile().getProfileText());
-    }
-
-    @FXML
-    public void changeMail(ActionEvent event) {
-        if (textField_newEmail.getText().equals(textField_confirmEmail.getText()) && !textField_newEmail.getText().isEmpty()) {
-            switch (PresentationFacade.getInstance().changeMail(pwField_changeEmailPassword.getText(), textField_newEmail.getText())) {
-                case 1:
-                    label_warningMail.setText("Mail was successfully changed");
-                    break;
-                case 2:
-                    label_warningMail.setText("Unknown error!\nCheck password or try again later");
-                    break;
-                case 3:
-                    label_warningMail.setText("Wrong password\nChange denied!");
-                    break;
-                case 4:
-                    label_warningMail.setText("Password verification error\nPlease try again later");
-                    break;
-            }
-        }
-    }
-
-    @FXML
-    public void changepw(ActionEvent event) {
-        if (pwField_newPW.getText().equals(pwField_confirmPW.getText()) && !pwField_newPW.getText().isEmpty()) {
-            switch (PresentationFacade.getInstance().changePw(pwField_oldPW.getText(), pwField_newPW.getText())) {
-                case 1:
-                    label_warningPW.setText("Password was successfully changed");
-                    break;
-                case 2:
-                    label_warningPW.setText("Unknown error\nPlease try again later");
-                    break;
-                case 3:
-                    label_warningPW.setText("Wrong password\nChange denied!");
-                    break;
-                case 4:
-                    label_warningPW.setText("Password verification error\nPlease try again later");
-                    break;
-            }
-        }
     }
 
     @FXML
@@ -217,10 +179,65 @@ public class ChangeInfoController implements IController, Initializable {
 
     @FXML
     private void changeProfile(ActionEvent event) {
-        if (PresentationFacade.getInstance().editProfileInfo(textField_fname.getText(), textField_lname.getText(), Nationality.valueOf(textField_nationality.getText()), textArea_profileInfo.getText())) {
-            label_changeStatus.setText("Changes has been saved");
+        String fname = PresentationFacade.getInstance().getUser().getProfile().getFirstName();
+        String lname = PresentationFacade.getInstance().getUser().getProfile().getLastName();
+        nat = PresentationFacade.getInstance().getUser().getProfile().getNationality();
+        String ptext = PresentationFacade.getInstance().getUser().getProfile().getProfileText();
+        String pic = PresentationFacade.getInstance().getUser().getProfile().getPicture();
+        if (!textField_fname.getText().equals("")) {
+            fname = textField_fname.getText();
+        }
+        if (!textField_lname.getText().equals("")) {
+            lname = textField_lname.getText();
+        }
+        if (!textArea_profileInfo.getText().equals("")) {
+            ptext = textArea_profileInfo.getText();
+        }
+        if (!textField_nationality.getText().equals("")) {
+            switch (textField_nationality.getText()) {
+                case "Denmark":
+                    nat = Nationality.Denmark;
+                    break;
+                case "USA":
+                    nat = Nationality.USA;
+                    break;
+                case "Japan":
+                    nat = Nationality.Japan;
+                    break;
+            }
+        }
+        if (pwField_oldPW.getText().equals("") && pwField_newPW.getText().equals("") && pwField_confirmPW.getText().equals("")) {
+            if (textField_newEmail.getText().equals("") && textField_confirmEmail.getText().equals("") && pwField_changeEmailPassword.getText().equals("")) {
+                PresentationFacade.getInstance().updateUserInfo("", "", fname, lname, nat, ptext, pic);
+            } else {
+                if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
+                    if (PresentationFacade.getInstance().checkMail(pwField_changeEmailPassword.getText())) {
+                        if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText(), fname, lname, nat, ptext, pic)) {
+                            label_changeStatus.setText("Profile updated!");
+                        } else {
+                            label_changeStatus.setText("Something went wrong");
+                        }
+                    } else {
+                        label_changeStatus.setText("Incorrect password");
+                    }
+                } else {
+                    label_changeStatus.setText("Emails does not match");
+                }
+            }
         } else {
-            label_changeStatus.setText("Something went wrong\nChanges have not been saved");
+            if (pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
+                if (PresentationFacade.getInstance().checkPW(pwField_oldPW.getText())) {
+                    if (PresentationFacade.getInstance().updateUserInfo(pwField_newPW.getText(), "", fname, lname, nat, ptext, pic)) {
+                        label_changeStatus.setText("Profile updated!");
+                    } else {
+                        label_changeStatus.setText("Something went wrong");
+                    }
+                } else {
+                    label_changeStatus.setText("Incorrect password");
+                }
+            } else {
+                label_changeStatus.setText("Passwords does not match");
+            }
         }
     }
 }

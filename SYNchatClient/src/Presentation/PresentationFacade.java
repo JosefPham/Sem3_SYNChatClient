@@ -70,16 +70,6 @@ public class PresentationFacade implements IPresentation, IController {
         Ibus.sendPublicMsg(s);
     }
 
-    @Override
-    public int changePw(String oldPw, String newPw) {
-        return Ibus.changePw(oldPw, newPw);
-    }
-
-    @Override
-    public int changeMail(String pw, String newMail) {
-        return Ibus.changeMail(pw, newMail);
-    }
-
     public void changeScene(String resource) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
@@ -119,11 +109,6 @@ public class PresentationFacade implements IPresentation, IController {
     }
 
     @Override
-    public boolean editProfileInfo(String firstName, String lastName, Nationality nationality, String profileText) {
-        return Ibus.editProfileInfo(firstName, lastName, nationality, profileText);
-    }
-
-    @Override
     public void userMap(Map userMap) {
         SYNchatController.getInstance().userMap(userMap);
     }
@@ -131,5 +116,20 @@ public class PresentationFacade implements IPresentation, IController {
     @Override
     public void publicUser(IUser pUser) {
         
+    }
+    
+    @Override
+    public boolean checkPW(String pw) {
+        return Ibus.checkPW(pw);
+    }
+
+    @Override
+    public boolean checkMail(String mail) {
+        return Ibus.checkMail(mail);
+    }
+
+    @Override
+    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture) {
+        return Ibus.updateUserInfo(pw, mail, firstName, lastName, nationality, profileText, picture);
     }
 }
