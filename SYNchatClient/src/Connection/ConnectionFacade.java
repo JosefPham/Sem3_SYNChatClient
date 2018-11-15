@@ -8,6 +8,7 @@ import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IUser;
+import Acquaintance.Nationality;
 import java.util.Map;
 
 /**
@@ -110,9 +111,11 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean checkPW(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
+        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
+        conProfile.setPicture(management.getProfile().getPicture());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
-        conMana.setProfile(management.getProfile());
+        conMana.setProfile(conProfile);
         client.send(conMana);
         return client.receiveBool();
     }
@@ -120,9 +123,11 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean checkMail(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
+        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
+        conProfile.setPicture(management.getProfile().getPicture());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
-        conMana.setProfile(management.getProfile());
+        conMana.setProfile(conProfile);
         client.send(conMana);
         return client.receiveBool();
     }
@@ -130,9 +135,11 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean updateUserInfo(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
+        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
+        conProfile.setPicture(management.getProfile().getPicture());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
-        conMana.setProfile(management.getProfile());
+        conMana.setProfile(conProfile);
         client.send(conMana);
         return client.receiveBool();
     }
