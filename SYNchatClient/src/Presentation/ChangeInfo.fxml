@@ -25,14 +25,14 @@
          </image>
       </ImageView>
       <Line endX="500.0" layoutY="110.0" stroke="#1f98de" />
-      <Line endX="500.0" layoutY="375.0" stroke="#1f98de" />
-      <Line layoutX="250.0" layoutY="375.0" startY="225.0" stroke="#1f98de" />
+      <Line endX="500.0" layoutY="355.0" stroke="#1f98de" />
+      <Line layoutX="250.0" layoutY="355.0" startY="170.0" stroke="#1f98de" />
       <Label layoutX="81.0" layoutY="39.0" text="- Profile" textFill="#1f96e0">
          <font>
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="38.0" onAction="#btn_home_action" opacity="0.7" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Home   ">
+      <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="38.0" onAction="#btn_home_action" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Home   ">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
@@ -85,12 +85,12 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextArea>
-      <JFXButton buttonType="RAISED" layoutX="197.0" layoutY="344.0" onAction="#changeProfile" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Update profile   ">
+      <JFXButton buttonType="RAISED" layoutX="196.0" layoutY="542.0" onAction="#changeProfile" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Update profile   ">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXButton>
-      <Label fx:id="label_changeStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="301.0" prefHeight="38.0" prefWidth="151.0" wrapText="true">
+      <Label fx:id="label_changeStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="534.0" prefHeight="38.0" prefWidth="151.0" wrapText="true">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
@@ -119,36 +119,36 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXPasswordField fx:id="pwField_oldPW" focusColor="#182db5" layoutX="57.5" layoutY="405.0" promptText="Old password" unFocusColor="#1f98de">
+      <JFXPasswordField fx:id="pwField_oldPW" focusColor="#182db5" layoutX="57.5" layoutY="385.0" promptText="Old password" unFocusColor="#1f98de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXPasswordField>
-      <JFXPasswordField fx:id="pwField_newPW" focusColor="#182db5" layoutX="57.5" layoutY="445.0" promptText="New password" unFocusColor="#1f98de">
+      <JFXPasswordField fx:id="pwField_newPW" focusColor="#182db5" layoutX="57.5" layoutY="425.0" promptText="New password" unFocusColor="#1f98de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXPasswordField>
-      <JFXPasswordField fx:id="pwField_confirmPW" focusColor="#182db5" layoutX="57.5" layoutY="485.0" promptText="Confirm new password" unFocusColor="#1f98de">
+      <JFXPasswordField fx:id="pwField_confirmPW" focusColor="#182db5" layoutX="57.5" layoutY="465.0" promptText="Confirm new password" unFocusColor="#1f98de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXPasswordField>
-      <Label fx:id="label_warningPW" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="553.0" prefHeight="38.0" prefWidth="151.0" wrapText="true">
+      <Label fx:id="label_warningPW" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="565.0" prefHeight="24.0" prefWidth="151.0" wrapText="true">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font></Label>
-      <JFXTextField fx:id="textField_newEmail" focusColor="#182db5" layoutX="307.5" layoutY="405.0" promptText="New email" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_newEmail" focusColor="#182db5" layoutX="307.5" layoutY="385.0" promptText="New email" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textField_confirmEmail" focusColor="#182db5" layoutX="307.5" layoutY="445.0" promptText="Confirm new email" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_confirmEmail" focusColor="#182db5" layoutX="307.5" layoutY="425.0" promptText="Confirm new email" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="pwField_changeEmailPassword" focusColor="#182db5" layoutX="307.5" layoutY="485.0" promptText="Password" unFocusColor="#1f98de">
+      <JFXPasswordField fx:id="pwField_changeEmailPassword" focusColor="#182db5" layoutX="307.5" layoutY="465.0" promptText="Password" unFocusColor="#1f98de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
@@ -158,5 +158,6 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </Label>
+      <Line endX="500.0" layoutY="525.0" stroke="#1f98de" />
    </children>
 </AnchorPane>

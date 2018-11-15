@@ -42,10 +42,6 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private PasswordField pwField_confirmPW;
     @FXML
-    private Button btn_password;
-    @FXML
-    private Button btn_mail;
-    @FXML
     private JFXTextField textField_fname;
     @FXML
     private JFXTextField textField_nationality;
