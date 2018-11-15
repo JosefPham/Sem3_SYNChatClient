@@ -11,7 +11,7 @@ public class User implements IUser {
     private boolean banned; // a flag for if the user is banned
     private int reports;    // the amount of reprts a user have received
     private List<Integer> chats;
-    private IFriends friends;
+    private Friends friends;
     private IProfile profile;
 
     public User(IProfile profile) {
@@ -23,8 +23,10 @@ public class User implements IUser {
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
-        this.friends = new Friends(friends.getFriendlist());
-        this.profile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText(), profile.getPicture());
+        Friends finalFriends = new Friends(friends.getFriendlist());
+        this.friends = finalFriends;
+        IProfile finalProfile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText());
+        this.profile = finalProfile;
     }
 
     @Override
