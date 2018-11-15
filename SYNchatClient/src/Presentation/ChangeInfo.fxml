@@ -85,7 +85,7 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextArea>
-      <JFXButton buttonType="RAISED" layoutX="196.0" layoutY="542.0" onAction="#changeProfile" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Update profile   ">
+      <JFXButton buttonType="RAISED" defaultButton="true" layoutX="196.0" layoutY="542.0" onAction="#changeProfile" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Update profile   ">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>

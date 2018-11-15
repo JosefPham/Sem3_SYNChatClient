@@ -1,6 +1,8 @@
 package Acquaintance;
 
-public interface IManagement {
+import java.io.Serializable;
+
+public interface IManagement extends Serializable {
 
     /**
      * Action int = task. 

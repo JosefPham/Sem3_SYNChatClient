@@ -23,10 +23,8 @@ public class User implements IUser {
         this.banned = banned;
         this.reports = reports;
         this.chats = chats;
-        Friends finalFriends = new Friends(friends.getFriendlist());
-        this.friends = finalFriends;
-        IProfile finalProfile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText());
-        this.profile = finalProfile;
+        this.friends = new Friends(friends.getFriendlist());
+        this.profile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText(), profile.getPicture());
     }
 
     @Override
