@@ -288,7 +288,7 @@
                                     <Image url="@../Assets/Flag_DK_Color.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="label_userCountry" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="53.0" prefHeight="17.0" prefWidth="89.0" text="Default nat" textAlignment="RIGHT">
+                              <Label fx:id="label_userCountry" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="52.0" prefHeight="17.0" prefWidth="89.0" text="Default nat" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="12.0" />
                                  </font>
