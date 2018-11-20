@@ -31,7 +31,7 @@ public class Client implements IClient {
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("10.126.33.137");
+            this.ip = (InetAddress) InetAddress.getByName("10.126.41.217");
 
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);

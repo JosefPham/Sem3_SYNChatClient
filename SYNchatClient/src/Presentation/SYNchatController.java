@@ -339,6 +339,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_1.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_1.png");
     }
 
     @FXML
@@ -349,6 +350,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_2.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_2.png");
     }
 
     @FXML
@@ -359,6 +361,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_3.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_3.png");
     }
 
     @FXML
@@ -369,6 +372,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_4.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_4.png");
     }
 
     @FXML
@@ -379,6 +383,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_5.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_5.png");
     }
 
     @FXML
@@ -389,6 +394,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_6.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_6.png");
     }
 
     private void NationalityInterface(Nationality nat) {
@@ -475,6 +481,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_7.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_7.png");
     }
 
     @FXML
@@ -485,6 +492,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_8.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_8.png");
     }
 
     @FXML
@@ -495,6 +503,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_9.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_9.png");
     }
 
     @FXML
@@ -505,6 +514,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_10.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_10.png");
     }
 
     @FXML
@@ -515,6 +525,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_11.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_11.png");
     }
 
     @FXML
@@ -525,6 +536,7 @@ public class SYNchatController implements IController, Initializable {
         pane_cogView.setVisible(false);
         cog = true;
         PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_12.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_12.png");
     }
 
 }

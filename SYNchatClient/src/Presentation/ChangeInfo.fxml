@@ -90,7 +90,7 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXButton>
-      <Label fx:id="label_changeStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="534.0" prefHeight="38.0" prefWidth="151.0" wrapText="true">
+      <Label fx:id="label_changeStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="566.0" prefHeight="32.0" prefWidth="151.0" wrapText="true">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
@@ -134,30 +134,21 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXPasswordField>
-      <Label fx:id="label_warningPW" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="565.0" prefHeight="24.0" prefWidth="151.0" wrapText="true">
-         <font>
-            <Font name="Gill Sans MT" size="12.0" />
-         </font></Label>
-      <JFXTextField fx:id="textField_newEmail" focusColor="#182db5" layoutX="307.5" layoutY="385.0" promptText="New email" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_oldMail" focusColor="#182db5" layoutX="308.0" layoutY="385.0" promptText="Old email" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textField_confirmEmail" focusColor="#182db5" layoutX="307.5" layoutY="425.0" promptText="Confirm new email" unFocusColor="#1f95de">
+      <JFXTextField fx:id="textField_newEmail" focusColor="#182db5" layoutX="307.5" layoutY="425.0" promptText="New email" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="pwField_changeEmailPassword" focusColor="#182db5" layoutX="307.5" layoutY="465.0" promptText="Password" unFocusColor="#1f98de">
+      <JFXTextField fx:id="textField_confirmEmail" focusColor="#182db5" layoutX="307.5" layoutY="465.0" promptText="Confirm new email" unFocusColor="#1f95de">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
-      </JFXPasswordField>
-      <Label fx:id="label_warningMail" alignment="CENTER" contentDisplay="CENTER" layoutX="308.0" layoutY="553.0" prefHeight="38.0" prefWidth="151.0" wrapText="true">
-         <font>
-            <Font name="Gill Sans MT" size="12.0" />
-         </font>
-      </Label>
+      </JFXTextField>
       <Line endX="500.0" layoutY="525.0" stroke="#1f98de" />
    </children>
 </AnchorPane>

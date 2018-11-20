@@ -75,7 +75,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void receivePublicMsg(IMessage msg) {        
+    public void receivePublicMsg(IMessage msg) {
         Message finalMsg = new TextMessage(msg.getSenderID(), ClientSystem.getInstance().cipherMsg(msg.getContext()));
         finalMsg.setTimestamp(msg.getTimestamp());
         Ipres.receivePublicMsg(finalMsg);
@@ -99,21 +99,22 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public boolean addFriend(int userID, String profileName){
+    public boolean addFriend(int userID, String profileName) {
         return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
     }
-    
+
     @Override
-    public boolean removeFriend(int userID){
+    public boolean removeFriend(int userID) {
         return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
     }
+
     /*
     method for updating the friendsobject in database
-    */
+     */
     boolean updateFriends(IFriends friends) {
         return Icon.updateFriends(friends);
     }
-    
+
     @Override
     public IUser getUser() {
         return ClientSystem.getInstance().getCurrentUser();
@@ -133,6 +134,8 @@ public class BusinessFacade implements IBusiness {
     public boolean checkPW(String pw) {
         IManagement mana = new Management(0);
         mana.setPw(ClientSystem.getInstance().hash(pw));
+        mana.setMail("");
+        mana.setProfile(new Profile("", "", Nationality.USA, "", ""));
         return Icon.checkPW(mana);
     }
 
@@ -140,14 +143,24 @@ public class BusinessFacade implements IBusiness {
     public boolean checkMail(String mail) {
         IManagement mana = new Management(1);
         mana.setMail(ClientSystem.getInstance().hash(mail));
-        return Icon.checkPW(mana);
+        mana.setPw("");
+        mana.setProfile(new Profile("", "", Nationality.USA, "", ""));
+        return Icon.checkMail(mana);
     }
 
     @Override
     public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture) {
         IManagement mana = new Management(2);
-        mana.setPw(ClientSystem.getInstance().hash(pw));
-        mana.setMail(ClientSystem.getInstance().hash(mail));
+        if (!pw.equals("")) {
+            mana.setPw(ClientSystem.getInstance().hash(pw));
+        } else {
+            mana.setPw(pw);
+        }
+        if (!mail.equals("")) {
+            mana.setMail(ClientSystem.getInstance().hash(mail));
+        } else {
+            mana.setMail(mail);
+        }
         IProfile profile = new Profile(firstName, lastName, nationality, profileText, picture);
         mana.setProfile(profile);
         ClientSystem.getInstance().updateProfile(profile);

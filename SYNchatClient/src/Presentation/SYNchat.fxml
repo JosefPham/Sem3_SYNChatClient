@@ -283,7 +283,7 @@
                                     <Image url="@../Assets/Cog_icon.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="image_yourCountry" fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="52.0" pickOnBounds="true">
+                              <ImageView fx:id="image_yourCountry" fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="53.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Assets/Flag_DK_Color.png" />
                                  </image>

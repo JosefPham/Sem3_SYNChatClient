@@ -38,8 +38,6 @@ public class ChangeInfoController implements IController, Initializable {
     @FXML
     private TextField textField_confirmEmail;
     @FXML
-    private PasswordField pwField_changeEmailPassword;
-    @FXML
     private PasswordField pwField_confirmPW;
     @FXML
     private JFXTextField textField_fname;
@@ -57,15 +55,13 @@ public class ChangeInfoController implements IController, Initializable {
     private Label country_Japan;
     private Boolean countryB = true;
     @FXML
-    private Label label_warningPW;
-    @FXML
-    private Label label_warningMail;
-    @FXML
     private JFXTextArea textArea_profileInfo;
     @FXML
     private Label label_changeStatus;
 
     private Nationality nat;
+    @FXML
+    private JFXTextField textField_oldMail;
 
     /**
      * Initializes the controller class.
@@ -203,18 +199,19 @@ public class ChangeInfoController implements IController, Initializable {
             }
         }
         if (pwField_oldPW.getText().equals("") && pwField_newPW.getText().equals("") && pwField_confirmPW.getText().equals("")) {
-            if (textField_newEmail.getText().equals("") && textField_confirmEmail.getText().equals("") && pwField_changeEmailPassword.getText().equals("")) {
+            if (textField_newEmail.getText().equals("") && textField_confirmEmail.getText().equals("") && textField_oldMail.getText().equals("")) {
                 PresentationFacade.getInstance().updateUserInfo("", "", fname, lname, nat, ptext, pic);
+                label_changeStatus.setText("Profile updated!");
             } else {
                 if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-                    if (PresentationFacade.getInstance().checkMail(pwField_changeEmailPassword.getText())) {
+                    if (PresentationFacade.getInstance().checkMail(textField_oldMail.getText())) {
                         if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText(), fname, lname, nat, ptext, pic)) {
                             label_changeStatus.setText("Profile updated!");
                         } else {
                             label_changeStatus.setText("Something went wrong");
                         }
                     } else {
-                        label_changeStatus.setText("Incorrect password");
+                        label_changeStatus.setText("Incorrect password or email");
                     }
                 } else {
                     label_changeStatus.setText("Emails does not match");
