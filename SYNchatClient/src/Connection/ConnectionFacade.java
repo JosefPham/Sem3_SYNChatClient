@@ -111,7 +111,6 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean checkPW(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
-        System.out.println("prof " + management.getProfile().getFirstName() +management.getProfile().getLastName() + management.getProfile().getNationality() + management.getProfile().getProfileText());
         ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
         conProfile.setPicture(management.getProfile().getPicture());
         conMana.setPw(management.getPw());
