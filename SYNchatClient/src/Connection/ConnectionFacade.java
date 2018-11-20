@@ -8,7 +8,6 @@ import Acquaintance.ILogin;
 import Acquaintance.IManagement;
 import Acquaintance.IMessage;
 import Acquaintance.IUser;
-import Acquaintance.Nationality;
 import java.util.Map;
 
 /**
@@ -40,7 +39,7 @@ public class ConnectionFacade implements IConnection {
     @Override
     public ILogin login(ILogin ilogin) {
         // the login to send to server
-        ILogin sendLogin = new ConLogin(ilogin.gethMail(), ilogin.gethPW(), ilogin.getLoginvalue(), ilogin.getUser());
+        ILogin sendLogin = new ConLogin(ilogin);
         client.send(sendLogin);
         //ILogin recieveLogin = new ConLogin
         return client.receiveLogin();
@@ -48,8 +47,7 @@ public class ConnectionFacade implements IConnection {
 
     @Override
     public Boolean regUser(ILogin ilogin) {
-        IUser tmpUser = ilogin.getUser();
-        ConUser user = new ConUser(tmpUser.getProfile().getFirstName(), tmpUser.getProfile().getLastName(), tmpUser.getProfile().getNationality(), tmpUser.getProfile().getProfileText());
+        ConUser user = new ConUser(ilogin.getUser());
         ilogin.setUser(user);
         client.send(ilogin);
         return client.receiveBool();
@@ -111,8 +109,7 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean checkPW(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
-        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
-        conProfile.setPicture(management.getProfile().getPicture());
+        ConProfile conProfile = new ConProfile(management.getProfile());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
         conMana.setProfile(conProfile);
@@ -123,8 +120,7 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean checkMail(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
-        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
-        conProfile.setPicture(management.getProfile().getPicture());
+        ConProfile conProfile = new ConProfile(management.getProfile());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
         conMana.setProfile(conProfile);
@@ -135,8 +131,7 @@ public class ConnectionFacade implements IConnection {
     @Override
     public boolean updateUserInfo(IManagement management) {
         ConManagement conMana = new ConManagement(management.getAction());
-        ConProfile conProfile = new ConProfile(management.getProfile().getFirstName(), management.getProfile().getLastName(), management.getProfile().getNationality(), management.getProfile().getProfileText());
-        conProfile.setPicture(management.getProfile().getPicture());
+        ConProfile conProfile = new ConProfile(management.getProfile());
         conMana.setPw(management.getPw());
         conMana.setMail(management.getMail());
         conMana.setProfile(conProfile);
