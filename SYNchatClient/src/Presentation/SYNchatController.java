@@ -213,11 +213,9 @@ public class SYNchatController implements IController, Initializable {
     }
 
     public void userMap(Map<Integer, IUser> userMap) {
-        System.out.println("sætter map til null");
         pUserMap = new HashMap<>();
         for (Integer i : userMap.keySet()) {
             pUserMap.put(i, userMap.get(i));
-            System.out.println("map ikke null mere");
         }
         for (Integer il : pUserMap.keySet()) {
             System.out.println(il + " " + pUserMap.get(il).getProfile().getFirstName());

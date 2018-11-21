@@ -181,7 +181,6 @@ public class Client implements IClient {
                                 ConTextMessage msg = (ConTextMessage) obj;
                                 ConnectionFacade.getInstance().receivePublicMsg(msg);
                             } if (obj instanceof Map) {
-                                System.out.println("FUCK MAN VI FIK ET MAP");
                                 ConnectionFacade.getInstance().userMap((Map) obj);
                             } if (obj instanceof IUser) {
                                 ConnectionFacade.getInstance().publicUser((IUser) obj);
