@@ -16,7 +16,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
+import javafx.beans.property.SimpleMapProperty;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,7 +52,6 @@ public class SYNchatController implements IController, Initializable {
     private IMessage iMsg;
     private Map<Integer, IUser> pUserMap;
     private IUser pUser;
-
     @FXML
     private JFXButton btn_publicChat;
     @FXML
@@ -120,7 +120,9 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtArea_Chat.setStyle("-fx-text-fill: white");
+        btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
+        txtArea_YourChat.setStyle("-fx-text-fill: white");
         String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
@@ -158,10 +160,10 @@ public class SYNchatController implements IController, Initializable {
         btn_privatChat.setStyle(btn_publicChat.getStyle());
         btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
 
-        this.t = startrun();
+        this.t = startRun();
     }
 
-    private synchronized Thread startrun() {
+    private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -180,7 +182,7 @@ public class SYNchatController implements IController, Initializable {
                         if (!context.equals(comparisonString) || (senderID != comparisonInt)) {
                             comparisonString = context;
                             comparisonInt = senderID;
-                            receivePublicMsg(iMsg);
+                            receivePublicMsg();
                         }
                     }
                 }
@@ -210,11 +212,15 @@ public class SYNchatController implements IController, Initializable {
         btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
     }
 
-    public void userMap(Map userMap) {
-        userMap = new HashMap<>();
-        pUserMap = userMap;
-        for (Integer i : pUserMap.keySet()) {
-            System.out.println(pUserMap.get(i).getProfile().getFirstName());
+    public void userMap(Map<Integer, IUser> userMap) {
+        System.out.println("sætter map til null");
+        pUserMap = new HashMap<>();
+        for (Integer i : userMap.keySet()) {
+            pUserMap.put(i, userMap.get(i));
+            System.out.println("map ikke null mere");
+        }
+        for (Integer il : pUserMap.keySet()) {
+            System.out.println(il + " " + pUserMap.get(il).getProfile().getFirstName());
         }
     }
 
@@ -239,7 +245,7 @@ public class SYNchatController implements IController, Initializable {
         }
     }
 
-    public void receivePublicMsg(IMessage msg) {
+    public void receivePublicMsg() {
         txtArea_Chat.appendText(String.valueOf(iMsg.getSenderID()) + ": ");
         txtArea_Chat.appendText(iMsg.getContext() + "\n");
         Date date = new Date();

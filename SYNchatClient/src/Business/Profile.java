@@ -19,6 +19,14 @@ public class Profile implements IProfile {
         this.picture = picture;
     }
 
+    public Profile(IProfile profile) {
+        this.firstName = profile.getFirstName();
+        this.lastName = profile.getLastName();
+        this.nationality = profile.getNationality();
+        this.profileText = profile.getProfileText();
+        this.picture = profile.getPicture();
+    }
+
     @Override
     public void setFirstName(String firstName) {
         this.firstName = firstName;

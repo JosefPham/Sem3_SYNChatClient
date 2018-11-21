@@ -36,7 +36,7 @@ public interface IBusiness {
 
     public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
 
-    public void userMap(Map userMap);
+    public void userMap(Map<Integer, IUser> userMap);
 
     public void publicUser(IUser pUser);
 

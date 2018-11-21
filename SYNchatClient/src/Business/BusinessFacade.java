@@ -10,6 +10,7 @@ import Acquaintance.IPresentation;
 import Acquaintance.IProfile;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -116,8 +117,12 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void userMap(Map userMap) {
-        Ipres.userMap(userMap);
+    public void userMap(Map<Integer, IUser> userMap) {
+        Map<Integer, IUser> publicUserMap = new HashMap<>();
+        for(int i : userMap.keySet()) {
+            publicUserMap.put(i, new User(userMap.get(i)));
+        }
+        Ipres.userMap(publicUserMap);
     }
 
     @Override

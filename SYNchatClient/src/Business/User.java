@@ -18,13 +18,13 @@ public class User implements IUser {
         this.profile = profile;
     }
 
-    public User(int userID, boolean banned, int reports, List<Integer> chats, IFriends friends, IProfile profile) {
-        this.userID = userID;
-        this.banned = banned;
-        this.reports = reports;
-        this.chats = chats;
-        this.friends = new Friends(friends.getFriendlist());
-        this.profile = new Profile(profile.getFirstName(), profile.getLastName(), profile.getNationality(), profile.getProfileText(), profile.getPicture());
+    public User(IUser user) {
+        this.profile = new Profile(user.getProfile());
+        this.userID = user.getUserID();
+        this.banned = user.isBanned();
+        this.reports = user.getReports();
+        this.chats = user.getChats();
+        this.friends = new Friends(user.getFriends());
     }
 
     @Override
