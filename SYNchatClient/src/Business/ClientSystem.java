@@ -42,11 +42,6 @@ public class ClientSystem {
         return null;
     }
     
-    protected int Login(String mail, String pw) {
-        ILogin ilogin = new Login(hash(mail), hash(pw));
-        return ilogin.login(BusinessFacade.getInstance().login(ilogin));
-    }
-    
     protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
         IProfile profile = new Profile(firstName, lastName, nationality, "", "");
         IUser iuser = new User(profile);

@@ -41,7 +41,6 @@ public class ConnectionFacade implements IConnection {
         // the login to send to server
         ILogin sendLogin = new ConLogin(ilogin);
         client.send(sendLogin);
-        //ILogin recieveLogin = new ConLogin
         return client.receiveLogin();
     }
 

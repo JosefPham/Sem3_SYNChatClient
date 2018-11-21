@@ -44,15 +44,10 @@ public class BusinessFacade implements IBusiness {
         this.Icon = con;
     }
 
-    //Hashed login
-    protected ILogin login(ILogin ilogin) {
-        return Icon.login(ilogin);
-    }
-
-    //Unhashed login
     @Override
     public int login(String mail, String pw) {
-        return ClientSystem.getInstance().Login(mail, pw);
+        ILogin ilogin = new Login(ClientSystem.getInstance().hash(mail), ClientSystem.getInstance().hash(pw));
+        return ilogin.login(Icon.login(ilogin));
     }
 
     @Override

@@ -62,7 +62,6 @@ public class Login implements ILogin, Serializable {
 
         if (finalLogin.getLoginvalue() == 2) {
             User currentUser = new User(finalLogin.getUser().getUserID(), finalLogin.getUser().isBanned(), finalLogin.getUser().getReports(), finalLogin.getUser().getChats(), finalLogin.getUser().getFriends(), finalLogin.getUser().getProfile());
-            currentUser.getProfile().setPicture(finalLogin.getUser().getProfile().getPicture());
             ClientSystem.getInstance().setUser(currentUser);
         }
         return finalLogin.getLoginvalue();
