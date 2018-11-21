@@ -20,7 +20,7 @@ public class ConUser implements IUser {
         this.banned = user.isBanned();
         this.reports = user.getReports();
         this.chats = user.getChats();
-        this.friends = user.getFriends();
+        this.friends = new ConFriends(user.getFriends());
     }
 
     @Override

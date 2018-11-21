@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/CipherInterface.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/Login.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/ConnectionFacade.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Presentation/SYNchatController.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IMessage.java</file>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/ConLogin.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/Friends.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/User.java</file>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/ConFriends.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IPresentation.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IProfile.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Presentation/LoginController.java</file>
@@ -21,12 +24,15 @@
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IManagement.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IConnection.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IUser.java</file>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/ConTextMessage.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/ClientSystem.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/Management.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/Nationality.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IFriends.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Starter/SYNchatClient.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Presentation/PresentationFacade.java</file>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Acquaintance/IController.java</file>
+            <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/ConMessage.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Connection/Client.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Presentation/ChangeInfoController.java</file>
             <file>file:/C:/Users/sigur/Dropbox/Skole/Uni/3.%20semester/3.%20sem/Semester-project-3/SYNchatClient/src/Business/TextMessage.java</file>
