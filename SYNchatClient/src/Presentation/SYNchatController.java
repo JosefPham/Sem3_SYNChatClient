@@ -122,6 +122,7 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -161,7 +162,9 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
         btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
-        comparisonMap = PresentationFacade.getInstance().getpUserMap();
+        for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
+            comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
+        }
         this.t = startRun();
     }
 
@@ -187,7 +190,7 @@ public class SYNchatController implements IController, Initializable {
                             receivePublicMsg();
                         }
                     }
-                    if ((comparisonMap != PresentationFacade.getInstance().getpUserMap()) && comparisonMap != null) {
+                    if ((comparisonMap != PresentationFacade.getInstance().getpUserMap()) && (comparisonMap != null)) {
                         for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
                             if (!comparisonMap.containsKey(i)) {
                                 updatepUserMap(PresentationFacade.getInstance().getpUserMap().get(i));
@@ -211,10 +214,10 @@ public class SYNchatController implements IController, Initializable {
     private void updatepUserMap(IUser user) {
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText(user.getProfile().getFirstName() + " has left the chat.\n");
-            comparisonMap = PresentationFacade.getInstance().getpUserMap();
+            comparisonMap.remove(user.getUserID());
         } else {
             txtArea_Chat.appendText(user.getProfile().getFirstName() + " has entered the chat.\n");
-            comparisonMap = PresentationFacade.getInstance().getpUserMap();
+            comparisonMap.put(user.getUserID(), user);
         }
     }
 
