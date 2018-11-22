@@ -119,7 +119,6 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -166,7 +165,7 @@ public class SYNchatController implements IController, Initializable {
     private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
             @Override
-            public void run() {   
+            public void run() {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
@@ -174,7 +173,7 @@ public class SYNchatController implements IController, Initializable {
                 }
                 for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
                     comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
-                }                
+                }
                 String comparisonString = "";
                 int comparisonInt = -1;
                 while (true) {
@@ -217,7 +216,7 @@ public class SYNchatController implements IController, Initializable {
     private void updatepUserMap(IUser user) {
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
-            
+
             comparisonMap.remove(user.getUserID());
         } else {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has entered the chat **\n\n");
@@ -335,7 +334,10 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void viewProfile(MouseEvent event) {
-        PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+        if (t.isDaemon() || !t.isInterrupted()) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+        }
     }
 
     @FXML
