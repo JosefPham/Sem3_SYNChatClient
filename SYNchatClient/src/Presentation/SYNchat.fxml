@@ -102,7 +102,7 @@
                                     <Image url="@../Assets/ChatBackdrop2.jpg" />
                                  </image>
                               </ImageView>
-                              <JFXTextArea fx:id="txtArea_Chat" editable="false" focusColor="#ffffff00" maxHeight="426.0" maxWidth="535.0" minHeight="417.0" minWidth="525.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="535.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
+                              <JFXTextArea fx:id="txtArea_Chat" editable="false" focusColor="#ffffff00" maxHeight="426.0" maxWidth="535.0" minHeight="417.0" minWidth="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="281.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
@@ -110,6 +110,7 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXTextArea>
+                              <TextFlow fx:id="txtFlow_publicChat" layoutY="89.0" prefHeight="426.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                   </children>
                               </AnchorPane>
                         <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
