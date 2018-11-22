@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -28,6 +29,10 @@ public class ViewProfileController implements Initializable {
     private JFXTextField textField_nationality;
     @FXML
     private JFXTextArea textArea_profileInfo;
+    @FXML
+    private Label label_profile;
+    @FXML
+    private Label label_about;
 
     /**
      * Initializes the controller class.
