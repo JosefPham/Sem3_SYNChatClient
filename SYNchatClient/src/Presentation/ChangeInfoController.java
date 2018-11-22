@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -203,33 +202,41 @@ public class ChangeInfoController implements IController, Initializable {
                 PresentationFacade.getInstance().updateUserInfo("", "", fname, lname, nat, ptext, pic);
                 label_changeStatus.setText("Profile updated!");
             } else {
-                if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
-                    if (PresentationFacade.getInstance().checkMail(textField_oldMail.getText())) {
-                        if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText(), fname, lname, nat, ptext, pic)) {
+                if (textField_newEmail.getText().contains("@") && textField_newEmail.getText().contains(".")) {
+                    if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
+                        if (PresentationFacade.getInstance().checkMail(textField_oldMail.getText())) {
+                            if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText(), fname, lname, nat, ptext, pic)) {
+                                label_changeStatus.setText("Profile updated!");
+                            } else {
+                                label_changeStatus.setText("Something went wrong");
+                            }
+                        } else {
+                            label_changeStatus.setText("Incorrect password or email");
+                        }
+                    } else {
+                        label_changeStatus.setText("Emails does not match");
+                    }
+                } else {
+                    label_changeStatus.setText("Invalid email");
+                }
+            }
+        } else {
+            if (pwField_newPW.getText().length() > 7) {
+                if (pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
+                    if (PresentationFacade.getInstance().checkPW(pwField_oldPW.getText())) {
+                        if (PresentationFacade.getInstance().updateUserInfo(pwField_newPW.getText(), "", fname, lname, nat, ptext, pic)) {
                             label_changeStatus.setText("Profile updated!");
                         } else {
                             label_changeStatus.setText("Something went wrong");
                         }
                     } else {
-                        label_changeStatus.setText("Incorrect password or email");
+                        label_changeStatus.setText("Incorrect password");
                     }
                 } else {
-                    label_changeStatus.setText("Emails does not match");
-                }
-            }
-        } else {
-            if (pwField_newPW.getText().equals(pwField_confirmPW.getText())) {
-                if (PresentationFacade.getInstance().checkPW(pwField_oldPW.getText())) {
-                    if (PresentationFacade.getInstance().updateUserInfo(pwField_newPW.getText(), "", fname, lname, nat, ptext, pic)) {
-                        label_changeStatus.setText("Profile updated!");
-                    } else {
-                        label_changeStatus.setText("Something went wrong");
-                    }
-                } else {
-                    label_changeStatus.setText("Incorrect password");
+                    label_changeStatus.setText("Passwords does not match");
                 }
             } else {
-                label_changeStatus.setText("Passwords does not match");
+                label_changeStatus.setText("Password must be atleast 8 characters");
             }
         }
     }

@@ -96,7 +96,7 @@
                                     </Label>
                                           </children>
                                       </AnchorPane>
-                              <ImageView fitHeight="426.0" fitWidth="600.0" opacity="0.4" pickOnBounds="true">
+                              <ImageView fitHeight="426.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Assets/ChatBackdrop2.jpg" />
                                  </image>
@@ -167,7 +167,7 @@
                      <children>
                         <AnchorPane fx:id="pane_chat" prefHeight="75.0" prefWidth="602.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fitHeight="75.0" fitWidth="600.0" opacity="0.4" pickOnBounds="true" rotate="180.0">
+                              <ImageView fitHeight="75.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" rotate="180.0">
                                  <image>
                                     <Image url="@../Assets/ChatBackdrop1.jpg" />
                                  </image>
