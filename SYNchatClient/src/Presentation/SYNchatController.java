@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -222,7 +224,42 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private void updatepUserMap(IUser user) {
-        Text txt = new Text(user.getProfile().getFirstName());
+        String imgCountry;
+        switch(user.getProfile().getNationality()) {
+            case Denmark:
+                imgCountry = "DK";
+                break;
+            case USA:
+                imgCountry = "USA";
+                break;
+            case Japan:
+                imgCountry = "Japan";
+                break;
+            default:
+                imgCountry = "USA";
+                break;
+        }
+        ImageView imgC = new ImageView(new Image(new File("src/Assets/Flag_" + imgCountry + "_Color.png").toURI().toString()));
+        imgC.fitHeightProperty().set(15);
+        imgC.fitWidthProperty().set(15);
+        imgC.setTranslateX(50);
+        imgC.setTranslateY(1);
+        Text txt = new Text(user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
+        txt.setFont(Font.font("Gill Sans MT", 20));
+        txt.setTranslateX(50);
+        txt.setTranslateY(20);
+        txt.setOnMouseEntered((event) -> {
+            txt.setUnderline(true);
+        });
+        txt.setOnMouseExited((event) -> {
+            txt.setUnderline(false);
+        });
+        txt.setOnMousePressed((event) -> {
+            PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+        });
+        ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
+        imgP.fitHeightProperty().set(35);
+        imgP.fitWidthProperty().set(35);
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
             comparisonMap.remove(user.getUserID());
@@ -239,6 +276,8 @@ public class SYNchatController implements IController, Initializable {
                 @Override
                 public void run() {
                     txtFlow_publicChat.getChildren().add(txt);
+                    txtFlow_publicChat.getChildren().add(imgC);
+                    txtFlow_publicChat.getChildren().add(imgP);
                 }
             });
 
