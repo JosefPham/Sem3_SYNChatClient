@@ -9,6 +9,7 @@ public class ConFriends implements IFriends {
     List<Integer> friendlist;
 
     public ConFriends(IFriends friends) {
+        if(friends != null)
         this.friendlist = friends.getFriendlist();
     }
 

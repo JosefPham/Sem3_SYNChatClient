@@ -46,9 +46,8 @@ public class ConnectionFacade implements IConnection {
 
     @Override
     public Boolean regUser(ILogin ilogin) {
-        ConUser user = new ConUser(ilogin.getUser());
-        ilogin.setUser(user);
-        client.send(ilogin);
+        ILogin login = new ConLogin(ilogin);
+        client.send(login);
         return client.receiveBool();
     }
 
