@@ -192,7 +192,6 @@ public class Client implements IClient {
                 } finally {
                     readMessage = null;
                     try {
-                        send("!SYN!-PublicChat-!SYN!");
                         readMessage.interrupt();
                         output.close();
                     } catch (IOException ex) {
