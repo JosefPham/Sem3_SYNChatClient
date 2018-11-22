@@ -159,7 +159,7 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
         btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
-        txtArea_Chat.appendText("** You have entered the chat **");
+        txtArea_Chat.appendText("** You have entered the chat **\n\n");
         this.t = startRun();
     }
 
