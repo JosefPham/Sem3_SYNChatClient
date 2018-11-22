@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -221,13 +222,26 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private void updatepUserMap(IUser user) {
+        Text txt = new Text(user.getProfile().getFirstName());
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
-
             comparisonMap.remove(user.getUserID());
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    txtFlow_publicChat.getChildren().remove(txt);
+                }
+            });
         } else {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has entered the chat **\n\n");
             comparisonMap.put(user.getUserID(), user);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    txtFlow_publicChat.getChildren().add(txt);
+                }
+            });
+
         }
     }
 
@@ -236,8 +250,7 @@ public class SYNchatController implements IController, Initializable {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
             PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             txtArea_YourChat.clear();
-            System.out.println("kom hertil");
-            txtFlow_publicChat.getChildren().add(new Text("Test"));
+            txtFlow_publicChat.getChildren().add(new Text("Test fra send"));
         }
     }
 
@@ -246,7 +259,7 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         pane_chat.setDisable(false);
         pane_Welcome.toBack();
-        PresentationFacade.Ibus.privateThreads();
+        //PresentationFacade.Ibus.privateThreads();
         btn_publicChat.setStyle(btn_privatChat.getStyle());
         btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
     }
