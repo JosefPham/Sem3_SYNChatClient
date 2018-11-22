@@ -51,6 +51,7 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private IMessage iMsg;
+    Map<Integer, IUser> comparisonMap = new HashMap<>();
 
     @FXML
     private JFXButton btn_publicChat;
@@ -120,6 +121,7 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        comparisonMap = PresentationFacade.getInstance().getpUserMap();
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -185,6 +187,18 @@ public class SYNchatController implements IController, Initializable {
                             receivePublicMsg();
                         }
                     }
+                    if ((comparisonMap != PresentationFacade.getInstance().getpUserMap()) && comparisonMap != null) {
+                        for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
+                            if (!comparisonMap.containsKey(i)) {
+                                updatepUserMap(PresentationFacade.getInstance().getpUserMap().get(i));
+                            }
+                        }
+                        for (int i : comparisonMap.keySet()) {
+                            if (!PresentationFacade.getInstance().getpUserMap().containsKey(i)) {
+                                updatepUserMap(comparisonMap.get(i));
+                            }
+                        }
+                    }
                 }
             }
         };
@@ -192,6 +206,16 @@ public class SYNchatController implements IController, Initializable {
         t.setDaemon(true);
         t.start();
         return t;
+    }
+
+    private void updatepUserMap(IUser user) {
+        if(comparisonMap.containsKey(user)) {
+            txtArea_Chat.appendText(user.getProfile().getFirstName() + " has left the chat.\n");
+            comparisonMap = PresentationFacade.getInstance().getpUserMap();
+        } else {
+            txtArea_Chat.appendText(user.getProfile().getFirstName() + " has entered the chat.\n");
+            comparisonMap = PresentationFacade.getInstance().getpUserMap();
+        }
     }
 
     @FXML
