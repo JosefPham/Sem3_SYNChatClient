@@ -209,7 +209,7 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private void updatepUserMap(IUser user) {
-        if (comparisonMap.containsKey(user)) {
+        if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText(user.getProfile().getFirstName() + " has left the chat.\n");
             comparisonMap = PresentationFacade.getInstance().getpUserMap();
         } else {
