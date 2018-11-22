@@ -330,7 +330,7 @@ public class SYNchatController implements IController, Initializable {
         senderContent.setFont(Font.font("Gill Sans MT", 16));
         senderTimeStamp.setFont(Font.font("Gill Sans MT", 10));
         senderName.setTranslateX(50);
-        senderName.setTranslateY(44);
+        senderName.setTranslateY(43);
         senderContent.setTranslateX(50);
         senderContent.setTranslateY(40);
         senderTimeStamp.setTranslateX(50);
