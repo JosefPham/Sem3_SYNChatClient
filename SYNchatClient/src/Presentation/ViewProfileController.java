@@ -41,6 +41,8 @@ public class ViewProfileController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        label_profile.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getFirstName() + "'s profile");
+        label_about.setText("About " + PresentationFacade.getInstance().getSelectedUser().getProfile().getFirstName() + ":");
         textField_fname.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getFirstName());
         textField_lname.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getLastName());
         textField_nationality.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getNationality().toString());

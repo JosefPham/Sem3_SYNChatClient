@@ -7,6 +7,7 @@ import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.Color;
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -323,16 +324,25 @@ public class SYNchatController implements IController, Initializable {
         String timeStamp = new SimpleDateFormat("HH.mm").format(date);
         Text senderName = new Text(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":\n");
         Text senderContent = new Text(iMsg.getContext() + "\n");
-        Text senderTimeStamp = new Text(timeStamp + "\n");
+        Text senderTimeStamp = new Text(timeStamp + "\n\n");
         senderName.setFont(Font.font("Gill Sans MT", 10));
-        senderContent.setFont(Font.font("Gill Sans MT", 14));
+        senderContent.setFont(Font.font("Gill Sans MT", 16));
         senderTimeStamp.setFont(Font.font("Gill Sans MT", 10));
+        senderName.setTranslateX(50);
+        senderName.setTranslateY(24);
+        senderContent.setTranslateX(50);
+        senderContent.setTranslateY(20);
+        senderTimeStamp.setTranslateX(50);
+        senderTimeStamp.setTranslateY(20);
+        senderName.setFill(Paint.valueOf("#A9A9A9"));
+        senderContent.setFill(Paint.valueOf("WHITE"));
+        senderTimeStamp.setFill(Paint.valueOf("#A9A9A9"));
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                txtFlow_publicChat.getChildren().add(senderName);
-                txtFlow_publicChat.getChildren().add(senderContent);
-                txtFlow_publicChat.getChildren().add(senderTimeStamp);
+                txtFlow_publicMsg.getChildren().add(senderName);
+                txtFlow_publicMsg.getChildren().add(senderContent);
+                txtFlow_publicMsg.getChildren().add(senderTimeStamp);
             }
         });
         txtArea_Chat.appendText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ": ");
