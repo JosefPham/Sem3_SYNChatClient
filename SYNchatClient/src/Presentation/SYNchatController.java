@@ -28,6 +28,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
@@ -113,6 +115,8 @@ public class SYNchatController implements IController, Initializable {
     private Label label_news;
     @FXML
     private ImageView image_yourCountry;
+    @FXML
+    private TextFlow txtFlow_publicChat;
 
     /**
      * Initializes the controller class.
@@ -232,6 +236,8 @@ public class SYNchatController implements IController, Initializable {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
             PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             txtArea_YourChat.clear();
+            System.out.println("kom hertil");
+            txtFlow_publicChat.getChildren().add(new Text("Test"));
         }
     }
 
