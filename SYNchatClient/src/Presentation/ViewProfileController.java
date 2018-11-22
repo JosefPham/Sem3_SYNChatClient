@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -30,6 +31,10 @@ public class ViewProfileController implements IController, Initializable {
     private JFXTextField textField_nationality;
     @FXML
     private JFXTextArea textArea_profileInfo;
+    @FXML
+    private Label label_profile;
+    @FXML
+    private Label label_about;
 
     /**
      * Initializes the controller class.

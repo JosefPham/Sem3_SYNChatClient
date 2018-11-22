@@ -120,6 +120,8 @@ public class SYNchatController implements IController, Initializable {
     private ImageView image_yourCountry;
     @FXML
     private TextFlow txtFlow_publicChat;
+    @FXML
+    private TextFlow txtFlow_publicMsg;
 
     /**
      * Initializes the controller class.
