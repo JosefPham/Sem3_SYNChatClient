@@ -215,10 +215,10 @@ public class SYNchatController implements IController, Initializable {
 
     private void updatepUserMap(IUser user) {
         if (comparisonMap.containsKey(user.getUserID())) {
-            txtArea_Chat.appendText(user.getProfile().getFirstName() + " has left the chat.\n");
+            txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
             comparisonMap.remove(user.getUserID());
         } else {
-            txtArea_Chat.appendText(user.getProfile().getFirstName() + " has entered the chat.\n");
+            txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has entered the chat **\n\n");
             comparisonMap.put(user.getUserID(), user);
         }
     }
