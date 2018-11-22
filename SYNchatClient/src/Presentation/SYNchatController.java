@@ -51,7 +51,6 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private IMessage iMsg;
-    private IUser pUser;
 
     @FXML
     private JFXButton btn_publicChat;
@@ -212,22 +211,6 @@ public class SYNchatController implements IController, Initializable {
         btn_publicChat.setStyle(btn_privatChat.getStyle());
         btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
     }
-
-//    public void userMap(Map<Integer, IUser> userMap) {
-//        for (Integer i : userMap.keySet()) {
-//            observeUserMap.put(i, userMap.get(i));
-//            System.out.println("Size: " + observeUserMap.size() + observeUserMap.toString());
-//            System.out.println("pUserMap: " + pUserMap.size());
-//        }
-//    }
-//
-//    public void publicUser(IUser pUser) {
-//        if (!pUserMap.containsKey(pUser.getUserID())) {
-//            pUserMap.put(pUser.getUserID(), pUser);
-//        } else {
-//            pUserMap.remove(pUser.getUserID());
-//        }
-//    }
 
     @FXML
     private void popOpHandler(MouseEvent event) {

@@ -127,7 +127,8 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void publicUser(IUser pUser) {
-        Ipres.publicUser(pUser);
+        IUser user = new User(pUser);
+        Ipres.publicUser(user);
     }
 
     @Override

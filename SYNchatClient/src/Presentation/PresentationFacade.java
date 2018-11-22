@@ -121,7 +121,11 @@ public class PresentationFacade implements IPresentation, IController {
 
     @Override
     public void publicUser(IUser pUser) {
-
+        if (!pUserMap.containsKey(pUser.getUserID())) {
+            pUserMap.put(pUser.getUserID(), pUser);
+        } else {
+            pUserMap.remove(pUser.getUserID());
+        }
     }
 
     @Override
