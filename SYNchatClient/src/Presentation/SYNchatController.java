@@ -225,7 +225,7 @@ public class SYNchatController implements IController, Initializable {
 
     private void updatepUserMap(IUser user) {
         String imgCountry;
-        switch(user.getProfile().getNationality()) {
+        switch (user.getProfile().getNationality()) {
             case Denmark:
                 imgCountry = "DK";
                 break;
@@ -243,7 +243,6 @@ public class SYNchatController implements IController, Initializable {
         imgC.fitHeightProperty().set(15);
         imgC.fitWidthProperty().set(15);
         imgC.setTranslateX(50);
-        imgC.setTranslateY(1);
         Text txt = new Text(user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
         txt.setFont(Font.font("Gill Sans MT", 20));
         txt.setTranslateX(50);
@@ -255,7 +254,8 @@ public class SYNchatController implements IController, Initializable {
             txt.setUnderline(false);
         });
         txt.setOnMousePressed((event) -> {
-            PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+            PresentationFacade.getInstance().setSelectedUser(user);
+            PresentationFacade.getInstance().changeScene("ViewProfile.fxml");
         });
         ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
         imgP.fitHeightProperty().set(35);
@@ -316,11 +316,25 @@ public class SYNchatController implements IController, Initializable {
     }
 
     public void receivePublicMsg() {
-        txtArea_Chat.appendText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ": ");
-        txtArea_Chat.appendText(iMsg.getContext() + "\n");
         Date date = new Date();
         date.setTime(iMsg.getTimestamp().toEpochMilli());
         String timeStamp = new SimpleDateFormat("HH.mm").format(date);
+        Text senderName = new Text(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":\n");
+        Text senderContent = new Text(iMsg.getContext() + "\n");
+        Text senderTimeStamp = new Text(timeStamp + "\n");
+        senderName.setFont(Font.font("Gill Sans MT", 10));
+        senderContent.setFont(Font.font("Gill Sans MT", 14));
+        senderTimeStamp.setFont(Font.font("Gill Sans MT", 10));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtFlow_publicChat.getChildren().add(senderName);
+                txtFlow_publicChat.getChildren().add(senderContent);
+                txtFlow_publicChat.getChildren().add(senderTimeStamp);
+            }
+        });
+        txtArea_Chat.appendText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ": ");
+        txtArea_Chat.appendText(iMsg.getContext() + "\n");
         txtArea_Chat.appendText(timeStamp + "\n\n");
     }
 

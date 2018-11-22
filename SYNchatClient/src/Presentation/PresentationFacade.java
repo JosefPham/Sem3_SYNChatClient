@@ -25,6 +25,7 @@ public class PresentationFacade implements IPresentation, IController {
     protected static IBusiness Ibus;
     private SYNchat synchat;
     private IMessage iMsg;
+    private IUser selectedUser;
     private Map<Integer, IUser> pUserMap;
     public static Stage stage;
 
@@ -142,4 +143,13 @@ public class PresentationFacade implements IPresentation, IController {
     public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture) {
         return Ibus.updateUserInfo(pw, mail, firstName, lastName, nationality, profileText, picture);
     }
+
+    public IUser getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(IUser selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+
 }
