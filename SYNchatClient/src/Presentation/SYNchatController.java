@@ -166,15 +166,17 @@ public class SYNchatController implements IController, Initializable {
     private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
             @Override
-            public void run() {   
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(SYNchatController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            public void run() {
+                do {
+                    try {
+                        Thread.sleep(0);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SYNchatController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } while (PresentationFacade.getInstance().getpUserMap() == null);
                 for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
                     comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
-                }                
+                }
                 String comparisonString = "";
                 int comparisonInt = -1;
                 while (true) {
@@ -217,7 +219,7 @@ public class SYNchatController implements IController, Initializable {
     private void updatepUserMap(IUser user) {
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
-            
+
             comparisonMap.remove(user.getUserID());
         } else {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has entered the chat **\n\n");
