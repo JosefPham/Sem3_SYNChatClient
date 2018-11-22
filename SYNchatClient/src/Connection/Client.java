@@ -21,17 +21,18 @@ import java.util.logging.Logger;
  */
 public class Client implements IClient {
 
-    Socket serverSocket;
-    InetAddress ip;
+    private Socket serverSocket;
+    private InetAddress ip;
     int port = 8080;
     private DataInputStream console; // takes input from keyboard (system in)
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
-    Thread sendMessage, readMessage = null;
+    private Thread sendMessage, readMessage = null;
+    private boolean isPublicChatting = false;
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("192.168.1.196");
+            this.ip = (InetAddress) InetAddress.getByName("10.126.41.217");
 
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,6 +59,9 @@ public class Client implements IClient {
 
     @Override
     public void send(Object o) {
+        if(o.toString().equals("!SYN!-PublicChat-!SYN!")) {
+            isPublicChatting = !isPublicChatting;
+        }
         try {
             output.writeObject(o);
 
@@ -174,7 +178,7 @@ public class Client implements IClient {
             @Override
             public void run() {
                 try {
-                    while (serverSocket.isConnected()) {
+                    while (isPublicChatting) {
                         Object obj;
                         if ((obj = input.readObject()) != null) {
                             if(obj instanceof ConTextMessage) {
