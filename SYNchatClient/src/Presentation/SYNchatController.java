@@ -158,7 +158,8 @@ public class SYNchatController implements IController, Initializable {
         pane_Welcome.toBack();
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
-        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7"); 
+        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
+        txtArea_Chat.appendText("** You have entered the chat **");
         this.t = startRun();
     }
 
@@ -216,6 +217,7 @@ public class SYNchatController implements IController, Initializable {
     private void updatepUserMap(IUser user) {
         if (comparisonMap.containsKey(user.getUserID())) {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has left the chat **\n\n");
+            
             comparisonMap.remove(user.getUserID());
         } else {
             txtArea_Chat.appendText("** " + user.getProfile().getFirstName() + " has entered the chat **\n\n");
