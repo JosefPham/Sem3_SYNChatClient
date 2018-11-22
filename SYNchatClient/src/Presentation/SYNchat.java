@@ -29,12 +29,6 @@ public class SYNchat extends Application {
 
         stage.setScene(newScene);
         stage.show();
-//        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-        //stage.setResizable(false);
     }
 
     //Starts FXML with start()
