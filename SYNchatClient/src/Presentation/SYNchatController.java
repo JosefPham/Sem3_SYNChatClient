@@ -16,6 +16,9 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.MapChangeListener;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,8 +51,8 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private IMessage iMsg;
-    private Map<Integer, IUser> pUserMap;
     private IUser pUser;
+
     @FXML
     private JFXButton btn_publicChat;
     @FXML
@@ -210,23 +213,21 @@ public class SYNchatController implements IController, Initializable {
         btn_privatChat.setStyle(btn_privatChat.getStyle() + "-fx-background-color: #162ab7");
     }
 
-    public void userMap(Map<Integer, IUser> userMap) {
-        pUserMap = new HashMap<>();
-        for (Integer i : userMap.keySet()) {
-            pUserMap.put(i, userMap.get(i));
-        }
-        for (Integer il : pUserMap.keySet()) {
-            System.out.println(il + " " + pUserMap.get(il).getProfile().getFirstName());
-        }
-    }
-
-    public void publicUser(IUser pUser) {
-        if (!pUserMap.containsKey(pUser.getUserID())) {
-            pUserMap.put(pUser.getUserID(), pUser);
-        } else {
-            pUserMap.remove(pUser.getUserID());
-        }
-    }
+//    public void userMap(Map<Integer, IUser> userMap) {
+//        for (Integer i : userMap.keySet()) {
+//            observeUserMap.put(i, userMap.get(i));
+//            System.out.println("Size: " + observeUserMap.size() + observeUserMap.toString());
+//            System.out.println("pUserMap: " + pUserMap.size());
+//        }
+//    }
+//
+//    public void publicUser(IUser pUser) {
+//        if (!pUserMap.containsKey(pUser.getUserID())) {
+//            pUserMap.put(pUser.getUserID(), pUser);
+//        } else {
+//            pUserMap.remove(pUser.getUserID());
+//        }
+//    }
 
     @FXML
     private void popOpHandler(MouseEvent event) {
@@ -242,7 +243,7 @@ public class SYNchatController implements IController, Initializable {
     }
 
     public void receivePublicMsg() {
-        txtArea_Chat.appendText(String.valueOf(iMsg.getSenderID()) + ": ");
+        txtArea_Chat.appendText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ": ");
         txtArea_Chat.appendText(iMsg.getContext() + "\n");
         Date date = new Date();
         date.setTime(iMsg.getTimestamp().toEpochMilli());

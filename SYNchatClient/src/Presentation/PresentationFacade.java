@@ -7,6 +7,7 @@ import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class PresentationFacade implements IPresentation, IController {
     protected static IBusiness Ibus;
     private SYNchat synchat;
     private IMessage iMsg;
+    private Map<Integer, IUser> pUserMap;
     public static Stage stage;
 
     private static PresentationFacade instance = null;
@@ -109,15 +111,19 @@ public class PresentationFacade implements IPresentation, IController {
     }
 
     @Override
-    public void userMap(Map userMap) {
-        SYNchatController.getInstance().userMap(userMap);
+    public void userMap(Map<Integer, IUser> userMap) {
+        pUserMap = userMap;
+    }
+
+    public Map<Integer, IUser> getpUserMap() {
+        return pUserMap;
     }
 
     @Override
     public void publicUser(IUser pUser) {
-        
+
     }
-    
+
     @Override
     public boolean checkPW(String pw) {
         return Ibus.checkPW(pw);

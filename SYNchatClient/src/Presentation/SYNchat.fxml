@@ -96,6 +96,11 @@
                                     </Label>
                                           </children>
                                       </AnchorPane>
+                              <ImageView fitHeight="426.0" fitWidth="600.0" opacity="0.4" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Assets/ChatBackdrop2.jpg" />
+                                 </image>
+                              </ImageView>
                               <JFXTextArea fx:id="txtArea_Chat" editable="false" focusColor="#ffffff00" maxHeight="426.0" maxWidth="535.0" minHeight="417.0" minWidth="525.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="535.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -104,11 +109,6 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXTextArea>
-                              <ImageView fitHeight="426.0" fitWidth="600.0" opacity="0.4" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../Assets/ChatBackdrop2.jpg" />
-                                 </image>
-                              </ImageView>
                                   </children>
                               </AnchorPane>
                         <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
