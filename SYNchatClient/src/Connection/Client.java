@@ -32,10 +32,9 @@ public class Client implements IClient {
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("10.126.41.217");
-
+            this.ip = (InetAddress) InetAddress.getByName("192.168.1.196");
         } catch (UnknownHostException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldn't connect to ip...");
         }
         this.port = port;
 
@@ -52,21 +51,21 @@ public class Client implements IClient {
             input = new ObjectInputStream(serverSocket.getInputStream());
 
         } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Server closed...");
         }
 
     }
 
     @Override
     public void send(Object o) {
-        if(o.toString().equals("!SYN!-PublicChat-!SYN!")) {
+        if (o.toString().equals("!SYN!-PublicChat-!SYN!")) {
             isPublicChatting = !isPublicChatting;
         }
         try {
             output.writeObject(o);
 
         } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldn't send object...");
         }
     }
 
@@ -103,7 +102,7 @@ public class Client implements IClient {
         }
 
     }
-    
+
     @Override
     public int receiveInt() {
         while (true) {
@@ -173,38 +172,41 @@ public class Client implements IClient {
 
     @Override
     public void startPublicThreads() {
-        if(readMessage == null){
-        readMessage = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (isPublicChatting) {
-                        Object obj;
-                        if ((obj = input.readObject()) != null) {
-                            if(obj instanceof ConTextMessage) {
-                                ConTextMessage msg = (ConTextMessage) obj;
-                                ConnectionFacade.getInstance().receivePublicMsg(msg);
-                            } if (obj instanceof Map) {
-                                ConnectionFacade.getInstance().userMap((Map) obj);
-                            } if (obj instanceof IUser) {
-                                ConnectionFacade.getInstance().publicUser((IUser) obj);
-                            }
-                        }
-                        
-                    }
-                } catch (Exception e) {
-                } finally {
-                    readMessage = null;
+        if (readMessage == null) {
+            readMessage = new Thread(new Runnable() {
+                @Override
+                public void run() {
                     try {
-                        readMessage.interrupt();
-                        output.close();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
+                        while (isPublicChatting) {
+                            Object obj;
+                            if ((obj = input.readObject()) != null) {
+                                if (obj instanceof ConTextMessage) {
+                                    ConTextMessage msg = (ConTextMessage) obj;
+                                    ConnectionFacade.getInstance().receivePublicMsg(msg);
+                                }
+                                if (obj instanceof Map) {
+                                    ConnectionFacade.getInstance().userMap((Map) obj);
+                                }
+                                if (obj instanceof IUser) {
+                                    ConnectionFacade.getInstance().publicUser((IUser) obj);
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Got kicked off public thread...");
+                    } finally {
+                        readMessage = null;
+                        try {
+                            readMessage.interrupt();
+                            output.close();
+                        } catch (IOException ex) {
+                            System.out.println("Got kicked off public thread...");
+                        }
                     }
                 }
-            }
-        });
-        readMessage.start();
+            });
+            readMessage.start();
         }
     }
 }

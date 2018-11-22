@@ -250,7 +250,6 @@ public class SYNchatController implements IController, Initializable {
         if (!txtArea_YourChat.getText().trim().isEmpty()) {
             PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
             txtArea_YourChat.clear();
-            txtFlow_publicChat.getChildren().add(new Text("Test fra send"));
         }
     }
 
@@ -314,6 +313,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void logoutAction(ActionEvent event) {
+        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         PresentationFacade.getInstance().commandHandling("!SYN!-logout-!SYN!");
         PresentationFacade.getInstance().changeScene("Login.fxml");
     }
@@ -356,6 +356,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void viewProfile(MouseEvent event) {
+        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
     }
 
