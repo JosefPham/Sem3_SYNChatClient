@@ -16,9 +16,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.MapChangeListener;
-import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -122,7 +119,7 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -161,17 +158,22 @@ public class SYNchatController implements IController, Initializable {
         pane_Welcome.toBack();
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
-        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
-        for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
-            comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
-        }
+        btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7"); 
         this.t = startRun();
     }
 
     private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
             @Override
-            public void run() {
+            public void run() {   
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SYNchatController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
+                    comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
+                }                
                 String comparisonString = "";
                 int comparisonInt = -1;
                 while (true) {
