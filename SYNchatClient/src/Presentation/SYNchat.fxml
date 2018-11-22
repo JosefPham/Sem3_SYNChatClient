@@ -139,7 +139,7 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXTextArea>
-                              <Label fx:id="label_features" layoutX="447.0" layoutY="101.0" text="SYNchat Features" textFill="#1f96e0">
+                              <Label fx:id="label_features" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="101.0" prefHeight="19.0" prefWidth="184.0" text="SYNchat Features" textFill="#1f96e0">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
@@ -149,7 +149,7 @@
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label_news" layoutX="14.0" layoutY="101.0" text="SYNchat News" textFill="#1f96e0">
+                              <Label fx:id="label_news" layoutX="14.0" layoutY="101.0" prefHeight="19.0" prefWidth="184.0" text="SYNchat News" textFill="#1f96e0">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
@@ -303,6 +303,11 @@
                                     <Font name="Gill Sans MT Bold" size="12.0" />
                                  </font>
                               </Label>
+                              <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="20.0" onMousePressed="#colorPicker" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/color_picker.png" />
+                                 </image>
+                              </ImageView>
                                   </children>
                               </AnchorPane>
                           </children>

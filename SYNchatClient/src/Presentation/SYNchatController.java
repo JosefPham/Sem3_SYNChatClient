@@ -77,6 +77,7 @@ public class SYNchatController implements IController, Initializable {
     boolean cog = true;
     boolean settings = true;
     boolean scrollPane = true;
+    int colorIndex = 0;
     @FXML
     private AnchorPane pane_cogView;
     @FXML
@@ -121,7 +122,6 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comparisonMap = PresentationFacade.getInstance().getpUserMap();
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -161,7 +161,7 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.Ibus.publicThreads();
         btn_privatChat.setStyle(btn_publicChat.getStyle());
         btn_publicChat.setStyle(btn_publicChat.getStyle() + "-fx-background-color: #162ab7");
-
+        comparisonMap = PresentationFacade.getInstance().getpUserMap();
         this.t = startRun();
     }
 
@@ -209,7 +209,7 @@ public class SYNchatController implements IController, Initializable {
     }
 
     private void updatepUserMap(IUser user) {
-        if(comparisonMap.containsKey(user)) {
+        if (comparisonMap.containsKey(user)) {
             txtArea_Chat.appendText(user.getProfile().getFirstName() + " has left the chat.\n");
             comparisonMap = PresentationFacade.getInstance().getpUserMap();
         } else {
@@ -549,4 +549,44 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_12.png");
     }
 
+    @FXML
+    private void colorPicker(MouseEvent event) {
+        switch (colorIndex) {
+            case 0:
+                txtArea_Chat.setStyle("-fx-text-fill: #98fb98");
+                txtArea_YourChat.setStyle("-fx-text-fill: #98fb98");
+                colorIndex++;
+                break;
+            case 1:
+                txtArea_Chat.setStyle("-fx-text-fill: blue");
+                txtArea_YourChat.setStyle("-fx-text-fill: blue");
+                colorIndex++;
+                break;
+            case 2:
+                txtArea_Chat.setStyle("-fx-text-fill: red");
+                txtArea_YourChat.setStyle("-fx-text-fill: red");
+                colorIndex++;
+                break;
+            case 3:
+                txtArea_Chat.setStyle("-fx-text-fill: orange");
+                txtArea_YourChat.setStyle("-fx-text-fill: orange");
+                colorIndex++;
+                break;
+            case 4:
+                txtArea_Chat.setStyle("-fx-text-fill: purple");
+                txtArea_YourChat.setStyle("-fx-text-fill: purple");
+                colorIndex++;
+                break;
+            case 5:
+                txtArea_Chat.setStyle("-fx-text-fill: pink");
+                txtArea_YourChat.setStyle("-fx-text-fill: pink");
+                colorIndex++;
+                break;
+            default:
+                txtArea_Chat.setStyle("-fx-text-fill: white");
+                txtArea_YourChat.setStyle("-fx-text-fill: white");
+                colorIndex = 0;
+                break;
+        }
+    }
 }
