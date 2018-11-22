@@ -21,14 +21,13 @@ import java.util.logging.Logger;
  */
 public class Client implements IClient {
 
-    private Socket serverSocket;
-    private InetAddress ip;
+    Socket serverSocket;
+    InetAddress ip;
     int port = 8080;
     private DataInputStream console; // takes input from keyboard (system in)
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
-    private Thread sendMessage, readMessage = null;
-    private boolean isPublicChatting = false;
+    Thread sendMessage, readMessage = null;
 
     public Client() {
         try {
@@ -59,9 +58,6 @@ public class Client implements IClient {
 
     @Override
     public void send(Object o) {
-        if(o.toString().equals("!SYN!-PublicChat-!SYN!")) {
-            isPublicChatting = !isPublicChatting;
-        }
         try {
             output.writeObject(o);
 
@@ -178,7 +174,7 @@ public class Client implements IClient {
             @Override
             public void run() {
                 try {
-                    while (isPublicChatting) {
+                    while (serverSocket.isConnected()) {
                         Object obj;
                         if ((obj = input.readObject()) != null) {
                             if(obj instanceof ConTextMessage) {

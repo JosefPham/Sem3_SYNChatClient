@@ -1,4 +1,4 @@
-﻿package Presentation;
+package Presentation;
 
 import Acquaintance.IController;
 import Acquaintance.IMessage;
@@ -124,6 +124,7 @@ public class SYNchatController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         txtArea_Chat.setStyle("-fx-text-fill: white");
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
@@ -355,10 +356,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void viewProfile(MouseEvent event) {
-        if (t.isDaemon() || !t.isInterrupted()) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
-            PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
-        }
+        PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
     }
 
     @FXML
