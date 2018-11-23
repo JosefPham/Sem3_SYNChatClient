@@ -7,6 +7,7 @@ import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.org.apache.xml.internal.dtm.ref.DTMDefaultBaseIterators;
 import java.awt.Color;
 import java.io.File;
 import java.net.URL;
@@ -21,8 +22,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.AccessibleAttribute;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -68,7 +71,7 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private AnchorPane Popup_pane;
     @FXML
-    private JFXTextField txtArea_YourChat;
+    private TextField txtArea_YourChat;
     @FXML
     private AnchorPane AnchorPane_List;
     @FXML
@@ -124,6 +127,14 @@ public class SYNchatController implements IController, Initializable {
     private TextFlow txtFlow_publicChat;
     @FXML
     private TextFlow txtFlow_publicMsg;
+    @FXML
+    private AnchorPane chatBubble;
+    @FXML
+    private Label msg_label_timeStamp;
+    @FXML
+    private Label msg_label_sender;
+    @FXML
+    private Label msg_label_text;
 
     /**
      * Initializes the controller class.
@@ -338,12 +349,19 @@ public class SYNchatController implements IController, Initializable {
         senderName.setFill(Paint.valueOf("#A9A9A9"));
         senderContent.setFill(Paint.valueOf("WHITE"));
         senderTimeStamp.setFill(Paint.valueOf("#A9A9A9"));
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 txtFlow_publicMsg.getChildren().add(senderName);
                 txtFlow_publicMsg.getChildren().add(senderContent);
                 txtFlow_publicMsg.getChildren().add(senderTimeStamp);
+//                msg_label_sender.setText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":");
+//                msg_label_text.setText(iMsg.getContext());
+//                msg_label_timeStamp.setText(timeStamp);
+//                chatBubble.setTranslateX(50);
+//                chatBubble.setTranslateY(40);
+//                txtFlow_publicMsg.getChildren().add(chatBubble);
             }
         });
         txtArea_Chat.appendText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ": ");
@@ -422,7 +440,7 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void viewProfile(MouseEvent event) {
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+        //PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
         PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
     }
 

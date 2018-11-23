@@ -18,10 +18,15 @@ import javafx.stage.Stage;
 
 public class ChangeInfoController implements IController, Initializable {
 
+    @FXML
     private PasswordField pwField_oldPW;
+    @FXML
     private PasswordField pwField_newPW;
+    @FXML
     private TextField textField_newEmail;
+    @FXML
     private TextField textField_confirmEmail;
+    @FXML
     private PasswordField pwField_confirmPW;
     @FXML
     private JFXTextField textField_fname;
@@ -29,9 +34,13 @@ public class ChangeInfoController implements IController, Initializable {
     private JFXTextField textField_nationality;
     @FXML
     private JFXTextField textField_lname;
+    @FXML
     private AnchorPane pane_countries;
+    @FXML
     private Label country_DK;
+    @FXML
     private Label country_USA;
+    @FXML
     private Label country_Japan;
     private Boolean countryB = true;
     @FXML
@@ -40,6 +49,7 @@ public class ChangeInfoController implements IController, Initializable {
     private Label label_changeStatus;
 
     private Nationality nat;
+    @FXML
     private JFXTextField textField_oldMail;
 
     /**
@@ -55,6 +65,7 @@ public class ChangeInfoController implements IController, Initializable {
         textArea_profileInfo.setText(PresentationFacade.getInstance().getUser().getProfile().getProfileText());
     }
 
+    @FXML
     private void changeFname(MouseEvent event) {
         if (!textField_fname.isEditable()) {
             textField_fname.setEditable(true);
@@ -63,6 +74,7 @@ public class ChangeInfoController implements IController, Initializable {
         }
     }
 
+    @FXML
     private void changeLname(MouseEvent event) {
         if (!textField_lname.isEditable()) {
             textField_lname.setEditable(true);
@@ -71,6 +83,7 @@ public class ChangeInfoController implements IController, Initializable {
         }
     }
 
+    @FXML
     private void changeNat(MouseEvent event) {
         if (countryB) {
             pane_countries.setVisible(true);
@@ -86,30 +99,37 @@ public class ChangeInfoController implements IController, Initializable {
         PresentationFacade.getInstance().changeScene("SYNchat.fxml");
     }
 
+    @FXML
     private void countryDK_out(MouseEvent event) {
         country_DK.setUnderline(false);
     }
 
+    @FXML
     private void countryDK_in(MouseEvent event) {
         country_DK.setUnderline(true);
     }
 
+    @FXML
     private void countryUSA_out(MouseEvent event) {
         country_USA.setUnderline(false);
     }
 
+    @FXML
     private void countryUSA_in(MouseEvent event) {
         country_USA.setUnderline(true);
     }
 
+    @FXML
     private void countryJapan_out(MouseEvent event) {
         country_Japan.setUnderline(false);
     }
 
+    @FXML
     private void countryJapan_in(MouseEvent event) {
         country_Japan.setUnderline(true);
     }
 
+    @FXML
     private void countryDK_handle(MouseEvent event) {
         textField_nationality.setText("Denmark");
         pane_countries.setVisible(false);
@@ -117,6 +137,7 @@ public class ChangeInfoController implements IController, Initializable {
         countryB = true;
     }
 
+    @FXML
     private void countryUSA_handle(MouseEvent event) {
         textField_nationality.setText("USA");
         pane_countries.setVisible(false);
@@ -124,6 +145,7 @@ public class ChangeInfoController implements IController, Initializable {
         countryB = true;
     }
 
+    @FXML
     private void countryJapan_handle(MouseEvent event) {
         textField_nationality.setText("Japan");
         pane_countries.setVisible(false);
@@ -136,6 +158,7 @@ public class ChangeInfoController implements IController, Initializable {
         PresentationFacade.stage = stage;
     }
 
+    @FXML
     private void changeProfile(ActionEvent event) {
         String fname = PresentationFacade.getInstance().getUser().getProfile().getFirstName();
         String lname = PresentationFacade.getInstance().getUser().getProfile().getLastName();
