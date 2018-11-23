@@ -196,9 +196,9 @@ public class Client implements IClient {
                     } catch (Exception e) {
                         System.out.println("Got kicked off public thread...");
                     } finally {
-                        readMessage = null;
                         try {
                             readMessage.interrupt();
+                            readMessage = null;
                             output.close();
                         } catch (IOException ex) {
                             System.out.println("Got kicked off public thread...");

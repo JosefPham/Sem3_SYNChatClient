@@ -49,6 +49,14 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="4.0" layoutY="100.0" onAction="#returnToWelcome" opacity="0.7" ripplerFill="#162ab7" style="-fx-border-color: BLACK; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: #1f96e0;" text="Dis-&#10;connect&#10;from &#10;chats&#10;" textAlignment="CENTER" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Gill Sans MT" size="12.0" />
+                                 </font>
+                              </JFXButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="chatBubble" layoutX="50.0" layoutY="40.0">
@@ -83,7 +91,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                              <AnchorPane minHeight="426.0" prefHeight="340.0" prefWidth="466.0" style="-fx-background-color: BLACK;">
+                              <AnchorPane minHeight="426.0" prefHeight="427.0" prefWidth="600.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                   <children>
                                       <AnchorPane fx:id="Popup_pane" layoutX="423.0" layoutY="280.0" prefHeight="145.0" prefWidth="175.0" style="-fx-border-color: black; -fx-background-color: rgba(31,150,224, 0.8); -fx-border-width: 2; -fx-border-radius: 25; -fx-background-radius: 25;">
                                           <children>
@@ -129,20 +137,16 @@
                                     </Label>
                                           </children>
                                       </AnchorPane>
-                              <ImageView fitHeight="426.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true">
+                              <ImageView fitHeight="427.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true">
                                  <image>
                                     <Image url="@../Assets/ChatBackdrop2.jpg" />
                                  </image>
                               </ImageView>
-                              <JFXTextArea fx:id="txtArea_Chat" editable="false" focusColor="#ffffff00" maxHeight="426.0" maxWidth="535.0" minHeight="417.0" minWidth="281.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="281.0" unFocusColor="#4d4d4d00" wrapText="true" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Gill Sans MT" size="12.0" />
-                                 </font>
-                              </JFXTextArea>
-                              <TextFlow fx:id="txtFlow_publicMsg" layoutY="89.0" prefHeight="426.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ScrollPane fx:id="scrollpane_chat" hbarPolicy="NEVER" prefHeight="427.0" prefWidth="600.0" stylesheets="@StyleSheet.css" vbarPolicy="NEVER" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <TextFlow fx:id="txtFlow_publicMsg" prefHeight="427.0" prefWidth="600.0" />
+                                 </content>
+                              </ScrollPane>
                                   </children>
                               </AnchorPane>
                         <AnchorPane fx:id="pane_Welcome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
@@ -178,7 +182,7 @@
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label_welcome" alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="70.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label fx:id="label_welcome" alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="76.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
@@ -347,66 +351,66 @@
                               </AnchorPane>
                           </children>
                       </GridPane>
-                  <ScrollPane fx:id="ScrollPane_AvatarChooser" hbarPolicy="NEVER" layoutX="50.0" layoutY="90.0" prefHeight="150.0" prefWidth="105.0" style="-fx-border-color: Black; -fx-border-width: 2;">
+                  <ScrollPane fx:id="ScrollPane_AvatarChooser" hbarPolicy="NEVER" layoutX="50.0" layoutY="90.0" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: Black; -fx-border-width: 2;" vbarPolicy="NEVER">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="90.0" style="-fx-background-color: #1f96e0;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="100.0" style="-fx-background-color: #1f96e0;">
                            <children>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_1.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="100.0" onMousePressed="#AvatarChooser2" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="100.0" onMousePressed="#AvatarChooser2" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_2.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="190.0" onMousePressed="#AvatarChooser3" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="190.0" onMousePressed="#AvatarChooser3" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_3.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="280.0" onMousePressed="#AvatarChooser4" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="280.0" onMousePressed="#AvatarChooser4" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_4.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="370.0" onMousePressed="#AvatarChooser5" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="370.0" onMousePressed="#AvatarChooser5" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_5.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="460.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="460.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_6.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="550.0" onMousePressed="#AvatarChooser7" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="550.0" onMousePressed="#AvatarChooser7" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_7.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="640.0" onMousePressed="#AvatarChooser8" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="640.0" onMousePressed="#AvatarChooser8" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_8.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="730.0" onMousePressed="#AvatarChooser9" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="730.0" onMousePressed="#AvatarChooser9" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_9.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="820.0" onMousePressed="#AvatarChooser10" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="820.0" onMousePressed="#AvatarChooser10" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_10.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="910.0" onMousePressed="#AvatarChooser11" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="910.0" onMousePressed="#AvatarChooser11" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_11.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="1000.0" onMousePressed="#AvatarChooser12" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="1000.0" onMousePressed="#AvatarChooser12" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Assets/Avatar_12.png" />
                                  </image>

@@ -58,7 +58,7 @@
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="textArea_profileInfo" editable="false" focusColor="#405aa800" layoutX="185.0" layoutY="173.0" prefHeight="100.0" prefWidth="151.0" promptText="Profile text" style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-padding: 10; -fx-background-radius: 25;" unFocusColor="#4d4d4d00">
+      <JFXTextArea fx:id="textArea_profileInfo" editable="false" focusColor="#405aa800" layoutX="185.0" layoutY="173.0" prefHeight="100.0" prefWidth="151.0" style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-padding: 10; -fx-background-radius: 25;" unFocusColor="#4d4d4d00">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
