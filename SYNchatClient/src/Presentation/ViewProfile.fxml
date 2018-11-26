@@ -67,7 +67,12 @@
          </font>
       </JFXTextArea>
       <Line endX="350.0" layoutY="100.0" stroke="#1f98de" />
-      <JFXButton buttonType="RAISED" defaultButton="true" layoutX="43.0" layoutY="325.0" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Add friend   ">
+      <JFXButton buttonType="RAISED" defaultButton="true" layoutX="50.0" layoutY="325.0" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   Add friend   ">
+         <font>
+            <Font name="Gill Sans MT" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" defaultButton="true" layoutX="203.0" layoutY="325.0" ripplerFill="#182db5" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="   View friends   ">
          <font>
             <Font name="Gill Sans MT" size="12.0" />
          </font>
