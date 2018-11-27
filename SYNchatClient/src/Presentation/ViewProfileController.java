@@ -36,6 +36,8 @@ public class ViewProfileController implements IController, Initializable {
     private Label label_profile;
     @FXML
     private Label label_about;
+    @FXML
+    private Label label_changeStatus;
 
     /**
      * Initializes the controller class.
@@ -62,7 +64,11 @@ public class ViewProfileController implements IController, Initializable {
 
     @FXML
     private void on_addFriend(ActionEvent event) {
-        PresentationFacade.getInstance().addFriend(PresentationFacade.getInstance().getSelectedUser().getUserID(), PresentationFacade.getInstance().getSelectedUser().getProfile().getFirstName());
+        if(PresentationFacade.getInstance().addFriend(PresentationFacade.getInstance().getSelectedUser().getUserID())) {
+            label_changeStatus.setText("Friend added");
+        } else {
+            label_changeStatus.setText("Something went wrong");
+        }
     }
 
     @FXML

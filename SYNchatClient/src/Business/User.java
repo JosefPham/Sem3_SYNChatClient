@@ -52,8 +52,8 @@ public class User implements IUser {
         return profile;
     }
 
-    public boolean addFriend(int userID, String profileName) {
-        if (friends.addFriend(userID, profileName)) {
+    public boolean addFriend(int userID) {
+        if (friends.addFriend(userID)) {
             return updateFriends(friends);
         } else {
             return true;

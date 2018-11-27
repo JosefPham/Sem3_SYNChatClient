@@ -28,7 +28,7 @@ public interface IBusiness {
 
     public void connect();
 
-    public boolean addFriend(int userID, String profileName);
+    public boolean addFriend(int userID);
 
     public boolean removeFriend(int userID);
 

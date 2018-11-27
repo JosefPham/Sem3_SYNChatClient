@@ -155,7 +155,7 @@ public class PresentationFacade implements IPresentation, IController {
         this.selectedUser = selectedUser;
     }
     
-    public void addFriend(int id, String name) {
-        Ibus.addFriend(id, name);
+    public boolean addFriend(int id) {
+        return Ibus.addFriend(id);
     }
 }

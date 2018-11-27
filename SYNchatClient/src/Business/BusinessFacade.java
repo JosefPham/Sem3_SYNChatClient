@@ -95,8 +95,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public boolean addFriend(int userID, String profileName) {
-        return ClientSystem.getInstance().getCurrentUser().addFriend(userID, profileName);
+    public boolean addFriend(int userID) {
+        return ClientSystem.getInstance().getCurrentUser().addFriend(userID);
     }
 
     @Override

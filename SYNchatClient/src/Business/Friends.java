@@ -23,12 +23,11 @@ public class Friends implements IFriends {
         return friendlist;
     }
 
-    public boolean addFriend(int userID, String profileName) {
+    public boolean addFriend(int userID) {
         if (!friendlist.contains(userID)) {
             friendlist.add(userID);
             return true;
         } else {
-            System.out.println("user is already in friendlist");
             return false;
         }
     }

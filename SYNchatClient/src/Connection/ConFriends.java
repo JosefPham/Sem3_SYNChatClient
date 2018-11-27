@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ConFriends implements IFriends {
 
-    List<Integer> friendlist;
+    private List<Integer> friendlist;
 
     public ConFriends(IFriends friends) {
         if(friends != null)
