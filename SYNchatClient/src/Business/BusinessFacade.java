@@ -119,8 +119,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void userMap(Map<Integer, IUser> userMap) {
         Map<Integer, IUser> publicUserMap = new HashMap<>();
-        for(int i : userMap.keySet()) {
-            publicUserMap.put(i, new User(userMap.get(i)));
+        if (!userMap.isEmpty()) {
+            for (int i : userMap.keySet()) {
+                publicUserMap.put(i, new User(userMap.get(i)));
+            }
         }
         Ipres.userMap(publicUserMap);
     }

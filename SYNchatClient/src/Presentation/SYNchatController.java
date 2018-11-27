@@ -6,9 +6,6 @@ import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import com.sun.org.apache.xml.internal.dtm.ref.DTMDefaultBaseIterators;
-import java.awt.Color;
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -22,7 +19,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.AccessibleAttribute;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -34,7 +30,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -80,12 +75,15 @@ public class SYNchatController implements IController, Initializable {
     private Media me;
     @FXML
     private AnchorPane pane_Welcome;
-    boolean popUp = true;
-    boolean cog = true;
-    boolean settings = true;
-    boolean scrollPane = true;
-    int colorIndex = 0;
-    String btnStyle;
+    private boolean popUp = true;
+    private boolean cog = true;
+    private boolean settings = true;
+    private boolean scrollPane = true;
+    private int colorIndex = 0;
+    private String btnStyle;
+    private Text listName;
+    private ImageView listPic;
+    private ImageView listCountry;
     @FXML
     private AnchorPane pane_cogView;
     @FXML
@@ -277,14 +275,18 @@ public class SYNchatController implements IController, Initializable {
         ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
         imgP.fitHeightProperty().set(35);
         imgP.fitWidthProperty().set(35);
+        listName = txt;
+        listPic = imgP;
+        listCountry = imgC;
         if (comparisonMap.containsKey(user.getUserID())) {
             comparisonMap.remove(user.getUserID());
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    txtFlow_publicChat.getChildren().remove(txt);
-                    txtFlow_publicChat.getChildren().remove(imgC);
-                    txtFlow_publicChat.getChildren().remove(imgP);
+                    System.out.println("dude blev removed");
+                    txtFlow_publicChat.getChildren().remove(listName);
+                    txtFlow_publicChat.getChildren().remove(listPic);
+                    txtFlow_publicChat.getChildren().remove(listCountry);
                 }
             });
         } else {

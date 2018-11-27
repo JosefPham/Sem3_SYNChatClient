@@ -113,7 +113,11 @@ public class PresentationFacade implements IPresentation, IController {
 
     @Override
     public void userMap(Map<Integer, IUser> userMap) {
-        pUserMap = userMap;
+        if (!userMap.isEmpty()) {
+            pUserMap = userMap;
+        } else {
+            pUserMap.clear();
+        }
     }
 
     public Map<Integer, IUser> getpUserMap() {

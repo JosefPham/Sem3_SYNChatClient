@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -32,7 +33,7 @@ public class Client implements IClient {
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("192.168.1.196");
+            this.ip = (InetAddress) InetAddress.getByName("10.126.58.122");
         } catch (UnknownHostException ex) {
             System.out.println("Couldn't connect to ip...");
         }
@@ -193,6 +194,7 @@ public class Client implements IClient {
                             }
 
                         }
+                        ConnectionFacade.getInstance().userMap(new HashMap<>());
                     } catch (Exception e) {
                         System.out.println("Got kicked off public thread...");
                     } finally {
@@ -201,7 +203,7 @@ public class Client implements IClient {
                             readMessage = null;
                             output.close();
                         } catch (IOException ex) {
-                            System.out.println("Got kicked off public thread...");
+                            System.out.println("Logged off public thread...");
                         }
                     }
                 }
