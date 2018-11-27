@@ -7,7 +7,6 @@ import Acquaintance.IPresentation;
 import Acquaintance.IUser;
 import Acquaintance.Nationality;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -155,5 +154,8 @@ public class PresentationFacade implements IPresentation, IController {
     public void setSelectedUser(IUser selectedUser) {
         this.selectedUser = selectedUser;
     }
-
+    
+    public void addFriend(int id, String name) {
+        Ibus.addFriend(id, name);
+    }
 }

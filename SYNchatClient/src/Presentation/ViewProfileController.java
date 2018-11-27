@@ -6,6 +6,7 @@
 package Presentation;
 
 import Acquaintance.IController;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -57,6 +58,15 @@ public class ViewProfileController implements IController, Initializable {
     @Override
     public void injectStage(Stage stage) {
         PresentationFacade.stage = stage;
+    }
+
+    @FXML
+    private void on_addFriend(ActionEvent event) {
+        PresentationFacade.getInstance().addFriend(PresentationFacade.getInstance().getSelectedUser().getUserID(), PresentationFacade.getInstance().getSelectedUser().getProfile().getFirstName());
+    }
+
+    @FXML
+    private void on_viewFriends(ActionEvent event) {
     }
 
 }
