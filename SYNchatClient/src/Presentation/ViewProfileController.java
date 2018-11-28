@@ -68,9 +68,10 @@ public class ViewProfileController implements IController, Initializable {
         for (int i = 0; i < fList.size(); i++) {
             if (fList.get(i).equals(PresentationFacade.getInstance().getSelectedUser().getUserID())) {
                 btn_addFriend.setVisible(false);
-            } else {
-                btn_removeFriend.setVisible(false);
             }
+        }
+        if(btn_addFriend.isVisible()) {
+            btn_removeFriend.setVisible(false);
         }
     }
 
