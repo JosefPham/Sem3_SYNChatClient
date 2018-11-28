@@ -38,6 +38,10 @@ public class ViewProfileController implements IController, Initializable {
     private Label label_about;
     @FXML
     private Label label_changeStatus;
+    @FXML
+    private JFXButton btn_addFriend;
+    @FXML
+    private JFXButton btn_removeFriend;
 
     /**
      * Initializes the controller class.
@@ -50,6 +54,7 @@ public class ViewProfileController implements IController, Initializable {
         textField_lname.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getLastName());
         textField_nationality.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getNationality().toString());
         textArea_profileInfo.setText(PresentationFacade.getInstance().getSelectedUser().getProfile().getProfileText());
+        btn_removeFriend.setVisible(false);
     }
 
     @FXML
@@ -66,6 +71,8 @@ public class ViewProfileController implements IController, Initializable {
     private void on_addFriend(ActionEvent event) {
         if(PresentationFacade.getInstance().addFriend(PresentationFacade.getInstance().getSelectedUser().getUserID())) {
             label_changeStatus.setText("Friend added");
+            btn_removeFriend.setVisible(true);
+            btn_addFriend.setVisible(false);
         } else {
             label_changeStatus.setText("Something went wrong");
         }
@@ -73,6 +80,17 @@ public class ViewProfileController implements IController, Initializable {
 
     @FXML
     private void on_viewFriends(ActionEvent event) {
+    }
+
+    @FXML
+    private void on_removeFriend(ActionEvent event) {
+        if(PresentationFacade.getInstance().removeFriend(PresentationFacade.getInstance().getSelectedUser().getUserID())) {
+            label_changeStatus.setText("Friend removed");
+            btn_addFriend.setVisible(true);
+            btn_removeFriend.setVisible(false);
+        } else {
+            label_changeStatus.setText("Something went wrong");
+        }
     }
 
 }

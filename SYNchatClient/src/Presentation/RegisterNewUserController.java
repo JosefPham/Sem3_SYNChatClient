@@ -88,7 +88,7 @@ public class RegisterNewUserController implements IController, Initializable {
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
             //TODO: default country string mangler at blive sendt med
-            if (PresentationFacade.getInstance().regUser(txt_firstName.getText(), txt_lastName.getText(), txt_email.getText(), txt_Password2.getText(), Nationality.valueOf(label_country.getText()))) {
+            if (PresentationFacade.getInstance().regUser(txt_firstName.getText(), txt_lastName.getText(), txt_email.getText().toLowerCase(), txt_Password2.getText(), Nationality.valueOf(label_country.getText()))) {
                 label_warninginfo.setText("Registration Complete");
                 PresentationFacade.getInstance().changeScene("Login.fxml");
             } else {

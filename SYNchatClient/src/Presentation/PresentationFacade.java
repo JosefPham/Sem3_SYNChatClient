@@ -158,4 +158,8 @@ public class PresentationFacade implements IPresentation, IController {
     public boolean addFriend(int id) {
         return Ibus.addFriend(id);
     }
+    
+    public boolean removeFriend(int id) {
+        return Ibus.removeFriend(id);
+    }
 }

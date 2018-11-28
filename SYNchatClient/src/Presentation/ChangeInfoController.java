@@ -195,7 +195,7 @@ public class ChangeInfoController implements IController, Initializable {
                 if (textField_newEmail.getText().contains("@") && textField_newEmail.getText().contains(".")) {
                     if (textField_newEmail.getText().equals(textField_confirmEmail.getText())) {
                         if (PresentationFacade.getInstance().checkMail(textField_oldMail.getText())) {
-                            if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText(), fname, lname, nat, ptext, pic)) {
+                            if (PresentationFacade.getInstance().updateUserInfo("", textField_newEmail.getText().toLowerCase(), fname, lname, nat, ptext, pic)) {
                                 label_changeStatus.setText("Profile updated!");
                             } else {
                                 label_changeStatus.setText("Something went wrong");

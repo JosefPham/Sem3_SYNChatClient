@@ -270,6 +270,7 @@ public class SYNchatController implements IController, Initializable {
         });
         txt.setOnMousePressed((event) -> {
             PresentationFacade.getInstance().setSelectedUser(user);
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
             PresentationFacade.getInstance().changeScene("ViewProfile.fxml");
         });
         ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
