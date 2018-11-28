@@ -154,11 +154,11 @@ public class PresentationFacade implements IPresentation, IController {
     public void setSelectedUser(IUser selectedUser) {
         this.selectedUser = selectedUser;
     }
-    
+
     public boolean addFriend(int id) {
         return Ibus.addFriend(id);
     }
-    
+
     public boolean removeFriend(int id) {
         return Ibus.removeFriend(id);
     }

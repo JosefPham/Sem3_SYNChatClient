@@ -79,6 +79,7 @@ public class SYNchatController implements IController, Initializable {
     private boolean cog = true;
     private boolean settings = true;
     private boolean scrollPane = true;
+    private boolean isPublicChatting = false;
     private int colorIndex = 0;
     private String btnStyle;
     private Text listName;
@@ -176,13 +177,16 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     public void startPublicChat(ActionEvent event) {
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
-        pane_chat.setDisable(false);
-        pane_Welcome.toBack();
-        PresentationFacade.Ibus.publicThreads();
-        btn_privatChat.setStyle(btnStyle);
-        btn_publicChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
-        this.t = startRun();
+        if (!isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+            pane_chat.setDisable(false);
+            pane_Welcome.toBack();
+            PresentationFacade.Ibus.publicThreads();
+            btn_privatChat.setStyle(btnStyle);
+            btn_publicChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
+            this.t = startRun();
+        }
     }
 
     private synchronized Thread startRun() {
@@ -201,7 +205,7 @@ public class SYNchatController implements IController, Initializable {
                 }
                 String comparisonString = "";
                 int comparisonInt = -1;
-                while (true) {
+                while (isPublicChatting) {
                     try {
                         Thread.sleep(0);
                     } catch (InterruptedException ex) {
@@ -271,6 +275,7 @@ public class SYNchatController implements IController, Initializable {
         txt.setOnMousePressed((event) -> {
             PresentationFacade.getInstance().setSelectedUser(user);
             PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
             PresentationFacade.getInstance().changeScene("ViewProfile.fxml");
         });
         ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
@@ -295,9 +300,9 @@ public class SYNchatController implements IController, Initializable {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    txtFlow_publicChat.getChildren().add(txt);
-                    txtFlow_publicChat.getChildren().add(imgC);
-                    txtFlow_publicChat.getChildren().add(imgP);
+                    txtFlow_publicChat.getChildren().add(listName);
+                    txtFlow_publicChat.getChildren().add(listCountry);
+                    txtFlow_publicChat.getChildren().add(listPic);
                 }
             });
 
@@ -315,7 +320,10 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private void startPrivatChat(ActionEvent event) {
         txtFlow_publicMsg.getChildren().removeAll(txtFlow_publicMsg.getChildren());
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
         pane_chat.setDisable(false);
         pane_Welcome.toBack();
         //PresentationFacade.Ibus.privateThreads();
@@ -400,14 +408,20 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void logoutAction(ActionEvent event) {
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
         PresentationFacade.getInstance().commandHandling("!SYN!-logout-!SYN!");
         PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 
     @FXML
     private void returnToWelcome(ActionEvent event) {
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
         pane_chat.setDisable(true);
         pane_Welcome.toFront();
         btn_privatChat.setStyle(btnStyle);
@@ -445,7 +459,10 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void viewProfile(MouseEvent event) {
-        PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
         PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
     }
 

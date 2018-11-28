@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -87,5 +88,18 @@
             <Font name="Gill Sans MT" size="12.0" />
          </font>
       </JFXButton>
+      <ScrollPane fx:id="pane_friends" hbarPolicy="NEVER" layoutX="198.0" layoutY="222.0" prefHeight="100.0" prefWidth="108.0" vbarPolicy="NEVER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="108.0">
+               <children>
+                  <JFXTextArea fx:id="txtArea_friends" focusColor="#405aa800" prefHeight="100.0" prefWidth="108.0" style="-fx-background-color: #1f96e0;" unFocusColor="#4d4d4d00" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Gill Sans MT" size="12.0" />
+                     </font>
+                  </JFXTextArea>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
