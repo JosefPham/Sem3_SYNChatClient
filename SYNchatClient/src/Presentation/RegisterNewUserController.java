@@ -100,7 +100,7 @@ public class RegisterNewUserController implements IController, Initializable {
             if (txt_email.getText().contains("@") && txt_email.getText().contains(".")) {
                 if (txt_Password1.getText().equals(txt_Password2.getText())) {
                     if (txt_Password1.getText().length() >= 8) {
-                            return true;                                                
+                        return true;
                     } else {
                         label_warninginfo.setText("Password must be atleast 8 characters");
                     }
@@ -118,9 +118,9 @@ public class RegisterNewUserController implements IController, Initializable {
 
     @FXML
     private void selectCountry_handler(MouseEvent event) {
-        if(countryB) {
-        pane_countries.setVisible(true);
-        countryB = false;
+        if (countryB) {
+            pane_countries.setVisible(true);
+            countryB = false;
         } else {
             pane_countries.setVisible(false);
             countryB = true;
@@ -165,7 +165,7 @@ public class RegisterNewUserController implements IController, Initializable {
     }
 
     @FXML
-    private void countryUSA_handle(MouseEvent event) {        
+    private void countryUSA_handle(MouseEvent event) {
         pane_countries.setVisible(false);
         countryB = true;
         label_country.setText("USA");

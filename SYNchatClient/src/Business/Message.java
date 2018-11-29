@@ -15,7 +15,6 @@ public abstract class Message implements Serializable, IMessage {
 
     public Message(int senderID) {
         this.senderID = senderID;
-        timestamp = Instant.now();
     }
 
     @Override
@@ -31,6 +30,7 @@ public abstract class Message implements Serializable, IMessage {
     @Override
     public abstract String getContext();
 
+    @Override
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }

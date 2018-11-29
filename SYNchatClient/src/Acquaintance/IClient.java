@@ -6,6 +6,10 @@ package Acquaintance;
  */
 public interface IClient {
 
+    /**
+     * Method for communicating with server
+     * @param Object 
+     */
     void send(Object o);
 
     ILogin receiveLogin();
@@ -14,9 +18,12 @@ public interface IClient {
 
     int receiveInt();
 
+    /**
+     * Starts a thread to run public chat
+     */
     void startPublicThreads();
 
     void startPrivateThreads();
 
-    public void connectToServer();
+    void connectToServer();
 }

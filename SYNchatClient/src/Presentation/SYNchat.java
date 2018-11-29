@@ -19,7 +19,7 @@ public class SYNchat extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();
         Scene newScene = new Scene(root);
-        IController controller = loader.getController();
+        IController controller = loader.getController(); 
         controller.injectStage(stage);
         stage.setTitle("SYNchat");
 

@@ -8,39 +8,69 @@ import java.util.Map;
  */
 public interface IBusiness {
 
-    public void injectConnection(IConnection con);
+    void injectConnection(IConnection con);
 
-    public void injectPresentation(IPresentation pres);
+    void injectPresentation(IPresentation pres);
 
-    public int login(String mail, String pw);
+    /**
+     * Receives unhashed mail and password.
+     * Hashes mail and password.
+     * Creates new login object.
+     * Sends object to server.
+     * Returns int based on success.
+     * @param String
+     * @param String
+     * @return int
+     */
+    int login(String mail, String pw);
 
-    public Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality);
+    Boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality);
 
-    public void publicThreads();
+    /**
+     * Starts thread for user
+     * connected to public chat.
+     * While loop checks for object types
+     * and call methods corresponding to
+     * the correct object types.
+     */
+    void publicThreads();
 
-    public void privateThreads();
+    void privateThreads();
 
-    public void receivePublicMsg(IMessage msg);
+    void receivePublicMsg(IMessage msg);
 
-    public void sendPublicMsg(String s);
+    /**
+     * hashes message and sends it to the server
+     * @param String
+     */
+    void sendPublicMsg(String s);
 
-    public void commandHandling(String command);
+    /**
+     * Sends a string to server to handle commands
+     * such as logout, entering chats etc.
+     * @param String 
+     */
+    void commandHandling(String command);
 
-    public void connect();
+    void connect();
 
-    public boolean addFriend(int userID);
+    boolean addFriend(int userID);
 
-    public boolean removeFriend(int userID);
+    boolean removeFriend(int userID);
 
-    public IUser getUser();
+    IUser getUser();
 
-    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
+    boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
 
-    public void userMap(Map<Integer, IUser> userMap);
+    /**
+     * Map with all public chat users
+     * @param Map 
+     */
+    void userMap(Map<Integer, IUser> userMap);
 
-    public void publicUser(IUser pUser);
+    void publicUser(IUser pUser);
 
-    public boolean checkPW(String pw);
+    boolean checkPW(String pw);
 
-    public boolean checkMail(String mail);
+    boolean checkMail(String mail);
 }

@@ -10,5 +10,4 @@ import java.util.List;
 public interface IFriends extends Serializable {
 
     List<Integer> getFriendlist();
-
 }

@@ -8,5 +8,5 @@ import javafx.stage.Stage;
  */
 public interface IController {
 
-    public void injectStage(Stage stage);
+    void injectStage(Stage stage);
 }

@@ -187,6 +187,11 @@ public class SYNchatController implements IController, Initializable {
         btn_privatChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
     }
 
+    /**
+     * Thread that runs while user is in public chat.
+     * Checks for incomming messages and new users logging into public chat.
+     * @return 
+     */
     private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
             @Override
@@ -248,6 +253,9 @@ public class SYNchatController implements IController, Initializable {
         }
     }
 
+    /**
+     * Appends the incoming message to the GUI.
+     */
     public void receivePublicMsg() {
         Date date = new Date();
         date.setTime(iMsg.getTimestamp().toEpochMilli());
@@ -278,6 +286,10 @@ public class SYNchatController implements IController, Initializable {
         });
     }
 
+    /**
+     * Updates the "online list" in public chat with new users.
+     * @param IUser 
+     */
     private void updatepUserMap(IUser user) {
         String imgCountry;
         switch (user.getProfile().getNationality()) {
@@ -579,6 +591,10 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_12.png");
     }
 
+    /**
+     * Defines the language in the system depending on the user's nationality.
+     * @param Nationality 
+     */
     private void NationalityInterface(Nationality nat) {
         switch (nat) {
             case Denmark:

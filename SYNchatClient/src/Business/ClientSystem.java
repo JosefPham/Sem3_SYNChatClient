@@ -17,12 +17,7 @@ import java.util.logging.Logger;
 public class ClientSystem {
 
     private User currentUser;
-
     private static ClientSystem instance = null;
-
-    private ClientSystem() {
-
-    }
 
     public static ClientSystem getInstance() {
         if (instance == null) {

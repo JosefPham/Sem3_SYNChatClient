@@ -21,11 +21,7 @@ public class BusinessFacade implements IBusiness {
 
     private IConnection Icon;
     private IPresentation Ipres;
-
     private static BusinessFacade instance = null;
-
-    private BusinessFacade() {
-    }
 
     public static BusinessFacade getInstance() {
         if (instance == null) {

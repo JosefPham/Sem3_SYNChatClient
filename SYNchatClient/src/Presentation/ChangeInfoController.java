@@ -150,6 +150,10 @@ public class ChangeInfoController implements IController, Initializable {
         PresentationFacade.stage = stage;
     }
 
+    /**
+     * Checks which fields is edited and updates correspondingly
+     * @param ActionEvent 
+     */
     @FXML
     private void changeProfile(ActionEvent event) {
         String fname = PresentationFacade.getInstance().getUser().getProfile().getFirstName();

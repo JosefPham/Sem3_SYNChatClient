@@ -8,25 +8,25 @@ import java.util.Map;
  */
 public interface IPresentation {
 
-    public void injectBusiness(IBusiness bus);
+    void injectBusiness(IBusiness bus);
 
-    public void startApplication(String[] args);
+    void startApplication(String[] args);
 
-    public void receivePublicMsg(IMessage msg);
+    void receivePublicMsg(IMessage msg);
 
-    public void sendPublicMsg(String s);
+    void sendPublicMsg(String s);
 
-    public void commandHandling(String command);
+    void commandHandling(String command);
 
-    public IUser getUser();
+    IUser getUser();
 
-    public boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
+    boolean updateUserInfo(String pw, String mail, String firstName, String lastName, Nationality nationality, String profileText, String picture);
 
-    public void userMap(Map<Integer, IUser> userMap);
+    void userMap(Map<Integer, IUser> userMap);
 
-    public void publicUser(IUser pUser);
+    void publicUser(IUser pUser);
 
-    public boolean checkPW(String pw);
+    boolean checkPW(String pw);
 
-    public boolean checkMail(String mail);
+    boolean checkMail(String mail);
 }

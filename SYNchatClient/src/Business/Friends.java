@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Friends implements IFriends {
 
-    List<Integer> friendlist = new ArrayList<>();
+    private List<Integer> friendlist = new ArrayList<>();
 
     public Friends(IFriends friends) {
         this.friendlist = friends.getFriendlist();
