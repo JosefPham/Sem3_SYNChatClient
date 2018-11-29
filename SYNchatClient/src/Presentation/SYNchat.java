@@ -23,7 +23,7 @@ public class SYNchat extends Application {
         controller.injectStage(stage);
         stage.setTitle("SYNchat");
 
-        javafx.scene.image.Image image = new javafx.scene.image.Image("/Assets/SYNlogo_mini.png");
+        javafx.scene.image.Image image = new javafx.scene.image.Image("/Assets/Logos/SYNlogo_mini.png");
 
         stage.getIcons().add(image);
 

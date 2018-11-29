@@ -127,7 +127,7 @@ public class SYNchatController implements IController, Initializable {
         btnStyle = btn_publicChat.getStyle();
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
         txtArea_YourChat.setStyle("-fx-text-fill: white");
-        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        String path = new File("src/Assets/Graphics/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
         mv_background.setMediaPlayer(mp);
@@ -143,13 +143,13 @@ public class SYNchatController implements IController, Initializable {
         NationalityInterface(PresentationFacade.getInstance().getUser().getProfile().getNationality());
         switch (PresentationFacade.getInstance().getUser().getProfile().getNationality()) {
             case Denmark:
-                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_DK_Color.png").toURI().toString()));
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flags/Flag_DK_Color.png").toURI().toString()));
                 break;
             case USA:
-                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_USA_Color.png").toURI().toString()));
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flags/Flag_USA_Color.png").toURI().toString()));
                 break;
             case Japan:
-                image_yourCountry.setImage(new Image(new File("src/Assets/Flag_Japan_Color.png").toURI().toString()));
+                image_yourCountry.setImage(new Image(new File("src/Assets/Flags/Flag_Japan_Color.png").toURI().toString()));
                 break;
         }
         pic_profile.setImage(new Image(new File(PresentationFacade.getInstance().getUser().getProfile().getPicture()).toURI().toString()));
@@ -294,7 +294,7 @@ public class SYNchatController implements IController, Initializable {
                 imgCountry = "USA";
                 break;
         }
-        ImageView imgC = new ImageView(new Image(new File("src/Assets/Flag_" + imgCountry + "_Color.png").toURI().toString()));
+        ImageView imgC = new ImageView(new Image(new File("src/Assets/Flags/Flag_" + imgCountry + "_Color.png").toURI().toString()));
         imgC.fitHeightProperty().set(15);
         imgC.fitWidthProperty().set(15);
         imgC.setTranslateX(50);
@@ -449,134 +449,134 @@ public class SYNchatController implements IController, Initializable {
 
     @FXML
     private void AvatarChooser1(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_1.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_1.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_1.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_1.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_1.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_1.png");
     }
 
     @FXML
     private void AvatarChooser2(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_2.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_2.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_2.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_2.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_2.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_2.png");
     }
 
     @FXML
     private void AvatarChooser3(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_3.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_3.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_3.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_3.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_3.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_3.png");
     }
 
     @FXML
     private void AvatarChooser4(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_4.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_4.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_4.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_4.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_4.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_4.png");
     }
 
     @FXML
     private void AvatarChooser5(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_5.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_5.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_5.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_5.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_5.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_5.png");
     }
 
     @FXML
     private void AvatarChooser6(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_6.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_6.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_6.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_6.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_6.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_6.png");
     }
 
     @FXML
     private void AvatarChooser7(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_7.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_7.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_7.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_7.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_7.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_7.png");
     }
 
     @FXML
     private void AvatarChooser8(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_8.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_8.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_8.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_8.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_8.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_8.png");
     }
 
     @FXML
     private void AvatarChooser9(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_9.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_9.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_9.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_9.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_9.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_9.png");
     }
 
     @FXML
     private void AvatarChooser10(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_10.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_10.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_10.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_10.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_10.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_10.png");
     }
 
     @FXML
     private void AvatarChooser11(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_11.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_11.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_11.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_11.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_11.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_11.png");
     }
 
     @FXML
     private void AvatarChooser12(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_12.png").toURI().toString()));
+        pic_profile.setImage(new Image(new File("src/Assets/Avatars/Avatar_12.png").toURI().toString()));
         ScrollPane_AvatarChooser.setVisible(false);
         scrollPane = true;
         pane_cogView.setVisible(false);
         cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_12.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_12.png");
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatars/Avatar_12.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatars/Avatar_12.png");
     }
 
     private void NationalityInterface(Nationality nat) {

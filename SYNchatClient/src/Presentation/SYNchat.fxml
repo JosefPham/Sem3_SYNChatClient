@@ -65,22 +65,22 @@
                                           <children>
                                               <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="28.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                                   <image>
-                                                      <Image url="@../Assets/AttachFileClip.png" />
+                                                      <Image url="@../Assets/Icons/AttachFileClip.png" />
                                                   </image>
                                               </ImageView>
                                     <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="28.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Assets/GIF_icon.png" />
+                                          <Image url="@../Assets/Icons/GIF_icon.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Assets/Sound_icon.png" />
+                                          <Image url="@../Assets/Icons/Sound_icon.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="101.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Assets/Emoji_icon.png" />
+                                          <Image url="@../Assets/Icons/Emoji_icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label layoutX="27.0" layoutY="59.0" text="Attach file">
@@ -107,7 +107,7 @@
                                       </AnchorPane>
                               <ImageView fitHeight="427.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Assets/ChatBackdrop2.jpg" />
+                                    <Image url="@../Assets/Graphics/ChatBackdrop2.jpg" />
                                  </image>
                               </ImageView>
                               <ScrollPane fx:id="scrollpane_chat" hbarPolicy="NEVER" prefHeight="427.0" prefWidth="600.0" stylesheets="@StyleSheet.css" vbarPolicy="NEVER" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -122,7 +122,7 @@
                               <MediaView fx:id="mv_background" fitHeight="426.0" fitWidth="600.0" layoutY="1.0" preserveRatio="false" />
                               <ImageView fitHeight="184.0" fitWidth="254.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/SYNlogo_White.png" />
+                                    <Image url="@../Assets/Logos/SYNlogo_White.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="label_logo" layoutX="85.0" layoutY="43.0" text="- Welcome" textFill="#1f96e0">
@@ -150,7 +150,7 @@
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="label_welcome" alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="76.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label fx:id="label_welcome" alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="70.0" prefHeight="50.0" prefWidth="184.0" text="Welcome DefaultUser!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font name="Gill Sans MT Bold" size="16.0" />
                                  </font>
@@ -164,7 +164,7 @@
                         </AnchorPane>
                         <ImageView fx:id="hamburger_settings" fitHeight="39.0" fitWidth="50.0" layoutX="548.0" layoutY="10.0" onMousePressed="#hamburger_handler" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Assets/Hamburger_settings.png" />
+                              <Image url="@../Assets/Icons/Hamburger_settings.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -175,7 +175,7 @@
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="600.0" opacity="0.5" pickOnBounds="true" rotate="180.0">
                                  <image>
-                                    <Image url="@../Assets/ChatBackdrop1.jpg" />
+                                    <Image url="@../Assets/Graphics/ChatBackdrop1.jpg" />
                                  </image>
                               </ImageView>
                                       <AnchorPane layoutX="3.0" layoutY="10.0" prefHeight="53.0" prefWidth="593.0" style="-fx-border-color: #1f96e0; -fx-border-radius: 50; -fx-border-width: 2;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="10.0">
@@ -206,7 +206,7 @@
                               </JFXButton>
                                         <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="541.0" layoutY="17.0" onMousePressed="#popOpHandler" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../Assets/SYNlogo_mini.png" />
+                                                <Image url="@../Assets/Logos/SYNlogo_mini.png" />
                                             </image>
                                         </ImageView>
                            </children>
@@ -234,10 +234,26 @@
                            <children>
                               <ImageView fitHeight="200.0" fitWidth="339.0" layoutX="-69.0" layoutY="70.0" opacity="0.7" pickOnBounds="true" rotate="90.0">
                                  <image>
-                                    <Image url="@../Assets/Overlay.png" />
+                                    <Image url="@../Assets/Graphics/Overlay.png" />
                                  </image>
                               </ImageView>
                               <TextFlow fx:id="txtFlow_publicChat" layoutX="-29.0" layoutY="70.0" prefHeight="339.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXTextField focusColor="#405aa800" layoutX="10.0" layoutY="300.0" prefHeight="26.0" prefWidth="178.0" promptText="Name, mail etc." style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25;" unFocusColor="#4d4d4d00">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" right="50.0" />
+                                 </padding>
+                              </JFXTextField>
+                              <JFXButton buttonType="RAISED" layoutX="137.0" layoutY="302.0" opacity="0.7" ripplerFill="#162ab7" style="-fx-background-radius: 25; -fx-background-color: #1f96e0;" text="Search" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Gill Sans MT" size="12.0" />
+                                 </font>
+                              </JFXButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="159.0" prefWidth="200.0" style="-fx-background-color: WHITE;" GridPane.rowIndex="1">
@@ -268,7 +284,7 @@
                                   <children>
                               <ImageView fitHeight="102.0" fitWidth="200.0" opacity="0.7" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Assets/Overlay.png" />
+                                    <Image url="@../Assets/Graphics/Overlay.png" />
                                  </image>
                               </ImageView>
                               <AnchorPane fx:id="pane_cogView" layoutX="56.0" layoutY="51.0" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #1f96e0; -fx-background-radius: 25; -fx-border-color: black; -fx-border-radius: 25; -fx-border-width: 2;">
@@ -292,17 +308,17 @@
                               </Label>
                                       <ImageView fx:id="pic_profile" fitHeight="50.0" fitWidth="50.0" layoutX="127.0" layoutY="26.0" pickOnBounds="true">
                                           <image>
-                                              <Image url="@../Assets/Avatar_0.png" />
+                                              <Image url="@../Assets/Avatars/Avatar_0.png" />
                                           </image>
                                       </ImageView>
                               <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="36.0" onMousePressed="#cogHandler" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Cog_icon.png" />
+                                    <Image url="@../Assets/Icons/Cog_icon.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="image_yourCountry" fitHeight="15.0" fitWidth="15.0" layoutX="104.0" layoutY="53.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../Assets/Flag_DK_Color.png" />
+                                    <Image url="@../Assets/Flags/Flag_DK_Color.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="label_userCountry" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="52.0" prefHeight="17.0" prefWidth="89.0" text="Default nat" textAlignment="RIGHT">
@@ -320,62 +336,62 @@
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="10.0" onMousePressed="#AvatarChooser1" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_1.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_1.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="100.0" onMousePressed="#AvatarChooser2" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_2.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_2.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="190.0" onMousePressed="#AvatarChooser3" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_3.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_3.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="280.0" onMousePressed="#AvatarChooser4" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_4.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_4.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="370.0" onMousePressed="#AvatarChooser5" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_5.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_5.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="460.0" onMousePressed="#AvatarChooser6" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_6.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_6.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="550.0" onMousePressed="#AvatarChooser7" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_7.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_7.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="640.0" onMousePressed="#AvatarChooser8" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_8.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_8.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="730.0" onMousePressed="#AvatarChooser9" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_9.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_9.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="820.0" onMousePressed="#AvatarChooser10" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_10.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_10.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="910.0" onMousePressed="#AvatarChooser11" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_11.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_11.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="1000.0" onMousePressed="#AvatarChooser12" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Assets/Avatar_12.png" />
+                                    <Image url="@../Assets/Avatars/Avatar_12.png" />
                                  </image>
                               </ImageView>
                            </children>

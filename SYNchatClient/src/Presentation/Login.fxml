@@ -15,7 +15,7 @@
       <MediaView fx:id="mv_background" fitHeight="350.0" fitWidth="400.0" layoutX="-25.0" layoutY="27.0" preserveRatio="false" rotate="90.0" />
       <ImageView fitHeight="184.0" fitWidth="200.0" layoutX="-5.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/SYNlogo_White.png" />
+            <Image url="@../Assets/Logos/SYNlogo_White.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="83.0" layoutY="219.0" opacity="0.5" prefHeight="43.0" prefWidth="192.0" style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-color: WHITE; -fx-background-radius: 25;" />
@@ -26,12 +26,12 @@
          </font></Label>
       <ImageView fitHeight="24.0" fitWidth="23.0" layoutX="87.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/NoPhoto.png" />
+            <Image url="@../Assets/Icons/NoPhoto.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="89.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/Lock_icon.png" />
+            <Image url="@../Assets/Icons/Lock_icon.png" />
          </image>
       </ImageView>
       <JFXTextField fx:id="txt_email" focusColor="#ffffff00" layoutX="109.0" layoutY="161.0" opacity="0.7" prefHeight="39.0" prefWidth="157.0" promptText="Mail" unFocusColor="#ffffff00">

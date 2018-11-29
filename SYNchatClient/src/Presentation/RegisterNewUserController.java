@@ -59,7 +59,7 @@ public class RegisterNewUserController implements IController, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
-        String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
+        String path = new File("src/Assets/Graphics/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
         mp = new MediaPlayer(me);
         mv_background.setMediaPlayer(mp);
