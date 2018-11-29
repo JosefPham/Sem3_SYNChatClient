@@ -29,8 +29,6 @@ public class LoginController implements IController, Initializable {
     @FXML
     private TextField txt_pw;
     @FXML
-    private Button btn_login;
-    @FXML
     private Label label_wrongInfo;
     @FXML
     private MediaView mv_background;
@@ -40,8 +38,6 @@ public class LoginController implements IController, Initializable {
     private Button btn_register;
     @FXML
     private JFXButton btn_forgotPW;
-    private Stage stage;
-    private Boolean connected;
 
     /**
      * Initializes the controller class.
@@ -60,26 +56,17 @@ public class LoginController implements IController, Initializable {
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
-        connected = false;
     }
 
     @FXML
     private void btn_login_action(ActionEvent event) {
-        label_wrongInfo.setText("");
-//        if (validateInfo()) {
-//            if(!connected) {
-//            PresentationFacade.getInstance().connect();
-//            connected = true;
-//            }
-        loginHandler(event);
+        if (validateInfo()) {
+            loginHandler(event);
+        }
     }
 
     @FXML
     private void btn_register_action(ActionEvent event) {
-//        if(!connected) {
-//        PresentationFacade.getInstance().connect();
-//        connected = true;
-//        }
         PresentationFacade.getInstance().changeScene("RegisterNewUser.fxml");
     }
 
@@ -103,14 +90,13 @@ public class LoginController implements IController, Initializable {
         switch (validationInt) {
             case 0:
                 label_wrongInfo.setText("Email doesn't exist");
-                //display register option?
+                btn_forgotPW.setVisible(true);
                 break;
             case 1:
                 label_wrongInfo.setText("Email or password is incorrect");
-                //display forgot password?
+                btn_forgotPW.setVisible(true);
                 break;
             case 2:
-                //*login*
                 PresentationFacade.getInstance().changeScene("SYNchat.fxml");
                 break;
             default:

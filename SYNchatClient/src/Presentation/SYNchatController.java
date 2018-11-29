@@ -43,17 +43,17 @@ import javafx.stage.Stage;
 public class SYNchatController implements IController, Initializable {
 
     private Thread t = null;
-    private static SYNchatController instance = null;
-
-    public static SYNchatController getInstance() {
-        if (instance == null) {
-            instance = new SYNchatController();
-        }
-        return instance;
-    }
-
     private IMessage iMsg;
-    Map<Integer, IUser> comparisonMap = new HashMap<>();
+    private Map<Integer, IUser> comparisonMap = new HashMap<>();
+    private boolean popUp = true;
+    private boolean cog = true;
+    private boolean settings = true;
+    private boolean scrollPane = true;
+    private boolean isPublicChatting = false;
+    private String btnStyle;
+    private Text listName;
+    private ImageView listPic;
+    private ImageView listCountry;
 
     @FXML
     private JFXButton btn_publicChat;
@@ -68,23 +68,11 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private TextField txtArea_YourChat;
     @FXML
-    private AnchorPane AnchorPane_List;
-    @FXML
     private MediaView mv_background;
     private MediaPlayer mp;
     private Media me;
     @FXML
     private AnchorPane pane_Welcome;
-    private boolean popUp = true;
-    private boolean cog = true;
-    private boolean settings = true;
-    private boolean scrollPane = true;
-    private boolean isPublicChatting = false;
-    private int colorIndex = 0;
-    private String btnStyle;
-    private Text listName;
-    private ImageView listPic;
-    private ImageView listCountry;
     @FXML
     private AnchorPane pane_cogView;
     @FXML
@@ -125,14 +113,6 @@ public class SYNchatController implements IController, Initializable {
     private TextFlow txtFlow_publicChat;
     @FXML
     private TextFlow txtFlow_publicMsg;
-    @FXML
-    private AnchorPane chatBubble;
-    @FXML
-    private Label msg_label_timeStamp;
-    @FXML
-    private Label msg_label_sender;
-    @FXML
-    private Label msg_label_text;
     @FXML
     private ScrollPane scrollpane_chat;
 
@@ -175,6 +155,11 @@ public class SYNchatController implements IController, Initializable {
         pic_profile.setImage(new Image(new File(PresentationFacade.getInstance().getUser().getProfile().getPicture()).toURI().toString()));
     }
 
+    @Override
+    public void injectStage(Stage stage) {
+        PresentationFacade.stage = stage;
+    }
+
     @FXML
     public void startPublicChat(ActionEvent event) {
         if (!isPublicChatting) {
@@ -187,6 +172,19 @@ public class SYNchatController implements IController, Initializable {
             btn_publicChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
             this.t = startRun();
         }
+    }
+
+    @FXML
+    private void startPrivatChat(ActionEvent event) {
+        txtFlow_publicMsg.getChildren().removeAll(txtFlow_publicMsg.getChildren());
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
+        pane_chat.setDisable(false);
+        pane_Welcome.toBack();
+        btn_publicChat.setStyle(btnStyle);
+        btn_privatChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
     }
 
     private synchronized Thread startRun() {
@@ -242,6 +240,44 @@ public class SYNchatController implements IController, Initializable {
         return t;
     }
 
+    @FXML
+    private void sendMsg(ActionEvent event) {
+        if (!txtArea_YourChat.getText().trim().isEmpty()) {
+            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
+            txtArea_YourChat.clear();
+        }
+    }
+
+    public void receivePublicMsg() {
+        Date date = new Date();
+        date.setTime(iMsg.getTimestamp().toEpochMilli());
+        String timeStamp = new SimpleDateFormat("HH.mm").format(date);
+        Text senderName = new Text(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":\n");
+        Text senderContent = new Text(iMsg.getContext() + "\n");
+        Text senderTimeStamp = new Text(timeStamp + "\n\n");
+        senderName.setFont(Font.font("Gill Sans MT", 10));
+        senderContent.setFont(Font.font("Gill Sans MT", 16));
+        senderTimeStamp.setFont(Font.font("Gill Sans MT", 10));
+        senderName.setTranslateX(50);
+        senderName.setTranslateY(43);
+        senderContent.setTranslateX(50);
+        senderContent.setTranslateY(40);
+        senderTimeStamp.setTranslateX(50);
+        senderTimeStamp.setTranslateY(40);
+        senderName.setFill(Paint.valueOf("#A9A9A9"));
+        senderContent.setFill(Paint.valueOf("WHITE"));
+        senderTimeStamp.setFill(Paint.valueOf("#A9A9A9"));
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtFlow_publicMsg.getChildren().add(senderName);
+                txtFlow_publicMsg.getChildren().add(senderContent);
+                txtFlow_publicMsg.getChildren().add(senderTimeStamp);
+            }
+        });
+    }
+
     private void updatepUserMap(IUser user) {
         String imgCountry;
         switch (user.getProfile().getNationality()) {
@@ -289,7 +325,6 @@ public class SYNchatController implements IController, Initializable {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("dude blev removed");
                     txtFlow_publicChat.getChildren().remove(listName);
                     txtFlow_publicChat.getChildren().remove(listPic);
                     txtFlow_publicChat.getChildren().remove(listCountry);
@@ -305,104 +340,6 @@ public class SYNchatController implements IController, Initializable {
                     txtFlow_publicChat.getChildren().add(listPic);
                 }
             });
-
-        }
-    }
-
-    @FXML
-    private void sendMsg(ActionEvent event) {
-        if (!txtArea_YourChat.getText().trim().isEmpty()) {
-            PresentationFacade.getInstance().sendPublicMsg(txtArea_YourChat.getText());
-            txtArea_YourChat.clear();
-        }
-    }
-
-    @FXML
-    private void startPrivatChat(ActionEvent event) {
-        txtFlow_publicMsg.getChildren().removeAll(txtFlow_publicMsg.getChildren());
-        if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
-            isPublicChatting = !isPublicChatting;
-        }
-        pane_chat.setDisable(false);
-        pane_Welcome.toBack();
-        //PresentationFacade.Ibus.privateThreads();
-        btn_publicChat.setStyle(btnStyle);
-        btn_privatChat.setStyle(btnStyle + "-fx-background-color: #162ab7");
-    }
-
-    @FXML
-    private void popOpHandler(MouseEvent event) {
-        if (popUp) {
-            Popup_pane.toFront();
-            Popup_pane.setVisible(true);
-            popUp = false;
-        } else {
-            Popup_pane.toBack();
-            Popup_pane.setVisible(false);
-            popUp = true;
-        }
-    }
-
-    public void receivePublicMsg() {
-        Date date = new Date();
-        date.setTime(iMsg.getTimestamp().toEpochMilli());
-        String timeStamp = new SimpleDateFormat("HH.mm").format(date);
-        Text senderName = new Text(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":\n");
-        Text senderContent = new Text(iMsg.getContext() + "\n");
-        Text senderTimeStamp = new Text(timeStamp + "\n\n");
-        senderName.setFont(Font.font("Gill Sans MT", 10));
-        senderContent.setFont(Font.font("Gill Sans MT", 16));
-        senderTimeStamp.setFont(Font.font("Gill Sans MT", 10));
-        senderName.setTranslateX(50);
-        senderName.setTranslateY(43);
-        senderContent.setTranslateX(50);
-        senderContent.setTranslateY(40);
-        senderTimeStamp.setTranslateX(50);
-        senderTimeStamp.setTranslateY(40);
-        senderName.setFill(Paint.valueOf("#A9A9A9"));
-        senderContent.setFill(Paint.valueOf("WHITE"));
-        senderTimeStamp.setFill(Paint.valueOf("#A9A9A9"));
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                txtFlow_publicMsg.getChildren().add(senderName);
-                txtFlow_publicMsg.getChildren().add(senderContent);
-                txtFlow_publicMsg.getChildren().add(senderTimeStamp);
-//                msg_label_sender.setText(PresentationFacade.getInstance().getpUserMap().get(iMsg.getSenderID()).getProfile().getFirstName() + ":");
-//                msg_label_text.setText(iMsg.getContext());
-//                msg_label_timeStamp.setText(timeStamp);
-//                chatBubble.setTranslateX(50);
-//                chatBubble.setTranslateY(40);
-//                txtFlow_publicMsg.getChildren().add(chatBubble);
-            }
-        });
-    }
-
-    @FXML
-    private void cogHandler(MouseEvent event) {
-        if (cog) {
-            pane_cogView.setVisible(true);
-            pane_cogView.toFront();
-            cog = false;
-        } else {
-            pane_cogView.setVisible(false);
-            ScrollPane_AvatarChooser.setVisible(false);
-            pane_cogView.toBack();
-            cog = true;
-            scrollPane = true;
-        }
-    }
-
-    @FXML
-    private void changeProfilePicture(MouseEvent event) {
-        if (scrollPane) {
-            ScrollPane_AvatarChooser.setVisible(true);
-            scrollPane = false;
-        } else {
-            ScrollPane_AvatarChooser.setVisible(false);
-            scrollPane = true;
         }
     }
 
@@ -429,6 +366,41 @@ public class SYNchatController implements IController, Initializable {
     }
 
     @FXML
+    private void viewProfile(MouseEvent event) {
+        if (isPublicChatting) {
+            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            isPublicChatting = !isPublicChatting;
+        }
+        PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
+    }
+
+    @FXML
+    private void changeProfilePicture(MouseEvent event) {
+        if (scrollPane) {
+            ScrollPane_AvatarChooser.setVisible(true);
+            scrollPane = false;
+        } else {
+            ScrollPane_AvatarChooser.setVisible(false);
+            scrollPane = true;
+        }
+    }
+
+    @FXML
+    private void cogHandler(MouseEvent event) {
+        if (cog) {
+            pane_cogView.setVisible(true);
+            pane_cogView.toFront();
+            cog = false;
+        } else {
+            pane_cogView.setVisible(false);
+            ScrollPane_AvatarChooser.setVisible(false);
+            pane_cogView.toBack();
+            cog = true;
+            scrollPane = true;
+        }
+    }
+
+    @FXML
     private void hamburger_handler(MouseEvent event) {
         if (settings) {
             pane_settings.setVisible(true);
@@ -442,9 +414,17 @@ public class SYNchatController implements IController, Initializable {
         }
     }
 
-    @Override
-    public void injectStage(Stage stage) {
-        PresentationFacade.stage = stage;
+    @FXML
+    private void popOpHandler(MouseEvent event) {
+        if (popUp) {
+            Popup_pane.toFront();
+            Popup_pane.setVisible(true);
+            popUp = false;
+        } else {
+            Popup_pane.toBack();
+            Popup_pane.setVisible(false);
+            popUp = true;
+        }
     }
 
     @FXML
@@ -455,15 +435,6 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private void viewProfile_in(MouseEvent event) {
         label_viewProfile.setUnderline(true);
-    }
-
-    @FXML
-    private void viewProfile(MouseEvent event) {
-        if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
-            isPublicChatting = !isPublicChatting;
-        }
-        PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
     }
 
     @FXML
@@ -542,6 +513,72 @@ public class SYNchatController implements IController, Initializable {
         PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_6.png");
     }
 
+    @FXML
+    private void AvatarChooser7(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_7.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_7.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_7.png");
+    }
+
+    @FXML
+    private void AvatarChooser8(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_8.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_8.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_8.png");
+    }
+
+    @FXML
+    private void AvatarChooser9(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_9.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_9.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_9.png");
+    }
+
+    @FXML
+    private void AvatarChooser10(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_10.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_10.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_10.png");
+    }
+
+    @FXML
+    private void AvatarChooser11(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_11.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_11.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_11.png");
+    }
+
+    @FXML
+    private void AvatarChooser12(MouseEvent event) {
+        pic_profile.setImage(new Image(new File("src/Assets/Avatar_12.png").toURI().toString()));
+        ScrollPane_AvatarChooser.setVisible(false);
+        scrollPane = true;
+        pane_cogView.setVisible(false);
+        cog = true;
+        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_12.png");
+        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_12.png");
+    }
+
     private void NationalityInterface(Nationality nat) {
         switch (nat) {
             case Denmark:
@@ -616,115 +653,5 @@ public class SYNchatController implements IController, Initializable {
             default:
                 break;
         }
-    }
-
-    @FXML
-    private void AvatarChooser7(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_7.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_7.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_7.png");
-    }
-
-    @FXML
-    private void AvatarChooser8(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_8.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_8.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_8.png");
-    }
-
-    @FXML
-    private void AvatarChooser9(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_9.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_9.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_9.png");
-    }
-
-    @FXML
-    private void AvatarChooser10(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_10.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_10.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_10.png");
-    }
-
-    @FXML
-    private void AvatarChooser11(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_11.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_11.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_11.png");
-    }
-
-    @FXML
-    private void AvatarChooser12(MouseEvent event) {
-        pic_profile.setImage(new Image(new File("src/Assets/Avatar_12.png").toURI().toString()));
-        ScrollPane_AvatarChooser.setVisible(false);
-        scrollPane = true;
-        pane_cogView.setVisible(false);
-        cog = true;
-        PresentationFacade.getInstance().getUser().getProfile().setPicture("src/Assets/Avatar_12.png");
-        PresentationFacade.getInstance().updateUserInfo("", "", PresentationFacade.getInstance().getUser().getProfile().getFirstName(), PresentationFacade.getInstance().getUser().getProfile().getLastName(), PresentationFacade.getInstance().getUser().getProfile().getNationality(), PresentationFacade.getInstance().getUser().getProfile().getProfileText(), "src/Assets/Avatar_12.png");
-    }
-
-//    @FXML
-//    private void colorPicker(MouseEvent event) {
-//        switch (colorIndex) {
-//            case 0:
-//                txtArea_Chat.setStyle("-fx-text-fill: #98fb98");
-//                txtArea_YourChat.setStyle("-fx-text-fill: #98fb98");
-//                colorIndex++;
-//                break;
-//            case 1:
-//                txtArea_Chat.setStyle("-fx-text-fill: blue");
-//                txtArea_YourChat.setStyle("-fx-text-fill: blue");
-//                colorIndex++;
-//                break;
-//            case 2:
-//                txtArea_Chat.setStyle("-fx-text-fill: red");
-//                txtArea_YourChat.setStyle("-fx-text-fill: red");
-//                colorIndex++;
-//                break;
-//            case 3:
-//                txtArea_Chat.setStyle("-fx-text-fill: orange");
-//                txtArea_YourChat.setStyle("-fx-text-fill: orange");
-//                colorIndex++;
-//                break;
-//            case 4:
-//                txtArea_Chat.setStyle("-fx-text-fill: purple");
-//                txtArea_YourChat.setStyle("-fx-text-fill: purple");
-//                colorIndex++;
-//                break;
-//            case 5:
-//                txtArea_Chat.setStyle("-fx-text-fill: pink");
-//                txtArea_YourChat.setStyle("-fx-text-fill: pink");
-//                colorIndex++;
-//                break;
-//            default:
-//                txtArea_Chat.setStyle("-fx-text-fill: white");
-//                txtArea_YourChat.setStyle("-fx-text-fill: white");
-//                colorIndex = 0;
-//                break;
-//        }
-//    }
-    @FXML
-    private void colorPicker(MouseEvent event) {
     }
 }

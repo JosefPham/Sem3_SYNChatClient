@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentation;
 
 import Acquaintance.IController;
@@ -22,7 +17,7 @@ import javafx.scene.control.ScrollPane;
 /**
  * FXML Controller class
  *
- * @author Sigurd E. Espersen
+ * @author Group 9
  */
 public class ViewProfileController implements IController, Initializable {
 
@@ -70,7 +65,7 @@ public class ViewProfileController implements IController, Initializable {
                 btn_addFriend.setVisible(false);
             }
         }
-        if(btn_addFriend.isVisible()) {
+        if (btn_addFriend.isVisible()) {
             btn_removeFriend.setVisible(false);
         }
     }

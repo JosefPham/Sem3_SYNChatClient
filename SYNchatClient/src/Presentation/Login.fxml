@@ -42,7 +42,7 @@
          <font>
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font></JFXPasswordField>
-      <JFXButton fx:id="btn_login" buttonType="RAISED" defaultButton="true" layoutX="113.0" layoutY="300.0" maxWidth="125.0" minWidth="125.0" onAction="#btn_login_action" opacity="0.7" prefWidth="134.0" ripplerFill="#162ab7" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="     Login     " textFill="WHITE">
+      <JFXButton buttonType="RAISED" defaultButton="true" layoutX="113.0" layoutY="300.0" maxWidth="125.0" minWidth="125.0" onAction="#btn_login_action" opacity="0.7" prefWidth="134.0" ripplerFill="#162ab7" style="-fx-background-color: #1f96e0; -fx-background-radius: 25;" text="     Login     " textFill="WHITE">
          <font>
             <Font name="Gill Sans MT Bold" size="16.0" />
          </font></JFXButton>

@@ -3,6 +3,10 @@ package Business;
 import Acquaintance.IManagement;
 import Acquaintance.IProfile;
 
+/**
+ *
+ * @author Group 9
+ */
 public class Management implements IManagement {
 
     private final int action;

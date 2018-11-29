@@ -2,6 +2,10 @@ package Acquaintance;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Group 9
+ */
 public interface IManagement extends Serializable {
 
     /**

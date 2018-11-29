@@ -15,22 +15,22 @@ import java.util.logging.Logger;
  * @author Group 9
  */
 public class ClientSystem {
-    
+
     private User currentUser;
-    
+
     private static ClientSystem instance = null;
-    
+
     private ClientSystem() {
-        
+
     }
-    
+
     public static ClientSystem getInstance() {
         if (instance == null) {
             instance = new ClientSystem();
         }
         return instance;
     }
-    
+
     protected String hash(String hashString) {
         try {
             MessageDigest hash = MessageDigest.getInstance("MD5");
@@ -41,7 +41,7 @@ public class ClientSystem {
         }
         return null;
     }
-    
+
     protected boolean regUser(String firstName, String lastName, String mail, String pw, Nationality nationality) {
         IProfile profile = new Profile(firstName, lastName, nationality, "", "");
         IUser iuser = new User(profile);
@@ -49,22 +49,22 @@ public class ClientSystem {
         ilogin.setUser(iuser);
         return BusinessFacade.getInstance().regBool(ilogin);
     }
-    
+
     protected String cipherMsg(String msg) {
         Cipher cipher = new Cipher();
         msg = cipher.cipher(msg);
-        
+
         return msg;
     }
-    
+
     public User getCurrentUser() {
         return currentUser;
     }
-    
+
     public void setUser(User user) {
         this.currentUser = user;
     }
-    
+
     protected void updateProfile(IProfile profile) {
         currentUser.getProfile().setFirstName(profile.getFirstName());
         currentUser.getProfile().setLastName(profile.getLastName());

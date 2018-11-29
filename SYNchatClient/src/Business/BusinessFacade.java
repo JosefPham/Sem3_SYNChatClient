@@ -23,7 +23,6 @@ public class BusinessFacade implements IBusiness {
     private IPresentation Ipres;
 
     private static BusinessFacade instance = null;
-    private Management management;
 
     private BusinessFacade() {
     }
@@ -104,8 +103,9 @@ public class BusinessFacade implements IBusiness {
         return ClientSystem.getInstance().getCurrentUser().removeFriend(userID);
     }
 
-    /*
-    method for updating the friendsobject in database
+    /**
+     *
+     * method for updating the friendsobject in database
      */
     boolean updateFriends(IFriends friends) {
         return Icon.updateFriends(friends);

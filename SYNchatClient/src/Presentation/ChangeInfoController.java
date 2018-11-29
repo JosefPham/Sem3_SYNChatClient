@@ -16,6 +16,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * FXML Controller class
+ *
+ * @author Group 9
+ */
 public class ChangeInfoController implements IController, Initializable {
 
     @FXML
@@ -47,7 +52,6 @@ public class ChangeInfoController implements IController, Initializable {
     private JFXTextArea textArea_profileInfo;
     @FXML
     private Label label_changeStatus;
-
     private Nationality nat;
     @FXML
     private JFXTextField textField_oldMail;
@@ -58,7 +62,6 @@ public class ChangeInfoController implements IController, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane_countries.setVisible(false);
-        //Inserting data into textFields if there is a value to the specific field
         textField_fname.setText(PresentationFacade.getInstance().getUser().getProfile().getFirstName());
         textField_lname.setText(PresentationFacade.getInstance().getUser().getProfile().getLastName());
         textField_nationality.setText(PresentationFacade.getInstance().getUser().getProfile().getNationality().toString());
@@ -67,20 +70,12 @@ public class ChangeInfoController implements IController, Initializable {
 
     @FXML
     private void changeFname(MouseEvent event) {
-        if (!textField_fname.isEditable()) {
             textField_fname.setEditable(true);
-        } else if (textField_fname.isEditable()) {
-            //TODO - Opdater SQL med nyt fornavn
-        }
     }
 
     @FXML
     private void changeLname(MouseEvent event) {
-        if (!textField_lname.isEditable()) {
             textField_lname.setEditable(true);
-        } else if (textField_lname.isEditable()) {
-            //TODO - Opdater SQL med nyt efternavn
-        }
     }
 
     @FXML
@@ -133,7 +128,6 @@ public class ChangeInfoController implements IController, Initializable {
     private void countryDK_handle(MouseEvent event) {
         textField_nationality.setText("Denmark");
         pane_countries.setVisible(false);
-        //TODO - Opdater SQL med land
         countryB = true;
     }
 
@@ -141,7 +135,6 @@ public class ChangeInfoController implements IController, Initializable {
     private void countryUSA_handle(MouseEvent event) {
         textField_nationality.setText("USA");
         pane_countries.setVisible(false);
-        //TODO - Opdater SQL med land
         countryB = true;
     }
 
@@ -149,7 +142,6 @@ public class ChangeInfoController implements IController, Initializable {
     private void countryJapan_handle(MouseEvent event) {
         textField_nationality.setText("Japan");
         pane_countries.setVisible(false);
-        //TODO - Opdater SQL med land
         countryB = true;
     }
 

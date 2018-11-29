@@ -4,6 +4,10 @@ import Acquaintance.IFriends;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Group 9
+ */
 public class Friends implements IFriends {
 
     List<Integer> friendlist = new ArrayList<>();

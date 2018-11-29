@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -31,15 +30,11 @@ public class RegisterNewUserController implements IController, Initializable {
     @FXML
     private TextField txt_Password1;
     @FXML
-    private Button btn_register;
-    @FXML
     private TextField txt_firstName;
     @FXML
     private TextField txt_lastName;
     @FXML
     private Label label_warninginfo;
-    @FXML
-    private Button btn_cancel;
     @FXML
     private MediaView mv_background;
     private MediaPlayer mp;
@@ -63,7 +58,6 @@ public class RegisterNewUserController implements IController, Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         pane_countries.setVisible(false);
         String path = new File("src/Assets/backgroundAnimation.mp4").getAbsolutePath();
         me = new Media(new File(path).toURI().toString());
@@ -71,7 +65,6 @@ public class RegisterNewUserController implements IController, Initializable {
         mv_background.setMediaPlayer(mp);
         mp.setCycleCount(mp.INDEFINITE);
         mp.setAutoPlay(true);
-
         txt_firstName.setStyle("-fx-prompt-text-fill: #1d1f21;"
                 + "-fx-text-inner-color: #1d1f21;");
         txt_lastName.setStyle("-fx-prompt-text-fill: #1d1f21;"
@@ -87,7 +80,6 @@ public class RegisterNewUserController implements IController, Initializable {
     @FXML
     public void registerNewUser(ActionEvent Event) {
         if (validateInfo()) {
-            //TODO: default country string mangler at blive sendt med
             if (PresentationFacade.getInstance().regUser(txt_firstName.getText(), txt_lastName.getText(), txt_email.getText().toLowerCase(), txt_Password2.getText(), Nationality.valueOf(label_country.getText()))) {
                 label_warninginfo.setText("Registration Complete");
                 PresentationFacade.getInstance().changeScene("Login.fxml");

@@ -3,6 +3,10 @@ package Business;
 import Acquaintance.IProfile;
 import Acquaintance.Nationality;
 
+/**
+ *
+ * @author Group 9
+ */
 public class Profile implements IProfile {
 
     private String firstName;

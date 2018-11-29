@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.SYNchatController">
     <children>
         <GridPane prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -57,38 +57,6 @@
                                     <Font name="Gill Sans MT" size="12.0" />
                                  </font>
                               </JFXButton>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="chatBubble" layoutX="50.0" layoutY="40.0">
-                           <children>
-                              <Label fx:id="msg_label_timeStamp" layoutY="32.0" text="10.42" textFill="DARKGRAY">
-                                 <font>
-                                    <Font name="Gill Sans MT" size="10.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="7.0" />
-                                 </padding>
-                              </Label>
-                              <AnchorPane style="-fx-border-color: #1f96e0; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: rgba(31,150,224,0.4); -fx-background-radius: 10;">
-                                 <children>
-                                    <Label fx:id="msg_label_sender" layoutY="2.0" text="Sigurd:" textFill="DARKGRAY">
-                                       <font>
-                                          <Font name="Gill Sans MT" size="10.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="7.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label fx:id="msg_label_text" layoutY="13.0" text="Test message" textFill="WHITE">
-                                       <font>
-                                          <Font name="Gill Sans MT" size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="7.0" right="5.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
                            </children>
                         </AnchorPane>
                               <AnchorPane minHeight="426.0" prefHeight="427.0" prefWidth="600.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -262,7 +230,7 @@
                               <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="336.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                           <children>
-                              <AnchorPane fx:id="AnchorPane_List" maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;" GridPane.rowIndex="2">
+                              <AnchorPane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #1f96e0; -fx-background-color: WHITE; -fx-border-width: 2;" GridPane.rowIndex="2">
                            <children>
                               <ImageView fitHeight="200.0" fitWidth="339.0" layoutX="-69.0" layoutY="70.0" opacity="0.7" pickOnBounds="true" rotate="90.0">
                                  <image>
@@ -342,11 +310,6 @@
                                     <Font name="Gill Sans MT Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="103.0" layoutY="20.0" onMousePressed="#colorPicker" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Assets/color_picker.png" />
-                                 </image>
-                              </ImageView>
                                   </children>
                               </AnchorPane>
                           </children>
