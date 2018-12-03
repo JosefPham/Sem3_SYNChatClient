@@ -335,7 +335,7 @@ public class SYNchatController implements IController, Initializable {
             imgC.fitHeightProperty().set(15);
             imgC.fitWidthProperty().set(15);
             imgC.setTranslateX(50);
-            Text txt = new Text(user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
+            Text txt = new Text("\n" + user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
             txt.setFont(Font.font("Gill Sans MT", 20));
             txt.setTranslateX(50);
             txt.setTranslateY(20);

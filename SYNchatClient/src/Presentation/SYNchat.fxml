@@ -237,7 +237,7 @@
                                     <Image url="@../Assets/Graphics/Overlay.png" />
                                  </image>
                               </ImageView>
-                              <ScrollPane fx:id="scrollpane_list" hbarPolicy="NEVER" layoutX="4.0" layoutY="4.0" prefHeight="300.0" prefWidth="196.0" stylesheets="@StyleSheet.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <ScrollPane fx:id="scrollpane_list" hbarPolicy="NEVER" layoutX="6.0" layoutY="-31.0" prefHeight="333.0" prefWidth="192.0" stylesheets="@StyleSheet.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-33.0">
                                  <content>
                                     <TextFlow fx:id="txtFlow_publicChat" prefHeight="300.0" prefWidth="200.0" />
                                  </content>
