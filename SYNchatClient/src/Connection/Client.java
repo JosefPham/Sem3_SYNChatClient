@@ -33,7 +33,7 @@ public class Client implements IClient {
 
     public Client() {
         try {
-            this.ip = (InetAddress) InetAddress.getByName("10.126.58.122");
+            this.ip = (InetAddress) InetAddress.getByName("192.168.1.196");
         } catch (UnknownHostException ex) {
             System.out.println("Couldn't connect to ip...");
         }

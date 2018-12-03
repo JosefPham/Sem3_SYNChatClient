@@ -50,6 +50,7 @@ public class SYNchatController implements IController, Initializable {
     private boolean settings = true;
     private boolean scrollPane = true;
     private boolean isPublicChatting = false;
+    private boolean loadPublicChat = true;
     private String btnStyle;
     private Text listName;
     private ImageView listPic;
@@ -115,6 +116,8 @@ public class SYNchatController implements IController, Initializable {
     private TextFlow txtFlow_publicMsg;
     @FXML
     private ScrollPane scrollpane_chat;
+    @FXML
+    private ScrollPane scrollpane_list;
 
     /**
      * Initializes the controller class.
@@ -123,6 +126,9 @@ public class SYNchatController implements IController, Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         txtFlow_publicMsg.heightProperty().addListener((observable) -> {
             scrollpane_chat.setVvalue(1D);
+        });
+        txtFlow_publicChat.heightProperty().addListener((observable) -> {
+            scrollpane_list.setVvalue(1D);
         });
         btnStyle = btn_publicChat.getStyle();
         btn_send.setStyle(btn_send.getStyle() + "-fx-text-fill: white");
@@ -178,7 +184,7 @@ public class SYNchatController implements IController, Initializable {
     private void startPrivatChat(ActionEvent event) {
         txtFlow_publicMsg.getChildren().removeAll(txtFlow_publicMsg.getChildren());
         if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            commandHandling("!SYN!-PublicChat-!SYN!");
             isPublicChatting = !isPublicChatting;
         }
         pane_chat.setDisable(false);
@@ -188,9 +194,10 @@ public class SYNchatController implements IController, Initializable {
     }
 
     /**
-     * Thread that runs while user is in public chat.
-     * Checks for incomming messages and new users logging into public chat.
-     * @return 
+     * Thread that runs while user is in public chat. Checks for incomming
+     * messages and new users logging into public chat.
+     *
+     * @return
      */
     private synchronized Thread startRun() {
         Runnable runnable = new Runnable() {
@@ -203,9 +210,13 @@ public class SYNchatController implements IController, Initializable {
                         Logger.getLogger(SYNchatController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } while (PresentationFacade.getInstance().getpUserMap() == null);
-                for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
-                    comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
+                if (loadPublicChat) {
+                    for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
+                        updatepUserMap(PresentationFacade.getInstance().getpUserMap().get(i));
+                        comparisonMap.put(i, PresentationFacade.getInstance().getpUserMap().get(i));
+                    }
                 }
+                loadPublicChat = false;
                 String comparisonString = "";
                 int comparisonInt = -1;
                 while (isPublicChatting) {
@@ -224,13 +235,13 @@ public class SYNchatController implements IController, Initializable {
                             receivePublicMsg();
                         }
                     }
-                    if ((comparisonMap != PresentationFacade.getInstance().getpUserMap()) && (comparisonMap != null)) {
-                        for (int i : PresentationFacade.getInstance().getpUserMap().keySet()) {
-                            if (!comparisonMap.containsKey(i)) {
-                                updatepUserMap(PresentationFacade.getInstance().getpUserMap().get(i));
+                    if (PresentationFacade.getInstance().getpUserMap() != null) {
+                        for (int key : PresentationFacade.getInstance().getpUserMap().keySet()) {
+                            if (!comparisonMap.containsKey(key)) { //add
+                                updatepUserMap(PresentationFacade.getInstance().getpUserMap().get(key));
                             }
                         }
-                        for (int i : comparisonMap.keySet()) {
+                        for (int i : comparisonMap.keySet()) { //remove
                             if (!PresentationFacade.getInstance().getpUserMap().containsKey(i)) {
                                 updatepUserMap(comparisonMap.get(i));
                             }
@@ -240,7 +251,9 @@ public class SYNchatController implements IController, Initializable {
             }
         };
         Thread t = new Thread(runnable);
-        t.setDaemon(true);
+
+        t.setDaemon(
+                true);
         t.start();
         return t;
     }
@@ -288,51 +301,11 @@ public class SYNchatController implements IController, Initializable {
 
     /**
      * Updates the "online list" in public chat with new users.
-     * @param IUser 
+     *
+     * @param IUser
      */
     private void updatepUserMap(IUser user) {
-        String imgCountry;
-        switch (user.getProfile().getNationality()) {
-            case Denmark:
-                imgCountry = "DK";
-                break;
-            case USA:
-                imgCountry = "USA";
-                break;
-            case Japan:
-                imgCountry = "Japan";
-                break;
-            default:
-                imgCountry = "USA";
-                break;
-        }
-        ImageView imgC = new ImageView(new Image(new File("src/Assets/Flags/Flag_" + imgCountry + "_Color.png").toURI().toString()));
-        imgC.fitHeightProperty().set(15);
-        imgC.fitWidthProperty().set(15);
-        imgC.setTranslateX(50);
-        Text txt = new Text(user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
-        txt.setFont(Font.font("Gill Sans MT", 20));
-        txt.setTranslateX(50);
-        txt.setTranslateY(20);
-        txt.setOnMouseEntered((event) -> {
-            txt.setUnderline(true);
-        });
-        txt.setOnMouseExited((event) -> {
-            txt.setUnderline(false);
-        });
-        txt.setOnMousePressed((event) -> {
-            PresentationFacade.getInstance().setSelectedUser(user);
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
-            isPublicChatting = !isPublicChatting;
-            PresentationFacade.getInstance().changeScene("ViewProfile.fxml");
-        });
-        ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
-        imgP.fitHeightProperty().set(35);
-        imgP.fitWidthProperty().set(35);
-        listName = txt;
-        listPic = imgP;
-        listCountry = imgC;
-        if (comparisonMap.containsKey(user.getUserID())) {
+        if (comparisonMap.containsKey(user.getUserID()) && loadPublicChat == false) {
             comparisonMap.remove(user.getUserID());
             Platform.runLater(new Runnable() {
                 @Override
@@ -343,6 +316,47 @@ public class SYNchatController implements IController, Initializable {
                 }
             });
         } else {
+            String imgCountry;
+            switch (user.getProfile().getNationality()) {
+                case Denmark:
+                    imgCountry = "DK";
+                    break;
+                case USA:
+                    imgCountry = "USA";
+                    break;
+                case Japan:
+                    imgCountry = "Japan";
+                    break;
+                default:
+                    imgCountry = "USA";
+                    break;
+            }
+            ImageView imgC = new ImageView(new Image(new File("src/Assets/Flags/Flag_" + imgCountry + "_Color.png").toURI().toString()));
+            imgC.fitHeightProperty().set(15);
+            imgC.fitWidthProperty().set(15);
+            imgC.setTranslateX(50);
+            Text txt = new Text(user.getProfile().getFirstName() + " " + user.getProfile().getLastName() + "\n");
+            txt.setFont(Font.font("Gill Sans MT", 20));
+            txt.setTranslateX(50);
+            txt.setTranslateY(20);
+            txt.setOnMouseEntered((event) -> {
+                txt.setUnderline(true);
+            });
+            txt.setOnMouseExited((event) -> {
+                txt.setUnderline(false);
+            });
+            txt.setOnMousePressed((event) -> {
+                PresentationFacade.getInstance().setSelectedUser(user);
+                commandHandling("!SYN!-PublicChat-!SYN!");
+                isPublicChatting = !isPublicChatting;
+                PresentationFacade.getInstance().changeScene("ViewProfile.fxml");
+            });
+            ImageView imgP = new ImageView(new Image(new File(user.getProfile().getPicture()).toURI().toString()));
+            imgP.fitHeightProperty().set(35);
+            imgP.fitWidthProperty().set(35);
+            listName = txt;
+            listPic = imgP;
+            listCountry = imgC;
             comparisonMap.put(user.getUserID(), user);
             Platform.runLater(new Runnable() {
                 @Override
@@ -355,20 +369,30 @@ public class SYNchatController implements IController, Initializable {
         }
     }
 
+    private void commandHandling(String command) {
+        PresentationFacade.getInstance().commandHandling(command);
+        if (command.equals("!SYN!-PublicChat-!SYN!")) {
+            t.stop(); //We know this is wrong, but since calling stop worked and interrupt didn't we went with it for now.
+            PresentationFacade.getInstance().getpUserMap().remove(PresentationFacade.getInstance().getUser().getUserID());
+            txtFlow_publicChat.getChildren().clear();
+            loadPublicChat = true;
+        }
+    }
+
     @FXML
     private void logoutAction(ActionEvent event) {
         if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            commandHandling("!SYN!-PublicChat-!SYN!");
             isPublicChatting = !isPublicChatting;
         }
-        PresentationFacade.getInstance().commandHandling("!SYN!-logout-!SYN!");
+        commandHandling("!SYN!-logout-!SYN!");
         PresentationFacade.getInstance().changeScene("Login.fxml");
     }
 
     @FXML
     private void returnToWelcome(ActionEvent event) {
         if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            commandHandling("!SYN!-PublicChat-!SYN!");
             isPublicChatting = !isPublicChatting;
         }
         pane_chat.setDisable(true);
@@ -380,7 +404,7 @@ public class SYNchatController implements IController, Initializable {
     @FXML
     private void viewProfile(MouseEvent event) {
         if (isPublicChatting) {
-            PresentationFacade.getInstance().commandHandling("!SYN!-PublicChat-!SYN!");
+            commandHandling("!SYN!-PublicChat-!SYN!");
             isPublicChatting = !isPublicChatting;
         }
         PresentationFacade.getInstance().changeScene("ChangeInfo.fxml");
@@ -593,7 +617,8 @@ public class SYNchatController implements IController, Initializable {
 
     /**
      * Defines the language in the system depending on the user's nationality.
-     * @param Nationality 
+     *
+     * @param Nationality
      */
     private void NationalityInterface(Nationality nat) {
         switch (nat) {
