@@ -3,7 +3,6 @@ package Connection;
 import Acquaintance.IClient;
 import Acquaintance.ILogin;
 import Acquaintance.IUser;
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -25,7 +24,6 @@ public class Client implements IClient {
     private Socket serverSocket;
     private InetAddress ip;
     int port = 8080;
-    private DataInputStream console; // takes input from keyboard (system in)
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
     private Thread sendMessage, readMessage = null;
@@ -47,7 +45,6 @@ public class Client implements IClient {
         try {
             System.out.println("Connecting to " + ip + " on port " + port + "");
             this.serverSocket = new Socket(ip, port);
-            console = new DataInputStream(System.in);
             output = new ObjectOutputStream(serverSocket.getOutputStream());
             input = new ObjectInputStream(serverSocket.getInputStream());
 
