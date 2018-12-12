@@ -26,7 +26,7 @@ public class Client implements IClient {
     int port = 8080;
     private ObjectInputStream input;  // takes the stream from the server socket - incoming messages
     private ObjectOutputStream output; // outgoing messages - taken from console
-    private Thread sendMessage, readMessage = null;
+    private Thread readMessage = null;
     private boolean isPublicChatting = false;
 
     public Client() {
